@@ -1,0 +1,16 @@
+[package]
+name = "infra"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+shared = { workspace = true }
+domain = { workspace = true }
+sea-orm = { workspace = true }
+redis = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+thiserror = { workspace = true }
+serde = { workspace = true }

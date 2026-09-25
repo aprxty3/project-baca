@@ -37,16 +37,16 @@ Seluruh 5 dokumen spesifikasi dan arsitektur pada direktori `knowledge/` telah s
 5. **[SELESAI] SRS (Software Requirements Specification):**
    - Dokumen di [knowledge/srs.md](knowledge/srs.md) mendefinisikan arsitektur keamanan multi-lapis (Cloudflare edge WAF/DDoS, Redis rate-limiting, CSRF, Argon2id, OTP 6-digit, JWT refresh token rotasi), 23 kontrak endpoint REST API detail, SLA performa (API <50ms, FTS <5ms, quote <10ms), dan NFR.
 
-### Backlog Implementasi Kode Sumber (Next Action: Phase 1 Implementation)
-1. **[AKTIF / PRIORITAS 1] Setup Fondasi Monorepo Cargo Workspace & Makefile:**
-   - Inisialisasi workspace `Cargo.toml`, pembuatan skeleton crates (`domain`, `shared`, `infra`, `server`, `web`), dan berkas `Makefile`.
-2. **[AKTIF / PRIORITAS 2] Pembuatan Skrip Migrasi SQL (`migrations/`):**
+### Backlog Implementasi Kode Sumber (Phase 1 Implementation)
+1. **[SELESAI] Setup Fondasi Monorepo Cargo Workspace & Makefile:**
+   - Inisialisasi workspace `Cargo.toml`, 5 skeleton crates (`domain`, `shared`, `infra`, `server`, `web`), bundling Trunk WASM Leptos 0.7, dan berkas `Makefile`. Seluruh `cargo check` dan `cargo test` lulus 100%.
+2. **[AKTIF / PRIORITAS 1] Pembuatan Skrip Migrasi SQL (`migrations/`):**
    - Menulis 6 pasang skrip SQL `.up.sql` dan `.down.sql` berdasarkan DDL pada `knowledge/erd.md`.
-3. **[PRIORITAS 3] Backend Server Core (Axum + SeaORM):**
+3. **[PRIORITAS 2] Backend Server Core (Axum + SeaORM):**
    - Konfigurasi koneksi pool PostgreSQL 17, Redis client, middleware otentikasi JWT, rate limiting, dan endpoint auth/katalog dasar.
-4. **[PRIORITAS 4] Frontend Web PWA (Leptos 0.7 WASM + Trunk):**
+4. **[PRIORITAS 3] Frontend Web PWA (Leptos 0.7 WASM + Trunk):**
    - Setup styling CSS Vintage Literary (palet espresso, kertas antik, terakota), reaktif i18n switcher, dan paginasi reflowable.
-5. **[PRIORITAS 5] Python Worker & Dual-Mode Embedding Pipeline:**
+5. **[PRIORITAS 4] Python Worker & Dual-Mode Embedding Pipeline:**
    - Setup parsing EPUB dan ekstraksi embedding 768-dim (Gemini API / FastEmbed CPU).
 
 ---
@@ -67,5 +67,7 @@ Seluruh riwayat, rasionalisasi teknis (*the "why"*), dan atribusi aktor untuk se
 | ADR-08 | Tata Kelola Multi-Agen | Penerbitan AGENTS.md, CLAUDE.md, GEMINI.md, GUIDE.md, DISTRIBUTED.md, CHANGELOG.md, NOTICE.md | [MEMORY.md](MEMORY.md) |
 | ADR-09 | Mesin Vektor & AI | Eliminasi Triton Server; Adopsi Gemini API & FastEmbed CPU (768 Dimensi) | [MEMORY.md](MEMORY.md) |
 | ADR-10 | Ekspansi Graf & Vault | Pemutakhiran graf 51 simpul, .graphifyignore overrides, dan sinkronisasi Obsidian Vault | [MEMORY.md](MEMORY.md) |
+| ADR-11 | Fondasi Monorepo | Monorepo 5 Crate Rust (shared, domain, infra, server, web) + Makefile & Trunk WASM | [MEMORY.md](MEMORY.md) |
+
 
 

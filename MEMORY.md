@@ -113,3 +113,19 @@ Setiap entri mencantumkan identitas pelaku (*Actor*): `[antigravity]`, `[claude]
   2. Melakukan ekstraksi inkremental via `graphify extract . --backend gemini`, memperluas graf dari 20 simpul menjadi 51 simpul dan 32 komunitas terklaster.
   3. Menyinkronkan kembali vault Obsidian lokal di `obsidian-vault/` dengan 83 catatan terhubung, kanvas visual `graph.canvas`, dan dasbor navigasi terpadu `00_DASHBOARD.md`.
 
+---
+
+### 2026-09-26 — Inisialisasi Monorepo Cargo Workspace & Skeleton Multi-Crate
+* **Aktor:** `human:aprxty3` & `[antigravity]`
+* **Konteks:** Eksekusi Fase 1 implementasi kode sumber Project Baca membutuhkan fondasi monorepo yang modular, mematuhi prinsip DRY (berbagi DTO antara backend dan WASM), serta menjamin Zero Panics di jalur produksi.
+* **Keputusan:**
+  1. **Workspace Resolver v2:** Mengatur `Cargo.toml` root dengan dependensi bersama terpusat (`[workspace.dependencies]`), menghindari duplikasi versi pustaka dan menjamin keselarasan compiler.
+  2. **Pemisahan Lima Crate Fungsional:**
+     - `crates/shared`: Komponen bebas platform (DTO, API Response, AppError) yang dapat dikompilasi ke target native x86/ARM maupun `wasm32-unknown-unknown`.
+     - `crates/domain`: Model entitas murni yang terisolasi dari basis data dan framework HTTP.
+     - `crates/infra`: Enkapsulasi koneksi database SeaORM (PostgreSQL 17) dan Redis client, dengan fallback graceful saat dev offline.
+     - `crates/server`: HTTP API berbasis Axum 0.8 dengan routing terstruktur, CORS, tracing, dan graceful shutdown listener.
+     - `crates/web`: Single Page Application berbasis Leptos 0.7.8 WASM dan Trunk, mengimplementasikan estetika *Vintage Literary (1900–1950)* dan reaktif language switcher.
+  3. **Otomasi Terpusat Makefile:** Memastikan seluruh alur build, check, dev, test, dan manajemen container database dapat dijalankan dengan satu perintah konsisten.
+
+
