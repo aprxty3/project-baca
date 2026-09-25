@@ -7,9 +7,9 @@
   },
   "PROJECT_LOG.md": {
     "mtime": 1790359812.311657,
-    "seen": 1790359820.7206635,
+    "seen": 1790359940.6989172,
     "ast_hash": "3f18fec22c704113e81abfafe216d038",
-    "semantic_hash": ""
+    "semantic_hash": "3f18fec22c704113e81abfafe216d038"
   },
   "README.md": {
     "mtime": 1790353575.2980318,
@@ -19,9 +19,9 @@
   },
   "docker-compose.yml": {
     "mtime": 1790356836.9164186,
-    "seen": 1790359820.7209501,
+    "seen": 1790359940.6989195,
     "ast_hash": "34851f468746cb36eded9e08bda89ce1",
-    "semantic_hash": ""
+    "semantic_hash": "34851f468746cb36eded9e08bda89ce1"
   },
   "knowledge/erd.md": {
     "mtime": 1790351671.0252917,
@@ -133,9 +133,9 @@
   },
   "MEMORY.md": {
     "mtime": 1790359795.9759607,
-    "seen": 1790359820.7205782,
+    "seen": 1790359940.6989152,
     "ast_hash": "9e19a271eb3b1b28347ad6cb299ec08d",
-    "semantic_hash": ""
+    "semantic_hash": "9e19a271eb3b1b28347ad6cb299ec08d"
   },
   "NOTICE.md": {
     "mtime": 1790351656.8954117,
@@ -145,9 +145,9 @@
   },
   "knowledge/log.md": {
     "mtime": 1790359746.0478868,
-    "seen": 1790359820.7212858,
+    "seen": 1790359940.6989217,
     "ast_hash": "a5a08beca85e639f3e623bb64847acb3",
-    "semantic_hash": ""
+    "semantic_hash": "a5a08beca85e639f3e623bb64847acb3"
   },
   "crates/domain/Cargo.toml": {
     "mtime": 1790355057.7187624,
@@ -169,9 +169,9 @@
   },
   "crates/infra/src/lib.rs": {
     "mtime": 1790356878.1595814,
-    "seen": 1790359820.7188962,
+    "seen": 1790359940.6981575,
     "ast_hash": "053cc07aea846429c8bc5fab680a2a70",
-    "semantic_hash": ""
+    "semantic_hash": "053cc07aea846429c8bc5fab680a2a70"
   },
   "crates/server/Cargo.toml": {
     "mtime": 1790355266.8754249,
@@ -247,8 +247,8 @@
   },
   "scripts/migrate.sh": {
     "mtime": 1790357063.9158013,
-    "seen": 1790359820.7196736,
+    "seen": 1790359940.6989129,
     "ast_hash": "7f2fb3f03fc1d4b64728351d335241b4",
-    "semantic_hash": ""
+    "semantic_hash": "7f2fb3f03fc1d4b64728351d335241b4"
   }
 }
