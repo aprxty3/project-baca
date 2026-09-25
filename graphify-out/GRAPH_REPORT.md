@@ -1,27 +1,28 @@
 # Graph Report - project-baca  (2026-09-26)
 
 ## Corpus Check
-- cluster-only mode — file stats not available
+- 55 files · ~200,031 words
+- Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 161 nodes · 193 edges · 53 communities (12 shown, 41 thin omitted)
-- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.87)
-- Token cost: 1,057 input · 453 output
+- 234 nodes · 271 edges · 51 communities (15 shown, 36 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.87)
+- Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `8bec6b84`
+- Built from commit: `29aaa7e0`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- Data Transfer Objects
+- shared/src/lib.rs
 - Domain Entities
-- Server Entry Point
-- Project Documentation
-- Infrastructure Configuration
-- Architecture Guidelines
+- server/src/main.rs
+- Project Baca — Log Keputusan Arsitektur & Memori Sistem
+- README.md
+- 2. Rincian Langkah Kerja (Sub-Tasks)
 - Database Migrations
-- API Response Wrapper
+- 2. Rincian Langkah Kerja (Sub-Tasks)
 - Project Modules
 - Web Frontend Library
 - Authentication Security
@@ -37,11 +38,9 @@
 - Data Ingestion Monitoring
 - Asset Catalog
 - Project Changelog
-- Client Type
-- Database Connection Type
-- Result Type
-- Self Reference
-- String Type
+- 2. Rincian Langkah Kerja (Sub-Tasks)
+- 2. Rincian Langkah Kerja (Sub-Tasks)
+- 2. Rincian Langkah Kerja (Sub-Tasks)
 - Web Entry Point
 - Developer Guide
 - Mail Server Development
@@ -68,16 +67,16 @@
 - Project Overview
 
 ## God Nodes (most connected - your core abstractions)
-1. `Project Baca — Log Keputusan Arsitektur & Memori Sistem` - 8 edges
-2. `Book` - 7 edges
-3. `main()` - 7 edges
-4. `knowledge/index.md — Master Knowledge Catalog` - 7 edges
-5. `BookDetailDto` - 6 edges
-6. `User` - 6 edges
-7. `AppConfig` - 6 edges
-8. `init_db_pool()` - 6 edges
-9. `init_redis_client()` - 6 edges
-10. `BookSummaryDto` - 5 edges
+1. `2. Rincian Langkah Kerja (Sub-Tasks)` - 8 edges
+2. `Project Baca — Log Keputusan Arsitektur & Memori Sistem` - 8 edges
+3. `Book` - 7 edges
+4. `main()` - 7 edges
+5. `2. Rincian Langkah Kerja (Sub-Tasks)` - 7 edges
+6. `2. Rincian Langkah Kerja (Sub-Tasks)` - 7 edges
+7. `knowledge/index.md — Master Knowledge Catalog` - 7 edges
+8. `User` - 6 edges
+9. `AppConfig` - 6 edges
+10. `init_db_pool()` - 6 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `GBrain Design Reference` --conceptually_related_to--> `ARCHITECTURE.md — Cetak Biru Arsitektur & Spesifikasi Desain`  [EXTRACTED]
@@ -86,10 +85,10 @@
   assets/illustrations/admin-sorting-pigeonholes.png → knowledge/ux-flow.md
 - `AI Quote Finder Illustration` --conceptually_related_to--> `knowledge/prd.md — Product Requirements Document`  [EXTRACTED]
   assets/illustrations/retro-rocket-discovery.png → knowledge/prd.md
-- `AGENTS.md — Panduan & Tata Kelola Agen AI` --references--> `Project Baca — Log Keputusan Arsitektur & Memori Sistem`  [EXTRACTED]
-  AGENTS.md → MEMORY.md
 - `CLAUDE.md — Claude Code Guidelines` --references--> `knowledge/index.md — Master Knowledge Catalog`  [EXTRACTED]
   CLAUDE.md → knowledge/index.md
+- `GEMINI.md — Panduan Gemini & Google Antigravity` --references--> `knowledge/index.md — Master Knowledge Catalog`  [EXTRACTED]
+  GEMINI.md → knowledge/index.md
 
 ## Import Cycles
 - None detected.
@@ -102,39 +101,39 @@
 - **Data Persistence & Search Stack** — infra_postgres_17, arch_postgres_everything, arch_dual_mode_embedding [INFERRED 0.85]
 - **Core Reading Experience** — knowledge_srs_books_chapter, knowledge_srs_progress_sync, knowledge_srs_chapter_recap, knowledge_ux_flow_philosophy [INFERRED 0.90]
 
-## Communities (53 total, 41 thin omitted)
+## Communities (51 total, 36 thin omitted)
 
-### Community 0 - "Data Transfer Objects"
-Cohesion: 0.21
-Nodes (20): ApiResponse, AppError, BookDetailDto, BookSummaryDto, ChapterSummaryDto, ErrorPayload, LoginRequest, QuoteSearchRequest (+12 more)
+### Community 0 - "shared/src/lib.rs"
+Cohesion: 0.16
+Nodes (23): ApiResponse, ApiResponse<T>, BookDetailDto, BookSummaryDto, ChapterSummaryDto, ErrorPayload, LoginRequest, QuoteSearchRequest (+15 more)
 
 ### Community 1 - "Domain Entities"
 Cohesion: 0.23
 Nodes (17): Book, BookChunk, BookStatus, Chapter, DomainError, ReadingProgress, ReadingStreak, DateTime (+9 more)
 
-### Community 2 - "Server Entry Point"
-Cohesion: 0.20
-Nodes (13): Arc, Box, api_health_check(), AppState, health_check(), main(), Client, DatabaseConnection (+5 more)
+### Community 2 - "server/src/main.rs"
+Cohesion: 0.13
+Nodes (22): Arc, Box, AppConfig, init_db_pool(), init_redis_client(), Client, DatabaseConnection, Result (+14 more)
 
-### Community 3 - "Project Documentation"
-Cohesion: 0.22
-Nodes (11): AGENTS.md — Panduan & Tata Kelola Agen AI, Open Knowledge Format v0.2, AI Quote Finder Illustration, CLAUDE.md — Claude Code Guidelines, GEMINI.md — Panduan Gemini & Google Antigravity, knowledge/erd.md — Entity Relationship Diagram, knowledge/frd.md — Functional Requirements Document, knowledge/index.md — Master Knowledge Catalog (+3 more)
+### Community 3 - "Project Baca — Log Keputusan Arsitektur & Memori Sistem"
+Cohesion: 0.11
+Nodes (21): AGENTS.md — Panduan & Tata Kelola Agen AI, OKF & Persistent Memory Guidelines, Dual-Mode Embedding (768-Dim), Monorepo Polyglot Architecture, Open Knowledge Format v0.2, Postgres for Everything, Redis Streams Broker, 6 Engineering Pillars (+13 more)
 
-### Community 4 - "Infrastructure Configuration"
-Cohesion: 0.31
-Nodes (9): AppError, Client, AppConfig, init_db_pool(), init_redis_client(), DatabaseConnection, Result, Self (+1 more)
+### Community 4 - "README.md"
+Cohesion: 0.08
+Nodes (23): 1. Ringkasan Tugas, 2. Rincian Langkah Kerja (Sub-Tasks), 3. Kriteria Keberhasilan & Validasi, Sub-Task 1.1: Integrasi Pustaka `dotenvy` & Pengaturan Dependensi, Sub-Task 1.2: Restrukturisasi `AppConfig` Menjadi Sub-Konfigurasi Modular, Sub-Task 1.3: Dinamisasi Pool Koneksi Basis Data & Redis, Sub-Task 1.4: Pemodelan Entitas SeaORM untuk 13 Tabel Domain, Sub-Task 1.5: Modularisasi `AppState` pada Server (+15 more)
 
-### Community 5 - "Architecture Guidelines"
-Cohesion: 0.22
-Nodes (10): OKF & Persistent Memory Guidelines, Dual-Mode Embedding (768-Dim), Monorepo Polyglot Architecture, Postgres for Everything, Redis Streams Broker, 6 Engineering Pillars, DISTRIBUTED.md — Arsitektur Pemrosesan Terdistribusi, Docker Infrastructure Configuration (+2 more)
+### Community 5 - "2. Rincian Langkah Kerja (Sub-Tasks)"
+Cohesion: 0.17
+Nodes (11): 1. Ringkasan Tugas, 2. Rincian Langkah Kerja (Sub-Tasks), 3. Kriteria Keberhasilan & Validasi, Sub-Task 6.1: Sistem Desain CSS Vintage Literary (1900–1950), Sub-Task 6.2: Layanan Komunikasi API & Local-First IndexedDB (`rexie`), Sub-Task 6.3: Halaman Beranda (Discovery Catalog & Search), Sub-Task 6.4: Halaman Sinopsis Buku (Book Overview), Sub-Task 6.5: Komponen Pembaca Naskah Reflowable (Reflowable E-Reader) (+3 more)
 
 ### Community 6 - "Database Migrations"
 Cohesion: 0.76
 Nodes (6): init_table(), migrate_down(), migrate_status(), migrate_up(), psql_cmd(), migrate.sh script
 
-### Community 7 - "API Response Wrapper"
-Cohesion: 0.40
-Nodes (4): ApiResponse<T>, Self, T, Value
+### Community 7 - "2. Rincian Langkah Kerja (Sub-Tasks)"
+Cohesion: 0.18
+Nodes (10): 1. Ringkasan Tugas, 2. Rincian Langkah Kerja (Sub-Tasks), 3. Kriteria Keberhasilan & Validasi, Sub-Task 5.1: Layanan Penyimpanan Objek S3/MinIO (`crates/infra`), Sub-Task 5.2: Endpoint Unggah EPUB Multi-Part Admin (SRS 21), Sub-Task 5.3: Pekerja Latar Ingestion & Parsing EPUB, Sub-Task 5.4: Sanitasi HTML Naskah Klasik & Scene Chunking, Sub-Task 5.5: Ekstraksi Vektor 768-Dim & Generasi Wawasan Awal (+2 more)
 
 ### Community 8 - "Project Modules"
 Cohesion: 0.70
@@ -148,19 +147,31 @@ Nodes (3): POST /api/auth/refresh, POST /api/auth/verify-otp, Security Architect
 Cohesion: 0.67
 Nodes (3): GET /api/books/search, POST /api/progress/merge, User Journey Flowchart
 
+### Community 24 - "2. Rincian Langkah Kerja (Sub-Tasks)"
+Cohesion: 0.18
+Nodes (10): 1. Ringkasan Tugas, 2. Rincian Langkah Kerja (Sub-Tasks), 3. Kriteria Keberhasilan & Validasi, Sub-Task 7.1: Pengujian Asap Infrastruktur (Smoke Testing), Sub-Task 7.2: Pengujian Unit Crate Bersama & Domain (Unit Test Suite), Sub-Task 7.3: Pengujian Integrasi Skenario Kritis (Integration Test Suite), Sub-Task 7.4: Pengukuran & Benchmarking Ambang Batas SLA, Sub-Task 7.5: Audit Keamanan & Hardening Pra-Rilis (+2 more)
+
+### Community 25 - "2. Rincian Langkah Kerja (Sub-Tasks)"
+Cohesion: 0.20
+Nodes (9): 1. Ringkasan Tugas, 2. Rincian Langkah Kerja (Sub-Tasks), 3. Kriteria Keberhasilan & Validasi, Sub-Task 4.1: Layanan Dual-Mode Embedding Provider (`crates/infra`), Sub-Task 4.2: Scoped Semantic Quote Finder (`POST /api/books/{id}/quotes/search`), Sub-Task 4.3: Pengelolaan Cache Kartu Wawasan Atomik (SRS 18), Sub-Task 4.4: Rekap Kontekstual Anti-Spoiler Bab Sebelumnya (SRS 19), Sub-Task 4.5: Penandaan & Pengelolaan Kutipan Favorit (SRS 20) (+1 more)
+
+### Community 26 - "2. Rincian Langkah Kerja (Sub-Tasks)"
+Cohesion: 0.22
+Nodes (8): 1. Ringkasan Tugas, 2. Rincian Langkah Kerja (Sub-Tasks), 3. Kriteria Keberhasilan & Validasi, Sub-Task 3.1: Layanan Repository Katalog & Pencarian Leksikal (`crates/infra`), Sub-Task 3.2: Implementasi Endpoint REST API Katalog & Naskah Bab (SRS 8–12), Sub-Task 3.3: Layanan Progres Membaca & Sinkronisasi CFI (SRS 13–14), Sub-Task 3.4: Sistem Detak Jantung Aktivitas Baca, Streak & Lencana (SRS 15–16), Task 03: Backend Katalog Buku, FTS Trigram, Reader API & Gamifikasi Streak
+
 ## Knowledge Gaps
-- **53 isolated node(s):** `web`, `POST /api/auth/refresh`, `POST /api/auth/verify-otp`, `GET /api/books/search`, `POST /api/progress/merge` (+48 more)
+- **109 isolated node(s):** `web`, `1. Ringkasan Tugas`, `Sub-Task 1.1: Integrasi Pustaka `dotenvy` & Pengaturan Dependensi`, `Sub-Task 1.2: Restrukturisasi `AppConfig` Menjadi Sub-Konfigurasi Modular`, `Sub-Task 1.3: Dinamisasi Pool Koneksi Basis Data & Redis` (+104 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **41 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **36 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Project Baca — Log Keputusan Arsitektur & Memori Sistem` connect `Architecture Guidelines` to `Project Documentation`?**
-  _High betweenness centrality (0.010) - this node is a cross-community bridge._
-- **Why does `AGENTS.md — Panduan & Tata Kelola Agen AI` connect `Project Documentation` to `Architecture Guidelines`?**
-  _High betweenness centrality (0.009) - this node is a cross-community bridge._
-- **Why does `main()` connect `Server Entry Point` to `Infrastructure Configuration`?**
-  _High betweenness centrality (0.009) - this node is a cross-community bridge._
-- **What connects `web`, `POST /api/auth/refresh`, `POST /api/auth/verify-otp` to the rest of the system?**
-  _53 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `web`, `1. Ringkasan Tugas`, `Sub-Task 1.1: Integrasi Pustaka `dotenvy` & Pengaturan Dependensi` to the rest of the system?**
+  _109 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `server/src/main.rs` be split into smaller, more focused modules?**
+  _Cohesion score 0.12666666666666668 - nodes in this community are weakly interconnected._
+- **Should `Project Baca — Log Keputusan Arsitektur & Memori Sistem` be split into smaller, more focused modules?**
+  _Cohesion score 0.10952380952380952 - nodes in this community are weakly interconnected._
+- **Should `README.md` be split into smaller, more focused modules?**
+  _Cohesion score 0.07692307692307693 - nodes in this community are weakly interconnected._

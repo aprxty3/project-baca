@@ -144,4 +144,19 @@ Setiap entri mencantumkan identitas pelaku (*Actor*): `[antigravity]`, `[claude]
      - Mengalihkan image MinIO ke `cgr.dev/chainguard/minio:latest` karena image Docker Hub telah diarsipkan oleh penyedia hulu.
      - Mengalihkan port host MinIO ke `9005:9000` dan console ke `9006:9001` untuk mencegah konflik dengan proses lokal lain yang menggunakan port 9000.
 
+---
+
+### 2026-09-26 — Kodifikasi Task Breakdown Terstruktur Menuju MVP (`knowledge/tasks/`)
+* **Aktor:** `human:aprxty3` & `[antigravity]`
+* **Konteks:** Menghadapi implementasi menyeluruh dari monorepo polyglot, diperlukan peta jalan pelaksanaan tugas yang berurutan, terukur, dan terhubung langsung ke spesifikasi SSOT pada direktori `knowledge/` agar agen AI maupun pengembang tidak melewatkan prasyarat teknis, invarian arsitektur, atau kontrak API.
+* **Keputusan:**
+  1. **Pembentukan Direktori `knowledge/tasks/`:**
+     - Mengodifikasikan seluruh kebutuhan produk, modul fungsional, dan spesifikasi teknis menjadi 7 paket tugas bertahap (Task 01 s/d Task 07) dengan indeks induk `knowledge/tasks/README.md`.
+  2. **Matriks Ketergantungan Tegas:**
+     - Mengunci alur kerja berurutan: Fondasi Infrastruktur/SeaORM -> Otentikasi & Rekonsiliasi Tamu -> Reader & Katalog Backend -> Semantik AI Embedding 768-Dim -> Ingestion Pipeline Asinkron -> Frontend Leptos WASM -> QA & Hardening.
+  3. **Penyelarasan Backlog & Navigasi Pengetahuan:**
+     - Menghubungkan setiap tugas ke nomor User Story pada `prd.md`, modul pada `frd.md`, dan nomor endpoint pada `srs.md`.
+     - Memutakhirkan `knowledge/index.md` dan `PROJECT_LOG.md` sebagai kendali operasional tunggal.
+
+
 

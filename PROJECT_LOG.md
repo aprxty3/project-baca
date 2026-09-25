@@ -37,19 +37,33 @@ Seluruh 5 dokumen spesifikasi dan arsitektur pada direktori `knowledge/` telah s
 5. **[SELESAI] SRS (Software Requirements Specification):**
    - Dokumen di [knowledge/srs.md](knowledge/srs.md) mendefinisikan arsitektur keamanan multi-lapis (Cloudflare edge WAF/DDoS, Redis rate-limiting, CSRF, Argon2id, OTP 6-digit, JWT refresh token rotasi), 23 kontrak endpoint REST API detail, SLA performa (API <50ms, FTS <5ms, quote <10ms), dan NFR.
 
-### Backlog Implementasi Kode Sumber (Phase 1 Implementation)
-1. **[SELESAI] Setup Fondasi Monorepo Cargo Workspace & Makefile:**
-   - Inisialisasi workspace `Cargo.toml`, 5 skeleton crates (`domain`, `shared`, `infra`, `server`, `web`), bundling Trunk WASM Leptos 0.7, dan berkas `Makefile`. Seluruh `cargo check` dan `cargo test` lulus 100%.
-2. **[SELESAI] Pembuatan Skrip Migrasi SQL (`migrations/`) & Eksekusi Database:**
-   - Menulis 6 pasang skrip SQL `.up.sql` dan `.down.sql` berdasarkan DDL pada `knowledge/erd.md`.
-   - Mengimplementasikan runner `scripts/migrate.sh` dan target `make migrate-up`, `make migrate-down`, `make migrate-status`.
-   - Menjalankan migrasi fisik ke PostgreSQL 17 di `project_baca_db`: 14 tabel dan 37 indeks (termasuk 16 indeks matriks ERD) berhasil disahkan.
-3. **[AKTIF / PRIORITAS 1] Backend Server Core (Axum + SeaORM):**
-   - Implementasi entitas SeaORM, handler otentikasi JWT/Argon2id, CRUD katalog, dan rate limiting Redis.
-4. **[PRIORITAS 2] Frontend Web PWA (Leptos 0.7 WASM + Trunk):**
-   - Setup styling CSS Vintage Literary (palet espresso, kertas antik, terakota), reaktif i18n switcher, dan paginasi reflowable.
-5. **[PRIORITAS 3] Python Worker & Dual-Mode Embedding Pipeline:**
-   - Setup parsing EPUB dan ekstraksi embedding 768-dim (Gemini API / FastEmbed CPU).
+### Backlog Implementasi Kode Sumber (Fase 1 Menuju MVP)
+Rincian tugas terstruktur dan matriks ketergantungan dikelola pada **[knowledge/tasks/README.md](knowledge/tasks/README.md)**:
+
+1. **[SELESAI] Fase 0 — Fondasi Monorepo & Migrasi Database:**
+   - Workspace Cargo 5 crates (`domain`, `shared`, `infra`, `server`, `web`) lulus validasi kompilasi.
+   - 6 pasang skrip migrasi SQL dieksekusi ke PostgreSQL 17: 14 tabel dan 37 indeks disahkan.
+2. **[AKTIF / PRIORITAS 1] Task 01 — Infrastruktur, AppConfig Modular & Entitas SeaORM:**
+   - Spesifikasi: [knowledge/tasks/01_infrastructure_and_config.md](knowledge/tasks/01_infrastructure_and_config.md)
+   - Lingkup: Integrasi `dotenvy`, sub-configs modular, pool SeaORM dinamis, pemodelan 13 entitas SeaORM.
+3. **[PRIORITAS 2] Task 02 — Sistem Otentikasi, JWT/Argon2id, OTP & Rekonsiliasi Tamu:**
+   - Spesifikasi: [knowledge/tasks/02_authentication_and_user.md](knowledge/tasks/02_authentication_and_user.md)
+   - Lingkup: Endpoint auth (SRS 1-7), hashing Argon2id, OTP SHA-256 via Redis, rotasi token, auto-merge (`/merge`), RBAC guard.
+4. **[PRIORITAS 3] Task 03 — Backend Katalog Buku, FTS Trigram, Reader API & Gamifikasi Streak:**
+   - Spesifikasi: [knowledge/tasks/03_catalog_and_reader_backend.md](knowledge/tasks/03_catalog_and_reader_backend.md)
+   - Lingkup: Endpoint katalog kursor (SRS 8-12), search FTS+Trigram (<3ms), konten bab, sinkronisasi progres (SRS 13-14), heartbeat streak & lencana (SRS 15-16).
+5. **[PRIORITAS 4] Task 04 — Subsistem Semantik AI, Embedding 768-Dim & Kartu Wawasan Atomik:**
+   - Spesifikasi: [knowledge/tasks/04_semantic_ai_and_insights.md](knowledge/tasks/04_semantic_ai_and_insights.md)
+   - Lingkup: Dual-mode embedding (Gemini & FastEmbed), Scoped Quote Finder HNSW (<10ms), cache kartu atomik bab Deepstash-style (SRS 17-20).
+6. **[PRIORITAS 5] Task 05 — Ingestion Pipeline EPUB Asinkron & Admin Management:**
+   - Spesifikasi: [knowledge/tasks/05_ingestion_pipeline_and_admin.md](knowledge/tasks/05_ingestion_pipeline_and_admin.md)
+   - Lingkup: Upload EPUB admin (SRS 21-23), worker Redis Streams, sanitasi HTML klasik, scene chunking, monitoring.
+7. **[PRIORITAS 6] Task 06 — Frontend Leptos WASM Web Reader & Mode Offline:**
+   - Spesifikasi: [knowledge/tasks/06_frontend_leptos_web_reader.md](knowledge/tasks/06_frontend_leptos_web_reader.md)
+   - Lingkup: Leptos WASM SPA, styling Vintage Literary (1900-1950), reader multi-column, anchor CFI, offline IndexedDB (`rexie`), i18n switcher.
+8. **[PRIORITAS 7] Task 07 — Validasi Kualitas Menyeluruh, SLA Benchmarking & Rilis MVP:**
+   - Spesifikasi: [knowledge/tasks/07_quality_assurance_and_launch.md](knowledge/tasks/07_quality_assurance_and_launch.md)
+   - Lingkup: Suite test (smoke, unit, integration), benchmarking SLA (API <50ms, FTS <5ms, quote <10ms), audit Zero Emoji & Zero Panics, rilis MVP.
 
 ---
 
