@@ -40,13 +40,15 @@ Seluruh 5 dokumen spesifikasi dan arsitektur pada direktori `knowledge/` telah s
 ### Backlog Implementasi Kode Sumber (Phase 1 Implementation)
 1. **[SELESAI] Setup Fondasi Monorepo Cargo Workspace & Makefile:**
    - Inisialisasi workspace `Cargo.toml`, 5 skeleton crates (`domain`, `shared`, `infra`, `server`, `web`), bundling Trunk WASM Leptos 0.7, dan berkas `Makefile`. Seluruh `cargo check` dan `cargo test` lulus 100%.
-2. **[AKTIF / PRIORITAS 1] Pembuatan Skrip Migrasi SQL (`migrations/`):**
+2. **[SELESAI] Pembuatan Skrip Migrasi SQL (`migrations/`) & Eksekusi Database:**
    - Menulis 6 pasang skrip SQL `.up.sql` dan `.down.sql` berdasarkan DDL pada `knowledge/erd.md`.
-3. **[PRIORITAS 2] Backend Server Core (Axum + SeaORM):**
-   - Konfigurasi koneksi pool PostgreSQL 17, Redis client, middleware otentikasi JWT, rate limiting, dan endpoint auth/katalog dasar.
-4. **[PRIORITAS 3] Frontend Web PWA (Leptos 0.7 WASM + Trunk):**
+   - Mengimplementasikan runner `scripts/migrate.sh` dan target `make migrate-up`, `make migrate-down`, `make migrate-status`.
+   - Menjalankan migrasi fisik ke PostgreSQL 17 di `project_baca_db`: 14 tabel dan 37 indeks (termasuk 16 indeks matriks ERD) berhasil disahkan.
+3. **[AKTIF / PRIORITAS 1] Backend Server Core (Axum + SeaORM):**
+   - Implementasi entitas SeaORM, handler otentikasi JWT/Argon2id, CRUD katalog, dan rate limiting Redis.
+4. **[PRIORITAS 2] Frontend Web PWA (Leptos 0.7 WASM + Trunk):**
    - Setup styling CSS Vintage Literary (palet espresso, kertas antik, terakota), reaktif i18n switcher, dan paginasi reflowable.
-5. **[PRIORITAS 4] Python Worker & Dual-Mode Embedding Pipeline:**
+5. **[PRIORITAS 3] Python Worker & Dual-Mode Embedding Pipeline:**
    - Setup parsing EPUB dan ekstraksi embedding 768-dim (Gemini API / FastEmbed CPU).
 
 ---
@@ -68,6 +70,8 @@ Seluruh riwayat, rasionalisasi teknis (*the "why"*), dan atribusi aktor untuk se
 | ADR-09 | Mesin Vektor & AI | Eliminasi Triton Server; Adopsi Gemini API & FastEmbed CPU (768 Dimensi) | [MEMORY.md](MEMORY.md) |
 | ADR-10 | Ekspansi Graf & Vault | Pemutakhiran graf 51 simpul, .graphifyignore overrides, dan sinkronisasi Obsidian Vault | [MEMORY.md](MEMORY.md) |
 | ADR-11 | Fondasi Monorepo | Monorepo 5 Crate Rust (shared, domain, infra, server, web) + Makefile & Trunk WASM | [MEMORY.md](MEMORY.md) |
+| ADR-12 | Eksekusi Migrasi & Skema | Eksekusi 6 migrasi SQL PostgreSQL 17, pengesahan 16 indeks matriks ERD, runner Makefile | [MEMORY.md](MEMORY.md) |
+
 
 
 

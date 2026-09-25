@@ -34,7 +34,7 @@ impl AppConfig {
             .unwrap_or_else(|_| "project-baca-local-dev-jwt-secret-key-32chars!".to_string());
 
         let minio_endpoint = std::env::var("MINIO_ENDPOINT")
-            .unwrap_or_else(|_| "http://127.0.0.1:9000".to_string());
+            .unwrap_or_else(|_| "http://127.0.0.1:9005".to_string());
 
         let minio_bucket = std::env::var("MINIO_BUCKET")
             .unwrap_or_else(|_| "project-baca-books".to_string());

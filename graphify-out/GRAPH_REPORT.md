@@ -1,15 +1,16 @@
 # Graph Report - project-baca  (2026-09-26)
 
 ## Corpus Check
-- cluster-only mode — file stats not available
+- 47 files · ~194,250 words
+- Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 142 nodes · 177 edges · 41 communities (11 shown, 30 thin omitted)
+- 149 nodes · 193 edges · 42 communities (12 shown, 30 thin omitted)
 - Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.88)
-- Token cost: 949 input · 413 output
+- Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `8991aa49`
+- Built from commit: `8a9d1581`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -54,6 +55,7 @@
 - UX Philosophy
 - Legal and Licensing
 - Project Overview
+- migrate.sh
 
 ## God Nodes (most connected - your core abstractions)
 1. `Book` - 7 edges
@@ -61,11 +63,11 @@
 3. `knowledge/index.md — Master Knowledge Catalog` - 7 edges
 4. `MEMORY.md — Log Keputusan Arsitektur & Memori Sistem` - 7 edges
 5. `User` - 6 edges
-6. `BookDetailDto` - 6 edges
-7. `AppConfig` - 6 edges
-8. `init_db_pool()` - 6 edges
-9. `init_redis_client()` - 6 edges
-10. `AppError` - 6 edges
+6. `AppConfig` - 6 edges
+7. `init_db_pool()` - 6 edges
+8. `init_redis_client()` - 6 edges
+9. `AppError` - 6 edges
+10. `BookDetailDto` - 6 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `GBrain Design Reference` --conceptually_related_to--> `ARCHITECTURE.md — Cetak Biru Arsitektur & Spesifikasi Desain`  [EXTRACTED]
@@ -91,7 +93,7 @@
 - **Architectural Guardrails** — engineering_pillars, memory_md, agents_rules_okf_memory [INFERRED 0.85]
 - **Core Reading Experience** — knowledge_srs_books_chapter, knowledge_srs_progress_sync, knowledge_srs_chapter_recap, knowledge_ux_flow_philosophy [INFERRED 0.90]
 
-## Communities (41 total, 30 thin omitted)
+## Communities (42 total, 30 thin omitted)
 
 ### Community 0 - "Core Domain Models"
 Cohesion: 0.23
@@ -133,6 +135,10 @@ Nodes (3): POST /api/auth/refresh, POST /api/auth/verify-otp, Security Architect
 Cohesion: 0.67
 Nodes (3): GET /api/books/search, POST /api/progress/merge, User Journey Flowchart
 
+### Community 41 - "migrate.sh"
+Cohesion: 0.76
+Nodes (6): init_table(), migrate_down(), migrate_status(), migrate_up(), psql_cmd(), migrate.sh script
+
 ## Knowledge Gaps
 - **48 isolated node(s):** `web`, `GET /api/books/search`, `POST /api/progress/merge`, `ARCHITECTURE.md — Cetak Biru Arsitektur & Spesifikasi Desain`, `GBrain Design Reference` (+43 more)
   These have ≤1 connection - possible missing edges or undocumented components.
@@ -142,11 +148,11 @@ Nodes (3): GET /api/books/search, POST /api/progress/merge, User Journey Flowcha
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `AppError` connect `Infrastructure and Configuration` to `API Data Transfer Objects`?**
-  _High betweenness centrality (0.064) - this node is a cross-community bridge._
+  _High betweenness centrality (0.058) - this node is a cross-community bridge._
 - **Why does `main()` connect `Server Entry and State` to `Infrastructure and Configuration`?**
-  _High betweenness centrality (0.033) - this node is a cross-community bridge._
+  _High betweenness centrality (0.030) - this node is a cross-community bridge._
 - **Why does `init_db_pool()` connect `Infrastructure and Configuration` to `Server Entry and State`?**
-  _High betweenness centrality (0.025) - this node is a cross-community bridge._
+  _High betweenness centrality (0.023) - this node is a cross-community bridge._
 - **Are the 2 inferred relationships involving `main()` (e.g. with `init_db_pool()` and `init_redis_client()`) actually correct?**
   _`main()` has 2 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `web`, `GET /api/books/search`, `POST /api/progress/merge` to the rest of the system?**

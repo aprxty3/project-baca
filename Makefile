@@ -58,6 +58,19 @@ db-shell:
 redis-shell:
 	@docker compose exec redis redis-cli
 
+# Database migrations
+migrate-up:
+	@echo "Menjalankan migrasi basis data (up)..."
+	@./scripts/migrate.sh up
+
+migrate-down:
+	@echo "Membalikkan migrasi basis data terakhir (down)..."
+	@./scripts/migrate.sh down
+
+migrate-status:
+	@echo "Mengecek status riwayat migrasi basis data..."
+	@./scripts/migrate.sh status
+
 # Test suites
 test: test-all
 
@@ -93,4 +106,4 @@ clean:
 	@cargo clean
 	@rm -rf crates/web/dist
 
-.PHONY: dev dev-server dev-web db-up db-down db-prune db-logs db-shell redis-shell test test-unit test-integration test-all check build clean
+.PHONY: dev dev-server dev-web db-up db-down db-prune db-logs db-shell redis-shell migrate-up migrate-down migrate-status test test-unit test-integration test-all check build clean

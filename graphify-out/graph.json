@@ -843,6 +843,111 @@
       "source_location": "L52"
     },
     {
+      "id": "scripts_migrate",
+      "label": "migrate.sh",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "migrate.sh",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "norm_label": "migrate.sh",
+      "source_file": "scripts/migrate.sh",
+      "source_location": "L1"
+    },
+    {
+      "id": "scripts_migrate_init_table",
+      "label": "init_table()",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "migrate.sh",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "init_table()",
+      "source_file": "scripts/migrate.sh",
+      "source_location": "L15"
+    },
+    {
+      "id": "scripts_migrate_migrate_down",
+      "label": "migrate_down()",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "migrate.sh",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "migrate_down()",
+      "source_file": "scripts/migrate.sh",
+      "source_location": "L60"
+    },
+    {
+      "id": "scripts_migrate_migrate_status",
+      "label": "migrate_status()",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "migrate.sh",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "migrate_status()",
+      "source_file": "scripts/migrate.sh",
+      "source_location": "L82"
+    },
+    {
+      "id": "scripts_migrate_migrate_up",
+      "label": "migrate_up()",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "migrate.sh",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "migrate_up()",
+      "source_file": "scripts/migrate.sh",
+      "source_location": "L24"
+    },
+    {
+      "id": "scripts_migrate_psql_cmd",
+      "label": "psql_cmd()",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "migrate.sh",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "psql_cmd()",
+      "source_file": "scripts/migrate.sh",
+      "source_location": "L11"
+    },
+    {
+      "id": "scripts_migrate_sh__entry",
+      "label": "migrate.sh script",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "migrate.sh",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "norm_label": "migrate.sh script",
+      "source_file": "scripts/migrate.sh",
+      "source_location": "L1"
+    },
+    {
       "id": "crates_shared_src_lib_apiresponse_t",
       "label": "ApiResponse<T>",
       "_origin": "ast",
@@ -1037,6 +1142,26 @@
       "file_type": "concept",
       "norm_label": "user journey flowchart",
       "source_file": "knowledge/ux-flow.md"
+    },
+    {
+      "id": "agents_rules_graphify",
+      "label": "Graphify Knowledge Graph Protocol",
+      "_origin": "semantic",
+      "community": 11,
+      "community_name": "Knowledge Graph Protocol",
+      "file_type": "rationale",
+      "norm_label": "graphify knowledge graph protocol",
+      "source_file": ".agents/rules/graphify.md"
+    },
+    {
+      "id": "agents_workflows_graphify",
+      "label": "Graphify Workflow",
+      "_origin": "semantic",
+      "community": 11,
+      "community_name": "Knowledge Graph Protocol",
+      "file_type": "rationale",
+      "norm_label": "graphify workflow",
+      "source_file": ".agents/workflows/graphify.md"
     },
     {
       "id": "architecture_md",
@@ -1269,6 +1394,71 @@
       "source_file": "knowledge/srs.md"
     },
     {
+      "id": "crates_web_index",
+      "label": "Web Entry Point",
+      "_origin": "semantic",
+      "community": 3,
+      "community_name": "Architecture and Project Governance",
+      "file_type": "code",
+      "norm_label": "web entry point",
+      "source_file": "crates/web/index.html"
+    },
+    {
+      "id": "decision_dual_mode_embedding",
+      "label": "Dual-Mode Embedding Decision",
+      "_origin": "semantic",
+      "community": 3,
+      "community_name": "Architecture and Project Governance",
+      "file_type": "concept",
+      "norm_label": "dual-mode embedding decision",
+      "rationale": "Eliminated Triton Server for KISS/YAGNI; adopted Gemini API (Cloud) and FastEmbed (Local) with 768-dim vectors.",
+      "source_file": "MEMORY.md"
+    },
+    {
+      "id": "decision_monorepo_workspace",
+      "label": "Cargo Workspace Monorepo",
+      "_origin": "semantic",
+      "community": 3,
+      "community_name": "Architecture and Project Governance",
+      "file_type": "concept",
+      "norm_label": "cargo workspace monorepo",
+      "rationale": "Modular 5-crate structure (shared, domain, infra, server, web) for DRY and platform independence.",
+      "source_file": "MEMORY.md"
+    },
+    {
+      "id": "decision_postgres_everything",
+      "label": "Postgres for Everything Decision",
+      "_origin": "semantic",
+      "community": 3,
+      "community_name": "Architecture and Project Governance",
+      "file_type": "concept",
+      "norm_label": "postgres for everything decision",
+      "rationale": "Rejected Elasticsearch to save RAM and avoid dual-write complexity; uses FTS, pg_trgm, and pgvector.",
+      "source_file": "MEMORY.md"
+    },
+    {
+      "id": "decision_vintage_literary_ui",
+      "label": "Vintage Literary UI Design",
+      "_origin": "semantic",
+      "community": 3,
+      "community_name": "Architecture and Project Governance",
+      "file_type": "concept",
+      "norm_label": "vintage literary ui design",
+      "rationale": "Aesthetic choice (1900\u20131950) to differentiate from flat modern UI, using aged paper and iron gall ink palettes.",
+      "source_file": "MEMORY.md"
+    },
+    {
+      "id": "engineering_pillars",
+      "label": "6 Engineering Pillars",
+      "_origin": "semantic",
+      "community": 3,
+      "community_name": "Architecture and Project Governance",
+      "file_type": "concept",
+      "norm_label": "6 engineering pillars",
+      "rationale": "ROBUST, SCALABLE, EASY TO MAINTAIN, DRY, KISS, YAGNI.",
+      "source_file": ".agents/rules/okf_memory.md"
+    },
+    {
       "id": "agents_md",
       "label": "AGENTS.md \u2014 Panduan & Tata Kelola Agen AI",
       "_origin": "semantic",
@@ -1278,6 +1468,60 @@
       "norm_label": "agents.md \u2014 panduan & tata kelola agen ai",
       "rationale": "Operational rules for AI coding agents in Project Baca.",
       "source_file": "AGENTS.md"
+    },
+    {
+      "id": "assets_readme",
+      "label": "Asset Catalog",
+      "_origin": "semantic",
+      "community": 3,
+      "community_name": "Architecture and Project Governance",
+      "file_type": "document",
+      "norm_label": "asset catalog",
+      "source_file": "assets/README.md"
+    },
+    {
+      "id": "knowledge_log_md",
+      "label": "knowledge/log.md \u2014 Audit Trail",
+      "_origin": "semantic",
+      "community": 3,
+      "community_name": "Architecture and Project Governance",
+      "file_type": "document",
+      "norm_label": "knowledge/log.md \u2014 audit trail",
+      "rationale": "Chronological history of knowledge bundle changes and specification updates.",
+      "source_file": "knowledge/log.md"
+    },
+    {
+      "id": "memory_md",
+      "label": "MEMORY.md \u2014 Log Keputusan Arsitektur & Memori Sistem",
+      "_origin": "semantic",
+      "community": 3,
+      "community_name": "Architecture and Project Governance",
+      "file_type": "document",
+      "norm_label": "memory.md \u2014 log keputusan arsitektur & memori sistem",
+      "rationale": "Source of truth for architectural decisions and the 'why' behind technical choices.",
+      "source_file": "MEMORY.md"
+    },
+    {
+      "id": "project_log_md",
+      "label": "PROJECT_LOG.md \u2014 Project Status & Backlog",
+      "_origin": "semantic",
+      "community": 3,
+      "community_name": "Architecture and Project Governance",
+      "file_type": "document",
+      "norm_label": "project_log.md \u2014 project status & backlog",
+      "rationale": "Tracks current state, upcoming agenda, and links to authoritative decisions in MEMORY.md.",
+      "source_file": "PROJECT_LOG.md"
+    },
+    {
+      "id": "agents_rules_okf_memory",
+      "label": "OKF & Persistent Memory Guidelines",
+      "_origin": "semantic",
+      "community": 3,
+      "community_name": "Architecture and Project Governance",
+      "file_type": "rationale",
+      "norm_label": "okf & persistent memory guidelines",
+      "rationale": "Defines core invariants, engineering pillars, and mandatory protocols for the project.",
+      "source_file": ".agents/rules/okf_memory.md"
     },
     {
       "id": "knowledge_srs_auth_signup",
@@ -1511,132 +1755,6 @@
       "norm_label": "security architecture",
       "rationale": "Adopts Defense-in-Depth principle across 4 layers: Edge, Gateway, Domain Logic, and Database.",
       "source_file": "knowledge/srs.md"
-    },
-    {
-      "id": "agents_rules_graphify",
-      "label": "Graphify Knowledge Graph Protocol",
-      "community": 11,
-      "community_name": "Knowledge Graph Protocol",
-      "file_type": "rationale",
-      "norm_label": "graphify knowledge graph protocol",
-      "source_file": ".agents/rules/graphify.md"
-    },
-    {
-      "id": "agents_workflows_graphify",
-      "label": "Graphify Workflow",
-      "community": 11,
-      "community_name": "Knowledge Graph Protocol",
-      "file_type": "rationale",
-      "norm_label": "graphify workflow",
-      "source_file": ".agents/workflows/graphify.md"
-    },
-    {
-      "id": "crates_web_index",
-      "label": "Web Entry Point",
-      "community": 3,
-      "community_name": "Architecture and Project Governance",
-      "file_type": "code",
-      "norm_label": "web entry point",
-      "source_file": "crates/web/index.html"
-    },
-    {
-      "id": "decision_dual_mode_embedding",
-      "label": "Dual-Mode Embedding Decision",
-      "community": 3,
-      "community_name": "Architecture and Project Governance",
-      "file_type": "concept",
-      "norm_label": "dual-mode embedding decision",
-      "rationale": "Eliminated Triton Server for KISS/YAGNI; adopted Gemini API (Cloud) and FastEmbed (Local) with 768-dim vectors.",
-      "source_file": "MEMORY.md"
-    },
-    {
-      "id": "decision_monorepo_workspace",
-      "label": "Cargo Workspace Monorepo",
-      "community": 3,
-      "community_name": "Architecture and Project Governance",
-      "file_type": "concept",
-      "norm_label": "cargo workspace monorepo",
-      "rationale": "Modular 5-crate structure (shared, domain, infra, server, web) for DRY and platform independence.",
-      "source_file": "MEMORY.md"
-    },
-    {
-      "id": "decision_postgres_everything",
-      "label": "Postgres for Everything Decision",
-      "community": 3,
-      "community_name": "Architecture and Project Governance",
-      "file_type": "concept",
-      "norm_label": "postgres for everything decision",
-      "rationale": "Rejected Elasticsearch to save RAM and avoid dual-write complexity; uses FTS, pg_trgm, and pgvector.",
-      "source_file": "MEMORY.md"
-    },
-    {
-      "id": "decision_vintage_literary_ui",
-      "label": "Vintage Literary UI Design",
-      "community": 3,
-      "community_name": "Architecture and Project Governance",
-      "file_type": "concept",
-      "norm_label": "vintage literary ui design",
-      "rationale": "Aesthetic choice (1900\u20131950) to differentiate from flat modern UI, using aged paper and iron gall ink palettes.",
-      "source_file": "MEMORY.md"
-    },
-    {
-      "id": "engineering_pillars",
-      "label": "6 Engineering Pillars",
-      "community": 3,
-      "community_name": "Architecture and Project Governance",
-      "file_type": "concept",
-      "norm_label": "6 engineering pillars",
-      "rationale": "ROBUST, SCALABLE, EASY TO MAINTAIN, DRY, KISS, YAGNI.",
-      "source_file": ".agents/rules/okf_memory.md"
-    },
-    {
-      "id": "assets_readme",
-      "label": "Asset Catalog",
-      "community": 3,
-      "community_name": "Architecture and Project Governance",
-      "file_type": "document",
-      "norm_label": "asset catalog",
-      "source_file": "assets/README.md"
-    },
-    {
-      "id": "knowledge_log_md",
-      "label": "knowledge/log.md \u2014 Audit Trail",
-      "community": 3,
-      "community_name": "Architecture and Project Governance",
-      "file_type": "document",
-      "norm_label": "knowledge/log.md \u2014 audit trail",
-      "rationale": "Chronological history of knowledge bundle changes and specification updates.",
-      "source_file": "knowledge/log.md"
-    },
-    {
-      "id": "memory_md",
-      "label": "MEMORY.md \u2014 Log Keputusan Arsitektur & Memori Sistem",
-      "community": 3,
-      "community_name": "Architecture and Project Governance",
-      "file_type": "document",
-      "norm_label": "memory.md \u2014 log keputusan arsitektur & memori sistem",
-      "rationale": "Source of truth for architectural decisions and the 'why' behind technical choices.",
-      "source_file": "MEMORY.md"
-    },
-    {
-      "id": "project_log_md",
-      "label": "PROJECT_LOG.md \u2014 Project Status & Backlog",
-      "community": 3,
-      "community_name": "Architecture and Project Governance",
-      "file_type": "document",
-      "norm_label": "project_log.md \u2014 project status & backlog",
-      "rationale": "Tracks current state, upcoming agenda, and links to authoritative decisions in MEMORY.md.",
-      "source_file": "PROJECT_LOG.md"
-    },
-    {
-      "id": "agents_rules_okf_memory",
-      "label": "OKF & Persistent Memory Guidelines",
-      "community": 3,
-      "community_name": "Architecture and Project Governance",
-      "file_type": "rationale",
-      "norm_label": "okf & persistent memory guidelines",
-      "rationale": "Defines core invariants, engineering pillars, and mandatory protocols for the project.",
-      "source_file": ".agents/rules/okf_memory.md"
     }
   ],
   "links": [
@@ -1650,6 +1768,126 @@
       "context": "call",
       "source_file": "crates/server/src/main.rs",
       "source_location": "L81",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_migrate_init_table",
+      "target": "scripts_migrate_psql_cmd",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/migrate.sh",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_migrate_migrate_down",
+      "target": "scripts_migrate_init_table",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/migrate.sh",
+      "source_location": "L61",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_migrate_migrate_down",
+      "target": "scripts_migrate_psql_cmd",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/migrate.sh",
+      "source_location": "L63",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_migrate_migrate_status",
+      "target": "scripts_migrate_init_table",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/migrate.sh",
+      "source_location": "L83",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_migrate_migrate_status",
+      "target": "scripts_migrate_psql_cmd",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/migrate.sh",
+      "source_location": "L85",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_migrate_migrate_up",
+      "target": "scripts_migrate_init_table",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/migrate.sh",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_migrate_migrate_up",
+      "target": "scripts_migrate_psql_cmd",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/migrate.sh",
+      "source_location": "L44",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_migrate_sh__entry",
+      "target": "scripts_migrate_migrate_up",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/migrate.sh",
+      "source_location": "L90",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_migrate_sh__entry",
+      "target": "scripts_migrate_migrate_down",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/migrate.sh",
+      "source_location": "L93",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_migrate_sh__entry",
+      "target": "scripts_migrate_migrate_status",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/migrate.sh",
+      "source_location": "L96",
       "weight": 1.0
     },
     {
@@ -3240,6 +3478,72 @@
       "weight": 1.0
     },
     {
+      "source": "scripts_migrate",
+      "target": "scripts_migrate_sh__entry",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/migrate.sh",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_migrate",
+      "target": "scripts_migrate_psql_cmd",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/migrate.sh",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_migrate",
+      "target": "scripts_migrate_init_table",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/migrate.sh",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_migrate",
+      "target": "scripts_migrate_migrate_up",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/migrate.sh",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_migrate",
+      "target": "scripts_migrate_migrate_down",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/migrate.sh",
+      "source_location": "L60",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_migrate",
+      "target": "scripts_migrate_migrate_status",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/migrate.sh",
+      "source_location": "L82",
+      "weight": 1.0
+    },
+    {
       "source": "crates_domain_src_lib_bookstatus",
       "target": "default",
       "relation": "implements",
@@ -3377,6 +3681,15 @@
       "source_file": "assets/references/gbrain-design-reference.png"
     },
     {
+      "source": "agents_rules_okf_memory",
+      "target": "engineering_pillars",
+      "relation": "implements",
+      "_origin": "semantic",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/rules/okf_memory.md"
+    },
+    {
       "source": "knowledge_srs_auth_refresh",
       "target": "knowledge_srs_security_architecture",
       "relation": "implements",
@@ -3420,6 +3733,33 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "AGENTS.md"
+    },
+    {
+      "source": "agents_rules_okf_memory",
+      "target": "memory_md",
+      "relation": "references",
+      "_origin": "semantic",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/rules/okf_memory.md"
+    },
+    {
+      "source": "agents_workflows_graphify",
+      "target": "agents_rules_graphify",
+      "relation": "references",
+      "_origin": "semantic",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/workflows/graphify.md"
+    },
+    {
+      "source": "assets_readme",
+      "target": "decision_vintage_literary_ui",
+      "relation": "references",
+      "_origin": "semantic",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "assets/README.md"
     },
     {
       "source": "claude_md",
@@ -3494,6 +3834,15 @@
       "source_file": "knowledge/index.md"
     },
     {
+      "source": "knowledge_log_md",
+      "target": "decision_vintage_literary_ui",
+      "relation": "references",
+      "_origin": "semantic",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/log.md"
+    },
+    {
       "source": "knowledge_srs_quotes_search",
       "target": "knowledge_srs_nfr_performance",
       "relation": "references",
@@ -3501,6 +3850,51 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/srs.md"
+    },
+    {
+      "source": "memory_md",
+      "target": "decision_dual_mode_embedding",
+      "relation": "references",
+      "_origin": "semantic",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "MEMORY.md"
+    },
+    {
+      "source": "memory_md",
+      "target": "decision_monorepo_workspace",
+      "relation": "references",
+      "_origin": "semantic",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "MEMORY.md"
+    },
+    {
+      "source": "memory_md",
+      "target": "decision_postgres_everything",
+      "relation": "references",
+      "_origin": "semantic",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "MEMORY.md"
+    },
+    {
+      "source": "memory_md",
+      "target": "decision_vintage_literary_ui",
+      "relation": "references",
+      "_origin": "semantic",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "MEMORY.md"
+    },
+    {
+      "source": "project_log_md",
+      "target": "memory_md",
+      "relation": "references",
+      "_origin": "semantic",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PROJECT_LOG.md"
     },
     {
       "source": "knowledge_srs_books_offline_bundle",
@@ -3521,6 +3915,15 @@
       "source_file": "knowledge/ux-flow.md"
     },
     {
+      "source": "crates_web_index",
+      "target": "decision_vintage_literary_ui",
+      "relation": "implements",
+      "_origin": "semantic",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "crates/web/index.html"
+    },
+    {
       "source": "distributed_md",
       "target": "docker_compose_yml",
       "relation": "references",
@@ -3528,94 +3931,6 @@
       "confidence": "INFERRED",
       "confidence_score": 0.9,
       "source_file": "DISTRIBUTED.md"
-    },
-    {
-      "source": "agents_rules_okf_memory",
-      "target": "engineering_pillars",
-      "relation": "implements",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".agents/rules/okf_memory.md"
-    },
-    {
-      "source": "agents_rules_okf_memory",
-      "target": "memory_md",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".agents/rules/okf_memory.md"
-    },
-    {
-      "source": "agents_workflows_graphify",
-      "target": "agents_rules_graphify",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".agents/workflows/graphify.md"
-    },
-    {
-      "source": "assets_readme",
-      "target": "decision_vintage_literary_ui",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "assets/README.md"
-    },
-    {
-      "source": "knowledge_log_md",
-      "target": "decision_vintage_literary_ui",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/log.md"
-    },
-    {
-      "source": "memory_md",
-      "target": "decision_dual_mode_embedding",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "MEMORY.md"
-    },
-    {
-      "source": "memory_md",
-      "target": "decision_monorepo_workspace",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "MEMORY.md"
-    },
-    {
-      "source": "memory_md",
-      "target": "decision_postgres_everything",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "MEMORY.md"
-    },
-    {
-      "source": "memory_md",
-      "target": "decision_vintage_literary_ui",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "MEMORY.md"
-    },
-    {
-      "source": "project_log_md",
-      "target": "memory_md",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "PROJECT_LOG.md"
-    },
-    {
-      "source": "crates_web_index",
-      "target": "decision_vintage_literary_ui",
-      "relation": "implements",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "crates/web/index.html"
     }
   ],
   "hyperedges": [
@@ -3719,5 +4034,5 @@
       "source_file": "knowledge/ux-flow.md"
     }
   ],
-  "built_at_commit": "8991aa4918b7016a3545dbd98718264c728c73b2"
+  "built_at_commit": "8a9d1581274ef12de238aeb03955ac0903112889"
 }

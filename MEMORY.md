@@ -128,4 +128,20 @@ Setiap entri mencantumkan identitas pelaku (*Actor*): `[antigravity]`, `[claude]
      - `crates/web`: Single Page Application berbasis Leptos 0.7.8 WASM dan Trunk, mengimplementasikan estetika *Vintage Literary (1900–1950)* dan reaktif language switcher.
   3. **Otomasi Terpusat Makefile:** Memastikan seluruh alur build, check, dev, test, dan manajemen container database dapat dijalankan dengan satu perintah konsisten.
 
+---
+
+### 2026-09-26 — Eksekusi Migrasi Basis Data PostgreSQL 17 & Pengesahan Skema 16 Indeks
+* **Aktor:** `human:aprxty3` & `[antigravity]`
+* **Konteks:** Menindaklanjuti spesifikasi ERD (`knowledge/erd.md`), diperlukan realisasi skema basis data fisik pada PostgreSQL 17 lokal beserta pengujian 16 indeks komprehensif untuk pencarian leksikal dan semantik.
+* **Keputusan:**
+  1. **Migrasi SQL Berpasangan Terkelola (`migrations/`):**
+     - Menerbitkan 6 pasang berkas migrasi berstempel waktu yang mencakup seluruh 13 tabel domain dan relasinya.
+     - Menyusun runner migrasi modular `scripts/migrate.sh` dengan tabel pelacak `schema_migrations` agar eksekusi migrasi bersifat deterministik, terurut, dan reversibel via `make migrate-up` dan `make migrate-down`.
+  2. **Pengesahan 16 Indeks Matriks ERD:**
+     - Mengesahkan indeks parsial GIN FTS (`idx_books_published_fts`) dan Trigram (`idx_books_published_title_trgm`, `idx_books_published_author_trgm`) dengan filter `WHERE status = 'published'` guna memangkas konsumsi RAM hingga 80%.
+     - Mengesahkan indeks HNSW pgvector 768 dimensi (`idx_book_chunks_hnsw_embedding`) dengan parameter `vector_cosine_ops WITH (m = 16, ef_construction = 64)` untuk latensi pencarian kutipan di bawah 10 milidetik.
+  3. **Penyesuaian Infrastruktur MinIO:**
+     - Mengalihkan image MinIO ke `cgr.dev/chainguard/minio:latest` karena image Docker Hub telah diarsipkan oleh penyedia hulu.
+     - Mengalihkan port host MinIO ke `9005:9000` dan console ke `9006:9001` untuk mencegah konflik dengan proses lokal lain yang menggunakan port 9000.
+
 
