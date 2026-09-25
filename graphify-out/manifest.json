@@ -252,46 +252,46 @@
     "semantic_hash": "7f2fb3f03fc1d4b64728351d335241b4"
   },
   "knowledge/tasks/01_infrastructure_and_config.md": {
-    "mtime": 1790360449.5569222,
-    "seen": 1790360902.2743711,
-    "ast_hash": "a58a75e529ddb9827963603fb7e10968",
-    "semantic_hash": "a58a75e529ddb9827963603fb7e10968"
+    "mtime": 1790363777.7325542,
+    "seen": 1790363897.7364674,
+    "ast_hash": "e5cd6b18802c77829e8ac2f5297275d5",
+    "semantic_hash": "e5cd6b18802c77829e8ac2f5297275d5"
   },
   "knowledge/tasks/02_authentication_and_user.md": {
-    "mtime": 1790360462.0006976,
-    "seen": 1790360902.2743723,
-    "ast_hash": "4f45a76c25bf307ffbd0ab68c351d7c9",
-    "semantic_hash": "4f45a76c25bf307ffbd0ab68c351d7c9"
+    "mtime": 1790363787.0913727,
+    "seen": 1790363897.7364695,
+    "ast_hash": "924925e842042956d6d82fefbdef7d3d",
+    "semantic_hash": "924925e842042956d6d82fefbdef7d3d"
   },
   "knowledge/tasks/03_catalog_and_reader_backend.md": {
-    "mtime": 1790360478.589398,
-    "seen": 1790360902.2743735,
-    "ast_hash": "e3cc10cf1fe4a0e8002fff226e12b016",
-    "semantic_hash": "e3cc10cf1fe4a0e8002fff226e12b016"
+    "mtime": 1790363794.6302266,
+    "seen": 1790363897.736471,
+    "ast_hash": "f42dbc2d8a8c6e304bd0d184048a733e",
+    "semantic_hash": "f42dbc2d8a8c6e304bd0d184048a733e"
   },
   "knowledge/tasks/04_semantic_ai_and_insights.md": {
-    "mtime": 1790360496.6190717,
-    "seen": 1790360902.274375,
-    "ast_hash": "b59f38277ca234beefe52a9e34bf0388",
-    "semantic_hash": "b59f38277ca234beefe52a9e34bf0388"
+    "mtime": 1790363804.3650382,
+    "seen": 1790363897.7364728,
+    "ast_hash": "0ebc0a706b566bb37220d8af5d1ae1cb",
+    "semantic_hash": "0ebc0a706b566bb37220d8af5d1ae1cb"
   },
   "knowledge/tasks/05_ingestion_pipeline_and_admin.md": {
-    "mtime": 1790360508.9558482,
-    "seen": 1790360902.2743762,
-    "ast_hash": "3ccb8511755d65e18984beb2f83692c6",
-    "semantic_hash": "3ccb8511755d65e18984beb2f83692c6"
+    "mtime": 1790363813.1668675,
+    "seen": 1790363897.736474,
+    "ast_hash": "98dbba1d8507569ac1307caeca68de8d",
+    "semantic_hash": "98dbba1d8507569ac1307caeca68de8d"
   },
   "knowledge/tasks/06_frontend_leptos_web_reader.md": {
-    "mtime": 1790360524.5785651,
-    "seen": 1790360902.2743776,
-    "ast_hash": "8002cee4b78cb67515d5fe2f899c92d0",
-    "semantic_hash": "8002cee4b78cb67515d5fe2f899c92d0"
+    "mtime": 1790363823.518667,
+    "seen": 1790363897.7364762,
+    "ast_hash": "021f25433188bdcdf890b3ed4b543ce2",
+    "semantic_hash": "021f25433188bdcdf890b3ed4b543ce2"
   },
   "knowledge/tasks/07_quality_assurance_and_launch.md": {
-    "mtime": 1790360543.302225,
-    "seen": 1790360902.2743793,
-    "ast_hash": "7e38a2844840f45d87a2aab914eb42a5",
-    "semantic_hash": "7e38a2844840f45d87a2aab914eb42a5"
+    "mtime": 1790363831.2915165,
+    "seen": 1790363897.7364774,
+    "ast_hash": "814ffa8295d9d27a146dcfc6dbdfc9b6",
+    "semantic_hash": "814ffa8295d9d27a146dcfc6dbdfc9b6"
   },
   "knowledge/tasks/README.md": {
     "mtime": 1790360437.3331425,

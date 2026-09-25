@@ -38,7 +38,7 @@ Seluruh 5 dokumen spesifikasi dan arsitektur pada direktori `knowledge/` telah s
    - Dokumen di [knowledge/srs.md](knowledge/srs.md) mendefinisikan arsitektur keamanan multi-lapis (Cloudflare edge WAF/DDoS, Redis rate-limiting, CSRF, Argon2id, OTP 6-digit, JWT refresh token rotasi), 23 kontrak endpoint REST API detail, SLA performa (API <50ms, FTS <5ms, quote <10ms), dan NFR.
 
 ### Backlog Implementasi Kode Sumber (Fase 1 Menuju MVP)
-Rincian tugas terstruktur dan matriks ketergantungan dikelola pada **[knowledge/tasks/README.md](knowledge/tasks/README.md)**:
+Rincian tugas terstruktur, matriks ketergantungan kausal, dan pemetaan silang (*cross-domain matrix*) dikelola pada **[knowledge/tasks/README.md](knowledge/tasks/README.md)** serta divisualisasikan pada kanban interaktif **[obsidian-vault/pipeline.canvas](obsidian-vault/pipeline.canvas)**:
 
 1. **[SELESAI] Fase 0 — Fondasi Monorepo & Migrasi Database:**
    - Workspace Cargo 5 crates (`domain`, `shared`, `infra`, `server`, `web`) lulus validasi kompilasi.

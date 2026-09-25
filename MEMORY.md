@@ -29,6 +29,17 @@ Setiap entri mencantumkan identitas pelaku (*Actor*): `[antigravity]`, `[claude]
 
 ## Log Keputusan Kronologis
 
+### 2026-09-26 — Adopsi Pemetaan Graf 3-Dimensi & Kanban Canvas Siklus Hidup Monorepo
+* **Aktor:** `human:aprxty3` & `[antigravity]`
+* **Konteks:** Roadmap pengerjaan Task 01–07 membutuhkan keterhubungan yang tidak hanya linear, melainkan mampu menavigasikan pengembang dan agen AI melintasi 4 pilar monorepo (Spesifikasi OKF, Crate Rust, Basis Data/Indeks, dan Alur Pengguna/SLA).
+* **Keputusan:**
+  1. **Directed Dependency Wikilinks:** Menyisipkan metadata `Prasyarat Kausal`, `Membuka Tahap`, dan `Jalur Kritis` di setiap berkas task agar Graphify menghasilkan relasi `depends_on` yang terstruktur.
+  2. **Matriks Silang Antar-Lapis (Cross-Domain Matrix):** Memetakan relasi silang vertikal di setiap dokumen task menuju berkas kode sumber Rust (`crates/*`), skema SQL (`migrations/*`), dan dokumen spesifikasi (`knowledge/*`).
+  3. **Visualisasi Alur Kerja via Obsidian Canvas:** Menerbitkan `obsidian-vault/pipeline.canvas` sebagai kanban interaktif alur kerja menuju peluncuran MVP.
+  4. **Federasi Vektor GBrain:** Mendaftarkan sumber `baca-knowledge` pada GBrain dengan konfigurasi `--include-gitignored` dan sinkronisasi berkala via script `sync-knowledge`.
+
+---
+
 ### 2026-09-25 — Eliminasi Triton Inference Server & Adopsi Dual-Mode Embedding (768 Dimensi)
 * **Aktor:** `human:aprxty3` & `[antigravity]`
 * **Konteks:** Mesin pengembangan Linux lokal tidak memiliki dedicated GPU (tanpa NVIDIA CUDA / AMD ROCm), dan server produksi menggunakan CPU arsitektur ARM (misal Ampere Altra / AWS Graviton). Menjalankan kontainer Triton Inference Server pada CPU ARM menimbulkan pemborosan Docker image (10–15 GB), konsumsi RAM idle 1–2 GB, tanpa mendapatkan manfaat akselerasi GPU sama sekali.
