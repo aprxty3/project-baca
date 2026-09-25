@@ -7,9 +7,9 @@
   },
   "PROJECT_LOG.md": {
     "mtime": 1790360603.3221323,
-    "seen": 1790360645.0393772,
+    "seen": 1790360902.2743666,
     "ast_hash": "a01c9aab3a10815d42b24e7f2cd4bf43",
-    "semantic_hash": ""
+    "semantic_hash": "a01c9aab3a10815d42b24e7f2cd4bf43"
   },
   "README.md": {
     "mtime": 1790353575.2980318,
@@ -37,9 +37,9 @@
   },
   "knowledge/index.md": {
     "mtime": 1790360588.4604034,
-    "seen": 1790360645.0396364,
+    "seen": 1790360902.2743683,
     "ast_hash": "7b0a7017b5f68bb3bcc414329fca82ee",
-    "semantic_hash": ""
+    "semantic_hash": "7b0a7017b5f68bb3bcc414329fca82ee"
   },
   "knowledge/prd.md": {
     "mtime": 1790351676.0378833,
@@ -133,9 +133,9 @@
   },
   "MEMORY.md": {
     "mtime": 1790360637.6315057,
-    "seen": 1790360645.0393314,
+    "seen": 1790360902.2743647,
     "ast_hash": "b4baf8958edf52a47e4458647b4a8c17",
-    "semantic_hash": ""
+    "semantic_hash": "b4baf8958edf52a47e4458647b4a8c17"
   },
   "NOTICE.md": {
     "mtime": 1790351656.8954117,
@@ -145,9 +145,9 @@
   },
   "knowledge/log.md": {
     "mtime": 1790360623.1857698,
-    "seen": 1790360645.0396385,
+    "seen": 1790360902.2743695,
     "ast_hash": "2fad1b95dc57dcfcc63751d1fa69def7",
-    "semantic_hash": ""
+    "semantic_hash": "2fad1b95dc57dcfcc63751d1fa69def7"
   },
   "crates/domain/Cargo.toml": {
     "mtime": 1790355057.7187624,
@@ -253,50 +253,50 @@
   },
   "knowledge/tasks/01_infrastructure_and_config.md": {
     "mtime": 1790360449.5569222,
-    "seen": 1790360645.0397236,
+    "seen": 1790360902.2743711,
     "ast_hash": "a58a75e529ddb9827963603fb7e10968",
-    "semantic_hash": ""
+    "semantic_hash": "a58a75e529ddb9827963603fb7e10968"
   },
   "knowledge/tasks/02_authentication_and_user.md": {
     "mtime": 1790360462.0006976,
-    "seen": 1790360645.0397272,
+    "seen": 1790360902.2743723,
     "ast_hash": "4f45a76c25bf307ffbd0ab68c351d7c9",
-    "semantic_hash": ""
+    "semantic_hash": "4f45a76c25bf307ffbd0ab68c351d7c9"
   },
   "knowledge/tasks/03_catalog_and_reader_backend.md": {
     "mtime": 1790360478.589398,
-    "seen": 1790360645.0397286,
+    "seen": 1790360902.2743735,
     "ast_hash": "e3cc10cf1fe4a0e8002fff226e12b016",
-    "semantic_hash": ""
+    "semantic_hash": "e3cc10cf1fe4a0e8002fff226e12b016"
   },
   "knowledge/tasks/04_semantic_ai_and_insights.md": {
     "mtime": 1790360496.6190717,
-    "seen": 1790360645.03973,
+    "seen": 1790360902.274375,
     "ast_hash": "b59f38277ca234beefe52a9e34bf0388",
-    "semantic_hash": ""
+    "semantic_hash": "b59f38277ca234beefe52a9e34bf0388"
   },
   "knowledge/tasks/05_ingestion_pipeline_and_admin.md": {
     "mtime": 1790360508.9558482,
-    "seen": 1790360645.0397317,
+    "seen": 1790360902.2743762,
     "ast_hash": "3ccb8511755d65e18984beb2f83692c6",
-    "semantic_hash": ""
+    "semantic_hash": "3ccb8511755d65e18984beb2f83692c6"
   },
   "knowledge/tasks/06_frontend_leptos_web_reader.md": {
     "mtime": 1790360524.5785651,
-    "seen": 1790360645.0397332,
+    "seen": 1790360902.2743776,
     "ast_hash": "8002cee4b78cb67515d5fe2f899c92d0",
-    "semantic_hash": ""
+    "semantic_hash": "8002cee4b78cb67515d5fe2f899c92d0"
   },
   "knowledge/tasks/07_quality_assurance_and_launch.md": {
     "mtime": 1790360543.302225,
-    "seen": 1790360645.0397348,
+    "seen": 1790360902.2743793,
     "ast_hash": "7e38a2844840f45d87a2aab914eb42a5",
-    "semantic_hash": ""
+    "semantic_hash": "7e38a2844840f45d87a2aab914eb42a5"
   },
   "knowledge/tasks/README.md": {
     "mtime": 1790360437.3331425,
-    "seen": 1790360645.0397365,
+    "seen": 1790360902.2743802,
     "ast_hash": "5422334bece27fd5c4aa6873d8c60fe9",
-    "semantic_hash": ""
+    "semantic_hash": "5422334bece27fd5c4aa6873d8c60fe9"
   }
 }
