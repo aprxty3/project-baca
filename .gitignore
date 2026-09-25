@@ -1,0 +1,109 @@
+# ------------------------------------------------------------------------------
+# 1. Kredensial, Rahasia & Kunci Akses (CRITICAL: DO NOT COMMIT)
+# ------------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.cert
+*.crt
+*.pfx
+*.p12
+*.token
+credentials.json
+client_secret*.json
+service-account*.json
+jwt-secret.key
+secrets/
+
+# Konfigurasi Personal AI Tooling
+.claude/settings.local.json
+.claude/*.local
+.gemini/*.local
+
+# ------------------------------------------------------------------------------
+# 2. Dokumen Spesifikasi Privat & Path Mesin Lokal (Private Spec & Local Leaks)
+# ------------------------------------------------------------------------------
+knowledge/
+knowledge
+obsidian-vault
+obsidian-vault/
+*.local
+
+# ------------------------------------------------------------------------------
+# 3. Rust & Cargo Build Artifacts
+# ------------------------------------------------------------------------------
+target/
+**/*.rs.bk
+*.pdb
+Cargo.lock.bak
+
+# ------------------------------------------------------------------------------
+# 4. WebAssembly & Frontend Assets (Trunk / Leptos / Node)
+# ------------------------------------------------------------------------------
+dist/
+.trunk/
+pkg/
+node_modules/
+.parcel-cache/
+
+# ------------------------------------------------------------------------------
+# 5. Python Ingestion Worker, Virtual Environments & Cache
+# ------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+venv/
+ENV/
+env/
+build/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# ------------------------------------------------------------------------------
+# 6. Docker Persistent Volumes & Database Mounts
+# ------------------------------------------------------------------------------
+postgres-data/
+redis-data/
+minio-data/
+*.sqlite
+*.sqlite3
+*.db
+
+# ------------------------------------------------------------------------------
+# 7. Graphify Cache & Run Ephemeral Logs
+# ------------------------------------------------------------------------------
+graphify-out/cache/
+graphify-out/cache/**
+graphify-out/2026-*/
+graphify-out/2026-*/**
+.graphify/
+.graphify_*
+.graphify_labels.json*
+
+# ------------------------------------------------------------------------------
+# 8. Obsidian Local State & Workspace
+# ------------------------------------------------------------------------------
+.obsidian/
+*.canvas
+
+# ------------------------------------------------------------------------------
+# 9. Sistem Operasi, Editor & Scratch Files
+# ------------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.log
+scratch/

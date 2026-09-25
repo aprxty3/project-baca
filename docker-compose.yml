@@ -1,0 +1,59 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg17
+    container_name: project_baca_db
+    restart: always
+    environment:
+      POSTGRES_USER: baca_user
+      POSTGRES_PASSWORD: baca_password
+      POSTGRES_DB: project_baca_db
+    ports:
+      - "5433:5432" # Port 5433 agar tidak bentrok dengan Postgres lokal lain
+    volumes:
+      - pgdata_baca:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U baca_user -d project_baca_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: project_baca_redis
+    restart: always
+    ports:
+      - "6380:6379" # Port 6380 agar tidak bentrok dengan Redis lokal lain
+    volumes:
+      - redisdata_baca:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  minio:
+    image: minio/minio:latest
+    container_name: project_baca_minio
+    restart: always
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    ports:
+      - "9000:9000" # S3 API endpoint
+      - "9001:9001" # Web Console
+    volumes:
+      - miniodata_baca:/data
+
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: project_baca_mailpit
+    restart: always
+    ports:
+      - "1025:1025" # SMTP port
+      - "8025:8025" # Web UI untuk cek email verifikasi/reset password
+
+volumes:
+  pgdata_baca:
+  redisdata_baca:
+  miniodata_baca:

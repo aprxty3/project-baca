@@ -1,0 +1,291 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "infrastructure_stack",
+        "label": "Local Infrastructure Stack",
+        "nodes": [
+          "postgres_db",
+          "redis_cache",
+          "minio_s3",
+          "mailpit_smtp"
+        ],
+        "relation": "form",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0
+      },
+      {
+        "id": "knowledge_vault",
+        "label": "OKF v0.2 Knowledge Vault",
+        "nodes": [
+          "knowledge_prd_md",
+          "knowledge_erd_md",
+          "knowledge_frd_md",
+          "knowledge_srs_md",
+          "knowledge_ux_flow_md"
+        ],
+        "relation": "form",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "knowledge_erd_md",
+      "label": "Entity Relationship Diagram",
+      "community": 0,
+      "community_name": "Product Requirements and Diagrams",
+      "file_type": "document",
+      "norm_label": "entity relationship diagram",
+      "source_file": "knowledge/erd.md"
+    },
+    {
+      "id": "knowledge_frd_md",
+      "label": "Functional Requirements Document",
+      "community": 0,
+      "community_name": "Product Requirements and Diagrams",
+      "file_type": "document",
+      "norm_label": "functional requirements document",
+      "source_file": "knowledge/frd.md"
+    },
+    {
+      "id": "knowledge_prd_md",
+      "label": "Product Requirements Document",
+      "community": 0,
+      "community_name": "Product Requirements and Diagrams",
+      "file_type": "document",
+      "norm_label": "product requirements document",
+      "source_file": "knowledge/prd.md"
+    },
+    {
+      "id": "assets_illustrations_retro_rocket_discovery",
+      "label": "AI Quote Finder Illustration",
+      "community": 0,
+      "community_name": "Product Requirements and Diagrams",
+      "file_type": "image",
+      "norm_label": "ai quote finder illustration",
+      "source_file": "assets/illustrations/retro-rocket-discovery.png"
+    },
+    {
+      "id": "architecture_md",
+      "label": "Architecture Blueprint",
+      "community": 1,
+      "community_name": "System Architecture Design",
+      "file_type": "document",
+      "norm_label": "architecture blueprint",
+      "rationale": "Summarizes technical architecture, polyglot technology choices, and DDD patterns.",
+      "source_file": "ARCHITECTURE.md"
+    },
+    {
+      "id": "assets_references_gbrain_design_reference",
+      "label": "GBrain Design Reference",
+      "community": 1,
+      "community_name": "System Architecture Design",
+      "file_type": "image",
+      "norm_label": "gbrain design reference",
+      "source_file": "assets/references/gbrain-design-reference.png"
+    },
+    {
+      "id": "minio_s3",
+      "label": "MinIO Object Storage",
+      "community": 10,
+      "community_name": "Object Storage Service",
+      "file_type": "concept",
+      "norm_label": "minio object storage",
+      "source_file": "docker-compose.yml"
+    },
+    {
+      "id": "postgres_db",
+      "label": "PostgreSQL 17 + pgvector",
+      "community": 11,
+      "community_name": "Vector Database Storage",
+      "file_type": "concept",
+      "norm_label": "postgresql 17 + pgvector",
+      "source_file": "docker-compose.yml"
+    },
+    {
+      "id": "project_log_md",
+      "label": "Project Log & Memory",
+      "community": 12,
+      "community_name": "Project Logs and Memory",
+      "file_type": "document",
+      "norm_label": "project log & memory",
+      "rationale": "Tracks current status, technical decisions, and implementation backlog.",
+      "source_file": "PROJECT_LOG.md"
+    },
+    {
+      "id": "readme_md",
+      "label": "Project Overview",
+      "community": 13,
+      "community_name": "Project Overview",
+      "file_type": "document",
+      "norm_label": "project overview",
+      "source_file": "README.md"
+    },
+    {
+      "id": "redis_cache",
+      "label": "Redis 7 (Streams/Cache)",
+      "community": 14,
+      "community_name": "Caching and Streaming",
+      "file_type": "concept",
+      "norm_label": "redis 7 (streams/cache)",
+      "source_file": "docker-compose.yml"
+    },
+    {
+      "id": "knowledge_ux_flow_md",
+      "label": "UX Flow & Navigation",
+      "community": 2,
+      "community_name": "Admin UX Navigation",
+      "file_type": "document",
+      "norm_label": "ux flow & navigation",
+      "source_file": "knowledge/ux-flow.md"
+    },
+    {
+      "id": "assets_illustrations_admin_sorting_pigeonholes",
+      "label": "Admin Sorting Illustration",
+      "community": 2,
+      "community_name": "Admin UX Navigation",
+      "file_type": "image",
+      "norm_label": "admin sorting illustration",
+      "source_file": "assets/illustrations/admin-sorting-pigeonholes.png"
+    },
+    {
+      "id": "assets_illustrations_cozy_reader_armchair_owl",
+      "label": "Reader View Illustration",
+      "community": 3,
+      "community_name": "Reader Interface Design",
+      "file_type": "image",
+      "norm_label": "reader view illustration",
+      "source_file": "assets/illustrations/cozy-reader-armchair-owl.png"
+    },
+    {
+      "id": "assets_illustrations_library_bookshelf_ladder",
+      "label": "Library Catalog Illustration",
+      "community": 4,
+      "community_name": "Library Catalog UI",
+      "file_type": "image",
+      "norm_label": "library catalog illustration",
+      "source_file": "assets/illustrations/library-bookshelf-ladder.png"
+    },
+    {
+      "id": "assets_illustrations_manuscript_inspection_clothesline",
+      "label": "Ingestion Monitor Illustration",
+      "community": 5,
+      "community_name": "Data Ingestion Monitoring",
+      "file_type": "image",
+      "norm_label": "ingestion monitor illustration",
+      "source_file": "assets/illustrations/manuscript-inspection-clothesline.png"
+    },
+    {
+      "id": "docker_compose_yml",
+      "label": "Infrastructure Configuration",
+      "community": 6,
+      "community_name": "Infrastructure Configuration",
+      "file_type": "code",
+      "norm_label": "infrastructure configuration",
+      "source_file": "docker-compose.yml",
+      "verification": "unverified"
+    },
+    {
+      "id": "knowledge_index_md",
+      "label": "Knowledge Bundle Index",
+      "community": 7,
+      "community_name": "Knowledge Bundle Index",
+      "file_type": "document",
+      "norm_label": "knowledge bundle index",
+      "source_file": "knowledge/index.md"
+    },
+    {
+      "id": "knowledge_srs_md",
+      "label": "Software Requirements Specification",
+      "community": 8,
+      "community_name": "Software Requirements Specification",
+      "file_type": "document",
+      "norm_label": "software requirements specification",
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "id": "mailpit_smtp",
+      "label": "Mailpit SMTP Server",
+      "community": 9,
+      "community_name": "SMTP Email Server",
+      "file_type": "concept",
+      "norm_label": "mailpit smtp server",
+      "source_file": "docker-compose.yml"
+    }
+  ],
+  "links": [
+    {
+      "source": "knowledge_frd_md",
+      "target": "knowledge_erd_md",
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/frd.md"
+    },
+    {
+      "source": "knowledge_frd_md",
+      "target": "knowledge_prd_md",
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/frd.md"
+    },
+    {
+      "source": "assets_illustrations_admin_sorting_pigeonholes",
+      "target": "knowledge_ux_flow_md",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "assets/illustrations/admin-sorting-pigeonholes.png"
+    },
+    {
+      "source": "assets_illustrations_retro_rocket_discovery",
+      "target": "knowledge_prd_md",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "assets/illustrations/retro-rocket-discovery.png"
+    },
+    {
+      "source": "assets_references_gbrain_design_reference",
+      "target": "architecture_md",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "assets/references/gbrain-design-reference.png"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "infrastructure_stack",
+      "label": "Local Infrastructure Stack",
+      "nodes": [
+        "postgres_db",
+        "redis_cache",
+        "minio_s3",
+        "mailpit_smtp"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "id": "knowledge_vault",
+      "label": "OKF v0.2 Knowledge Vault",
+      "nodes": [
+        "knowledge_prd_md",
+        "knowledge_erd_md",
+        "knowledge_frd_md",
+        "knowledge_srs_md",
+        "knowledge_ux_flow_md"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0
+    }
+  ]
+}

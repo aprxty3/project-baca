@@ -1,0 +1,104 @@
+{
+  ".claude/settings.local.json": {
+    "mtime": 1790338884.0647411,
+    "seen": 1790349317.8524299,
+    "ast_hash": "0e38603e85a2c3ff6e7c4513f9034c4f",
+    "semantic_hash": "0e38603e85a2c3ff6e7c4513f9034c4f"
+  },
+  "ARCHITECTURE.md": {
+    "mtime": 1790348064.140083,
+    "seen": 1790349317.8524423,
+    "ast_hash": "6ff0cc7a8fd672803b2e1974dfd70041",
+    "semantic_hash": "6ff0cc7a8fd672803b2e1974dfd70041"
+  },
+  "PROJECT_LOG.md": {
+    "mtime": 1790348864.0108855,
+    "seen": 1790349317.8524485,
+    "ast_hash": "398c8a19b95c2f6238c5b9b227b18d82",
+    "semantic_hash": "398c8a19b95c2f6238c5b9b227b18d82"
+  },
+  "README.md": {
+    "mtime": 1790347395.336862,
+    "seen": 1790349317.852452,
+    "ast_hash": "43fee7d5e8a40e8262bf51783e0025f7",
+    "semantic_hash": "43fee7d5e8a40e8262bf51783e0025f7"
+  },
+  "docker-compose.yml": {
+    "mtime": 1790347070.7061753,
+    "seen": 1790349317.852455,
+    "ast_hash": "505f9ba84cb02fc9a3bd994dc3181165",
+    "semantic_hash": "505f9ba84cb02fc9a3bd994dc3181165"
+  },
+  "knowledge/erd.md": {
+    "mtime": 1790348032.0124702,
+    "seen": 1790349317.8524573,
+    "ast_hash": "14e818b8db4fd52a07787351cc5d04a4",
+    "semantic_hash": "14e818b8db4fd52a07787351cc5d04a4"
+  },
+  "knowledge/frd.md": {
+    "mtime": 1790348515.0358233,
+    "seen": 1790349317.8524606,
+    "ast_hash": "80f087629272766c80a6e735c95180f1",
+    "semantic_hash": "80f087629272766c80a6e735c95180f1"
+  },
+  "knowledge/index.md": {
+    "mtime": 1790348850.7080343,
+    "seen": 1790349317.8524625,
+    "ast_hash": "3109b5e1a3bf488bfac83f6f8e73d166",
+    "semantic_hash": "3109b5e1a3bf488bfac83f6f8e73d166"
+  },
+  "knowledge/prd.md": {
+    "mtime": 1790348051.3662367,
+    "seen": 1790349317.852465,
+    "ast_hash": "12f917e6f9529e92ae4027638d0d4edd",
+    "semantic_hash": "12f917e6f9529e92ae4027638d0d4edd"
+  },
+  "knowledge/srs.md": {
+    "mtime": 1790348830.5850916,
+    "seen": 1790349317.852467,
+    "ast_hash": "5992cc88d16f22aad27bf252736e7afe",
+    "semantic_hash": "5992cc88d16f22aad27bf252736e7afe"
+  },
+  "knowledge/ux-flow.md": {
+    "mtime": 1790348248.4488993,
+    "seen": 1790349317.8524694,
+    "ast_hash": "eaa43da8d186a28d8e7363ebc547d432",
+    "semantic_hash": "eaa43da8d186a28d8e7363ebc547d432"
+  },
+  "assets/illustrations/admin-sorting-pigeonholes.png": {
+    "mtime": 1790344268.8545263,
+    "seen": 1790349317.8524723,
+    "ast_hash": "685d5efe296ac225076e89aa52829021",
+    "semantic_hash": "685d5efe296ac225076e89aa52829021"
+  },
+  "assets/illustrations/cozy-reader-armchair-owl.png": {
+    "mtime": 1790344268.8615263,
+    "seen": 1790349317.8524747,
+    "ast_hash": "0af9d456651cea046ba7ee49a28ebe55",
+    "semantic_hash": "0af9d456651cea046ba7ee49a28ebe55"
+  },
+  "assets/illustrations/library-bookshelf-ladder.png": {
+    "mtime": 1790344268.8585262,
+    "seen": 1790349317.852477,
+    "ast_hash": "6dcaffb1eed6c7905f2d382702b22aee",
+    "semantic_hash": "6dcaffb1eed6c7905f2d382702b22aee"
+  },
+  "assets/illustrations/manuscript-inspection-clothesline.png": {
+    "mtime": 1790344268.863526,
+    "seen": 1790349317.85248,
+    "ast_hash": "f37e013f2678f90f5df814722c14b774",
+    "semantic_hash": "f37e013f2678f90f5df814722c14b774"
+  },
+  "assets/illustrations/retro-rocket-discovery.png": {
+    "mtime": 1790344268.8565264,
+    "seen": 1790349317.8524826,
+    "ast_hash": "812b047afa47d14e613101960d3bdabe",
+    "semantic_hash": "812b047afa47d14e613101960d3bdabe"
+  },
+  "assets/references/gbrain-design-reference.png": {
+    "mtime": 1790344268.8655262,
+    "seen": 1790349317.8524852,
+    "ast_hash": "b073af73f598095f61d145e7d42ff9b8",
+    "semantic_hash": "b073af73f598095f61d145e7d42ff9b8"
+  }
+}

@@ -1,0 +1,104 @@
+---
+type: Memory
+title: "Project Baca — Log Keputusan Arsitektur & Memori Sistem"
+description: "Log kronologis keputusan teknis dan arsitektural beserta alasannya. Sumber kebenaran untuk 'kenapa'."
+tags: [memory, decisions, architecture, history, context, okf]
+---
+
+# MEMORY.md — Log Keputusan Arsitektur & Memori Sistem
+
+Dokumen ini mencatat rasionalisasi mendalam (*the "why"*) di balik setiap keputusan teknis dan arsitektur pada **Project Baca**. Siapa pun (pengembang manusia maupun agen AI) yang bergabung ke proyek ini dapat memahami alasan fundamental sebuah keputusan diambil tanpa perlu merekonstruksi riwayat percakapan dari awal.
+
+Setiap entri mencantumkan identitas pelaku (*Actor*): `[antigravity]`, `[claude]`, atau `human:aprxty3`.
+
+---
+
+## Indeks Tematik Keputusan
+
+* **Arsitektur Inti & Tumpukan Bahasa:** Monorepo Polyglot (Rust Axum + Leptos WASM + Python Worker + Dual-Mode Embedding).
+* **Mesin Embedding Vektor:** Eliminasi Triton Server; Adopsi Gemini API (Cloud) & FastEmbed CPU (ARM64/x86); Standardisasi Vektor 768-Dimensi.
+* **Basis Data & Mesin Pencarian:** "Postgres for Everything" (FTS + pg_trgm + pgvector HNSW); penolakan Elasticsearch.
+* **Message Broker & Task Queue:** Penggunaan Redis Streams; penolakan RedPanda/RabbitMQ untuk fase MVP.
+* **Lapisan Data & Migrasi:** Adopsi SeaORM; migrasi SQL berpasangan (`.up.sql` dan `.down.sql`).
+* **Penyimpanan Objek & Email:** S3-compatible (MinIO / Cloudflare R2); Mailpit untuk SMTP dev lokal.
+* **Desain Pengalaman Pengguna:** Estetika *Vintage Literary (1900–1950)*; isolasi UI i18n dwibahasa `[ID|EN]`.
+* **Disiplin Rekayasa Perangkat Lunak:** Kodifikasi 6 Pilar Rekayasa (ROBUST, SCALABLE, EASY TO MAINTAIN, DRY, KISS, YAGNI) dan Kebijakan Bebas Emoji.
+* **Tata Kelola Pengetahuan:** Implementasi Open Knowledge Format (OKF v0.2), Graphify Knowledge Graph, dan Obsidian Vault.
+
+---
+
+## Log Keputusan Kronologis
+
+### 2026-09-25 — Eliminasi Triton Inference Server & Adopsi Dual-Mode Embedding (768 Dimensi)
+* **Aktor:** `human:aprxty3` & `[antigravity]`
+* **Konteks:** Mesin pengembangan Linux lokal tidak memiliki dedicated GPU (tanpa NVIDIA CUDA / AMD ROCm), dan server produksi menggunakan CPU arsitektur ARM (misal Ampere Altra / AWS Graviton). Menjalankan kontainer Triton Inference Server pada CPU ARM menimbulkan pemborosan Docker image (10–15 GB), konsumsi RAM idle 1–2 GB, tanpa mendapatkan manfaat akselerasi GPU sama sekali.
+* **Keputusan:**
+  1. **Mengeliminasi Triton Inference Server:** Dihapus sepenuhnya dari tumpukan MVP demi kepatuhan ketat terhadap prinsip **KISS** (Keep It Simple, Stupid) dan **YAGNI** (You Aren't Gonna Need It).
+  2. **Adopsi Arsitektur Dual-Mode Embedding Provider:**
+     - **Mode Cloud (Default Produksi):** Google GenAI Gemini API (`text-embedding-004`). Memproses vektor di cloud tanpa GPU dan tanpa membebani memori RAM lokal.
+     - **Mode Lokal / Offline:** Pustaka `fastembed` berbasis ONNX Runtime yang dioptimalkan khusus untuk CPU (termasuk akselerasi ARM NEON). Ukuran model hanya ~60 MB dan memori RAM <150 MB.
+  3. **Standardisasi Vektor 768 Dimensi:** Mengubah dimensi vektor embedding dari 1536 menjadi **768 dimensi**, memangkas alokasi memori RAM indeks HNSW PostgreSQL `pgvector` hingga 50%.
+
+---
+
+### 2026-09-25 — Implementasi Lengkap OKF v0.2 & Integrasi Obsidian Vault
+* **Aktor:** `[antigravity]`, ditinjau oleh `human:aprxty3`
+* **Konteks:** Diperlukan standarisasi tata kelola pengetahuan (*Knowledge Management*) dan aturan agen persisten agar seluruh agen AI patuh terhadap batasan monorepo.
+* **Keputusan:**
+  1. Menstandarisasi [knowledge/index.md](knowledge/index.md) dengan *Directory Role & Responsibility Map* dan hierarki 4 lapis *Progressive Disclosure*.
+  2. Menerbitkan aturan agen persisten di [.agents/rules/okf_memory.md](.agents/rules/okf_memory.md), [.agents/rules/graphify.md](.agents/rules/graphify.md), dan workflow [.agents/workflows/graphify.md](.agents/workflows/graphify.md).
+  3. Mengekstrak graf pengetahuan via Graphify (Gemini AST) menghasilkan 20 nodes, 15 komunitas di `graphify-out/`, dan mengekspor vault terhubung ke `/home/aprxty3/ObsidianVaults/project-baca/` dengan symlink `obsidian-vault/`.
+
+---
+
+### 2026-09-25 — Kodifikasi 6 Pilar Rekayasa Baku & Kebijakan Bebas Emoji
+* **Aktor:** `human:aprxty3` & `[antigravity]`
+* **Konteks:** Repositori membutuhkan pagar pembatas arsitektural (*guardrails*) untuk mencegah degradasi kualitas kode, over-engineering, atau gaya penulisan informal.
+* **Keputusan:**
+  1. Mengunci 6 prinsip rekayasa baku:
+     - **ROBUST:** Zero panics di Rust (`unwrap()` dilarang di jalur produksi), handling kegagalan I/O terisolasi.
+     - **SCALABLE:** Stateless Axum API, scoped semantic search terisolasi per buku (`WHERE book_id = $1`).
+     - **EASY TO MAINTAIN:** Crate modular yang terpisah jelas, migrasi skema SQL terkelola, SSOT OKF v0.2.
+     - **DRY:** Shared DTOs dan kamus validasi terpusat di `crates/shared`.
+     - **KISS:** Arsitektur database tunggal (Postgres), antrean tunggal (Redis Streams).
+     - **YAGNI:** Fokus ketat pada MVP web reader dan pencarian semantik; menunda fitur spekulatif.
+  2. Memberlakukan **Zero Emoji Policy**: Melarang seluruh emoji, emoticon grafis, dan gaya bahasa santai di dalam dokumen teknis, kode, komentar, dan commit message.
+
+---
+
+### 2026-09-25 — Keputusan Database: "Postgres for Everything" vs Elasticsearch
+* **Aktor:** `human:aprxty3` & `[antigravity]`
+* **Konteks:** Evaluasi kebutuhan fitur pencarian buku: apakah memerlukan dedicated search engine seperti Elasticsearch untuk pencarian katalog awal?
+* **Keputusan:**
+  - **Menolak Elasticsearch:** Elasticsearch membutuhkan alokasi RAM JVM 2–4 GB, menambah overhead sinkronisasi ganda (*dual-write*), dan memperbesar resiko split-brain.
+  - **Memilih PostgreSQL 17 FTS + `pg_trgm` GIN Index:** Mampu melayani pencarian leksikal dengan latensi <3ms dan toleransi saltik (*typo tolerance*) tanpa infrastruktur tambahan.
+  - **Pencarian Semantik via `pgvector` HNSW Index:** Melayani *scoped quote search* dengan latensi <10ms langsung di PostgreSQL 17.
+
+---
+
+### 2026-09-25 — Evaluasi Message Broker: Redis Streams vs RedPanda / RabbitMQ
+* **Aktor:** `human:aprxty3` & `[antigravity]`
+* **Konteks:** Kebutuhan antrean asinkron untuk proses ingestion file EPUB dan pengiriman email verifikasi OTP.
+* **Keputusan:**
+  - Menggunakan **Redis Streams** (yang sudah tersedia di tumpukan Redis 7 pendukung sesi dan rate-limiting).
+  - Menolak dedicated broker seperti RedPanda atau RabbitMQ karena over-engineering untuk skala MVP (pelanggaran prinsip KISS dan YAGNI).
+
+---
+
+### 2026-09-25 — Manajemen Data: SeaORM & Migrasi SQL Berpasangan
+* **Aktor:** `human:aprxty3` & `[antigravity]`
+* **Konteks:** Memastikan integritas manipulasi data di backend Rust dan riwayat evolusi skema tabel yang dapat diaudit dan di-rollback.
+* **Keputusan:**
+  - Mengadopsi **SeaORM** untuk kueri asinkron *type-safe* dan pemetaan relasi entitas domain.
+  - Mengelola skema melalui direktori `migrations/` dengan berkas SQL berpasangan (`<timestamp>_<nama>.up.sql` dan `<timestamp>_<nama>.down.sql`).
+  - Mengorkestrasi seluruh siklus database melalui `Makefile` (`make migrate-up`, `make migrate-down`, `make migrate-reset`).
+
+---
+
+### 2026-09-25 — Desain Visual & Pengalaman Pengguna: Vintage Literary (1900–1950)
+* **Aktor:** `human:aprxty3` & `[antigravity]`
+* **Konteks:** Menentukan diferensiasi visual platform e-reader buku naskah klasik ranah publik.
+* **Keputusan:**
+  - Menghindari antarmuka SaaS modern datar (*flat modern UI*).
+  - Mengadopsi estetika cetak klasik zaman keemasan sastra: palet aged paper `#F9F6F0`, tinta cetak iron gall `#2B2625`, aksen terakota `#9D5A3C`, tipografi serif sastrawan klasik ala `gbrain.io` paper theme, dan pembatas fleuron klasik `❖`.
+  - Mengintegrasikan ringkasan bergaya **Deepstash & Blinkist** (*Atomic Insight Cards*) dan *Catch-up Recap* untuk mempermudah pemahaman naskah sastra klasik yang padat.
