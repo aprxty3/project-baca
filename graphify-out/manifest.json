@@ -1,69 +1,63 @@
 {
-  ".claude/settings.local.json": {
-    "mtime": 1790338884.0647411,
-    "seen": 1790349317.8524299,
-    "ast_hash": "0e38603e85a2c3ff6e7c4513f9034c4f",
-    "semantic_hash": "0e38603e85a2c3ff6e7c4513f9034c4f"
-  },
   "ARCHITECTURE.md": {
-    "mtime": 1790348064.140083,
-    "seen": 1790349317.8524423,
-    "ast_hash": "6ff0cc7a8fd672803b2e1974dfd70041",
-    "semantic_hash": "6ff0cc7a8fd672803b2e1974dfd70041"
+    "mtime": 1790353575.2986372,
+    "seen": 1790354065.1298754,
+    "ast_hash": "eeefaf9e846bba3f2a6c39ba44662c54",
+    "semantic_hash": "eeefaf9e846bba3f2a6c39ba44662c54"
   },
   "PROJECT_LOG.md": {
-    "mtime": 1790348864.0108855,
-    "seen": 1790349317.8524485,
-    "ast_hash": "398c8a19b95c2f6238c5b9b227b18d82",
-    "semantic_hash": "398c8a19b95c2f6238c5b9b227b18d82"
+    "mtime": 1790353575.299721,
+    "seen": 1790354065.1298926,
+    "ast_hash": "604fb7227aae1eaad966bfec20572050",
+    "semantic_hash": "604fb7227aae1eaad966bfec20572050"
   },
   "README.md": {
-    "mtime": 1790347395.336862,
-    "seen": 1790349317.852452,
-    "ast_hash": "43fee7d5e8a40e8262bf51783e0025f7",
-    "semantic_hash": "43fee7d5e8a40e8262bf51783e0025f7"
+    "mtime": 1790353575.2980318,
+    "seen": 1790354065.129895,
+    "ast_hash": "2dfdf3ae353d34b223cdc723fadec3de",
+    "semantic_hash": "2dfdf3ae353d34b223cdc723fadec3de"
   },
   "docker-compose.yml": {
-    "mtime": 1790347070.7061753,
-    "seen": 1790349317.852455,
-    "ast_hash": "505f9ba84cb02fc9a3bd994dc3181165",
-    "semantic_hash": "505f9ba84cb02fc9a3bd994dc3181165"
+    "mtime": 1790353425.045501,
+    "seen": 1790354065.1298964,
+    "ast_hash": "f5db9c7e80a7e57ea646214453739e28",
+    "semantic_hash": "f5db9c7e80a7e57ea646214453739e28"
   },
   "knowledge/erd.md": {
-    "mtime": 1790348032.0124702,
-    "seen": 1790349317.8524573,
-    "ast_hash": "14e818b8db4fd52a07787351cc5d04a4",
-    "semantic_hash": "14e818b8db4fd52a07787351cc5d04a4"
+    "mtime": 1790351671.0252917,
+    "seen": 1790354065.1298978,
+    "ast_hash": "165e696fd2c388e0f55139b97955abcf",
+    "semantic_hash": "165e696fd2c388e0f55139b97955abcf"
   },
   "knowledge/frd.md": {
-    "mtime": 1790348515.0358233,
-    "seen": 1790349317.8524606,
-    "ast_hash": "80f087629272766c80a6e735c95180f1",
-    "semantic_hash": "80f087629272766c80a6e735c95180f1"
+    "mtime": 1790351685.353472,
+    "seen": 1790354065.1298995,
+    "ast_hash": "a5a5fe5a397872757e86d1d9fe5822ab",
+    "semantic_hash": "a5a5fe5a397872757e86d1d9fe5822ab"
   },
   "knowledge/index.md": {
-    "mtime": 1790348850.7080343,
-    "seen": 1790349317.8524625,
-    "ast_hash": "3109b5e1a3bf488bfac83f6f8e73d166",
-    "semantic_hash": "3109b5e1a3bf488bfac83f6f8e73d166"
+    "mtime": 1790353575.3002286,
+    "seen": 1790354065.1299012,
+    "ast_hash": "55e9080ffd2e181cb59e8534f3eba564",
+    "semantic_hash": "55e9080ffd2e181cb59e8534f3eba564"
   },
   "knowledge/prd.md": {
-    "mtime": 1790348051.3662367,
-    "seen": 1790349317.852465,
-    "ast_hash": "12f917e6f9529e92ae4027638d0d4edd",
-    "semantic_hash": "12f917e6f9529e92ae4027638d0d4edd"
+    "mtime": 1790351676.0378833,
+    "seen": 1790354065.129904,
+    "ast_hash": "9b32dc16951e37205a7310003edb654a",
+    "semantic_hash": "9b32dc16951e37205a7310003edb654a"
   },
   "knowledge/srs.md": {
-    "mtime": 1790348830.5850916,
-    "seen": 1790349317.852467,
-    "ast_hash": "5992cc88d16f22aad27bf252736e7afe",
-    "semantic_hash": "5992cc88d16f22aad27bf252736e7afe"
+    "mtime": 1790351692.036312,
+    "seen": 1790354065.1299057,
+    "ast_hash": "e86bfc2f33c179360e8db23bb7a5aad1",
+    "semantic_hash": "e86bfc2f33c179360e8db23bb7a5aad1"
   },
   "knowledge/ux-flow.md": {
-    "mtime": 1790348248.4488993,
-    "seen": 1790349317.8524694,
-    "ast_hash": "eaa43da8d186a28d8e7363ebc547d432",
-    "semantic_hash": "eaa43da8d186a28d8e7363ebc547d432"
+    "mtime": 1790350192.9831758,
+    "seen": 1790354065.1299071,
+    "ast_hash": "67d7f0817ee76850492a8083bbe31007",
+    "semantic_hash": "67d7f0817ee76850492a8083bbe31007"
   },
   "assets/illustrations/admin-sorting-pigeonholes.png": {
     "mtime": 1790344268.8545263,
@@ -100,5 +94,59 @@
     "seen": 1790349317.8524852,
     "ast_hash": "b073af73f598095f61d145e7d42ff9b8",
     "semantic_hash": "b073af73f598095f61d145e7d42ff9b8"
+  },
+  "AGENTS.md": {
+    "mtime": 1790353563.08767,
+    "seen": 1790354065.1298676,
+    "ast_hash": "75872ea7dbb44a8fffdf918dec8134cc",
+    "semantic_hash": "75872ea7dbb44a8fffdf918dec8134cc"
+  },
+  "CHANGELOG.md": {
+    "mtime": 1790353575.2992847,
+    "seen": 1790354065.129879,
+    "ast_hash": "5d9c08684226eab994e937a4b6a69d22",
+    "semantic_hash": "5d9c08684226eab994e937a4b6a69d22"
+  },
+  "CLAUDE.md": {
+    "mtime": 1790351649.123338,
+    "seen": 1790354065.1298816,
+    "ast_hash": "0bd33dc89832ba35bc1c8152d7aa3f53",
+    "semantic_hash": "0bd33dc89832ba35bc1c8152d7aa3f53"
+  },
+  "DISTRIBUTED.md": {
+    "mtime": 1790351606.0212936,
+    "seen": 1790354065.1298833,
+    "ast_hash": "26d44fd25b81a0e21cbe26f57900743f",
+    "semantic_hash": "26d44fd25b81a0e21cbe26f57900743f"
+  },
+  "GEMINI.md": {
+    "mtime": 1790350278.598817,
+    "seen": 1790354065.129885,
+    "ast_hash": "250abfe5f43353fe35a903471025ea6d",
+    "semantic_hash": "250abfe5f43353fe35a903471025ea6d"
+  },
+  "GUIDE.md": {
+    "mtime": 1790350289.7371616,
+    "seen": 1790354065.1298864,
+    "ast_hash": "f2d93a7fe541a06f565ac94d9b1a14e6",
+    "semantic_hash": "f2d93a7fe541a06f565ac94d9b1a14e6"
+  },
+  "MEMORY.md": {
+    "mtime": 1790351628.0628514,
+    "seen": 1790354065.1298888,
+    "ast_hash": "bb77ffe7ff40de6466957018032ca1af",
+    "semantic_hash": "bb77ffe7ff40de6466957018032ca1af"
+  },
+  "NOTICE.md": {
+    "mtime": 1790351656.8954117,
+    "seen": 1790354065.12989,
+    "ast_hash": "34cfeded09a4266cfdae7cd9d75ea577",
+    "semantic_hash": "34cfeded09a4266cfdae7cd9d75ea577"
+  },
+  "knowledge/log.md": {
+    "mtime": 1790353585.7002056,
+    "seen": 1790354065.1299026,
+    "ast_hash": "9aa7bc71b6446808ddbeacfb2a0d6b8a",
+    "semantic_hash": "9aa7bc71b6446808ddbeacfb2a0d6b8a"
   }
 }

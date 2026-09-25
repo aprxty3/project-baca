@@ -102,3 +102,14 @@ Setiap entri mencantumkan identitas pelaku (*Actor*): `[antigravity]`, `[claude]
   - Menghindari antarmuka SaaS modern datar (*flat modern UI*).
   - Mengadopsi estetika cetak klasik zaman keemasan sastra: palet aged paper `#F9F6F0`, tinta cetak iron gall `#2B2625`, aksen terakota `#9D5A3C`, tipografi serif sastrawan klasik ala `gbrain.io` paper theme, dan pembatas fleuron klasik `❖`.
   - Mengintegrasikan ringkasan bergaya **Deepstash & Blinkist** (*Atomic Insight Cards*) dan *Catch-up Recap* untuk mempermudah pemahaman naskah sastra klasik yang padat.
+
+---
+
+### 2026-09-25 — Ekspansi Graf Pengetahuan Graphify & Sinkronisasi Vault Obsidian
+* **Aktor:** `human:aprxty3` & `[antigravity]`
+* **Konteks:** Penambahan berkas tata kelola multi-agen root (`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `MEMORY.md`, dll.) serta pengabaian git untuk `knowledge/` menuntut pembaruan topologi graf pengetahuan tanpa kehilangan pengindeksan spesifikasi privat.
+* **Keputusan:**
+  1. Menerbitkan berkas `.graphifyignore` dengan negasi `!knowledge/` dan `!knowledge/**` untuk menjembatani kebutuhan privasi git (spesifikasi di-ignore dari push) dengan kebutuhan graf lokal (spesifikasi tetap diindeks sebagai SSOT).
+  2. Melakukan ekstraksi inkremental via `graphify extract . --backend gemini`, memperluas graf dari 20 simpul menjadi 51 simpul dan 32 komunitas terklaster.
+  3. Menyinkronkan kembali vault Obsidian lokal di `obsidian-vault/` dengan 83 catatan terhubung, kanvas visual `graph.canvas`, dan dasbor navigasi terpadu `00_DASHBOARD.md`.
+

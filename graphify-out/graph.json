@@ -4,17 +4,19 @@
   "graph": {
     "hyperedges": [
       {
-        "id": "infrastructure_stack",
-        "label": "Local Infrastructure Stack",
+        "id": "auth_flow",
+        "label": "Authentication & Account Management Flow",
         "nodes": [
-          "postgres_db",
-          "redis_cache",
-          "minio_s3",
-          "mailpit_smtp"
+          "knowledge_srs_auth_signup",
+          "knowledge_srs_auth_verify_otp",
+          "knowledge_srs_auth_login",
+          "knowledge_srs_auth_refresh",
+          "knowledge_srs_auth_logout"
         ],
-        "relation": "form",
+        "relation": "participate_in",
         "confidence": "EXTRACTED",
-        "confidence_score": 1.0
+        "confidence_score": 1.0,
+        "source_file": "knowledge/srs.md"
       },
       {
         "id": "knowledge_vault",
@@ -29,143 +31,69 @@
         "relation": "form",
         "confidence": "EXTRACTED",
         "confidence_score": 1.0
+      },
+      {
+        "id": "okf_v02_spec_suite",
+        "label": "OKF v0.2 Specification Suite",
+        "nodes": [
+          "knowledge_index_md",
+          "knowledge_prd_md",
+          "knowledge_erd_md",
+          "knowledge_frd_md",
+          "knowledge_srs_md",
+          "knowledge_ux_flow_md",
+          "knowledge_log_md"
+        ],
+        "relation": "form",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0
+      },
+      {
+        "id": "semantic_intelligence",
+        "label": "Semantic Intelligence Cluster",
+        "nodes": [
+          "knowledge_srs_quotes_search",
+          "knowledge_srs_atomic_cards",
+          "knowledge_srs_chapter_recap"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "knowledge/srs.md"
+      },
+      {
+        "id": "reading_experience",
+        "label": "Core Reading Experience",
+        "nodes": [
+          "knowledge_srs_books_chapter",
+          "knowledge_srs_progress_sync",
+          "knowledge_srs_chapter_recap",
+          "knowledge_ux_flow_philosophy"
+        ],
+        "relation": "form",
+        "confidence": "INFERRED",
+        "confidence_score": 0.9,
+        "source_file": "knowledge/ux-flow.md"
       }
     ]
   },
   "nodes": [
     {
-      "id": "knowledge_erd_md",
-      "label": "Entity Relationship Diagram",
-      "community": 0,
-      "community_name": "Product Requirements and Diagrams",
-      "file_type": "document",
-      "norm_label": "entity relationship diagram",
-      "source_file": "knowledge/erd.md"
-    },
-    {
-      "id": "knowledge_frd_md",
-      "label": "Functional Requirements Document",
-      "community": 0,
-      "community_name": "Product Requirements and Diagrams",
-      "file_type": "document",
-      "norm_label": "functional requirements document",
-      "source_file": "knowledge/frd.md"
-    },
-    {
-      "id": "knowledge_prd_md",
-      "label": "Product Requirements Document",
-      "community": 0,
-      "community_name": "Product Requirements and Diagrams",
-      "file_type": "document",
-      "norm_label": "product requirements document",
-      "source_file": "knowledge/prd.md"
-    },
-    {
       "id": "assets_illustrations_retro_rocket_discovery",
       "label": "AI Quote Finder Illustration",
+      "_origin": "semantic",
       "community": 0,
-      "community_name": "Product Requirements and Diagrams",
+      "community_name": "Project Documentation & Requirements",
       "file_type": "image",
       "norm_label": "ai quote finder illustration",
       "source_file": "assets/illustrations/retro-rocket-discovery.png"
     },
     {
-      "id": "architecture_md",
-      "label": "Architecture Blueprint",
-      "community": 1,
-      "community_name": "System Architecture Design",
-      "file_type": "document",
-      "norm_label": "architecture blueprint",
-      "rationale": "Summarizes technical architecture, polyglot technology choices, and DDD patterns.",
-      "source_file": "ARCHITECTURE.md"
-    },
-    {
-      "id": "assets_references_gbrain_design_reference",
-      "label": "GBrain Design Reference",
-      "community": 1,
-      "community_name": "System Architecture Design",
-      "file_type": "image",
-      "norm_label": "gbrain design reference",
-      "source_file": "assets/references/gbrain-design-reference.png"
-    },
-    {
-      "id": "minio_s3",
-      "label": "MinIO Object Storage",
-      "community": 10,
-      "community_name": "Object Storage Service",
-      "file_type": "concept",
-      "norm_label": "minio object storage",
-      "source_file": "docker-compose.yml"
-    },
-    {
-      "id": "postgres_db",
-      "label": "PostgreSQL 17 + pgvector",
-      "community": 11,
-      "community_name": "Vector Database Storage",
-      "file_type": "concept",
-      "norm_label": "postgresql 17 + pgvector",
-      "source_file": "docker-compose.yml"
-    },
-    {
-      "id": "project_log_md",
-      "label": "Project Log & Memory",
-      "community": 12,
-      "community_name": "Project Logs and Memory",
-      "file_type": "document",
-      "norm_label": "project log & memory",
-      "rationale": "Tracks current status, technical decisions, and implementation backlog.",
-      "source_file": "PROJECT_LOG.md"
-    },
-    {
-      "id": "readme_md",
-      "label": "Project Overview",
-      "community": 13,
-      "community_name": "Project Overview",
-      "file_type": "document",
-      "norm_label": "project overview",
-      "source_file": "README.md"
-    },
-    {
-      "id": "redis_cache",
-      "label": "Redis 7 (Streams/Cache)",
-      "community": 14,
-      "community_name": "Caching and Streaming",
-      "file_type": "concept",
-      "norm_label": "redis 7 (streams/cache)",
-      "source_file": "docker-compose.yml"
-    },
-    {
-      "id": "knowledge_ux_flow_md",
-      "label": "UX Flow & Navigation",
-      "community": 2,
-      "community_name": "Admin UX Navigation",
-      "file_type": "document",
-      "norm_label": "ux flow & navigation",
-      "source_file": "knowledge/ux-flow.md"
-    },
-    {
-      "id": "assets_illustrations_admin_sorting_pigeonholes",
-      "label": "Admin Sorting Illustration",
-      "community": 2,
-      "community_name": "Admin UX Navigation",
-      "file_type": "image",
-      "norm_label": "admin sorting illustration",
-      "source_file": "assets/illustrations/admin-sorting-pigeonholes.png"
-    },
-    {
-      "id": "assets_illustrations_cozy_reader_armchair_owl",
-      "label": "Reader View Illustration",
-      "community": 3,
-      "community_name": "Reader Interface Design",
-      "file_type": "image",
-      "norm_label": "reader view illustration",
-      "source_file": "assets/illustrations/cozy-reader-armchair-owl.png"
-    },
-    {
       "id": "assets_illustrations_library_bookshelf_ladder",
       "label": "Library Catalog Illustration",
-      "community": 4,
-      "community_name": "Library Catalog UI",
+      "_origin": "semantic",
+      "community": 10,
+      "community_name": "Library Catalog Design",
       "file_type": "image",
       "norm_label": "library catalog illustration",
       "source_file": "assets/illustrations/library-bookshelf-ladder.png"
@@ -173,71 +101,484 @@
     {
       "id": "assets_illustrations_manuscript_inspection_clothesline",
       "label": "Ingestion Monitor Illustration",
-      "community": 5,
-      "community_name": "Data Ingestion Monitoring",
+      "_origin": "semantic",
+      "community": 11,
+      "community_name": "Ingestion Monitoring Design",
       "file_type": "image",
       "norm_label": "ingestion monitor illustration",
       "source_file": "assets/illustrations/manuscript-inspection-clothesline.png"
     },
     {
-      "id": "docker_compose_yml",
-      "label": "Infrastructure Configuration",
-      "community": 6,
-      "community_name": "Infrastructure Configuration",
+      "id": "assets_references_gbrain_design_reference",
+      "label": "GBrain Design Reference",
+      "_origin": "semantic",
+      "community": 4,
+      "community_name": "System Architecture Design",
+      "file_type": "image",
+      "norm_label": "gbrain design reference",
+      "source_file": "assets/references/gbrain-design-reference.png"
+    },
+    {
+      "id": "assets_illustrations_admin_sorting_pigeonholes",
+      "label": "Admin Sorting Illustration",
+      "_origin": "semantic",
+      "community": 5,
+      "community_name": "UX Flow & Navigation",
+      "file_type": "image",
+      "norm_label": "admin sorting illustration",
+      "source_file": "assets/illustrations/admin-sorting-pigeonholes.png"
+    },
+    {
+      "id": "assets_illustrations_cozy_reader_armchair_owl",
+      "label": "Reader View Illustration",
+      "_origin": "semantic",
+      "community": 9,
+      "community_name": "Reader Interface Design",
+      "file_type": "image",
+      "norm_label": "reader view illustration",
+      "source_file": "assets/illustrations/cozy-reader-armchair-owl.png"
+    },
+    {
+      "id": "claude_md",
+      "label": "CLAUDE.md \u2014 Claude Code Guidelines",
+      "community": 0,
+      "community_name": "Project Documentation & Requirements",
+      "file_type": "document",
+      "norm_label": "claude.md \u2014 claude code guidelines",
+      "rationale": "Build commands and architecture patterns for Claude Code.",
+      "source_file": "CLAUDE.md"
+    },
+    {
+      "id": "gemini_md",
+      "label": "GEMINI.md \u2014 Panduan Gemini & Google Antigravity",
+      "community": 0,
+      "community_name": "Project Documentation & Requirements",
+      "file_type": "document",
+      "norm_label": "gemini.md \u2014 panduan gemini & google antigravity",
+      "rationale": "Operational instructions for Gemini/Antigravity agents.",
+      "source_file": "GEMINI.md"
+    },
+    {
+      "id": "knowledge_erd_md",
+      "label": "knowledge/erd.md \u2014 Entity Relationship Diagram",
+      "community": 0,
+      "community_name": "Project Documentation & Requirements",
+      "file_type": "document",
+      "norm_label": "knowledge/erd.md \u2014 entity relationship diagram",
+      "rationale": "Database schema, indexing matrix, and migration strategy.",
+      "source_file": "knowledge/erd.md"
+    },
+    {
+      "id": "knowledge_frd_md",
+      "label": "knowledge/frd.md \u2014 Functional Requirements Document",
+      "community": 0,
+      "community_name": "Project Documentation & Requirements",
+      "file_type": "document",
+      "norm_label": "knowledge/frd.md \u2014 functional requirements document",
+      "rationale": "Modular functional specs and traceability matrix.",
+      "source_file": "knowledge/frd.md"
+    },
+    {
+      "id": "knowledge_index_md",
+      "label": "knowledge/index.md \u2014 Master Knowledge Catalog",
+      "community": 0,
+      "community_name": "Project Documentation & Requirements",
+      "file_type": "document",
+      "norm_label": "knowledge/index.md \u2014 master knowledge catalog",
+      "rationale": "SSOT for product and technical specifications (OKF v0.2).",
+      "source_file": "knowledge/index.md"
+    },
+    {
+      "id": "knowledge_prd_md",
+      "label": "knowledge/prd.md \u2014 Product Requirements Document",
+      "community": 0,
+      "community_name": "Project Documentation & Requirements",
+      "file_type": "document",
+      "norm_label": "knowledge/prd.md \u2014 product requirements document",
+      "rationale": "Vision, user stories, and visual identity (Vintage Literary).",
+      "source_file": "knowledge/prd.md"
+    },
+    {
+      "id": "knowledge_srs_md",
+      "label": "knowledge/srs.md \u2014 Software Requirements Specification",
+      "community": 0,
+      "community_name": "Project Documentation & Requirements",
+      "file_type": "document",
+      "norm_label": "knowledge/srs.md \u2014 software requirements specification",
+      "rationale": "Security architecture and REST API contracts.",
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "id": "agents_md",
+      "label": "AGENTS.md \u2014 Panduan & Tata Kelola Agen AI",
+      "community": 1,
+      "community_name": "AI Governance & System Logs",
+      "file_type": "document",
+      "norm_label": "agents.md \u2014 panduan & tata kelola agen ai",
+      "rationale": "Operational rules for AI coding agents in Project Baca.",
+      "source_file": "AGENTS.md"
+    },
+    {
+      "id": "knowledge_log_md",
+      "label": "knowledge/log.md \u2014 Audit Trail",
+      "community": 1,
+      "community_name": "AI Governance & System Logs",
+      "file_type": "document",
+      "norm_label": "knowledge/log.md \u2014 audit trail",
+      "rationale": "Chronological audit trail of specification changes.",
+      "source_file": "knowledge/log.md"
+    },
+    {
+      "id": "memory_md",
+      "label": "MEMORY.md \u2014 Log Keputusan Arsitektur & Memori Sistem",
+      "community": 1,
+      "community_name": "AI Governance & System Logs",
+      "file_type": "document",
+      "norm_label": "memory.md \u2014 log keputusan arsitektur & memori sistem",
+      "rationale": "The 'why' behind technical decisions (ADRs).",
+      "source_file": "MEMORY.md"
+    },
+    {
+      "id": "project_log_md",
+      "label": "PROJECT_LOG.md \u2014 Log & Memory Proyek",
+      "community": 1,
+      "community_name": "AI Governance & System Logs",
+      "file_type": "document",
+      "norm_label": "project_log.md \u2014 log & memory proyek",
+      "rationale": "Current status, technical decisions, and backlog.",
+      "source_file": "PROJECT_LOG.md"
+    },
+    {
+      "id": "changelog_md",
+      "label": "CHANGELOG.md \u2014 Project Baca Changelog",
+      "community": 12,
+      "community_name": "Project Changelog",
+      "file_type": "document",
+      "norm_label": "changelog.md \u2014 project baca changelog",
+      "rationale": "Chronological record of significant changes following Semantic Versioning.",
+      "source_file": "CHANGELOG.md"
+    },
+    {
+      "id": "guide_md",
+      "label": "GUIDE.md \u2014 Panduan Pengembang & Operasional Lokal",
+      "community": 13,
+      "community_name": "Developer Operations Guide",
+      "file_type": "document",
+      "norm_label": "guide.md \u2014 panduan pengembang & operasional lokal",
+      "rationale": "Practical guide for local setup, migrations, and testing.",
+      "source_file": "GUIDE.md"
+    },
+    {
+      "id": "knowledge_srs_activity_heartbeat",
+      "label": "POST /api/activity/heartbeat",
+      "community": 14,
+      "community_name": "Activity Heartbeat Monitoring",
       "file_type": "code",
-      "norm_label": "infrastructure configuration",
+      "norm_label": "post /api/activity/heartbeat",
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "id": "knowledge_srs_admin_ingestion_status",
+      "label": "GET /api/admin/ingestion/{job_id}",
+      "community": 15,
+      "community_name": "Ingestion Job Tracking",
+      "file_type": "code",
+      "norm_label": "get /api/admin/ingestion/{job_id}",
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "id": "knowledge_srs_admin_upload",
+      "label": "POST /api/admin/books/upload",
+      "community": 16,
+      "community_name": "Admin Book Upload",
+      "file_type": "code",
+      "norm_label": "post /api/admin/books/upload",
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "id": "knowledge_srs_api_error_standard",
+      "label": "API Error Standard",
+      "community": 17,
+      "community_name": "API Error Standards",
+      "file_type": "concept",
+      "norm_label": "api error standard",
+      "rationale": "Defines consistent JSON envelopes for success and error responses with standard error codes.",
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "id": "knowledge_srs_atomic_cards",
+      "label": "GET /api/books/{id}/chapters/{chapter_id}/atomic-cards",
+      "community": 18,
+      "community_name": "Atomic Content Retrieval",
+      "file_type": "code",
+      "norm_label": "get /api/books/{id}/chapters/{chapter_id}/atomic-cards",
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "id": "knowledge_srs_auth_login",
+      "label": "POST /api/auth/login",
+      "community": 19,
+      "community_name": "User Login",
+      "file_type": "code",
+      "norm_label": "post /api/auth/login",
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "id": "knowledge_srs_auth_refresh",
+      "label": "POST /api/auth/refresh",
+      "community": 2,
+      "community_name": "Authentication & Security",
+      "file_type": "code",
+      "norm_label": "post /api/auth/refresh",
+      "rationale": "Implements Refresh Token Rotation.",
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "id": "knowledge_srs_auth_verify_otp",
+      "label": "POST /api/auth/verify-otp",
+      "community": 2,
+      "community_name": "Authentication & Security",
+      "file_type": "code",
+      "norm_label": "post /api/auth/verify-otp",
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "id": "knowledge_srs_security_architecture",
+      "label": "Security Architecture",
+      "community": 2,
+      "community_name": "Authentication & Security",
+      "file_type": "concept",
+      "norm_label": "security architecture",
+      "rationale": "Adopts Defense-in-Depth principle across 4 layers: Edge, Gateway, Domain Logic, and Database.",
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "id": "knowledge_srs_auth_logout",
+      "label": "POST /api/auth/logout",
+      "community": 20,
+      "community_name": "User Logout",
+      "file_type": "code",
+      "norm_label": "post /api/auth/logout",
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "id": "knowledge_srs_auth_signup",
+      "label": "POST /api/auth/signup",
+      "community": 21,
+      "community_name": "User Registration",
+      "file_type": "code",
+      "norm_label": "post /api/auth/signup",
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "id": "knowledge_srs_books_chapter",
+      "label": "GET /api/books/{id}/chapters/{chapter_number}",
+      "community": 22,
+      "community_name": "Chapter Content Retrieval",
+      "file_type": "code",
+      "norm_label": "get /api/books/{id}/chapters/{chapter_number}",
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "id": "knowledge_srs_books_detail",
+      "label": "GET /api/books/{id}",
+      "community": 23,
+      "community_name": "Book Detail Retrieval",
+      "file_type": "code",
+      "norm_label": "get /api/books/{id}",
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "id": "knowledge_srs_books_list",
+      "label": "GET /api/books",
+      "community": 24,
+      "community_name": "Book Catalog Listing",
+      "file_type": "code",
+      "norm_label": "get /api/books",
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "id": "knowledge_srs_chapter_recap",
+      "label": "GET /api/books/{id}/chapters/{chapter_number}/recap",
+      "community": 25,
+      "community_name": "Chapter Recap Service",
+      "file_type": "code",
+      "norm_label": "get /api/books/{id}/chapters/{chapter_number}/recap",
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "id": "knowledge_srs_me_delete",
+      "label": "DELETE /api/me",
+      "community": 26,
+      "community_name": "User Account Deletion",
+      "file_type": "code",
+      "norm_label": "delete /api/me",
+      "rationale": "Implements Right to be Forgotten via ON DELETE CASCADE.",
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "id": "knowledge_srs_me_profile",
+      "label": "GET /api/me",
+      "community": 27,
+      "community_name": "User Profile Retrieval",
+      "file_type": "code",
+      "norm_label": "get /api/me",
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "id": "knowledge_srs_progress_sync",
+      "label": "PUT /api/progress/{book_id}",
+      "community": 28,
+      "community_name": "Reading Progress Updates",
+      "file_type": "code",
+      "norm_label": "put /api/progress/{book_id}",
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "id": "knowledge_ux_flow_philosophy",
+      "label": "Core UX Philosophy",
+      "community": 29,
+      "community_name": "UX Design Philosophy",
+      "file_type": "concept",
+      "norm_label": "core ux philosophy",
+      "rationale": "Focuses on Vintage Literary aesthetics, zero-friction reading, and reflowable pagination.",
+      "source_file": "knowledge/ux-flow.md"
+    },
+    {
+      "id": "knowledge_srs_books_search",
+      "label": "GET /api/books/search",
+      "community": 3,
+      "community_name": "User Journey & Search",
+      "file_type": "code",
+      "norm_label": "get /api/books/search",
+      "rationale": "Uses PostgreSQL FTS + pg_trgm GIN for typo-tolerant search.",
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "id": "knowledge_srs_progress_merge",
+      "label": "POST /api/progress/merge",
+      "community": 3,
+      "community_name": "User Journey & Search",
+      "file_type": "code",
+      "norm_label": "post /api/progress/merge",
+      "rationale": "Reconciles guest local progress with cloud account.",
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "id": "knowledge_ux_flow_journey",
+      "label": "User Journey Flowchart",
+      "community": 3,
+      "community_name": "User Journey & Search",
+      "file_type": "concept",
+      "norm_label": "user journey flowchart",
+      "source_file": "knowledge/ux-flow.md"
+    },
+    {
+      "id": "notice_md",
+      "label": "NOTICE.md \u2014 Pernyataan Hak Cipta & Lisensi Legal",
+      "community": 30,
+      "community_name": "Legal & Licensing",
+      "file_type": "document",
+      "norm_label": "notice.md \u2014 pernyataan hak cipta & lisensi legal",
+      "rationale": "Legal status of public domain works and open source licenses.",
+      "source_file": "NOTICE.md"
+    },
+    {
+      "id": "readme_md",
+      "label": "README.md \u2014 Project Baca Overview",
+      "community": 31,
+      "community_name": "Project Overview",
+      "file_type": "document",
+      "norm_label": "readme.md \u2014 project baca overview",
+      "rationale": "Project summary and technology stack overview.",
+      "source_file": "README.md"
+    },
+    {
+      "id": "architecture_md",
+      "label": "ARCHITECTURE.md \u2014 Cetak Biru Arsitektur & Spesifikasi Desain",
+      "community": 4,
+      "community_name": "System Architecture Design",
+      "file_type": "document",
+      "norm_label": "architecture.md \u2014 cetak biru arsitektur & spesifikasi desain",
+      "rationale": "Technical architecture, polyglot monorepo structure, and engineering principles.",
+      "source_file": "ARCHITECTURE.md"
+    },
+    {
+      "id": "knowledge_ux_flow_md",
+      "label": "knowledge/ux-flow.md \u2014 UX Flow & Navigation",
+      "community": 5,
+      "community_name": "UX Flow & Navigation",
+      "file_type": "document",
+      "norm_label": "knowledge/ux-flow.md \u2014 ux flow & navigation",
+      "rationale": "User journey, wireframes, and reactive component mapping.",
+      "source_file": "knowledge/ux-flow.md"
+    },
+    {
+      "id": "docker_compose_yml",
+      "label": "docker-compose.yml",
+      "community": 6,
+      "community_name": "Distributed Infrastructure",
+      "file_type": "code",
+      "norm_label": "docker-compose.yml",
+      "rationale": "Infrastructure orchestration for Postgres, Redis, MinIO, and Mailpit.",
       "source_file": "docker-compose.yml",
       "verification": "unverified"
     },
     {
-      "id": "knowledge_index_md",
-      "label": "Knowledge Bundle Index",
-      "community": 7,
-      "community_name": "Knowledge Bundle Index",
+      "id": "distributed_md",
+      "label": "DISTRIBUTED.md \u2014 Arsitektur Pemrosesan Terdistribusi",
+      "community": 6,
+      "community_name": "Distributed Infrastructure",
       "file_type": "document",
-      "norm_label": "knowledge bundle index",
-      "source_file": "knowledge/index.md"
+      "norm_label": "distributed.md \u2014 arsitektur pemrosesan terdistribusi",
+      "rationale": "Specifications for EPUB ingestion pipeline and scaling.",
+      "source_file": "DISTRIBUTED.md"
     },
     {
-      "id": "knowledge_srs_md",
-      "label": "Software Requirements Specification",
-      "community": 8,
-      "community_name": "Software Requirements Specification",
-      "file_type": "document",
-      "norm_label": "software requirements specification",
+      "id": "knowledge_srs_books_offline_bundle",
+      "label": "GET /api/books/{id}/offline-bundle",
+      "community": 7,
+      "community_name": "Offline Content Access",
+      "file_type": "code",
+      "norm_label": "get /api/books/{id}/offline-bundle",
       "source_file": "knowledge/srs.md"
     },
     {
-      "id": "mailpit_smtp",
-      "label": "Mailpit SMTP Server",
-      "community": 9,
-      "community_name": "SMTP Email Server",
+      "id": "knowledge_ux_flow_offline_first",
+      "label": "Offline-First Mode",
+      "community": 7,
+      "community_name": "Offline Content Access",
       "file_type": "concept",
-      "norm_label": "mailpit smtp server",
-      "source_file": "docker-compose.yml"
+      "norm_label": "offline-first mode",
+      "rationale": "Uses IndexedDB (rexie) for storing chapters and progress when navigator.onLine is false.",
+      "source_file": "knowledge/ux-flow.md"
+    },
+    {
+      "id": "knowledge_srs_quotes_search",
+      "label": "POST /api/books/{id}/quotes/search",
+      "community": 8,
+      "community_name": "Performance & Quote Search",
+      "file_type": "code",
+      "norm_label": "post /api/books/{id}/quotes/search",
+      "rationale": "Scoped Quote Finder powered by pgvector HNSW.",
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "id": "knowledge_srs_nfr_performance",
+      "label": "Performance Metrics & SLA",
+      "community": 8,
+      "community_name": "Performance & Quote Search",
+      "file_type": "concept",
+      "norm_label": "performance metrics & sla",
+      "source_file": "knowledge/srs.md"
     }
   ],
   "links": [
     {
-      "source": "knowledge_frd_md",
-      "target": "knowledge_erd_md",
-      "relation": "cites",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/frd.md"
-    },
-    {
-      "source": "knowledge_frd_md",
-      "target": "knowledge_prd_md",
-      "relation": "cites",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/frd.md"
-    },
-    {
       "source": "assets_illustrations_admin_sorting_pigeonholes",
       "target": "knowledge_ux_flow_md",
       "relation": "conceptually_related_to",
+      "_origin": "semantic",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "assets/illustrations/admin-sorting-pigeonholes.png"
@@ -246,6 +587,7 @@
       "source": "assets_illustrations_retro_rocket_discovery",
       "target": "knowledge_prd_md",
       "relation": "conceptually_related_to",
+      "_origin": "semantic",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "assets/illustrations/retro-rocket-discovery.png"
@@ -254,24 +596,179 @@
       "source": "assets_references_gbrain_design_reference",
       "target": "architecture_md",
       "relation": "conceptually_related_to",
+      "_origin": "semantic",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "assets/references/gbrain-design-reference.png"
+    },
+    {
+      "source": "knowledge_ux_flow_journey",
+      "target": "knowledge_srs_progress_merge",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/ux-flow.md"
+    },
+    {
+      "source": "knowledge_srs_auth_refresh",
+      "target": "knowledge_srs_security_architecture",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "source": "knowledge_srs_auth_verify_otp",
+      "target": "knowledge_srs_security_architecture",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "source": "agents_md",
+      "target": "knowledge_index_md",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md"
+    },
+    {
+      "source": "agents_md",
+      "target": "knowledge_log_md",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md"
+    },
+    {
+      "source": "agents_md",
+      "target": "memory_md",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md"
+    },
+    {
+      "source": "claude_md",
+      "target": "knowledge_index_md",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md"
+    },
+    {
+      "source": "gemini_md",
+      "target": "knowledge_index_md",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "GEMINI.md"
+    },
+    {
+      "source": "knowledge_frd_md",
+      "target": "knowledge_erd_md",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/frd.md"
+    },
+    {
+      "source": "knowledge_frd_md",
+      "target": "knowledge_prd_md",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/frd.md"
+    },
+    {
+      "source": "knowledge_index_md",
+      "target": "knowledge_erd_md",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/index.md"
+    },
+    {
+      "source": "knowledge_index_md",
+      "target": "knowledge_frd_md",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/index.md"
+    },
+    {
+      "source": "knowledge_index_md",
+      "target": "knowledge_prd_md",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/index.md"
+    },
+    {
+      "source": "knowledge_index_md",
+      "target": "knowledge_srs_md",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/index.md"
+    },
+    {
+      "source": "knowledge_srs_quotes_search",
+      "target": "knowledge_srs_nfr_performance",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "source": "project_log_md",
+      "target": "memory_md",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PROJECT_LOG.md"
+    },
+    {
+      "source": "knowledge_srs_books_offline_bundle",
+      "target": "knowledge_ux_flow_offline_first",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "source": "knowledge_ux_flow_journey",
+      "target": "knowledge_srs_books_search",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "knowledge/ux-flow.md"
+    },
+    {
+      "source": "distributed_md",
+      "target": "docker_compose_yml",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "DISTRIBUTED.md"
     }
   ],
   "hyperedges": [
     {
-      "id": "infrastructure_stack",
-      "label": "Local Infrastructure Stack",
+      "id": "auth_flow",
+      "label": "Authentication & Account Management Flow",
       "nodes": [
-        "postgres_db",
-        "redis_cache",
-        "minio_s3",
-        "mailpit_smtp"
+        "knowledge_srs_auth_signup",
+        "knowledge_srs_auth_verify_otp",
+        "knowledge_srs_auth_login",
+        "knowledge_srs_auth_refresh",
+        "knowledge_srs_auth_logout"
       ],
-      "relation": "form",
+      "relation": "participate_in",
       "confidence": "EXTRACTED",
-      "confidence_score": 1.0
+      "confidence_score": 1.0,
+      "source_file": "knowledge/srs.md"
     },
     {
       "id": "knowledge_vault",
@@ -286,6 +783,50 @@
       "relation": "form",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0
+    },
+    {
+      "id": "okf_v02_spec_suite",
+      "label": "OKF v0.2 Specification Suite",
+      "nodes": [
+        "knowledge_index_md",
+        "knowledge_prd_md",
+        "knowledge_erd_md",
+        "knowledge_frd_md",
+        "knowledge_srs_md",
+        "knowledge_ux_flow_md",
+        "knowledge_log_md"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "id": "semantic_intelligence",
+      "label": "Semantic Intelligence Cluster",
+      "nodes": [
+        "knowledge_srs_quotes_search",
+        "knowledge_srs_atomic_cards",
+        "knowledge_srs_chapter_recap"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/srs.md"
+    },
+    {
+      "id": "reading_experience",
+      "label": "Core Reading Experience",
+      "nodes": [
+        "knowledge_srs_books_chapter",
+        "knowledge_srs_progress_sync",
+        "knowledge_srs_chapter_recap",
+        "knowledge_ux_flow_philosophy"
+      ],
+      "relation": "form",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "knowledge/ux-flow.md"
     }
-  ]
+  ],
+  "built_at_commit": "a922834e2a4bb05ad3de0473931c151f844448e0"
 }

@@ -66,4 +66,6 @@ Seluruh riwayat, rasionalisasi teknis (*the "why"*), dan atribusi aktor untuk se
 | ADR-07 | Tata Kelola Pengetahuan | OKF v0.2 Knowledge Vault, Graphify AST extraction, dan Obsidian Vault | [MEMORY.md](MEMORY.md) |
 | ADR-08 | Tata Kelola Multi-Agen | Penerbitan AGENTS.md, CLAUDE.md, GEMINI.md, GUIDE.md, DISTRIBUTED.md, CHANGELOG.md, NOTICE.md | [MEMORY.md](MEMORY.md) |
 | ADR-09 | Mesin Vektor & AI | Eliminasi Triton Server; Adopsi Gemini API & FastEmbed CPU (768 Dimensi) | [MEMORY.md](MEMORY.md) |
+| ADR-10 | Ekspansi Graf & Vault | Pemutakhiran graf 51 simpul, .graphifyignore overrides, dan sinkronisasi Obsidian Vault | [MEMORY.md](MEMORY.md) |
+
 

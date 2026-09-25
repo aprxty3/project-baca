@@ -1,0 +1,7 @@
+# ------------------------------------------------------------------------------
+# Graphify Ignore Overrides
+# Memastikan direktori knowledge/ tetap diindeks ke dalam Graf Pengetahuan
+# meskipun knowledge/ di-ignore pada .gitignore untuk push Git.
+# ------------------------------------------------------------------------------
+!knowledge/
+!knowledge/**
