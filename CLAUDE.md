@@ -46,10 +46,13 @@ make test-all         # Execute 4-tier test suite
    - Ingestion jobs and transactional email queues run on Redis Streams.
 4. **Vintage Literary Aesthetic:**
    - Leptos WASM frontend reflects aged paper, dark ink, and literary serif typography.
-5. **Zero Emoji Policy:**
+5. **Edge Transport Termination:**
+   - Caddy reverse proxy terminates HTTP/3 (QUIC over UDP 443) and HTTP/2 with auto-HTTPS; Axum backend remains pure, stateless TCP.
+6. **Zero Emoji Policy:**
    - Absolutely no emojis or graphical emoticons in code, comments, commit messages, or documentation.
-6. **Core Engineering Principles:**
+7. **Core Engineering Principles:**
    - Adhere strictly to ROBUST, SCALABLE, EASY TO MAINTAIN, DRY, KISS, and YAGNI.
+
 
 ## 4. Documentation & Audit Trail Workflow
 

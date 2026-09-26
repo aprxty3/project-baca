@@ -14,10 +14,11 @@ Distributed architecture, asynchronous queue management, and horizontal scaling 
 Clear separation between stateless HTTP API nodes and background compute workers:
 
 ```text
-+-------------------+       +-------------------+       +-----------------------+
-|  Web/PWA Client   | ----> |  Axum API Server  | ----> |  Redis 7 Streams      |
-|  (Leptos WASM)    | <---- |  (Stateless Node) |       |  Stream: epub:ingest  |
-+-------------------+       +-------------------+       +-----------------------+
++-------------------+       +-------------------+       +-------------------+       +-----------------------+
+|  Web/PWA Client   | ----> |  Caddy Edge Gate  | ----> |  Axum API Server  | ----> |  Redis 7 Streams      |
+|  (Leptos WASM)    | <==== |  HTTP/3 QUIC Edge | <---- |  (Stateless Node) |       |  Stream: epub:ingest  |
++-------------------+       +-------------------+       +-------------------+       +-----------------------+
+
                                                                     |
                                                                     v
 +-----------------------+       +-------------------+       +-----------------------+

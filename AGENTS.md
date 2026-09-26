@@ -36,6 +36,9 @@ Standard operating rules for all AI coding agents working on **Project Baca**.
    - All build, test, run, and migration commands must be accessible via `Makefile`.
 6. **Vintage Literary Aesthetic (1900–1950):**
    - The Leptos WASM frontend reflects classic print aesthetics (aged paper `#F9F6F0`, dense ink `#2B2625`, terracotta `#9D5A3C`, serif typography).
+7. **Edge Transport Termination:**
+   - HTTP/3 (QUIC over UDP 443) and HTTP/2 terminated cleanly at edge reverse proxy (Caddy/Cloudflare) with automatic TLS; Axum backend remains pure, stateless TCP.
+
 
 ## 3. Engineering Pillars
 

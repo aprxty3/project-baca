@@ -32,6 +32,8 @@ This workspace follows the **Google Cloud Open Knowledge Format (OKF v0.2)** spe
 - **Paired SQL Migrations:** Schema changes managed via `<timestamp>_<name>.up.sql` and `<timestamp>_<name>.down.sql` in `migrations/`.
 - **Centralized Automation:** All tasks accessible via `Makefile`.
 - **Vintage Literary Aesthetic:** Leptos WASM frontend reflects aged paper, dark ink, and literary serif typography.
+- **Edge Transport Termination:** Caddy reverse proxy terminates HTTP/3 (QUIC over UDP 443) and HTTP/2 with auto-HTTPS; Axum backend remains pure, stateless TCP.
+
 
 ### 5. Engineering Principles
 - **ROBUST:** Graceful degradation on all failures.

@@ -35,6 +35,9 @@ Operational instructions for **Google Antigravity** and **Gemini** models in **P
    - Automation driven through `Makefile`.
 5. **Vintage Literary Aesthetic (1900–1950):**
    - Leptos WASM frontend uses aged paper palette, classic ink, terracotta accents, and literary serif typography.
+6. **Edge Transport Termination:**
+   - Caddy reverse proxy terminates HTTP/3 (QUIC over UDP 443) and HTTP/2 (TCP 443) with auto-HTTPS; Axum backend remains pure, stateless TCP.
+
 
 ## 3. Engineering Discipline & Zero Emoji Policy
 

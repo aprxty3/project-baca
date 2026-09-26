@@ -42,12 +42,12 @@ Current status, technical milestones, and operational backlog for **Project Baca
 6. **[PENDING] Milestone 05 — Asynchronous EPUB Ingestion Pipeline & Admin Management:**
    - Spec: [knowledge/tasks/05_ingestion_pipeline_and_admin.md](knowledge/tasks/05_ingestion_pipeline_and_admin.md)
    - Scope: Admin EPUB upload, Redis Streams worker, HTML sanitization, scene chunking, processing monitor.
-7. **[PENDING] Milestone 06 — Frontend Leptos WASM Web Reader & Offline Mode:**
+7. **[PENDING] Milestone 06 — Frontend Leptos WASM Web Reader, Offline Mode & Caddy HTTP/3 Gateway:**
    - Spec: [knowledge/tasks/06_frontend_leptos_web_reader.md](knowledge/tasks/06_frontend_leptos_web_reader.md)
-   - Scope: Leptos WASM SPA, Vintage Literary theme, multi-column reader, CFI anchors, IndexedDB (`rexie`), i18n switcher.
+   - Scope: Leptos WASM SPA, Vintage Literary theme, multi-column reader, CFI anchors, IndexedDB (`rexie`), i18n switcher, and Caddy reverse proxy terminating HTTP/3 (QUIC) over UDP 443 with `Alt-Svc` headers.
 8. **[PENDING] Milestone 07 — Quality Assurance, SLA Benchmarks & MVP Launch:**
    - Spec: [knowledge/tasks/07_quality_assurance_and_launch.md](knowledge/tasks/07_quality_assurance_and_launch.md)
-   - Scope: End-to-end testing, SLA verification (API <50ms, FTS <5ms, quote <10ms), Zero Panic and Zero Emoji audits.
+   - Scope: End-to-end testing, SLA verification (API <50ms, FTS <5ms, quote <10ms), HTTP/3 QUIC connection & packet loss resilience tests, Zero Panic and Zero Emoji audits.
 
 ## 3. Architecture Decision Records (ADR Summary)
 
@@ -69,3 +69,8 @@ Full rationales documented in [MEMORY.md](MEMORY.md):
 | ADR-12 | Database Migrations | 6 PostgreSQL 17 migrations, 16 ERD indexes, Makefile automation | [MEMORY.md](MEMORY.md) |
 | ADR-13 | API Tooling & Tests | OpenAPI/Swagger UI (`utoipa`), auto-reload, structured JSON logs, 4-tier test suite | [MEMORY.md](MEMORY.md) |
 | ADR-14 | Infrastructure Layer | Strongly-typed modular `AppConfig`, dynamic connection pools, and 13 SeaORM entities with `postgres-vector` | [MEMORY.md](MEMORY.md) |
+| ADR-15 | Authentication | Argon2id, SHA-256 Redis OTP, JWT access & refresh token rotation, and guest progress auto-merge | [MEMORY.md](MEMORY.md) |
+| ADR-16 | Catalog & Reader | Cursor pagination, typo-tolerant FTS with `pg_trgm`, offline bundles, and streak gamification | [MEMORY.md](MEMORY.md) |
+| ADR-17 | Edge Transport | Caddy Reverse Proxy for HTTP/3 (QUIC) edge termination & auto-HTTPS; preserved stateless TCP Axum backend | [MEMORY.md](MEMORY.md) |
+
+

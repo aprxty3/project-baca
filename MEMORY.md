@@ -195,5 +195,15 @@ Technical rationales behind engineering decisions for **Project Baca**.
   6. Created modular manual testing guides in `knowledge/manual-test/` (tasks 01–03).
   7. Verified 100% pass rate across workspace test suite (32 tests).
 
+### 2026-09-26 — Adoption of Caddy Reverse Proxy for HTTP/3 (QUIC) Edge Termination with Automatic HTTP/2 Fallback (ADR-17)
+* **Actors:** `human:aprxty3` & `[antigravity]`
+* **Context:** Mobile readers accessing Project Baca over lossy cellular networks (4G/5G) or switching Wi-Fi require resilient transport without Head-of-Line blocking or dropped connections. Evaluating native HTTP/3 in Rust Axum (`h3` + `quinn`) vs. Reverse Proxy Edge Termination.
+* **Decision:**
+  1. Rejected embedding experimental `h3` and `quinn` natively in `crates/server` to uphold KISS, ROBUST, and Zero Panics invariants. Native implementation in Rust requires manual TLS 1.3 certificate orchestration, complex UDP socket pooling, lacks kernel zero-copy optimizations, and damages local development DX.
+  2. Adopted **Caddy Reverse Proxy** at the edge layer to terminate HTTP/3 (QUIC over UDP 443) and HTTP/2 (TCP 443) with automated TLS (Let's Encrypt / ACME).
+  3. Reverse proxy injects mandatory `Alt-Svc: h3=":443"; ma=86400` header, providing seamless 0-RTT/1-RTT QUIC upgrades for modern clients while automatically falling back to HTTP/2 over TCP when UDP 443 is blocked.
+  4. Axum REST API backend (`crates/server`) remains purely stateless TCP on port 8080, preserving fast integration testing, simple test runners, and clean separation of concerns.
+
+
 
 
