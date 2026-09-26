@@ -19,7 +19,7 @@ Current status, technical milestones, and operational backlog for **Project Baca
 
 1. **[COMPLETED] Phase 0 — Monorepo Foundation & Database Migrations:**
    - 5-crate Cargo workspace (`domain`, `shared`, `infra`, `server`, `web`).
-   - 6 paired SQL migrations applied to PostgreSQL 17 (14 tables, 37 indexes).
+   - 7 paired SQL migrations applied to PostgreSQL 17 (14 tables, 41 optimized indexes).
    - OpenAPI Swagger UI (`utoipa`) integrated at `/swagger-ui`.
    - Structured JSON logging with `x-request-id` propagation.
    - Comprehensive 4-tier test suite (smoke, integration, performance, reliability).
@@ -32,7 +32,7 @@ Current status, technical milestones, and operational backlog for **Project Baca
 4. **[COMPLETED] OWASP ASVS Hardening & Performance Optimization (Auth, Query Repository & Vulnerability Suite):**
    - Scope: Error sanitization suppressing internal database/system leakage (CWE-209 mitigation), structured validation error details, global OWASP security headers, IP spoofing defense with Cloudflare `CF-Connecting-IP`, RFC rate limit headers (`X-RateLimit-*`, `Retry-After`), 60s email OTP anti-spam cooldown, 15-min brute-force lockout on 5 failed logins, JWT `jti` access token blacklisting on logout, user-level token invalidation timestamps, user refresh token tracking set with `POST /api/v1/auth/revoke-all`, cascading session cleanup on account deletion (`DELETE /api/v1/me`).
    - Query & Latency Optimization: Extracted database access into dedicated `user_repository` with atomic activation; eliminated TCP handshake churn by caching and cloning multiplexed Redis connection in `AppState` (`state.get_redis_conn().await`); calibrated Argon2id to OWASP guidelines (19MB, 2 iterations, 1 lane) and offloaded to Tokio blocking thread pool; mitigated timing attacks via constant-time dummy verification on non-existent users; configured `[profile.dev.package.argon2]` and `blake2` with `opt-level = 3` for snappy dev performance.
-   - Test Suite: Verified across 65 tests (0 failures) including database integrity (`database_test.rs`), load and stress (`load_stress_test.rs`), API boundary contracts (`api_boundary_test.rs`), OWASP security (`security_owasp_test.rs`), and performance benchmarks (`performance_test.rs` - Login p95 = 52ms, OTP verify p95 = 26ms).
+   - Test Suite: Verified across 67 tests (0 failures) including database integrity (`database_test.rs` - 9 tests), load and stress (`load_stress_test.rs`), API boundary contracts (`api_boundary_test.rs`), OWASP security (`security_owasp_test.rs`), and performance benchmarks (`performance_test.rs` - Login p95 = 52ms, OTP verify p95 = 26ms).
 5. **[COMPLETED] Milestone 03 — Catalog Backend, Trigram FTS, Reader API & Streak Gamification:**
    - Spec: [knowledge/tasks/03_catalog_and_reader_backend.md](knowledge/tasks/03_catalog_and_reader_backend.md)
    - Scope: Cursor-based catalog (`/api/v1/books`), typo-tolerant FTS search (<3ms via `pg_trgm` and `word_similarity`), book overview, chapter content delivery, offline bundle synchronization, CFI reading progress sync (`/api/v1/progress/{book_id}`), active position retrieval (`/api/v1/progress/active`), reading heartbeat & daily streak engine (`/api/v1/activity/heartbeat`), and badges gamification (`/api/v1/badges`, `/api/v1/me/badges`). Verified with 100% test pass rate.

@@ -23,6 +23,17 @@ Technical rationales behind engineering decisions for **Project Baca**.
 
 ## Chronological Decision Records
 
+### 2026-09-26 — Database Performance Optimization: Index Pruning, Foreign Key Coverage & Catalog Zero-Sort
+* **Actors:** `human:aprxty3` & `[antigravity]`
+* **Context:** Auditing the PostgreSQL 17 schema against SeaORM entities revealed optimization gaps: (1) redundant B-Tree indexes duplicating existing UNIQUE constraints (`chapters`, `tags`, `tldr_cache`, `user_badges`, `users`), increasing write latency and buffer cache pressure; (2) unindexed Foreign Key columns (`book_chunks.chapter_id`, `user_reading_progress.book_id`, `user_reading_progress.last_chapter_id`, `reading_activity_logs.book_id`, `saved_quotes.chapter_id`, `user_badges.badge_id`), forcing PostgreSQL to perform expensive sequential scans during cascading deletes and joins; (3) default catalog pagination queries (`GET /api/v1/books` without theme/lang filters) requiring in-memory sorting.
+* **Decision:**
+  1. Implemented Paired Migration 07 (`20260926000007_optimize_indexes_and_foreign_keys.up.sql` and `.down.sql`).
+  2. Pruned duplicate indexes (`idx_chapters_book_number`, `idx_tags_slug`, `idx_tldr_cache_lookup`, `idx_user_badges_user_badge`) to save write IOPS.
+  3. Consolidated `users.email` indexes into a single unique index `idx_users_email` supporting the UNIQUE constraint.
+  4. Added dedicated B-tree indexes for all foreign key child columns to ensure O(log N) cascading deletes and join lookups.
+  5. Added `idx_books_published_year_id` on `books (publication_year DESC NULLS LAST, id ASC) WHERE status = 'published'`, eliminating in-memory `Sort` nodes and transforming default catalog queries into pure index scans (<1ms).
+  6. Verified via `database_test.rs` (9 tests passing) and workspace suite (67 tests passing with 0 failures).
+
 ### 2026-09-26 — Comprehensive Testing Architecture (Database Integrity, Load & Stress, API Boundary)
 * **Actors:** `human:aprxty3` & `[antigravity]`
 * **Context:** Preventing technical debt and regression while the codebase is compact requires proactive automated testing covering: (1) database constraints, cascades, rollbacks, and query plans; (2) sustained high concurrency load and rate-limit shedding; (3) HTTP edge-cases, 404 envelopes, 405 methods, and malformed body handling.

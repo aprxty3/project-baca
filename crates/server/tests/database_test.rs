@@ -422,3 +422,83 @@ async fn test_db_index_query_plan_verification() {
         "Query plan must explicitly use 'idx_users_email'. Plan:\n{full_plan}"
     );
 }
+
+#[tokio::test]
+async fn test_db_catalog_default_pagination_index_plan() {
+    let harness = TestHarness::new().await;
+    if matches!(harness.state.db, DatabaseConnection::Disconnected) {
+        println!("Database disconnected, skipping catalog index plan test");
+        return;
+    }
+
+    // Begin transaction and disable seqscan to verify index path usability
+    let txn = harness.state.db.begin().await.expect("Begin txn failed");
+    txn.execute(Statement::from_string(
+        harness.state.db.get_database_backend(),
+        "SET LOCAL enable_seqscan = OFF;",
+    ))
+    .await
+    .expect("Set enable_seqscan failed");
+
+    let explain_stmt = Statement::from_string(
+        harness.state.db.get_database_backend(),
+        "EXPLAIN (FORMAT TEXT) SELECT id, title, author, publication_year FROM books WHERE status = 'published' ORDER BY publication_year DESC NULLS LAST, id ASC LIMIT 20;",
+    );
+    let query_result = txn.query_all(explain_stmt).await.expect("EXPLAIN query failed");
+
+    let mut full_plan = String::new();
+    for row in query_result {
+        if let Ok(line) = row.try_get_by_index::<String>(0) {
+            full_plan.push_str(&line);
+            full_plan.push('\n');
+        }
+    }
+
+    assert!(
+        full_plan.contains("idx_books_published_year_id"),
+        "Default catalog pagination must use 'idx_books_published_year_id'. Plan:\n{full_plan}"
+    );
+    assert!(
+        !full_plan.contains("Sort"),
+        "Default catalog pagination must avoid an in-memory Sort node. Plan:\n{full_plan}"
+    );
+}
+
+#[tokio::test]
+async fn test_db_foreign_key_and_optimized_index_coverage() {
+    let harness = TestHarness::new().await;
+    if matches!(harness.state.db, DatabaseConnection::Disconnected) {
+        println!("Database disconnected, skipping index coverage test");
+        return;
+    }
+
+    let required_indexes = [
+        "idx_book_chunks_chapter_id",
+        "idx_user_progress_book_id",
+        "idx_user_progress_chapter_id",
+        "idx_reading_activity_book_id",
+        "idx_saved_quotes_book_id",
+        "idx_saved_quotes_chapter_id",
+        "idx_user_badges_badge_id",
+        "idx_tldr_cache_chapter_id",
+        "idx_books_published_year_id",
+    ];
+
+    for idx_name in required_indexes {
+        let query = Statement::from_string(
+            harness.state.db.get_database_backend(),
+            format!("SELECT indexname FROM pg_indexes WHERE indexname = '{idx_name}';"),
+        );
+        let rows = harness
+            .state
+            .db
+            .query_all(query)
+            .await
+            .expect("Query pg_indexes failed");
+        assert!(
+            !rows.is_empty(),
+            "Required performance index '{idx_name}' must exist in PostgreSQL catalog"
+        );
+    }
+}
+
