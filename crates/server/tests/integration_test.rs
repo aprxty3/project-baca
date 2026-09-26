@@ -23,7 +23,12 @@ async fn test_integration_request_id_custom_propagation() {
     let resp = harness.send_request(req).await;
 
     assert_eq!(resp.status(), StatusCode::OK);
-    let returned_id = resp.headers().get("x-request-id").unwrap().to_str().unwrap();
+    let returned_id = resp
+        .headers()
+        .get("x-request-id")
+        .unwrap()
+        .to_str()
+        .unwrap();
     assert_eq!(returned_id, custom_id);
 }
 
@@ -40,7 +45,12 @@ async fn test_integration_request_id_auto_generation() {
     let resp = harness.send_request(req).await;
 
     assert_eq!(resp.status(), StatusCode::OK);
-    let generated_id = resp.headers().get("x-request-id").unwrap().to_str().unwrap();
+    let generated_id = resp
+        .headers()
+        .get("x-request-id")
+        .unwrap()
+        .to_str()
+        .unwrap();
     assert!(Uuid::parse_str(generated_id).is_ok());
 }
 
@@ -77,17 +87,50 @@ async fn test_integration_openapi_schema_contains_registered_dtos() {
     assert_eq!(resp.status(), StatusCode::OK);
 
     let schemas = &spec["components"]["schemas"];
-    assert!(schemas["SignupRequest"].is_object(), "SignupRequest schema missing");
-    assert!(schemas["LoginRequest"].is_object(), "LoginRequest schema missing");
-    assert!(schemas["VerifyOtpRequest"].is_object(), "VerifyOtpRequest schema missing");
-    assert!(schemas["TokenResponse"].is_object(), "TokenResponse schema missing");
-    assert!(schemas["UserProfileDto"].is_object(), "UserProfileDto schema missing");
-    assert!(schemas["BookSummaryDto"].is_object(), "BookSummaryDto schema missing");
-    assert!(schemas["BookDetailDto"].is_object(), "BookDetailDto schema missing");
-    assert!(schemas["ChapterSummaryDto"].is_object(), "ChapterSummaryDto schema missing");
-    assert!(schemas["QuoteSearchRequest"].is_object(), "QuoteSearchRequest schema missing");
-    assert!(schemas["QuoteSearchResultDto"].is_object(), "QuoteSearchResultDto schema missing");
-    assert!(schemas["ReadingProgressUpdateDto"].is_object(), "ReadingProgressUpdateDto schema missing");
+    assert!(
+        schemas["SignupRequest"].is_object(),
+        "SignupRequest schema missing"
+    );
+    assert!(
+        schemas["LoginRequest"].is_object(),
+        "LoginRequest schema missing"
+    );
+    assert!(
+        schemas["VerifyOtpRequest"].is_object(),
+        "VerifyOtpRequest schema missing"
+    );
+    assert!(
+        schemas["TokenResponse"].is_object(),
+        "TokenResponse schema missing"
+    );
+    assert!(
+        schemas["UserProfileDto"].is_object(),
+        "UserProfileDto schema missing"
+    );
+    assert!(
+        schemas["BookSummaryDto"].is_object(),
+        "BookSummaryDto schema missing"
+    );
+    assert!(
+        schemas["BookDetailDto"].is_object(),
+        "BookDetailDto schema missing"
+    );
+    assert!(
+        schemas["ChapterSummaryDto"].is_object(),
+        "ChapterSummaryDto schema missing"
+    );
+    assert!(
+        schemas["QuoteSearchRequest"].is_object(),
+        "QuoteSearchRequest schema missing"
+    );
+    assert!(
+        schemas["QuoteSearchResultDto"].is_object(),
+        "QuoteSearchResultDto schema missing"
+    );
+    assert!(
+        schemas["ReadingProgressUpdateDto"].is_object(),
+        "ReadingProgressUpdateDto schema missing"
+    );
 }
 
 #[tokio::test]

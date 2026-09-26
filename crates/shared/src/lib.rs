@@ -78,61 +78,122 @@ pub enum AppError {
 }
 
 // -----------------------------------------------------------------------------
-// Authentication DTOs
+// Authentication & User DTOs
 // -----------------------------------------------------------------------------
 
 #[derive(Debug, Clone, Serialize, Deserialize, Validate)]
 #[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
 pub struct SignupRequest {
-    #[validate(length(min = 2, max = 50, message = "Nickname must be between 2 and 50 characters"))]
-    pub nickname: String,
+    #[serde(alias = "nickname")]
+    #[validate(length(
+        min = 2,
+        max = 100,
+        message = "Display name must be between 2 and 100 characters"
+    ))]
+    pub display_name: String,
 
     #[validate(email(message = "Invalid email format"))]
     pub email: String,
 
     #[validate(length(min = 8, max = 128, message = "Password must be at least 8 characters"))]
     pub password: String,
-
-    #[validate(must_match(other = "password", message = "Passwords do not match"))]
-    pub re_password: String,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, Validate)]
 #[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
 pub struct VerifyOtpRequest {
-    #[validate(email)]
+    #[validate(email(message = "Invalid email format"))]
     pub email: String,
 
-    #[validate(length(equal = 6, message = "OTP must be 6 digits"))]
+    #[validate(length(equal = 6, message = "OTP must be exactly 6 digits"))]
     pub otp: String,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, Validate)]
 #[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
 pub struct LoginRequest {
-    #[validate(email)]
+    #[validate(email(message = "Invalid email format"))]
     pub email: String,
 
-    #[validate(length(min = 1))]
+    #[validate(length(min = 1, message = "Password cannot be empty"))]
     pub password: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, Validate)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
+pub struct RefreshTokenRequest {
+    #[validate(length(min = 1, message = "Refresh token must not be empty"))]
+    pub refresh_token: String,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
 pub struct TokenResponse {
     pub access_token: String,
+    pub refresh_token: String,
     pub token_type: String,
     pub expires_in: i64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub user: Option<UserProfileDto>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
 pub struct UserProfileDto {
     pub id: Uuid,
-    pub nickname: String,
+    #[serde(alias = "nickname")]
+    pub display_name: String,
     pub email: String,
     pub role: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub avatar_url: Option<String>,
+    pub is_active: bool,
     pub created_at: DateTime<Utc>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, Validate)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
+pub struct UpdateProfileRequest {
+    #[validate(length(
+        min = 2,
+        max = 100,
+        message = "Display name must be between 2 and 100 characters"
+    ))]
+    pub display_name: Option<String>,
+    pub avatar_url: Option<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, Validate)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
+pub struct ChangePasswordRequest {
+    #[validate(length(min = 1, message = "Current password is required"))]
+    pub current_password: String,
+    #[validate(length(
+        min = 8,
+        max = 128,
+        message = "New password must be at least 8 characters"
+    ))]
+    pub new_password: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, Validate)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
+pub struct GuestProgressRecord {
+    pub book_id: Uuid,
+    pub last_chapter_id: Uuid,
+    #[validate(length(min = 1, max = 255))]
+    pub last_anchor_cfi: String,
+    #[validate(range(min = 0.0, max = 100.0))]
+    pub completion_percentage: f32,
+    pub is_finished: Option<bool>,
+    pub last_read_at: Option<DateTime<Utc>>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, Validate)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
+pub struct GuestMergeRequest {
+    #[validate(nested)]
+    pub records: Vec<GuestProgressRecord>,
 }
 
 // -----------------------------------------------------------------------------
@@ -183,7 +244,11 @@ pub struct ChapterSummaryDto {
 #[derive(Debug, Clone, Serialize, Deserialize, Validate)]
 #[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
 pub struct QuoteSearchRequest {
-    #[validate(length(min = 3, max = 500, message = "Query must be between 3 and 500 characters"))]
+    #[validate(length(
+        min = 3,
+        max = 500,
+        message = "Query must be between 3 and 500 characters"
+    ))]
     pub query: String,
     pub limit: Option<u64>,
 }

@@ -1,11 +1,15 @@
 //! Project Baca — Server Library
 //! Exposes Axum Router, AppState, Middleware, OpenAPI specs, and HTTP Handlers.
 
+pub mod error;
+pub mod middleware;
+pub mod routes;
+
 use axum::{
     body::Body,
     extract::State,
     http::{HeaderName, HeaderValue, Request, Response, StatusCode},
-    middleware::{self, Next},
+    middleware as axum_mw,
     response::IntoResponse,
     routing::get,
     Json, Router,
@@ -34,7 +38,17 @@ pub struct AppState {
 #[openapi(
     paths(
         health_check,
-        api_health_check
+        api_health_check,
+        routes::auth::signup,
+        routes::auth::verify_otp,
+        routes::auth::login,
+        routes::auth::refresh,
+        routes::auth::logout,
+        routes::auth::get_me,
+        routes::auth::update_me,
+        routes::auth::change_password,
+        routes::auth::delete_me,
+        routes::progress::merge_guest_progress,
     ),
     components(
         schemas(
@@ -42,8 +56,13 @@ pub struct AppState {
             SignupRequest,
             VerifyOtpRequest,
             LoginRequest,
+            RefreshTokenRequest,
             TokenResponse,
             UserProfileDto,
+            UpdateProfileRequest,
+            ChangePasswordRequest,
+            GuestProgressRecord,
+            GuestMergeRequest,
             BookSummaryDto,
             BookDetailDto,
             ChapterSummaryDto,
@@ -52,8 +71,12 @@ pub struct AppState {
             ReadingProgressUpdateDto
         )
     ),
+    modifiers(&SecurityAddon),
     tags(
-        (name = "System & Health", description = "Runtime health checks and infrastructure connectivity")
+        (name = "System & Health", description = "Runtime health checks and infrastructure connectivity"),
+        (name = "Authentication", description = "User registration, OTP verification, and JWT sessions"),
+        (name = "User Management", description = "Profile updates, password management, and account deletion"),
+        (name = "Reading Progress", description = "Progress tracking and guest reconciliation")
     ),
     info(
         title = "Project Baca REST API",
@@ -64,8 +87,26 @@ pub struct AppState {
 )]
 pub struct ApiDoc;
 
+struct SecurityAddon;
+
+impl utoipa::Modify for SecurityAddon {
+    fn modify(&self, openapi: &mut utoipa::openapi::OpenApi) {
+        if let Some(components) = openapi.components.as_mut() {
+            components.add_security_scheme(
+                "BearerAuth",
+                utoipa::openapi::security::SecurityScheme::Http(
+                    utoipa::openapi::security::HttpBuilder::new()
+                        .scheme(utoipa::openapi::security::HttpAuthScheme::Bearer)
+                        .bearer_format("JWT")
+                        .build(),
+                ),
+            );
+        }
+    }
+}
+
 /// Middleware for request ID correlation (x-request-id) across tracing spans and HTTP responses
-pub async fn request_id_middleware(req: Request<Body>, next: Next) -> Response<Body> {
+pub async fn request_id_middleware(req: Request<Body>, next: axum_mw::Next) -> Response<Body> {
     let request_id = match req.headers().get(&REQUEST_ID_HEADER) {
         Some(id) => id.clone(),
         None => {
@@ -79,7 +120,9 @@ pub async fn request_id_middleware(req: Request<Body>, next: Next) -> Response<B
     let _guard = span.enter();
 
     let mut response = next.run(req).await;
-    response.headers_mut().insert(REQUEST_ID_HEADER.clone(), request_id);
+    response
+        .headers_mut()
+        .insert(REQUEST_ID_HEADER.clone(), request_id);
     response
 }
 
@@ -114,7 +157,7 @@ pub async fn health_check() -> impl IntoResponse {
 )]
 pub async fn api_health_check(State(state): State<Arc<AppState>>) -> impl IntoResponse {
     let db_connected = state.db.ping().await.is_ok();
-    
+
     (
         StatusCode::OK,
         Json(ApiResponse::success(serde_json::json!({
@@ -126,18 +169,31 @@ pub async fn api_health_check(State(state): State<Arc<AppState>>) -> impl IntoRe
     )
 }
 
-/// Assembles Axum Router with Swagger UI and middleware pipeline
+/// Assembles Axum Router with Swagger UI, sub-routers, and middleware pipeline
 pub fn create_app(state: Arc<AppState>) -> Router {
     let cors = CorsLayer::new()
         .allow_origin(Any)
         .allow_methods(Any)
         .allow_headers(Any);
 
+    let auth_router = routes::auth_routes().layer(axum_mw::from_fn_with_state(
+        state.clone(),
+        crate::middleware::rate_limit_middleware,
+    ));
+
     Router::new()
         .merge(SwaggerUi::new("/swagger-ui").url("/api-docs/openapi.json", ApiDoc::openapi()))
         .route("/health", get(health_check))
         .route("/api/v1/health", get(api_health_check))
-        .layer(middleware::from_fn(request_id_middleware))
+        // Versioned API routes (/api/v1/...)
+        .nest("/api/v1/auth", auth_router.clone())
+        .nest("/api/v1/me", routes::user_routes())
+        .nest("/api/v1/progress", routes::progress_routes())
+        // Top-level aliases (/api/...) for SRS spec compatibility
+        .nest("/api/auth", auth_router)
+        .nest("/api/me", routes::user_routes())
+        .nest("/api/progress", routes::progress_routes())
+        .layer(axum_mw::from_fn(request_id_middleware))
         .layer(cors)
         .layer(TraceLayer::new_for_http())
         .with_state(state)

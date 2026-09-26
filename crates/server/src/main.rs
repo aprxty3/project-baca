@@ -99,4 +99,3 @@ async fn shutdown_signal() {
 
     info!("Signal received, starting graceful shutdown...");
 }
-

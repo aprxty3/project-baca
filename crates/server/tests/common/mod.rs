@@ -43,19 +43,27 @@ impl TestHarness {
 
     /// Sends an HTTP request to the in-memory Axum router
     pub async fn send_request(&self, req: Request<Body>) -> Response<Body> {
-        self.app.clone().oneshot(req).await.expect("Failed to execute in-memory request")
+        self.app
+            .clone()
+            .oneshot(req)
+            .await
+            .expect("Failed to execute in-memory request")
     }
 
     /// Sends an HTTP request and deserializes the response body to JSON
     #[allow(dead_code)]
-    pub async fn send_json_request(&self, req: Request<Body>) -> (Response<Body>, serde_json::Value) {
+    pub async fn send_json_request(
+        &self,
+        req: Request<Body>,
+    ) -> (Response<Body>, serde_json::Value) {
         let resp = self.send_request(req).await;
         let (parts, body) = resp.into_parts();
         let bytes = axum::body::to_bytes(body, usize::MAX)
             .await
             .expect("Failed to read response bytes");
-        let json: serde_json::Value = serde_json::from_slice(&bytes)
-            .unwrap_or_else(|_| serde_json::json!({ "raw": String::from_utf8_lossy(&bytes).to_string() }));
+        let json: serde_json::Value = serde_json::from_slice(&bytes).unwrap_or_else(
+            |_| serde_json::json!({ "raw": String::from_utf8_lossy(&bytes).to_string() }),
+        );
         (Response::from_parts(parts, Body::from(bytes)), json)
     }
 }

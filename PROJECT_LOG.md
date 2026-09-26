@@ -26,9 +26,9 @@ Current status, technical milestones, and operational backlog for **Project Baca
 2. **[COMPLETED] Milestone 01 — Infrastructure, Modular AppConfig & SeaORM Entities:**
    - Spec: [knowledge/tasks/01_infrastructure_and_config.md](knowledge/tasks/01_infrastructure_and_config.md)
    - Scope: `dotenvy` integration, strongly-typed modular configurations (`ServerConfig`, `DatabaseConfig`, `RedisConfig`, `AuthConfig`, `StorageConfig`, `EmailConfig`, `AiConfig`), dynamic SeaORM and Redis connection pools, 13 SeaORM entity definitions with `postgres-vector` (`PgVector`) support, Arc-wrapped `AppState`.
-3. **[ACTIVE] Milestone 02 — Authentication, JWT/Argon2id, OTP & Guest Reconciliation:**
+3. **[COMPLETED] Milestone 02 — Authentication, JWT/Argon2id, OTP & Guest Reconciliation:**
    - Spec: [knowledge/tasks/02_authentication_and_user.md](knowledge/tasks/02_authentication_and_user.md)
-   - Scope: Auth endpoints, Argon2id hashing, Redis OTP, token rotation, guest merging, RBAC guards.
+   - Scope: End-to-end auth lifecycle (`/api/v1/auth/signup`, `verify-otp`, `login`, `refresh`, `logout`), profile management (`/api/v1/me`), Argon2id password hashing, Redis OTP (SHA-256 with 3-attempt limit), JWT access token & 30-day refresh token rotation, Mailpit SMTP email dispatch, guest progress upsert reconciliation (`/api/v1/progress/merge`), rate limiting & auth middleware. Verified with 100% test pass rate.
 4. **[PENDING] Milestone 03 — Catalog Backend, Trigram FTS, Reader API & Streak Gamification:**
    - Spec: [knowledge/tasks/03_catalog_and_reader_backend.md](knowledge/tasks/03_catalog_and_reader_backend.md)
    - Scope: Cursor-based catalog, Trigram FTS (<3ms), chapter content, progress sync, streak heartbeats.

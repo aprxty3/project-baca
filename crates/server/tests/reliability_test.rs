@@ -46,7 +46,10 @@ async fn test_reliability_disconnected_database_fallback() {
         let (parts, body) = resp.into_parts();
         let bytes = axum::body::to_bytes(body, usize::MAX).await.unwrap();
         let json: serde_json::Value = serde_json::from_slice(&bytes).unwrap();
-        (axum::http::Response::from_parts(parts, Body::from(bytes)), json)
+        (
+            axum::http::Response::from_parts(parts, Body::from(bytes)),
+            json,
+        )
     };
 
     assert_eq!(resp.status(), StatusCode::OK);
@@ -62,7 +65,11 @@ async fn test_reliability_mock_repository_fault_injection() {
         .expect_find_book_by_id()
         .with(mockall::predicate::eq(sample_id))
         .times(1)
-        .returning(|_| Err(AppError::Internal("Database connection pool exhausted".to_string())));
+        .returning(|_| {
+            Err(AppError::Internal(
+                "Database connection pool exhausted".to_string(),
+            ))
+        });
 
     let result = mock_port.find_book_by_id(&sample_id);
 

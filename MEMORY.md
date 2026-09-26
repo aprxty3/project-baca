@@ -131,3 +131,15 @@ Technical rationales behind engineering decisions for **Project Baca**.
   4. Modeled all 13 database tables into SeaORM entities in `crates/infra/src/entities/`, enabling `postgres-vector` (`PgVector`) for `book_chunks.embedding` and `Decimal` for reading completion percentages.
   5. Refactored `AppState` to hold `Arc<AppConfig>` to avoid deep clones across Axum requests.
 
+### 2026-09-26 — Authentication, JWT/Argon2id Security, Redis OTP & Guest Reconciliation (ADR-15)
+* **Actors:** `human:aprxty3` & `[antigravity]`
+* **Context:** Secure user registration, authentication, token rotation, guest reading synchronization, and RBAC protection according to SRS 1–7 and FRD Module 3.
+* **Decision:**
+  1. Implemented Argon2id password hashing (64MB memory, 3 iterations, 4 parallelism) and verification via `argon2 = "0.5"`.
+  2. Generates 6-digit numeric OTPs via `OsRng`, storing SHA-256 hashed digest in Redis (`otp:{email}`) with 10-minute TTL and 3-attempt limit. Integrated async SMTP email delivery targeting Mailpit with fallback logging.
+  3. JWT access tokens (15-min TTL, HS256) and cryptographically secure 32-byte refresh tokens stored in Redis (`refresh_token:{token}`) with 30-day TTL. Implemented single-use refresh token rotation on `/api/v1/auth/refresh` and token revocation on logout.
+  4. Implemented `AuthUser` Axum extractor, `require_admin` RBAC middleware, and Redis sliding-window rate limiting (20 req/min for auth endpoints).
+  5. Implemented guest progress reconciliation (`/api/v1/progress/merge`) executing SQL upsert with `GREATEST` progress resolution without data loss.
+  6. Verified complete auth lifecycle and guest progress merge with integration tests achieving 100% pass rate.
+
+

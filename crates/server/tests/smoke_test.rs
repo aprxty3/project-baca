@@ -60,7 +60,11 @@ async fn test_smoke_swagger_ui_endpoint() {
     let resp = harness.send_request(req).await;
     assert_eq!(resp.status(), StatusCode::OK);
 
-    let content_type = resp.headers().get("content-type").and_then(|v| v.to_str().ok()).unwrap_or("");
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("");
     assert!(content_type.contains("text/html"));
 }
 
@@ -86,13 +90,16 @@ async fn test_smoke_openapi_json_spec() {
 #[test]
 fn test_smoke_infrastructure_tcp_reachability() {
     let postgres_addr = "127.0.0.1:5433";
-    if let Ok(_stream) = TcpStream::connect_timeout(&postgres_addr.parse().unwrap(), Duration::from_millis(500)) {
+    if let Ok(_stream) =
+        TcpStream::connect_timeout(&postgres_addr.parse().unwrap(), Duration::from_millis(500))
+    {
         println!("PostgreSQL port 5433 is reachable.");
     }
 
     let redis_addr = "127.0.0.1:6380";
-    if let Ok(_stream) = TcpStream::connect_timeout(&redis_addr.parse().unwrap(), Duration::from_millis(500)) {
+    if let Ok(_stream) =
+        TcpStream::connect_timeout(&redis_addr.parse().unwrap(), Duration::from_millis(500))
+    {
         println!("Redis port 6380 is reachable.");
     }
 }
-

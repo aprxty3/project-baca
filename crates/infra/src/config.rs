@@ -284,8 +284,7 @@ impl AppConfig {
             .unwrap_or(default_email.smtp_port);
         let smtp_user = env::var("SMTP_USER").unwrap_or(default_email.smtp_user);
         let smtp_password = env::var("SMTP_PASSWORD").unwrap_or(default_email.smtp_password);
-        let smtp_from_email =
-            env::var("SMTP_FROM_EMAIL").unwrap_or(default_email.smtp_from_email);
+        let smtp_from_email = env::var("SMTP_FROM_EMAIL").unwrap_or(default_email.smtp_from_email);
         let smtp_from_name = env::var("SMTP_FROM_NAME").unwrap_or(default_email.smtp_from_name);
 
         let email = EmailConfig {
@@ -299,8 +298,7 @@ impl AppConfig {
 
         let ai_provider = env::var("EMBEDDING_PROVIDER").unwrap_or(default_ai.provider);
         let ai_api_key = env::var("GEMINI_API_KEY").unwrap_or(default_ai.api_key);
-        let ai_model_name =
-            env::var("EMBEDDING_MODEL_NAME").unwrap_or(default_ai.model_name);
+        let ai_model_name = env::var("EMBEDDING_MODEL_NAME").unwrap_or(default_ai.model_name);
         let ai_dimension = env::var("EMBEDDING_DIMENSION")
             .ok()
             .and_then(|v| v.parse().ok())
@@ -391,4 +389,3 @@ mod tests {
         assert!(!config.redis.url.is_empty());
     }
 }
-

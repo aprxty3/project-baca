@@ -30,17 +30,12 @@ pub struct User {
     pub updated_at: DateTime<Utc>,
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, Default)]
 pub enum UserRole {
     Guest,
+    #[default]
     Reader,
     Admin,
-}
-
-impl Default for UserRole {
-    fn default() -> Self {
-        Self::Reader
-    }
 }
 
 /// Book Domain Entity
@@ -61,18 +56,13 @@ pub struct Book {
     pub updated_at: DateTime<Utc>,
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, Default)]
 pub enum BookStatus {
+    #[default]
     Draft,
     Processing,
     Published,
     Archived,
-}
-
-impl Default for BookStatus {
-    fn default() -> Self {
-        Self::Draft
-    }
 }
 
 /// Chapter Domain Entity

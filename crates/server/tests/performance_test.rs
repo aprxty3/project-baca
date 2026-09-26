@@ -95,6 +95,9 @@ async fn test_perf_concurrent_load_50_workers() {
         elapsed.as_secs_f64() * 1000.0 / (worker_count as f64)
     );
 
-    assert!(elapsed.as_millis() < 1000, "Concurrency execution exceeded 1s: {:?}", elapsed);
+    assert!(
+        elapsed.as_millis() < 1000,
+        "Concurrency execution exceeded 1s: {:?}",
+        elapsed
+    );
 }
-
