@@ -4,71 +4,121 @@
 - cluster-only mode — file stats not available
 
 ## Summary
-- 329 nodes · 443 edges · 47 communities (17 shown, 30 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.84)
+- 811 nodes · 1444 edges · 90 communities (60 shown, 30 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 26 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `03fd87ca`
+- Built from commit: `58abb0c0`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- Integration and Performance Testing
+- reliability_test.rs
 - Database Schema and Indexes
-- Shared Data Transfer Objects
-- API Server Configuration
-- Auth and Security Tasks
-- Domain Entities and Logic
-- Infrastructure and Client Initialization
+- shared/src/lib.rs
+- server/src/lib.rs
+- 2. Work Breakdown
+- domain/src/lib.rs
+- server/src/main.rs
 - Frontend Web Reader Tasks
 - Test Harness Utilities
 - Infrastructure and SeaORM Setup
 - EPUB Ingestion Pipeline Tasks
 - Quality Assurance and Benchmarking
-- Project Documentation and Diagrams
-- Semantic AI Subsystem Tasks
-- Catalog and Progress Tasks
+- README.md
+- AppError
+- 2. Work Breakdown
 - Database Migration Scripts
 - Project Workspace Modules
-- Architecture and Design References
-- Web Frontend Components
+- AppConfig
+- prelude
 - Knowledge Graph Protocols
-- Web Entry Assets
+- progress_repository.rs
+- web/src/main.rs
 - Reader UI Illustrations
 - Catalog UI Illustrations
 - Monitoring UI Illustrations
-- API Client
-- Database Connection
-- Date and Time Types
-- String Type
-- UTC Timezone
+- routes/books.rs
+- entities/mod.rs
+- AppState
+- pool.rs
+- smoke_test.rs
+- catalog_test.rs
+- 2. Step-by-Step Test Procedure
+- Model
+- manual-test/README.md
+- Manual Testing — Milestone 03: Catalog, Reader Engine & Gamification
+- 2. Documentation Directory
 - Knowledge Format Specification
 - Database Technology Stack
+- Model
+- .find_book_by_id
+- 3. Server Health & OpenAPI Documentation
+- Model
+- serde
+- Model
+- Model
+- Model
+- chapters.rs
+- reading_activity_logs.rs
+- tags.rs
+- Entity
+- user_badges.rs
+- badges.rs
+- 2. Prerequisites & Service Status Verification
+- 3. Catalog Discovery & Typo-Tolerant Search
+- middleware/mod.rs
+- Entity
+- Entity
+- Entity
+- Entity
+- Entity
+- Entity
+- Entity
+- Entity
+- Entity
+- Entity
+- Entity
+- 4. Book Overview, Reader Content & Offline Bundle
+- ActiveModel
+- ActiveModel
+- ActiveModel
+- ActiveModel
+- ActiveModel
+- ActiveModel
+- ActiveModel
+- ActiveModel
+- ActiveModel
+- ActiveModel
+- ActiveModel
+- ActiveModel
+- ActiveModel
+- testharness
 
 ## God Nodes (most connected - your core abstractions)
-1. `books` - 12 edges
-2. `users` - 8 edges
-3. `main()` - 8 edges
-4. `2. Work Breakdown` - 8 edges
-5. `AppState` - 7 edges
-6. `AppError` - 7 edges
-7. `TestHarness` - 7 edges
-8. `chapters` - 7 edges
-9. `2. Work Breakdown` - 7 edges
-10. `2. Work Breakdown` - 7 edges
+1. `AppError` - 39 edges
+2. `AppState` - 37 edges
+3. `HttpError` - 29 edges
+4. `AppConfig` - 18 edges
+5. `AuthUser` - 18 edges
+6. `TestHarness` - 14 edges
+7. `login()` - 14 edges
+8. `verify_otp()` - 14 edges
+9. `books` - 12 edges
+10. `change_password()` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Web Entry Point` --semantically_similar_to--> `Asset Catalog`  [INFERRED] [semantically similar]
   crates/web/index.html → assets/README.md
-- `main()` --calls--> `create_app()`  [INFERRED]
-  crates/server/src/main.rs → crates/server/src/lib.rs
-- `test_reliability_disconnected_database_fallback()` --calls--> `create_app()`  [INFERRED]
-  crates/server/tests/reliability_test.rs → crates/server/src/lib.rs
-- `TestHarness` --references--> `AppState`  [EXTRACTED]
-  crates/server/tests/common/mod.rs → crates/server/src/lib.rs
-- `user_reading_streaks` --references--> `users`  [EXTRACTED]
-  migrations/20260925000006_create_progress_and_gamification.up.sql → migrations/20260925000002_create_users_and_roles.up.sql
+- `login()` --calls--> `generate_access_token()`  [INFERRED]
+  crates/server/src/routes/auth.rs → crates/infra/src/security/jwt.rs
+- `refresh()` --calls--> `generate_access_token()`  [INFERRED]
+  crates/server/src/routes/auth.rs → crates/infra/src/security/jwt.rs
+- `verify_otp()` --calls--> `generate_access_token()`  [INFERRED]
+  crates/server/src/routes/auth.rs → crates/infra/src/security/jwt.rs
+- `login()` --calls--> `generate_refresh_token()`  [INFERRED]
+  crates/server/src/routes/auth.rs → crates/infra/src/security/jwt.rs
 
 ## Import Cycles
 - None detected.
@@ -80,35 +130,35 @@
 - **OKF Knowledge Vault** — knowledge_index_md, knowledge_prd_md, knowledge_erd_md, knowledge_frd_md, knowledge_srs_md, knowledge_ux_flow_md, knowledge_log_md [EXTRACTED 1.00]
 - **OKF v0.2 Specification Suite** — knowledge_index_md, knowledge_prd_md, knowledge_erd_md, knowledge_frd_md, knowledge_srs_md, knowledge_ux_flow_md, knowledge_log_md [EXTRACTED 1.00]
 
-## Communities (47 total, 30 thin omitted)
+## Communities (90 total, 30 thin omitted)
 
-### Community 0 - "Integration and Performance Testing"
-Cohesion: 0.06
-Nodes (23): arc, assert_eq, automock, body, BookCatalogPort, Option, Result, Uuid (+15 more)
+### Community 0 - "reliability_test.rs"
+Cohesion: 0.13
+Nodes (8): appconfig, arc, assert_eq, automock, body, http, instant, uuid
 
 ### Community 1 - "Database Schema and Indexes"
 Cohesion: 0.11
 Nodes (29): idx_users_admin_role, idx_users_email, users, book_tags, books, idx_book_tags_reverse, idx_books_catalog_filter, idx_books_published_author_trgm (+21 more)
 
-### Community 2 - "Shared Data Transfer Objects"
-Cohesion: 0.14
-Nodes (26): chrono, ApiResponse, ApiResponse<T>, BookDetailDto, BookSummaryDto, ChapterSummaryDto, ErrorPayload, LoginRequest (+18 more)
-
-### Community 3 - "API Server Configuration"
+### Community 2 - "shared/src/lib.rs"
 Cohesion: 0.10
-Nodes (25): AppConfig, axum, Client, cors, api_health_check(), ApiDoc, AppState, create_app() (+17 more)
+Nodes (49): get_book_by_id(), get_chapter_by_number(), get_offline_bundle(), get_tags_for_book(), list_books(), DatabaseConnection, Result, String (+41 more)
 
-### Community 4 - "Auth and Security Tasks"
-Cohesion: 0.11
-Nodes (21): OKF & Persistent Memory Guidelines, Task 02: Auth & Security, 1. Summary, 2. Work Breakdown, 3. Success Criteria, Cross-Domain Matrix, Sub-Task 2.1: Password Hashing (Argon2id) & OTP, Sub-Task 2.2: JWT Tokens & Refresh Rotation (+13 more)
+### Community 3 - "server/src/lib.rs"
+Cohesion: 0.09
+Nodes (23): cors, api_health_check(), ApiDoc, create_app(), health_check(), REQUEST_ID_HEADER, request_id_middleware(), Arc (+15 more)
 
-### Community 5 - "Domain Entities and Logic"
-Cohesion: 0.23
-Nodes (17): Book, BookChunk, BookStatus, Chapter, DomainError, ReadingProgress, ReadingStreak, DateTime (+9 more)
+### Community 4 - "2. Work Breakdown"
+Cohesion: 0.20
+Nodes (10): 1. Summary, 2. Work Breakdown, 3. Success Criteria & Verification, Cross-Domain Matrix, Sub-Task 2.1: Password Hashing (Argon2id) & OTP [COMPLETED], Sub-Task 2.2: JWT Tokens & Refresh Rotation [COMPLETED], Sub-Task 2.3: REST API Endpoints (SRS 1–7) [COMPLETED], Sub-Task 2.4: Guest Reconciliation (`POST /api/v1/progress/merge`) [COMPLETED] (+2 more)
 
-### Community 6 - "Infrastructure and Client Initialization"
-Cohesion: 0.17
-Nodes (15): Box, AppConfig, init_db_pool(), init_redis_client(), Client, DatabaseConnection, Result, Self (+7 more)
+### Community 5 - "domain/src/lib.rs"
+Cohesion: 0.28
+Nodes (16): chrono, Book, BookChunk, BookStatus, Chapter, DomainError, ReadingProgress, ReadingStreak (+8 more)
+
+### Community 6 - "server/src/main.rs"
+Cohesion: 0.20
+Nodes (10): Box, main(), Result, shutdown_signal(), databaseconnection, Error, infra, server (+2 more)
 
 ### Community 7 - "Frontend Web Reader Tasks"
 Cohesion: 0.17
@@ -130,13 +180,17 @@ Nodes (11): 1. Summary, 2. Work Breakdown, 3. Success Criteria, Cross-Domain Mat
 Cohesion: 0.18
 Nodes (11): 1. Summary, 2. Work Breakdown, 3. Success Criteria, Cross-Domain Matrix, Sub-Task 7.1: Smoke Testing Suite, Sub-Task 7.2: Unit Test Suite, Sub-Task 7.3: Integration Test Suite, Sub-Task 7.4: Performance SLA Benchmarks (+3 more)
 
-### Community 13 - "Semantic AI Subsystem Tasks"
-Cohesion: 0.20
-Nodes (10): 1. Summary, 2. Work Breakdown, 3. Success Criteria, Cross-Domain Matrix, Sub-Task 4.1: Dual-Mode Embedding Provider (`crates/infra`), Sub-Task 4.2: Scoped Semantic Quote Finder (`POST /api/books/{id}/quotes/search`), Sub-Task 4.3: Chapter Atomic Insight Cards (SRS 18), Sub-Task 4.4: Spoiler-Free Catch-up Recap (SRS 19) (+2 more)
+### Community 12 - "README.md"
+Cohesion: 0.12
+Nodes (22): OKF & Persistent Memory Guidelines, Admin Sorting Illustration, AI Quote Finder Illustration, Asset Catalog, GBrain Design Reference, Web Entry Point, 1. Summary, 2. Work Breakdown (+14 more)
 
-### Community 14 - "Catalog and Progress Tasks"
+### Community 13 - "AppError"
+Cohesion: 0.09
+Nodes (40): argon2, Claims, generate_access_token(), generate_refresh_token(), revoke_refresh_token(), MultiplexedConnection, Result, String (+32 more)
+
+### Community 14 - "2. Work Breakdown"
 Cohesion: 0.22
-Nodes (9): 1. Summary, 2. Work Breakdown, 3. Success Criteria, Cross-Domain Matrix, Sub-Task 3.1: Catalog Repository & FTS Lexical Search, Sub-Task 3.2: Catalog & Chapter Endpoints (SRS 8–12), Sub-Task 3.3: Reading Progress & CFI Synchronization (SRS 13–14), Sub-Task 3.4: Reading Heartbeat, Streaks & Badges (SRS 15–16) (+1 more)
+Nodes (9): 1. Summary, 2. Work Breakdown, 3. Success Criteria & Verification, Cross-Domain Matrix, Sub-Task 3.1: Catalog Repository & FTS Lexical Search [COMPLETED], Sub-Task 3.2: Catalog & Chapter Endpoints (SRS 8–12) [COMPLETED], Sub-Task 3.3: Reading Progress & CFI Synchronization (SRS 13–14) [COMPLETED], Sub-Task 3.4: Reading Heartbeat, Streaks & Badges (SRS 15–16) [COMPLETED] (+1 more)
 
 ### Community 15 - "Database Migration Scripts"
 Cohesion: 0.76
@@ -146,29 +200,197 @@ Nodes (6): init_table(), migrate_down(), migrate_status(), migrate_up(), psql_cm
 Cohesion: 0.70
 Nodes (5): domain, infra, server, shared, web
 
-### Community 18 - "Web Frontend Components"
+### Community 17 - "AppConfig"
+Cohesion: 0.12
+Nodes (19): AiConfig, AppConfig, AuthConfig, DatabaseConfig, EmailConfig, RedisConfig, Result, Self (+11 more)
+
+### Community 18 - "prelude"
+Cohesion: 0.33
+Nodes (4): Relation, App(), IntoView, prelude
+
+### Community 20 - "progress_repository.rs"
+Cohesion: 0.14
+Nodes (24): Model, DateTimeWithTimeZone, String, Uuid, list_badges(), list_user_badges(), DatabaseConnection, Result (+16 more)
+
+### Community 25 - "routes/books.rs"
+Cohesion: 0.36
+Nodes (14): books_routes(), get_book(), get_chapter(), get_offline_bundle(), list_books(), Arc, Path, Response (+6 more)
+
+### Community 26 - "entities/mod.rs"
+Cohesion: 0.14
+Nodes (13): entity_as_badges, entity_as_bookchunks, entity_as_books, entity_as_booktags, entity_as_chapters, entity_as_readingactivitylogs, entity_as_savedquotes, entity_as_tags (+5 more)
+
+### Community 27 - "AppState"
+Cohesion: 0.06
+Nodes (77): apiresponse, apperror, asynccommands, auth, axum, books, crate, HttpError (+69 more)
+
+### Community 28 - "pool.rs"
+Cohesion: 0.16
+Nodes (11): init_db_pool(), init_redis_client(), Client, DatabaseConnection, Result, Self, info, repositories (+3 more)
+
+### Community 29 - "smoke_test.rs"
+Cohesion: 0.18
+Nodes (5): duration, io, tcpstream, timeout, tracing
+
+### Community 30 - "catalog_test.rs"
+Cohesion: 0.33
+Nodes (10): Result, String, Uuid, seed_test_catalog(), SeededCatalog, test_book_overview_chapter_and_offline_bundle(), test_catalog_listing_and_filtering(), test_catalog_typo_tolerant_fts_search() (+2 more)
+
+### Community 31 - "2. Step-by-Step Test Procedure"
+Cohesion: 0.18
+Nodes (11): 2. Step-by-Step Test Procedure, Step 2.10: Logout (Revoke Session), Step 2.1: Register a New User Account, Step 2.2: Retrieve OTP from Mailpit, Step 2.3: Verify OTP and Activate Account, Step 2.4: Inspect Authenticated User Profile, Step 2.5: Update Profile Information, Step 2.6: Change Password (+3 more)
+
+### Community 33 - "Model"
+Cohesion: 0.22
+Nodes (8): Entity, Model, DateTimeWithTimeZone, Option, Related, RelationDef, String, Uuid
+
+### Community 34 - "manual-test/README.md"
+Cohesion: 0.20
+Nodes (6): 1. Overview, Manual Testing — Milestone 02: Authentication, Security & Guest Progress, 1. Directory Structure & Milestone Modules, 2. Server & Service URLs Quick Reference, 3. General Testing Workflow, Project Baca — Manual Testing Documentation
+
+### Community 35 - "Manual Testing — Milestone 03: Catalog, Reader Engine & Gamification"
+Cohesion: 0.20
+Nodes (10): 1. Overview, 2. Quick Data Seeder for Manual Testing, 5. Reading Progress, CFI Anchors & Active Position, 6. Gamification: Heartbeats, Streaks & Badges, Manual Testing — Milestone 03: Catalog, Reader Engine & Gamification, Step 3.10: Send Reading Heartbeat (`POST /api/v1/activity/heartbeat`), Step 3.11: View Master Badges (`GET /api/v1/badges`), Step 3.12: View User Unlocked Badges (`GET /api/v1/me/badges`) (+2 more)
+
+### Community 43 - "2. Documentation Directory"
+Cohesion: 0.22
+Nodes (9): 1. Architecture & Tech Stack, 2. Documentation Directory, 3. Quickstart, Agentic Intelligence System, AI Agent Governance, Architecture & Operations, Core Specifications (OKF v0.2), Production Runtime (+1 more)
+
+### Community 46 - "Model"
+Cohesion: 0.25
+Nodes (7): Model, Relation, DateTimeWithTimeZone, Json, Option, String, Uuid
+
+### Community 47 - ".find_book_by_id"
+Cohesion: 0.25
+Nodes (7): BookCatalogPort, Option, Result, Uuid, test_reliability_mock_repository_fault_injection(), Send, Sync
+
+### Community 48 - "3. Server Health & OpenAPI Documentation"
+Cohesion: 0.25
+Nodes (8): 1. Overview, 3. Server Health & OpenAPI Documentation, 4. Structured Log Inspection, Manual Testing — Milestone 01: Infrastructure & Configuration, Step 1.5: Start the Axum Server, Step 1.6: Query Server Health Endpoint, Step 1.7: Query Infrastructure Connectivity Endpoint, Step 1.8: Access Swagger UI in Browser
+
+### Community 49 - "Model"
+Cohesion: 0.29
+Nodes (6): Model, Relation, DateTimeWithTimeZone, String, Uuid, PgVector
+
+### Community 50 - "serde"
+Cohesion: 0.29
+Nodes (5): Model, Relation, Uuid, Relation, serde
+
+### Community 51 - "Model"
+Cohesion: 0.29
+Nodes (6): Model, Relation, DateTimeWithTimeZone, Option, String, Uuid
+
+### Community 52 - "Model"
+Cohesion: 0.29
+Nodes (6): Model, Relation, Date, DateTimeWithTimeZone, Option, Uuid
+
+### Community 53 - "Model"
+Cohesion: 0.29
+Nodes (6): Model, Relation, DateTimeWithTimeZone, Option, String, Uuid
+
+### Community 54 - "chapters.rs"
+Cohesion: 0.33
+Nodes (5): Model, Relation, DateTimeWithTimeZone, String, Uuid
+
+### Community 55 - "reading_activity_logs.rs"
+Cohesion: 0.33
+Nodes (5): Model, Relation, Date, DateTimeWithTimeZone, Uuid
+
+### Community 56 - "tags.rs"
+Cohesion: 0.33
+Nodes (5): Model, Relation, DateTimeWithTimeZone, String, Uuid
+
+### Community 57 - "Entity"
+Cohesion: 0.40
+Nodes (4): Entity, Option, Related, RelationDef
+
+### Community 58 - "user_badges.rs"
+Cohesion: 0.33
+Nodes (5): Model, Relation, DateTimeWithTimeZone, String, Uuid
+
+### Community 59 - "badges.rs"
+Cohesion: 0.40
+Nodes (4): Model, Relation, DateTimeWithTimeZone, String
+
+### Community 60 - "2. Prerequisites & Service Status Verification"
+Cohesion: 0.40
+Nodes (5): 2. Prerequisites & Service Status Verification, Step 1.1: Verify Docker Containers, Step 1.2: Check PostgreSQL Schema & Extensions, Step 1.3: Check Redis Connectivity, Step 1.4: Check Mailpit & MinIO HTTP Endpoints
+
+### Community 61 - "3. Catalog Discovery & Typo-Tolerant Search"
+Cohesion: 0.40
+Nodes (5): 3. Catalog Discovery & Typo-Tolerant Search, Step 3.1: Browse Catalog (`GET /api/v1/books`), Step 3.2: Filter by Theme & Language, Step 3.3: Typo-Tolerant FTS Search (`GET /api/v1/books/search`), Step 3.4: Query Validation
+
+### Community 62 - "middleware/mod.rs"
 Cohesion: 0.50
-Nodes (3): App(), IntoView, prelude
+Nodes (3): authuser, rate_limit_middleware, require_admin
+
+### Community 63 - "Entity"
+Cohesion: 0.50
+Nodes (3): Entity, Related, RelationDef
+
+### Community 64 - "Entity"
+Cohesion: 0.50
+Nodes (3): Entity, Related, RelationDef
+
+### Community 65 - "Entity"
+Cohesion: 0.50
+Nodes (3): Entity, Related, RelationDef
+
+### Community 66 - "Entity"
+Cohesion: 0.50
+Nodes (3): Entity, Related, RelationDef
+
+### Community 67 - "Entity"
+Cohesion: 0.50
+Nodes (3): Entity, Related, RelationDef
+
+### Community 68 - "Entity"
+Cohesion: 0.50
+Nodes (3): Entity, Related, RelationDef
+
+### Community 69 - "Entity"
+Cohesion: 0.50
+Nodes (3): Entity, Related, RelationDef
+
+### Community 70 - "Entity"
+Cohesion: 0.50
+Nodes (3): Entity, Related, RelationDef
+
+### Community 71 - "Entity"
+Cohesion: 0.50
+Nodes (3): Entity, Related, RelationDef
+
+### Community 72 - "Entity"
+Cohesion: 0.50
+Nodes (3): Entity, Related, RelationDef
+
+### Community 73 - "Entity"
+Cohesion: 0.50
+Nodes (3): Entity, Related, RelationDef
+
+### Community 74 - "4. Book Overview, Reader Content & Offline Bundle"
+Cohesion: 0.50
+Nodes (4): 4. Book Overview, Reader Content & Offline Bundle, Step 3.5: Book Overview & Chapter Summary (`GET /api/v1/books/{id}`), Step 3.6: Reader Chapter Delivery (`GET /api/v1/books/{id}/chapters/{chapter_number}`), Step 3.7: Offline Bundle Synchronization (`GET /api/v1/books/{id}/offline-bundle`)
 
 ## Knowledge Gaps
-- **70 isolated node(s):** `ApiDoc`, `3. Success Criteria`, `Cross-Domain Matrix`, `Sub-Task 5.1: S3/MinIO Storage Service (`crates/infra`)`, `Sub-Task 5.2: Admin EPUB Upload Endpoint (SRS 21)` (+65 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 156 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **141 isolated node(s):** `Relation`, `ApiDoc`, `Relation`, `Relation`, `Relation` (+136 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 346 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **30 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `AppError` connect `Infrastructure and Client Initialization` to `Integration and Performance Testing`, `Shared Data Transfer Objects`?**
-  _High betweenness centrality (0.039) - this node is a cross-community bridge._
-- **Why does `main()` connect `Infrastructure and Client Initialization` to `Integration and Performance Testing`, `API Server Configuration`?**
-  _High betweenness centrality (0.021) - this node is a cross-community bridge._
-- **Why does `create_app()` connect `API Server Configuration` to `Infrastructure and Client Initialization`?**
-  _High betweenness centrality (0.020) - this node is a cross-community bridge._
-- **Are the 3 inferred relationships involving `main()` (e.g. with `init_db_pool()` and `init_redis_client()`) actually correct?**
-  _`main()` has 3 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `ApiDoc`, `3. Success Criteria`, `Cross-Domain Matrix` to the rest of the system?**
-  _70 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `Integration and Performance Testing` be split into smaller, more focused modules?**
-  _Cohesion score 0.0627177700348432 - nodes in this community are weakly interconnected._
+- **Why does `AppError` connect `AppError` to `shared/src/lib.rs`, `.find_book_by_id`, `AppConfig`, `progress_repository.rs`, `AppState`, `pool.rs`, `smoke_test.rs`?**
+  _High betweenness centrality (0.088) - this node is a cross-community bridge._
+- **Why does `AppState` connect `AppState` to `Test Harness Utilities`, `AppConfig`, `server/src/lib.rs`, `routes/books.rs`?**
+  _High betweenness centrality (0.065) - this node is a cross-community bridge._
+- **Why does `AppConfig` connect `AppConfig` to `AppState`, `server/src/lib.rs`, `pool.rs`?**
+  _High betweenness centrality (0.036) - this node is a cross-community bridge._
+- **What connects `Relation`, `ApiDoc`, `Relation` to the rest of the system?**
+  _141 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `reliability_test.rs` be split into smaller, more focused modules?**
+  _Cohesion score 0.12554112554112554 - nodes in this community are weakly interconnected._
 - **Should `Database Schema and Indexes` be split into smaller, more focused modules?**
   _Cohesion score 0.11229946524064172 - nodes in this community are weakly interconnected._
+- **Should `shared/src/lib.rs` be split into smaller, more focused modules?**
+  _Cohesion score 0.10377358490566038 - nodes in this community are weakly interconnected._
