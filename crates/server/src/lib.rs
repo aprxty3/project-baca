@@ -48,7 +48,17 @@ pub struct AppState {
         routes::auth::update_me,
         routes::auth::change_password,
         routes::auth::delete_me,
+        routes::progress::get_active_progress,
+        routes::progress::update_progress,
         routes::progress::merge_guest_progress,
+        routes::books::list_books,
+        routes::books::search_books,
+        routes::books::get_book,
+        routes::books::get_chapter,
+        routes::books::get_offline_bundle,
+        routes::gamification::record_heartbeat,
+        routes::gamification::list_badges,
+        routes::gamification::list_user_badges,
     ),
     components(
         schemas(
@@ -66,9 +76,17 @@ pub struct AppState {
             BookSummaryDto,
             BookDetailDto,
             ChapterSummaryDto,
+            ChapterDetailDto,
+            OfflineBundleDto,
+            BookSearchResultDto,
+            ReadingProgressUpdateDto,
+            ActiveProgressDto,
+            ReadingHeartbeatRequest,
+            ReadingHeartbeatResponse,
+            BadgeDto,
+            UserBadgeDto,
             QuoteSearchRequest,
-            QuoteSearchResultDto,
-            ReadingProgressUpdateDto
+            QuoteSearchResultDto
         )
     ),
     modifiers(&SecurityAddon),
@@ -76,7 +94,9 @@ pub struct AppState {
         (name = "System & Health", description = "Runtime health checks and infrastructure connectivity"),
         (name = "Authentication", description = "User registration, OTP verification, and JWT sessions"),
         (name = "User Management", description = "Profile updates, password management, and account deletion"),
-        (name = "Reading Progress", description = "Progress tracking and guest reconciliation")
+        (name = "Catalog", description = "Public domain book catalog, FTS search, and chapter reader"),
+        (name = "Reading Progress", description = "Progress tracking, CFI anchors, and guest reconciliation"),
+        (name = "Gamification", description = "Reading streaks, heartbeats, and achievement badges")
     ),
     info(
         title = "Project Baca REST API",
@@ -188,11 +208,15 @@ pub fn create_app(state: Arc<AppState>) -> Router {
         // Versioned API routes (/api/v1/...)
         .nest("/api/v1/auth", auth_router.clone())
         .nest("/api/v1/me", routes::user_routes())
+        .nest("/api/v1/books", routes::books_routes())
         .nest("/api/v1/progress", routes::progress_routes())
+        .nest("/api/v1", routes::gamification_routes())
         // Top-level aliases (/api/...) for SRS spec compatibility
         .nest("/api/auth", auth_router)
         .nest("/api/me", routes::user_routes())
+        .nest("/api/books", routes::books_routes())
         .nest("/api/progress", routes::progress_routes())
+        .nest("/api", routes::gamification_routes())
         .layer(axum_mw::from_fn(request_id_middleware))
         .layer(cors)
         .layer(TraceLayer::new_for_http())

@@ -137,9 +137,22 @@ Technical rationales behind engineering decisions for **Project Baca**.
 * **Decision:**
   1. Implemented Argon2id password hashing (64MB memory, 3 iterations, 4 parallelism) and verification via `argon2 = "0.5"`.
   2. Generates 6-digit numeric OTPs via `OsRng`, storing SHA-256 hashed digest in Redis (`otp:{email}`) with 10-minute TTL and 3-attempt limit. Integrated async SMTP email delivery targeting Mailpit with fallback logging.
-  3. JWT access tokens (15-min TTL, HS256) and cryptographically secure 32-byte refresh tokens stored in Redis (`refresh_token:{token}`) with 30-day TTL. Implemented single-use refresh token rotation on `/api/v1/auth/refresh` and token revocation on logout.
+  3. Configured JWT access tokens (24-hour TTL, HS256) and cryptographically secure 32-byte refresh tokens stored in Redis (`refresh_token:{token}`) with 14-day TTL. Implemented single-use refresh token rotation on `/api/v1/auth/refresh` and token revocation on logout.
   4. Implemented `AuthUser` Axum extractor, `require_admin` RBAC middleware, and Redis sliding-window rate limiting (20 req/min for auth endpoints).
   5. Implemented guest progress reconciliation (`/api/v1/progress/merge`) executing SQL upsert with `GREATEST` progress resolution without data loss.
   6. Verified complete auth lifecycle and guest progress merge with integration tests achieving 100% pass rate.
+
+### 2026-09-26 — Catalog Backend, Typo-Tolerant FTS, Reader Engine & Gamification (ADR-16)
+* **Actors:** `human:aprxty3` & `[antigravity]`
+* **Context:** Public domain book discovery, typo-tolerant search (<3ms), chapter content delivery, offline bundles, CFI reading progress persistence, and daily streak gamification.
+* **Decision:**
+  1. Built catalog repository with cursor-based pagination and multi-dimensional filters (language, theme, tags).
+  2. Implemented typo-tolerant lexical search combining `pg_trgm` `word_similarity` / `%>` operators with `tsvector` FTS matching (<3ms).
+  3. Built chapter delivery and offline bundle retrieval (`/api/v1/books/{id}/offline-bundle`) bundling metadata and XHTML content for client-side IndexedDB caching.
+  4. Implemented reading progress synchronization with EPUB CFI anchors and auto-completion when progress reaches 100%.
+  5. Implemented daily streak engine: logs reading heartbeats, tracks 5-minute daily threshold, calculates consecutive streaks, awards XP, and unlocks milestone badges.
+  6. Created modular manual testing guides in `knowledge/manual-test/` (tasks 01–03).
+  7. Verified 100% pass rate across workspace test suite (32 tests).
+
 
 

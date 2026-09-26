@@ -1,19 +1,77 @@
-//! Reading Progress & Guest Reconciliation REST API Handlers (SRS 14–16)
+//! Reading Progress & Guest Reconciliation REST API Handlers (SRS 13–16)
 
 use crate::{error::HttpError, middleware::auth::AuthUser, AppState};
 use axum::{
-    extract::State,
+    extract::{Path, State},
     http::StatusCode,
     response::{IntoResponse, Response},
-    routing::post,
+    routing::{get, post, put},
     Json, Router,
 };
 use chrono::Utc;
 use sea_orm::{entity::prelude::Decimal, ConnectionTrait, DatabaseBackend, Statement};
-use shared::{ApiResponse, ErrorPayload, GuestMergeRequest};
+use shared::{
+    ActiveProgressDto, ApiResponse, ErrorPayload, GuestMergeRequest, UpdateProgressRequest,
+};
 use std::sync::Arc;
 use uuid::Uuid;
 use validator::Validate;
+
+/// Retrieve the active unfinished reading progress for the authenticated user (SRS 14)
+#[utoipa::path(
+    get,
+    path = "/api/v1/progress/active",
+    responses(
+        (status = 200, description = "Active reading progress or null if none", body = ApiResponse<Option<ActiveProgressDto>>),
+        (status = 401, description = "Unauthorized", body = ApiResponse<ErrorPayload>)
+    ),
+    security(("BearerAuth" = [])),
+    tag = "Reading Progress"
+)]
+pub async fn get_active_progress(
+    State(state): State<Arc<AppState>>,
+    auth: AuthUser,
+) -> Result<Response, HttpError> {
+    let progress = infra::get_active_progress(&state.db, auth.id)
+        .await
+        .map_err(HttpError::from)?;
+    Ok(Json(ApiResponse::success(progress)).into_response())
+}
+
+/// Updates user reading progress with CFI position and percentage (SRS 15)
+#[utoipa::path(
+    put,
+    path = "/api/v1/progress/{book_id}",
+    params(
+        ("book_id" = Uuid, Path, description = "Book UUID")
+    ),
+    request_body = UpdateProgressRequest,
+    responses(
+        (status = 200, description = "Reading progress updated successfully", body = ApiResponse<String>),
+        (status = 400, description = "Validation failed", body = ApiResponse<ErrorPayload>),
+        (status = 401, description = "Unauthorized", body = ApiResponse<ErrorPayload>),
+        (status = 404, description = "Book or chapter not found", body = ApiResponse<ErrorPayload>)
+    ),
+    security(("BearerAuth" = [])),
+    tag = "Reading Progress"
+)]
+pub async fn update_progress(
+    State(state): State<Arc<AppState>>,
+    auth: AuthUser,
+    Path(book_id): Path<Uuid>,
+    Json(req): Json<UpdateProgressRequest>,
+) -> Result<Response, HttpError> {
+    req.validate().map_err(HttpError::from)?;
+
+    infra::update_progress(&state.db, auth.id, book_id, &req)
+        .await
+        .map_err(HttpError::from)?;
+
+    Ok(Json(ApiResponse::success(
+        "Reading progress updated successfully".to_string(),
+    ))
+    .into_response())
+}
 
 /// Merges guest reading progress records into the authenticated user's account (SRS 16)
 #[utoipa::path(
@@ -87,5 +145,8 @@ pub async fn merge_guest_progress(
 
 /// Assembles reading progress routes
 pub fn progress_routes() -> Router<Arc<AppState>> {
-    Router::new().route("/merge", post(merge_guest_progress))
+    Router::new()
+        .route("/active", get(get_active_progress))
+        .route("/{book_id}", put(update_progress))
+        .route("/merge", post(merge_guest_progress))
 }

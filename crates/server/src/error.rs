@@ -37,6 +37,7 @@ impl IntoResponse for HttpError {
             AppError::ValidationError(msg) => {
                 (StatusCode::BAD_REQUEST, "VALIDATION_FAILED", msg.clone())
             }
+            AppError::BadRequest(msg) => (StatusCode::BAD_REQUEST, "BAD_REQUEST", msg.clone()),
             AppError::Unauthorized(msg) => (StatusCode::UNAUTHORIZED, "UNAUTHORIZED", msg.clone()),
             AppError::Forbidden(msg) => (StatusCode::FORBIDDEN, "FORBIDDEN", msg.clone()),
             AppError::NotFound(msg) => (StatusCode::NOT_FOUND, "NOT_FOUND", msg.clone()),
@@ -45,6 +46,11 @@ impl IntoResponse for HttpError {
                 StatusCode::TOO_MANY_REQUESTS,
                 "RATE_LIMITED",
                 format!("Rate limit exceeded. Try again in {retry_after} seconds"),
+            ),
+            AppError::Database(msg) => (
+                StatusCode::INTERNAL_SERVER_ERROR,
+                "DATABASE_ERROR",
+                msg.clone(),
             ),
             AppError::Internal(msg) => (
                 StatusCode::INTERNAL_SERVER_ERROR,

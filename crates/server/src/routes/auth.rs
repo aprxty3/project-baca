@@ -531,4 +531,5 @@ pub fn user_routes() -> Router<Arc<AppState>> {
         .route("/", patch(update_me))
         .route("/", delete(delete_me))
         .route("/password", put(change_password))
+        .route("/badges", get(crate::routes::list_user_badges))
 }

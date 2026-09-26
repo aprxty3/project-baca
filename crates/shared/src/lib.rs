@@ -55,6 +55,9 @@ pub enum AppError {
     #[error("Validation failed: {0}")]
     ValidationError(String),
 
+    #[error("Bad request: {0}")]
+    BadRequest(String),
+
     #[error("Unauthorized: {0}")]
     Unauthorized(String),
 
@@ -69,6 +72,9 @@ pub enum AppError {
 
     #[error("Rate limit exceeded. Try again in {retry_after} seconds")]
     RateLimited { retry_after: u64 },
+
+    #[error("Database error: {0}")]
+    Database(String),
 
     #[error("Internal server error: {0}")]
     Internal(String),
@@ -204,12 +210,17 @@ pub struct GuestMergeRequest {
 #[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
 pub struct BookSummaryDto {
     pub id: Uuid,
-    pub slug: String,
     pub title: String,
     pub author: String,
-    pub cover_url: Option<String>,
-    pub word_count: i32,
-    pub reading_time_minutes: i32,
+    pub language: String,
+    pub primary_theme: String,
+    pub sub_theme: Option<String>,
+    pub description: String,
+    pub cover_url: String,
+    pub total_words: i32,
+    pub estimated_reading_minutes: i32,
+    pub publication_year: Option<i32>,
+    pub license: String,
     pub tags: Vec<String>,
 }
 
@@ -217,13 +228,20 @@ pub struct BookSummaryDto {
 #[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
 pub struct BookDetailDto {
     pub id: Uuid,
-    pub slug: String,
     pub title: String,
     pub author: String,
-    pub synopsis: Option<String>,
-    pub cover_url: Option<String>,
-    pub word_count: i32,
-    pub reading_time_minutes: i32,
+    pub language: String,
+    pub primary_theme: String,
+    pub sub_theme: Option<String>,
+    pub description: String,
+    pub cover_url: String,
+    pub total_words: i32,
+    pub estimated_reading_minutes: i32,
+    pub source_name: String,
+    pub source_url: Option<String>,
+    pub license: String,
+    pub publication_year: Option<i32>,
+    pub status: String,
     pub tags: Vec<String>,
     pub chapters: Vec<ChapterSummaryDto>,
 }
@@ -237,8 +255,147 @@ pub struct ChapterSummaryDto {
     pub word_count: i32,
 }
 
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
+pub struct ChapterDetailDto {
+    pub id: Uuid,
+    pub book_id: Uuid,
+    pub chapter_number: i32,
+    pub title: String,
+    pub word_count: i32,
+    pub html_content: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
+pub struct OfflineBundleDto {
+    pub book: BookDetailDto,
+    pub chapters: Vec<ChapterDetailDto>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
+#[cfg_attr(feature = "openapi", derive(utoipa::IntoParams))]
+pub struct BookCatalogQuery {
+    pub cursor: Option<Uuid>,
+    pub limit: Option<u64>,
+    pub language: Option<String>,
+    pub theme: Option<String>,
+    pub tag: Option<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
+#[cfg_attr(feature = "openapi", derive(utoipa::IntoParams))]
+pub struct BookSearchQuery {
+    pub q: String,
+    pub language: Option<String>,
+    pub limit: Option<u64>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
+pub struct BookSearchResultDto {
+    pub id: Uuid,
+    pub title: String,
+    pub author: String,
+    pub language: String,
+    pub primary_theme: String,
+    pub cover_url: String,
+    pub estimated_reading_minutes: i32,
+    pub score: f32,
+}
+
 // -----------------------------------------------------------------------------
-// Semantic & Reading DTOs
+// Reading Progress & CFI DTOs
+// -----------------------------------------------------------------------------
+
+#[derive(Debug, Clone, Serialize, Deserialize, Validate)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
+pub struct ReadingProgressUpdateDto {
+    pub chapter_id: Uuid,
+    #[serde(alias = "cfi_position")]
+    #[validate(length(
+        min = 1,
+        max = 255,
+        message = "CFI position must be between 1 and 255 characters"
+    ))]
+    pub last_anchor_cfi: String,
+    #[serde(alias = "percentage")]
+    #[validate(range(
+        min = 0.0,
+        max = 100.0,
+        message = "Percentage must be between 0.0 and 100.0"
+    ))]
+    pub completion_percentage: f32,
+}
+
+pub type UpdateProgressRequest = ReadingProgressUpdateDto;
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
+pub struct ActiveProgressDto {
+    pub book_id: Uuid,
+    pub book_title: String,
+    pub book_author: String,
+    pub book_cover_url: String,
+    pub chapter_id: Uuid,
+    pub chapter_number: i32,
+    pub chapter_title: String,
+    pub last_anchor_cfi: String,
+    pub completion_percentage: f32,
+    pub is_finished: bool,
+    pub last_read_at: DateTime<Utc>,
+}
+
+// -----------------------------------------------------------------------------
+// Gamification, Streaks & Badges DTOs
+// -----------------------------------------------------------------------------
+
+#[derive(Debug, Clone, Serialize, Deserialize, Validate)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
+pub struct ReadingHeartbeatRequest {
+    pub book_id: Uuid,
+    #[validate(range(
+        min = 1,
+        max = 3600,
+        message = "Seconds spent must be between 1 and 3600"
+    ))]
+    pub seconds_spent: i32,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
+pub struct ReadingHeartbeatResponse {
+    pub current_streak_days: i32,
+    pub longest_streak_days: i32,
+    pub total_reading_seconds: i64,
+    pub total_xp: i32,
+    pub xp_earned: i32,
+    pub streak_incremented: bool,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
+pub struct BadgeDto {
+    pub id: String,
+    pub title_id: String,
+    pub title_en: String,
+    pub description_id: String,
+    pub description_en: String,
+    pub icon_asset: String,
+    pub xp_reward: i32,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
+pub struct UserBadgeDto {
+    pub id: Uuid,
+    pub badge_id: String,
+    pub unlocked_at: DateTime<Utc>,
+    pub badge: BadgeDto,
+}
+
+// -----------------------------------------------------------------------------
+// Semantic & Quote DTOs
 // -----------------------------------------------------------------------------
 
 #[derive(Debug, Clone, Serialize, Deserialize, Validate)]
@@ -260,12 +417,4 @@ pub struct QuoteSearchResultDto {
     pub chapter_number: i32,
     pub content: String,
     pub similarity_score: f32,
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize, Validate)]
-#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
-pub struct ReadingProgressUpdateDto {
-    pub chapter_id: Uuid,
-    pub cfi_position: String,
-    pub percentage: f32,
 }

@@ -28,10 +28,10 @@ Current status, technical milestones, and operational backlog for **Project Baca
    - Scope: `dotenvy` integration, strongly-typed modular configurations (`ServerConfig`, `DatabaseConfig`, `RedisConfig`, `AuthConfig`, `StorageConfig`, `EmailConfig`, `AiConfig`), dynamic SeaORM and Redis connection pools, 13 SeaORM entity definitions with `postgres-vector` (`PgVector`) support, Arc-wrapped `AppState`.
 3. **[COMPLETED] Milestone 02 — Authentication, JWT/Argon2id, OTP & Guest Reconciliation:**
    - Spec: [knowledge/tasks/02_authentication_and_user.md](knowledge/tasks/02_authentication_and_user.md)
-   - Scope: End-to-end auth lifecycle (`/api/v1/auth/signup`, `verify-otp`, `login`, `refresh`, `logout`), profile management (`/api/v1/me`), Argon2id password hashing, Redis OTP (SHA-256 with 3-attempt limit), JWT access token & 30-day refresh token rotation, Mailpit SMTP email dispatch, guest progress upsert reconciliation (`/api/v1/progress/merge`), rate limiting & auth middleware. Verified with 100% test pass rate.
-4. **[PENDING] Milestone 03 — Catalog Backend, Trigram FTS, Reader API & Streak Gamification:**
+   - Scope: End-to-end auth lifecycle (`/api/v1/auth/signup`, `verify-otp`, `login`, `refresh`, `logout`), profile management (`/api/v1/me`), Argon2id password hashing, Redis OTP (SHA-256 with 3-attempt limit), JWT access token (24h) & 14-day refresh token rotation, Mailpit SMTP email dispatch, guest progress upsert reconciliation (`/api/v1/progress/merge`), rate limiting & auth middleware. Verified with 100% test pass rate.
+4. **[COMPLETED] Milestone 03 — Catalog Backend, Trigram FTS, Reader API & Streak Gamification:**
    - Spec: [knowledge/tasks/03_catalog_and_reader_backend.md](knowledge/tasks/03_catalog_and_reader_backend.md)
-   - Scope: Cursor-based catalog, Trigram FTS (<3ms), chapter content, progress sync, streak heartbeats.
+   - Scope: Cursor-based catalog (`/api/v1/books`), typo-tolerant FTS search (<3ms via `pg_trgm` and `word_similarity`), book overview, chapter content delivery, offline bundle synchronization, CFI reading progress sync (`/api/v1/progress/{book_id}`), active position retrieval (`/api/v1/progress/active`), reading heartbeat & daily streak engine (`/api/v1/activity/heartbeat`), and badges gamification (`/api/v1/badges`, `/api/v1/me/badges`). Verified with 100% test pass rate (32 tests).
 5. **[PENDING] Milestone 04 — Semantic AI Subsystem, 768-Dim Embeddings & Atomic Cards:**
    - Spec: [knowledge/tasks/04_semantic_ai_and_insights.md](knowledge/tasks/04_semantic_ai_and_insights.md)
    - Scope: Dual-mode embeddings (Gemini/FastEmbed), Scoped Quote Finder HNSW (<10ms), chapter atomic cards.

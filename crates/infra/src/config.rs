@@ -79,8 +79,8 @@ impl Default for AuthConfig {
         Self {
             jwt_secret: "super-secret-jwt-key-replace-with-at-least-32-random-characters"
                 .to_string(),
-            access_expiry_minutes: 15,
-            refresh_expiry_days: 7,
+            access_expiry_minutes: 1440, // 24 hours / 1 day
+            refresh_expiry_days: 14,     // 14 days
         }
     }
 }
@@ -355,8 +355,8 @@ mod tests {
         assert_eq!(config.server.host, "0.0.0.0");
         assert_eq!(config.database.max_connections, 20);
         assert_eq!(config.database.min_connections, 5);
-        assert_eq!(config.auth.access_expiry_minutes, 15);
-        assert_eq!(config.auth.refresh_expiry_days, 7);
+        assert_eq!(config.auth.access_expiry_minutes, 1440);
+        assert_eq!(config.auth.refresh_expiry_days, 14);
         assert_eq!(config.storage.bucket_epubs, "baca-epubs");
         assert_eq!(config.ai.provider, "gemini");
         assert_eq!(config.ai.dimension, 768);
