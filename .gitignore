@@ -17,10 +17,17 @@ service-account*.json
 jwt-secret.key
 secrets/
 
-# Personal AI tooling configurations
+# Personal AI tooling configurations & Internal Agent Logs
 .claude/settings.local.json
 .claude/*.local
 .gemini/*.local
+.agents/
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+MEMORY.md
+PROJECT_LOG.md
+
 
 # ------------------------------------------------------------------------------
 # 2. Private Specifications & Local Vault Links

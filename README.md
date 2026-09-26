@@ -82,10 +82,9 @@ Once running:
 * **Detailed Setup & Developer Guide:** [GUIDE.md](GUIDE.md)
 * **Monorepo Architecture Blueprint:** [ARCHITECTURE.md](ARCHITECTURE.md)
 * **Distributed Worker & Ingestion Pipeline:** [DISTRIBUTED.md](DISTRIBUTED.md)
-* **Architecture Decision Records (ADR):** [MEMORY.md](MEMORY.md)
-* **Operational Backlog & Sprint Log:** [PROJECT_LOG.md](PROJECT_LOG.md)
+* **Release History & Changelog:** [CHANGELOG.md](CHANGELOG.md)
 * **Public Domain Legal Notice:** [NOTICE.md](NOTICE.md)
-* **Product Specifications (OKF v0.2):** [knowledge/index.md](knowledge/index.md)
+
 
 ---
 
