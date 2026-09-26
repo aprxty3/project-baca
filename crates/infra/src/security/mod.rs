@@ -11,4 +11,6 @@ pub use jwt::{
     validate_and_rotate_refresh_token, verify_access_token, Claims,
 };
 pub use otp::{generate_and_store_otp, hash_otp, verify_and_consume_otp};
-pub use password::{hash_password, verify_password};
+pub use password::{
+    hash_password, hash_password_async, verify_password, verify_password_async, DUMMY_ARGON2_HASH,
+};

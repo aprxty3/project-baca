@@ -30,9 +30,12 @@ impl TestHarness {
             Err(_) => redis::Client::open("redis://127.0.0.1:6380").unwrap(),
         };
 
+        let redis_conn = redis.get_multiplexed_tokio_connection().await.ok();
+
         let state = Arc::new(AppState {
             db,
             redis,
+            redis_conn,
             config: Arc::clone(&config),
         });
 

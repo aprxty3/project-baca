@@ -46,7 +46,7 @@ impl FromRequestParts<Arc<AppState>> for AuthUser {
             verify_access_token(token, state.config.jwt_secret()).map_err(HttpError::from)?;
 
         // Enforce OWASP Token Revocation & Blacklisting via Redis
-        if let Ok(mut redis_conn) = state.redis.get_multiplexed_tokio_connection().await {
+        if let Ok(mut redis_conn) = state.get_redis_conn().await {
             if is_token_blacklisted(&mut redis_conn, claims.jti)
                 .await
                 .unwrap_or(false)

@@ -30,7 +30,24 @@ pub static REQUEST_ID_HEADER: HeaderName = HeaderName::from_static("x-request-id
 pub struct AppState {
     pub db: DatabaseConnection,
     pub redis: redis::Client,
+    pub redis_conn: Option<redis::aio::MultiplexedConnection>,
     pub config: Arc<AppConfig>,
+}
+
+impl AppState {
+    /// Returns a multiplexed Redis connection handle.
+    /// If pre-initialized, clones the handle in sub-microseconds without opening a new TCP socket.
+    /// Falls back to establishing a new multiplexed connection if not pre-initialized.
+    pub async fn get_redis_conn(&self) -> Result<redis::aio::MultiplexedConnection, AppError> {
+        if let Some(conn) = &self.redis_conn {
+            Ok(conn.clone())
+        } else {
+            self.redis
+                .get_multiplexed_tokio_connection()
+                .await
+                .map_err(|e| AppError::Internal(format!("Redis connection failed: {e}")))
+        }
+    }
 }
 
 /// OpenAPI documentation root schema

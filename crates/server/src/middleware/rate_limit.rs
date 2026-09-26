@@ -68,7 +68,7 @@ pub async fn rate_limit_middleware(
     let max_requests: i64 = 20;
     let window_seconds: i64 = 60;
 
-    if let Ok(mut redis_conn) = state.redis.get_multiplexed_tokio_connection().await {
+    if let Ok(mut redis_conn) = state.get_redis_conn().await {
         let count: Result<i64, _> = redis_conn.incr(&redis_key, 1).await;
         if let Ok(c) = count {
             let mut ttl: i64 = redis_conn.ttl(&redis_key).await.unwrap_or(-1);

@@ -17,7 +17,7 @@ use uuid::Uuid;
 #[tokio::test]
 async fn test_auth_full_lifecycle() {
     let harness = TestHarness::new().await;
-    let mut redis_conn = match harness.state.redis.get_multiplexed_tokio_connection().await {
+    let mut redis_conn = match harness.state.get_redis_conn().await {
         Ok(c) => c,
         Err(_) => {
             println!("Redis not reachable, skipping full integration flow");

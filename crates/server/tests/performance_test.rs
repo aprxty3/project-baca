@@ -101,3 +101,126 @@ async fn test_perf_concurrent_load_50_workers() {
         elapsed
     );
 }
+
+#[tokio::test]
+async fn test_perf_auth_login_latency() {
+    let harness = TestHarness::new().await;
+    if harness.state.get_redis_conn().await.is_err() {
+        println!("Redis not reachable, skipping auth login latency test");
+        return;
+    }
+
+    let test_email = format!("perf_user_{}@example.com", uuid::Uuid::new_v4());
+    let password = "PerfPassword123!".to_string();
+
+    // Setup active test user
+    let hash = infra::hash_password_async(password.clone()).await.unwrap();
+    let _ = infra::create_inactive_user(&harness.state.db, &test_email, "PerfUser", &hash)
+        .await
+        .unwrap();
+    let _ = infra::activate_user_by_email(&harness.state.db, &test_email)
+        .await
+        .unwrap();
+
+    let iterations = 20;
+    let mut latencies_ms = Vec::with_capacity(iterations);
+
+    for i in 0..iterations {
+        let login_req = shared::LoginRequest {
+            email: test_email.clone(),
+            password: password.clone(),
+        };
+
+        let req = Request::builder()
+            .method("POST")
+            .uri("/api/v1/auth/login")
+            .header("cf-connecting-ip", format!("10.99.1.{}", (i % 250) + 1))
+            .header("content-type", "application/json")
+            .body(Body::from(serde_json::to_vec(&login_req).unwrap()))
+            .unwrap();
+
+        let start = Instant::now();
+        let resp = harness.send_request(req).await;
+        let duration = start.elapsed();
+
+        assert_eq!(resp.status(), StatusCode::OK);
+        latencies_ms.push(duration.as_millis());
+    }
+
+    latencies_ms.sort_unstable();
+    let p50_ms = latencies_ms[(iterations as f64 * 0.50) as usize];
+    let p95_ms = latencies_ms[(iterations as f64 * 0.95) as usize];
+
+    println!(
+        "Benchmark (/api/v1/auth/login): p50 = {} ms, p95 = {} ms",
+        p50_ms, p95_ms
+    );
+
+    // Cryptographic Argon2id login SLA target: p95 < 150ms
+    assert!(
+        p95_ms < 150,
+        "Login p95 latency ({} ms) exceeded target (150 ms)",
+        p95_ms
+    );
+}
+
+#[tokio::test]
+async fn test_perf_auth_otp_verify_latency() {
+    let harness = TestHarness::new().await;
+    let mut redis_conn = match harness.state.get_redis_conn().await {
+        Ok(c) => c,
+        Err(_) => {
+            println!("Redis not reachable, skipping OTP verify latency test");
+            return;
+        }
+    };
+
+    let iterations = 20;
+    let mut latencies_ms = Vec::with_capacity(iterations);
+
+    for i in 0..iterations {
+        let test_email = format!("perf_otp_{}_{}@example.com", i, uuid::Uuid::new_v4());
+        let _ = infra::create_inactive_user(&harness.state.db, &test_email, "PerfUser", "hash")
+            .await
+            .unwrap();
+        let otp = infra::generate_and_store_otp(&mut redis_conn, &test_email)
+            .await
+            .unwrap();
+
+        let verify_req = shared::VerifyOtpRequest {
+            email: test_email,
+            otp,
+        };
+
+        let req = Request::builder()
+            .method("POST")
+            .uri("/api/v1/auth/verify-otp")
+            .header("cf-connecting-ip", format!("10.99.2.{}", (i % 250) + 1))
+            .header("content-type", "application/json")
+            .body(Body::from(serde_json::to_vec(&verify_req).unwrap()))
+            .unwrap();
+
+        let start = Instant::now();
+        let resp = harness.send_request(req).await;
+        let duration = start.elapsed();
+
+        assert_eq!(resp.status(), StatusCode::OK);
+        latencies_ms.push(duration.as_millis());
+    }
+
+    latencies_ms.sort_unstable();
+    let p50_ms = latencies_ms[(iterations as f64 * 0.50) as usize];
+    let p95_ms = latencies_ms[(iterations as f64 * 0.95) as usize];
+
+    println!(
+        "Benchmark (/api/v1/auth/verify-otp): p50 = {} ms, p95 = {} ms",
+        p50_ms, p95_ms
+    );
+
+    // Fast OTP verify SLA target: p95 < 40ms
+    assert!(
+        p95_ms < 40,
+        "OTP verify p95 latency ({} ms) exceeded target (40 ms)",
+        p95_ms
+    );
+}

@@ -51,9 +51,21 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
     };
 
+    let redis_conn = match redis.get_multiplexed_tokio_connection().await {
+        Ok(conn) => {
+            tracing::info!("Pre-initialized shared multiplexed Redis connection");
+            Some(conn)
+        }
+        Err(e) => {
+            tracing::warn!("Failed to pre-initialize multiplexed Redis connection: {e}");
+            None
+        }
+    };
+
     let state = Arc::new(AppState {
         db,
         redis,
+        redis_conn,
         config: Arc::clone(&config),
     });
     let app = create_app(state);

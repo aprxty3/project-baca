@@ -104,7 +104,7 @@ async fn test_owasp_rate_limiting_headers_and_ip_extraction() {
 #[tokio::test]
 async fn test_owasp_otp_cooldown_and_email_bombing_prevention() {
     let harness = TestHarness::new().await;
-    if harness.state.redis.get_multiplexed_tokio_connection().await.is_err() {
+    if harness.state.get_redis_conn().await.is_err() {
         println!("Redis not reachable, skipping OTP cooldown test");
         return;
     }
@@ -148,7 +148,7 @@ async fn test_owasp_otp_cooldown_and_email_bombing_prevention() {
 #[tokio::test]
 async fn test_owasp_login_brute_force_lockout() {
     let harness = TestHarness::new().await;
-    let mut redis_conn = match harness.state.redis.get_multiplexed_tokio_connection().await {
+    let mut redis_conn = match harness.state.get_redis_conn().await {
         Ok(c) => c,
         Err(_) => {
             println!("Redis not reachable, skipping brute force lockout test");
@@ -236,7 +236,7 @@ async fn test_owasp_password_change_identical_rejection() {
 #[tokio::test]
 async fn test_owasp_token_revocation_on_logout() {
     let harness = TestHarness::new().await;
-    let mut redis_conn = match harness.state.redis.get_multiplexed_tokio_connection().await {
+    let mut redis_conn = match harness.state.get_redis_conn().await {
         Ok(c) => c,
         Err(_) => {
             println!("Redis not reachable, skipping token revocation test");
@@ -304,7 +304,7 @@ async fn test_owasp_token_revocation_on_logout() {
 #[tokio::test]
 async fn test_owasp_revoke_all_sessions() {
     let harness = TestHarness::new().await;
-    let mut redis_conn = match harness.state.redis.get_multiplexed_tokio_connection().await {
+    let mut redis_conn = match harness.state.get_redis_conn().await {
         Ok(c) => c,
         Err(_) => {
             println!("Redis not reachable, skipping revoke all test");
@@ -372,7 +372,7 @@ async fn test_owasp_revoke_all_sessions() {
 #[tokio::test]
 async fn test_owasp_account_deletion_session_cleanup() {
     let harness = TestHarness::new().await;
-    let mut redis_conn = match harness.state.redis.get_multiplexed_tokio_connection().await {
+    let mut redis_conn = match harness.state.get_redis_conn().await {
         Ok(c) => c,
         Err(_) => {
             println!("Redis not reachable, skipping account deletion cleanup test");
@@ -423,4 +423,61 @@ async fn test_owasp_account_deletion_session_cleanup() {
     let (resp, body) = harness.send_json_request(req).await;
     assert_eq!(resp.status(), StatusCode::UNAUTHORIZED);
     assert_eq!(body["error"]["code"], "UNAUTHORIZED");
+}
+
+#[tokio::test]
+async fn test_owasp_timing_attack_mitigation_on_login() {
+    let harness = TestHarness::new().await;
+    if harness.state.get_redis_conn().await.is_err() {
+        println!("Redis not reachable, skipping timing attack test");
+        return;
+    }
+
+    let non_existent_email = format!("ghost_{}@example.com", Uuid::new_v4());
+    let login_req = LoginRequest {
+        email: non_existent_email,
+        password: "WrongPassword123!".to_string(),
+    };
+
+    let client_ip = unique_test_ip();
+    let req = Request::builder()
+        .method("POST")
+        .uri("/api/v1/auth/login")
+        .header("cf-connecting-ip", &client_ip)
+        .header("content-type", "application/json")
+        .body(Body::from(serde_json::to_vec(&login_req).unwrap()))
+        .unwrap();
+
+    let (resp, body) = harness.send_json_request(req).await;
+    assert_eq!(resp.status(), StatusCode::UNAUTHORIZED);
+    assert_eq!(body["success"], false);
+    assert_eq!(body["error"]["code"], "UNAUTHORIZED");
+    assert_eq!(body["error"]["message"], "Invalid email or password");
+}
+
+#[tokio::test]
+async fn test_owasp_structured_validation_error_details() {
+    let harness = TestHarness::new().await;
+
+    // Bad signup payload: invalid email format and short password
+    let bad_req = serde_json::json!({
+        "display_name": "",
+        "email": "not-an-email",
+        "password": "short"
+    });
+
+    let req = Request::builder()
+        .method("POST")
+        .uri("/api/v1/auth/signup")
+        .header("cf-connecting-ip", &unique_test_ip())
+        .header("content-type", "application/json")
+        .body(Body::from(serde_json::to_vec(&bad_req).unwrap()))
+        .unwrap();
+
+    let (resp, body) = harness.send_json_request(req).await;
+    assert_eq!(resp.status(), StatusCode::BAD_REQUEST);
+    assert_eq!(body["success"], false);
+    assert_eq!(body["error"]["code"], "VALIDATION_FAILED");
+    assert!(body["error"]["details"].is_object());
+    assert!(body["error"]["details"]["email"].is_array());
 }

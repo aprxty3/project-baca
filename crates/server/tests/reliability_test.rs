@@ -30,6 +30,7 @@ async fn test_reliability_disconnected_database_fallback() {
     let state = Arc::new(AppState {
         db: DatabaseConnection::Disconnected,
         redis,
+        redis_conn: None,
         config,
     });
 

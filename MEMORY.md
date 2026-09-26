@@ -23,6 +23,17 @@ Technical rationales behind engineering decisions for **Project Baca**.
 
 ## Chronological Decision Records
 
+### 2026-09-26 — Auth Latency Optimization, Query Repository & Timing Attack Mitigation
+* **Actors:** `human:aprxty3` & `[antigravity]`
+* **Context:** Initial profiling of authentication endpoints revealed latency bottlenecks: (1) each HTTP request opened separate TCP connections to Redis in rate-limit middleware and handlers; (2) CPU-bound Argon2id ran synchronously on Tokio worker threads with non-optimal parameters (64MB, 3 iterations, 4 lanes), starving async executors; (3) non-existent account logins were susceptible to timing enumeration attacks; (4) user queries were ad-hoc in route handlers rather than encapsulated.
+* **Decision:**
+  1. Caching & Multiplexing: Pre-initialized a multiplexed connection in `AppState` (`state.get_redis_conn().await`), allowing sub-microsecond in-memory handle cloning without socket re-creation.
+  2. OWASP Parameter Calibration: Aligned Argon2id with OWASP recommendations (19MB RAM, 2 iterations, 1 parallelism lane) and offloaded execution to Tokio blocking threads (`tokio::task::spawn_blocking`).
+  3. Constant-Time Dummy Verification: Mitigated user enumeration by verifying against a static dummy hash (`DUMMY_ARGON2_HASH`) when the user email does not exist.
+  4. Repository Encapsulation: Extracted all user database interactions into `crates/infra/src/repositories/user_repository.rs` for clean separation and single-query atomic activations.
+  5. Dev Profile Crypto Optimization: Configured `[profile.dev.package.argon2]` and `blake2` with `opt-level = 3` in `Cargo.toml`.
+  6. Results: Login p95 latency reduced from >600ms to 52ms; OTP verification p95 reduced to 26ms.
+
 ### 2026-09-26 — OWASP ASVS Architecture Hardening (Auth, Rate Limiting & Token Revocation)
 * **Actors:** `human:aprxty3` & `[antigravity]`
 * **Context:** Auditing Authentication and User Management against OWASP ASVS and API Security standards revealed potential attack vectors: information leakage in DB errors (CWE-209), IP spoofing in rate limits, credential stuffing via unthrottled login attempts, OTP spamming on signup, and unrevokable stateless JWT access tokens upon logout or account deletion.
