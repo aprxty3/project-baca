@@ -1,15 +1,17 @@
 # Graph Report - project-baca  (2026-09-26)
 
 ## Corpus Check
-- cluster-only mode — file stats not available
+- 103 files · ~202,417 words
+- Verdict: corpus is large enough that graph structure adds value.
+- Unclassified: 6 file(s) not represented in the graph (top: (none) 3, .example 1, .toml 1)
 
 ## Summary
-- 811 nodes · 1444 edges · 90 communities (60 shown, 30 thin omitted)
+- 816 nodes · 1448 edges · 92 communities (62 shown, 30 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 26 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `58abb0c0`
+- Built from commit: `55d9bfb6`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -23,7 +25,7 @@
 - server/src/main.rs
 - Frontend Web Reader Tasks
 - Test Harness Utilities
-- Infrastructure and SeaORM Setup
+- 2. Work Breakdown
 - EPUB Ingestion Pipeline Tasks
 - Quality Assurance and Benchmarking
 - README.md
@@ -39,7 +41,7 @@
 - Reader UI Illustrations
 - Catalog UI Illustrations
 - Monitoring UI Illustrations
-- routes/books.rs
+- 2. Work Breakdown
 - entities/mod.rs
 - AppState
 - pool.rs
@@ -95,6 +97,8 @@
 - ActiveModel
 - ActiveModel
 - testharness
+- rate_limit_middleware
+- Q: nah pertanyaanmu terkait graf seriusan ga paham, apalagi across architetureal boundaries gitu. tolong deh telusuri jalur data dan dependencynya.
 
 ## God Nodes (most connected - your core abstractions)
 1. `AppError` - 39 edges
@@ -102,22 +106,22 @@
 3. `HttpError` - 29 edges
 4. `AppConfig` - 18 edges
 5. `AuthUser` - 18 edges
-6. `TestHarness` - 14 edges
+6. `verify_otp()` - 14 edges
 7. `login()` - 14 edges
-8. `verify_otp()` - 14 edges
-9. `books` - 12 edges
-10. `change_password()` - 12 edges
+8. `TestHarness` - 14 edges
+9. `signup()` - 12 edges
+10. `refresh()` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Web Entry Point` --semantically_similar_to--> `Asset Catalog`  [INFERRED] [semantically similar]
   crates/web/index.html → assets/README.md
+- `signup()` --calls--> `send_otp_email()`  [INFERRED]
+  crates/server/src/routes/auth.rs → crates/infra/src/email.rs
+- `main()` --calls--> `init_db_pool()`  [INFERRED]
+  crates/server/src/main.rs → crates/infra/src/pool.rs
+- `main()` --calls--> `init_redis_client()`  [INFERRED]
+  crates/server/src/main.rs → crates/infra/src/pool.rs
 - `login()` --calls--> `generate_access_token()`  [INFERRED]
-  crates/server/src/routes/auth.rs → crates/infra/src/security/jwt.rs
-- `refresh()` --calls--> `generate_access_token()`  [INFERRED]
-  crates/server/src/routes/auth.rs → crates/infra/src/security/jwt.rs
-- `verify_otp()` --calls--> `generate_access_token()`  [INFERRED]
-  crates/server/src/routes/auth.rs → crates/infra/src/security/jwt.rs
-- `login()` --calls--> `generate_refresh_token()`  [INFERRED]
   crates/server/src/routes/auth.rs → crates/infra/src/security/jwt.rs
 
 ## Import Cycles
@@ -130,7 +134,7 @@
 - **OKF Knowledge Vault** — knowledge_index_md, knowledge_prd_md, knowledge_erd_md, knowledge_frd_md, knowledge_srs_md, knowledge_ux_flow_md, knowledge_log_md [EXTRACTED 1.00]
 - **OKF v0.2 Specification Suite** — knowledge_index_md, knowledge_prd_md, knowledge_erd_md, knowledge_frd_md, knowledge_srs_md, knowledge_ux_flow_md, knowledge_log_md [EXTRACTED 1.00]
 
-## Communities (90 total, 30 thin omitted)
+## Communities (92 total, 30 thin omitted)
 
 ### Community 0 - "reliability_test.rs"
 Cohesion: 0.13
@@ -168,9 +172,9 @@ Nodes (12): 1. Summary, 2. Work Breakdown, 3. Success Criteria, Cross-Domain Mat
 Cohesion: 0.31
 Nodes (8): Arc, Body, Request, Response, Router, Value, TestHarness, serviceext
 
-### Community 9 - "Infrastructure and SeaORM Setup"
-Cohesion: 0.18
-Nodes (11): 1. Summary, 2. Work Breakdown, 3. Success Criteria, Cross-Domain Matrix, Sub-Task 1.1: `dotenvy` Integration, Sub-Task 1.2: Modular `AppConfig` Sub-Configurations, Sub-Task 1.3: Dynamic Connection Pools, Sub-Task 1.4: SeaORM Entities for 13 Tables (+3 more)
+### Community 9 - "2. Work Breakdown"
+Cohesion: 0.29
+Nodes (7): 2. Work Breakdown, Sub-Task 1.1: `dotenvy` Integration, Sub-Task 1.2: Modular `AppConfig` Sub-Configurations, Sub-Task 1.3: Dynamic Connection Pools, Sub-Task 1.4: SeaORM Entities for 13 Tables, Sub-Task 1.5: Server `AppState`, Sub-Task 1.6: OpenAPI & Observability
 
 ### Community 10 - "EPUB Ingestion Pipeline Tasks"
 Cohesion: 0.18
@@ -181,8 +185,8 @@ Cohesion: 0.18
 Nodes (11): 1. Summary, 2. Work Breakdown, 3. Success Criteria, Cross-Domain Matrix, Sub-Task 7.1: Smoke Testing Suite, Sub-Task 7.2: Unit Test Suite, Sub-Task 7.3: Integration Test Suite, Sub-Task 7.4: Performance SLA Benchmarks (+3 more)
 
 ### Community 12 - "README.md"
-Cohesion: 0.12
-Nodes (22): OKF & Persistent Memory Guidelines, Admin Sorting Illustration, AI Quote Finder Illustration, Asset Catalog, GBrain Design Reference, Web Entry Point, 1. Summary, 2. Work Breakdown (+14 more)
+Cohesion: 0.15
+Nodes (16): OKF & Persistent Memory Guidelines, Admin Sorting Illustration, AI Quote Finder Illustration, Asset Catalog, GBrain Design Reference, Web Entry Point, 1. Summary, 3. Success Criteria (+8 more)
 
 ### Community 13 - "AppError"
 Cohesion: 0.09
@@ -212,9 +216,9 @@ Nodes (4): Relation, App(), IntoView, prelude
 Cohesion: 0.14
 Nodes (24): Model, DateTimeWithTimeZone, String, Uuid, list_badges(), list_user_badges(), DatabaseConnection, Result (+16 more)
 
-### Community 25 - "routes/books.rs"
-Cohesion: 0.36
-Nodes (14): books_routes(), get_book(), get_chapter(), get_offline_bundle(), list_books(), Arc, Path, Response (+6 more)
+### Community 25 - "2. Work Breakdown"
+Cohesion: 0.20
+Nodes (10): 1. Summary, 2. Work Breakdown, 3. Success Criteria, Cross-Domain Matrix, Sub-Task 4.1: Dual-Mode Embedding Provider (`crates/infra`), Sub-Task 4.2: Scoped Semantic Quote Finder (`POST /api/books/{id}/quotes/search`), Sub-Task 4.3: Chapter Atomic Insight Cards (SRS 18), Sub-Task 4.4: Spoiler-Free Catch-up Recap (SRS 19) (+2 more)
 
 ### Community 26 - "entities/mod.rs"
 Cohesion: 0.14
@@ -222,7 +226,7 @@ Nodes (13): entity_as_badges, entity_as_bookchunks, entity_as_books, entity_as_b
 
 ### Community 27 - "AppState"
 Cohesion: 0.06
-Nodes (77): apiresponse, apperror, asynccommands, auth, axum, books, crate, HttpError (+69 more)
+Nodes (84): apiresponse, apperror, asynccommands, auth, axum, books, crate, HttpError (+76 more)
 
 ### Community 28 - "pool.rs"
 Cohesion: 0.16
@@ -372,22 +376,30 @@ Nodes (3): Entity, Related, RelationDef
 Cohesion: 0.50
 Nodes (4): 4. Book Overview, Reader Content & Offline Bundle, Step 3.5: Book Overview & Chapter Summary (`GET /api/v1/books/{id}`), Step 3.6: Reader Chapter Delivery (`GET /api/v1/books/{id}/chapters/{chapter_number}`), Step 3.7: Offline Bundle Synchronization (`GET /api/v1/books/{id}/offline-bundle`)
 
+### Community 90 - "rate_limit_middleware"
+Cohesion: 0.29
+Nodes (7): rate_limit_middleware(), Arc, Body, Next, Request, Response, State
+
+### Community 91 - "Q: nah pertanyaanmu terkait graf seriusan ga paham, apalagi across architetureal boundaries gitu. tolong deh telusuri jalur data dan dependencynya."
+Cohesion: 0.40
+Nodes (4): Answer, Outcome, Q: nah pertanyaanmu terkait graf seriusan ga paham, apalagi across architetureal boundaries gitu. tolong deh telusuri jalur data dan dependencynya., Source Nodes
+
 ## Knowledge Gaps
-- **141 isolated node(s):** `Relation`, `ApiDoc`, `Relation`, `Relation`, `Relation` (+136 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 346 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **144 isolated node(s):** `Relation`, `ActiveModel`, `Relation`, `ActiveModel`, `Relation` (+139 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 350 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **30 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `AppError` connect `AppError` to `shared/src/lib.rs`, `.find_book_by_id`, `AppConfig`, `progress_repository.rs`, `AppState`, `pool.rs`, `smoke_test.rs`?**
-  _High betweenness centrality (0.088) - this node is a cross-community bridge._
-- **Why does `AppState` connect `AppState` to `Test Harness Utilities`, `AppConfig`, `server/src/lib.rs`, `routes/books.rs`?**
-  _High betweenness centrality (0.065) - this node is a cross-community bridge._
+  _High betweenness centrality (0.087) - this node is a cross-community bridge._
+- **Why does `AppState` connect `AppState` to `Test Harness Utilities`, `AppConfig`, `rate_limit_middleware`, `server/src/lib.rs`?**
+  _High betweenness centrality (0.064) - this node is a cross-community bridge._
 - **Why does `AppConfig` connect `AppConfig` to `AppState`, `server/src/lib.rs`, `pool.rs`?**
   _High betweenness centrality (0.036) - this node is a cross-community bridge._
-- **What connects `Relation`, `ApiDoc`, `Relation` to the rest of the system?**
-  _141 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `Relation`, `ActiveModel`, `Relation` to the rest of the system?**
+  _144 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `reliability_test.rs` be split into smaller, more focused modules?**
   _Cohesion score 0.12554112554112554 - nodes in this community are weakly interconnected._
 - **Should `Database Schema and Indexes` be split into smaller, more focused modules?**
