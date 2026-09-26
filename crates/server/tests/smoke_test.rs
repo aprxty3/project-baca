@@ -1,5 +1,4 @@
-//! Smoke Test Suite for Project Baca HTTP API Server
-//! Memverifikasi booting aplikasi, endpoint kesehatan, ketersediaan OpenAPI/Swagger, dan konektivitas infrastruktur.
+//! Smoke test suite verifying server boot, health checks, Swagger UI, and infrastructure reachability.
 
 mod common;
 
@@ -26,8 +25,6 @@ async fn test_smoke_health_endpoint() {
     assert_eq!(body["success"], true);
     assert_eq!(body["data"]["status"], "healthy");
     assert_eq!(body["data"]["service"], "project-baca-server");
-
-    // Pastikan x-request-id middleware aktif pada header
     assert!(resp.headers().contains_key("x-request-id"));
 }
 
@@ -47,7 +44,6 @@ async fn test_smoke_api_v1_health_dependencies() {
     assert_eq!(body["success"], true);
     assert_eq!(body["data"]["status"], "ok");
     assert_eq!(body["data"]["redis"], "configured");
-    // status postgres bisa "connected" atau "disconnected" tanpa membuat server crash
     assert!(body["data"]["postgres"] == "connected" || body["data"]["postgres"] == "disconnected");
 }
 
@@ -89,15 +85,14 @@ async fn test_smoke_openapi_json_spec() {
 
 #[test]
 fn test_smoke_infrastructure_tcp_reachability() {
-    // Uji keterjangkauan port PostgreSQL lokal jika Docker compose sedang berjalan
     let postgres_addr = "127.0.0.1:5433";
     if let Ok(_stream) = TcpStream::connect_timeout(&postgres_addr.parse().unwrap(), Duration::from_millis(500)) {
         println!("PostgreSQL port 5433 is reachable.");
     }
 
-    // Uji keterjangkauan Redis lokal
     let redis_addr = "127.0.0.1:6380";
     if let Ok(_stream) = TcpStream::connect_timeout(&redis_addr.parse().unwrap(), Duration::from_millis(500)) {
         println!("Redis port 6380 is reachable.");
     }
 }
+

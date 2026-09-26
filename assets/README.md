@@ -1,17 +1,17 @@
 # Project Baca — Asset Catalog
 
-Katalog aset visual dan ilustrasi bertema **Vintage Literary / Mid-Century Writer (1900–1950)** bergaya etsa pena arang (*pen-and-ink cross-hatch engravings*).
+Visual assets and illustrations following the **Vintage Literary / Mid-Century Writer (1900–1950)** aesthetic (pen-and-ink cross-hatch engravings).
 
-## 1. Ilustrasi Antarmuka (`assets/illustrations/`)
+## 1. Interface Illustrations (`assets/illustrations/`)
 
-| File | Subjek Ilustrasi | Peruntukan di UI Project Baca |
+| File | Subject | UI Placement |
 |---|---|---|
-| `library-bookshelf-ladder.png` | Wanita menaiki tangga kayu perpustakaan mengambil buku | **Halaman Utama / Katalog Perpustakaan** (eksplorasi buku & empty state koleksi) |
-| `cozy-reader-armchair-owl.png` | Wanita membaca surat di kursi malas berlengan ditemani cangkir teh & burung hantu | **Layar Membaca (Reader View)** & penanda bookmark / sesi baca selesai |
-| `manuscript-inspection-clothesline.png` | Penulis menjemur lembaran naskah di tali untuk diperiksa | **Layar Ringkasan Bab (Atomic Cards)** & monitor worker ingestion |
-| `admin-sorting-pigeonholes.png` | Pengarsip menyortir surat/naskah ke kotak kayu (*pigeonholes*) | **Dashboard Admin (`/admin/books`)** untuk manajemen unggah & penyortiran EPUB |
-| `retro-rocket-discovery.png` | Tiga petualang era Victoria menaiki roket retro bertenaga otak menuju bulan | **AI Quote Finder & Hero Onboarding** (pencarian semantik bahasa alami) |
+| `library-bookshelf-ladder.png` | Reader climbing a wooden library ladder | **Home / Catalog** (catalog discovery & empty state) |
+| `cozy-reader-armchair-owl.png` | Reader in an armchair with tea and an owl | **Reader View** (reading bookmarks & completed sessions) |
+| `manuscript-inspection-clothesline.png` | Writer drying manuscript pages on a line | **Atomic Cards** (chapter summaries & ingestion monitor) |
+| `admin-sorting-pigeonholes.png` | Archivist sorting mail into wooden pigeonholes | **Admin Dashboard (`/admin/books`)** (EPUB management) |
+| `retro-rocket-discovery.png` | Victorian explorers launching in a retro rocket | **AI Quote Finder & Onboarding** (semantic search hero) |
 
-## 2. Referensi Desain (`assets/references/`)
+## 2. Design References (`assets/references/`)
 
-* `gbrain-design-reference.png`: Tangkapan layar referensi desain editorial `gbrain.io` (latar *deep espresso* `#1F1916`, tombol *terracotta clay* `#CE734E`, tipografi *lyrical italics*, dan pembatas *fleuron* `❖`).
+* `gbrain-design-reference.png`: Editorial reference screenshot (`#1F1916` deep espresso, `#CE734E` terracotta clay, lyrical italics, and `❖` fleuron dividers).

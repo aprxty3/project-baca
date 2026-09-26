@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Project Baca — Database Migration Runner
-# Menjalankan migrasi SQL berpasangan (.up.sql dan .down.sql) ke PostgreSQL 17
+# Executes paired SQL migrations (.up.sql and .down.sql) against PostgreSQL 17
 
 DB_USER="${DB_USER:-baca_user}"
 DB_NAME="${DB_NAME:-project_baca_db}"
@@ -23,14 +23,14 @@ init_table() {
 
 migrate_up() {
     init_table
-    echo "Memeriksa berkas migrasi di ${MIGRATIONS_DIR}..."
+    echo "Checking migration files in ${MIGRATIONS_DIR}..."
 
     shopt -s nullglob
     local files=("${MIGRATIONS_DIR}"/*.up.sql)
     shopt -u nullglob
 
     if [[ ${#files[@]} -eq 0 ]]; then
-        echo "Tidak ada berkas migrasi .up.sql yang ditemukan."
+        echo "No .up.sql migration files found."
         return 0
     fi
 
@@ -44,17 +44,17 @@ migrate_up() {
         is_applied=$(psql_cmd -t -A -c "SELECT count(*) FROM schema_migrations WHERE version = '${version}';")
 
         if [[ "$is_applied" -eq 0 ]]; then
-            echo "Menerapkan migrasi: ${version}..."
+            echo "Applying: ${version}..."
             psql_cmd < "$file"
             psql_cmd -q -c "INSERT INTO schema_migrations (version) VALUES ('${version}');"
-            echo "Selesai: ${version} berhasil diterapkan."
+            echo "Applied: ${version}."
             applied_count=$((applied_count + 1))
         else
-            echo "Lewati: ${version} (sudah diterapkan sebelumnya)."
+            echo "Skipped: ${version} (already applied)."
         fi
     done
 
-    echo "Selesai. Total migrasi baru diterapkan: ${applied_count}."
+    echo "Completed. Total new migrations applied: ${applied_count}."
 }
 
 migrate_down() {
@@ -63,25 +63,25 @@ migrate_down() {
     last_version=$(psql_cmd -t -A -c "SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1;")
 
     if [[ -z "$last_version" ]]; then
-        echo "Tidak ada migrasi yang tercatat untuk di-rollback."
+        echo "No recorded migrations to roll back."
         return 0
     fi
 
     local down_file="${MIGRATIONS_DIR}/${last_version}.down.sql"
     if [[ ! -f "$down_file" ]]; then
-        echo "Kesalahan: Berkas rollback '${down_file}' tidak ditemukan!"
+        echo "Error: Rollback file '${down_file}' not found."
         exit 1
     fi
 
-    echo "Membalikkan migrasi (rollback): ${last_version}..."
+    echo "Rolling back: ${last_version}..."
     psql_cmd < "$down_file"
     psql_cmd -q -c "DELETE FROM schema_migrations WHERE version = '${last_version}';"
-    echo "Selesai: ${last_version} berhasil di-rollback."
+    echo "Rolled back: ${last_version}."
 }
 
 migrate_status() {
     init_table
-    echo "Status Riwayat Migrasi Skema Basis Data:"
+    echo "Schema Migration Status:"
     psql_cmd -c "SELECT version, applied_at FROM schema_migrations ORDER BY version ASC;"
 }
 
@@ -96,7 +96,7 @@ case "${1:-up}" in
         migrate_status
         ;;
     *)
-        echo "Penggunaan: $0 {up|down|status}"
+        echo "Usage: $0 {up|down|status}"
         exit 1
         ;;
 esac

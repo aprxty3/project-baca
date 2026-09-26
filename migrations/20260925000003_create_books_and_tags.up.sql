@@ -1,6 +1,4 @@
--- Migrasi 03: Klaster Katalog Buku & Taksonomi
--- Tabel: books, tags, book_tags
-
+-- Migration 03: Books, tags, book_tags tables and search indexes
 CREATE TABLE IF NOT EXISTS books (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     title VARCHAR(255) NOT NULL,
@@ -35,7 +33,7 @@ CREATE TABLE IF NOT EXISTS book_tags (
     PRIMARY KEY (book_id, tag_id)
 );
 
--- Indeks Klaster Katalog & Penemuan Buku (Partial Indexing WHERE status = 'published')
+-- Catalog and discovery indexes (partial index on published status)
 CREATE INDEX IF NOT EXISTS idx_books_published_fts ON books 
 USING gin (to_tsvector('simple', title || ' ' || author || ' ' || description)) 
 WHERE status = 'published';
@@ -52,6 +50,6 @@ CREATE INDEX IF NOT EXISTS idx_books_catalog_filter ON books
 USING btree (language, primary_theme, publication_year DESC) 
 WHERE status = 'published';
 
--- Indeks Klaster Taksonomi & Tag
+-- Taxonomy indexes
 CREATE INDEX IF NOT EXISTS idx_tags_slug ON tags USING btree (slug);
 CREATE INDEX IF NOT EXISTS idx_book_tags_reverse ON book_tags USING btree (tag_id, book_id);

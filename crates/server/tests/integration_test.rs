@@ -1,5 +1,4 @@
-//! Integration Test Suite for Project Baca HTTP API Server
-//! Menguji alur request-response, middleware request_id, CORS, dan konsistensi skema OpenAPI DTOs.
+//! Integration test suite verifying request-response cycles, request ID correlation, CORS, and OpenAPI DTO schemas.
 
 mod common;
 
@@ -42,7 +41,6 @@ async fn test_integration_request_id_auto_generation() {
 
     assert_eq!(resp.status(), StatusCode::OK);
     let generated_id = resp.headers().get("x-request-id").unwrap().to_str().unwrap();
-    // Validasi bahwa ID yang di-generate adalah UUID v4 yang valid
     assert!(Uuid::parse_str(generated_id).is_ok());
 }
 
@@ -60,7 +58,6 @@ async fn test_integration_cors_headers() {
 
     let resp = harness.send_request(req).await;
 
-    // Preflight status bisa 200 OK
     assert_eq!(resp.status(), StatusCode::OK);
     assert!(resp.headers().contains_key("access-control-allow-origin"));
 }
@@ -79,7 +76,6 @@ async fn test_integration_openapi_schema_contains_registered_dtos() {
 
     assert_eq!(resp.status(), StatusCode::OK);
 
-    // Verifikasi bahwa seluruh DTO terdaftar dalam komponen skema OpenAPI
     let schemas = &spec["components"]["schemas"];
     assert!(schemas["SignupRequest"].is_object(), "SignupRequest schema missing");
     assert!(schemas["LoginRequest"].is_object(), "LoginRequest schema missing");

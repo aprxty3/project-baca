@@ -1,6 +1,4 @@
--- Migrasi 02: Klaster Identitas & Otorisasi Pengguna
--- Tabel: users
-
+-- Migration 02: Users table and authentication indexes
 CREATE TABLE IF NOT EXISTS users (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     email VARCHAR(255) UNIQUE NOT NULL,
@@ -13,6 +11,6 @@ CREATE TABLE IF NOT EXISTS users (
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- Indeks Otentikasi dan Otorisasi
+-- Authentication and authorization indexes
 CREATE INDEX IF NOT EXISTS idx_users_email ON users USING btree (email);
 CREATE INDEX IF NOT EXISTS idx_users_admin_role ON users USING btree (role) WHERE role = 'admin';

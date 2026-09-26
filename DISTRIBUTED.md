@@ -1,23 +1,21 @@
 ---
 type: Technical Architecture Specification
 title: "Project Baca — Distributed Worker, Ingestion & Scaling Architecture"
-description: "Arsitektur pemrosesan terdistribusi untuk pipeline ingestion EPUB, antrean Redis Streams, Dual-Mode Embedding (Gemini API & FastEmbed CPU), dan skalabilitas horizontal."
+description: "Distributed compute architecture for EPUB ingestion, Redis Streams queues, Dual-Mode Embeddings, and horizontal scaling."
 tags: [distributed, worker, ingestion, redis-streams, embedding, gemini, fastembed, scalability, okf]
 ---
 
-# DISTRIBUTED.md — Arsitektur Pemrosesan Terdistribusi & Pipeline Ingestion
+# DISTRIBUTED.md — Distributed Processing & Ingestion Pipeline
 
-Dokumen ini mendefinisikan arsitektur pemrosesan terdistribusi (*distributed compute*), manajemen antrean asinkron, dan strategi skalabilitas horizontal untuk **Project Baca**.
+Distributed architecture, asynchronous queue management, and horizontal scaling strategy for **Project Baca**.
 
----
+## 1. Processing Topology
 
-## 1. Topologi Pemrosesan Terdistribusi
-
-Sistem dirancang dengan pemisahan tegas antara lapisan layanan HTTP interaktif yang *stateless* dan lapisan pemrosesan intensif di latar belakang (*background workers*):
+Clear separation between stateless HTTP API nodes and background compute workers:
 
 ```text
 +-------------------+       +-------------------+       +-----------------------+
-|  Klien Web/PWA    | ----> |  Axum API Server  | ----> |  Redis 7 Streams      |
+|  Web/PWA Client   | ----> |  Axum API Server  | ----> |  Redis 7 Streams      |
 |  (Leptos WASM)    | <---- |  (Stateless Node) |       |  Stream: epub:ingest  |
 +-------------------+       +-------------------+       +-----------------------+
                                                                     |
@@ -36,40 +34,33 @@ Sistem dirancang dengan pemisahan tegas antara lapisan layanan HTTP interaktif y
                                 +-------------------+
 ```
 
----
+## 2. Asynchronous EPUB Ingestion Pipeline
 
-## 2. Pipeline Ingestion EPUB Asinkron
+Public domain manuscript ingestion executes in 5 isolated phases:
 
-Alur kerja ingestion naskah buku ranah publik berjalan melalui 5 tahapan terisolasi:
-
-1. **Pengunggahan & Persistensi Objek:**
-   - Admin mengunggah berkas `.epub` melalui endpoint `/api/admin/books/upload`.
-   - Axum memverifikasi magic bytes berkas dan mengunggah berkas mentah ke MinIO/S3 bucket `baca-epubs/raw/<book_id>.epub`.
-   - Axum mempublikasikan pesan tugas ke Redis Stream `stream:epub:ingestion`.
-2. **Konsumsi & Parsing Terisolasi (Python Worker):**
-   - Worker mengambil tugas dari consumer group `ingestion-workers` via perintah `XREADGROUP`.
-   - Memvalidasi metadata OPF, mengekstrak cover ke bucket `baca-covers/`, dan melakukan sanitasi HTML (menghapus script, style, iklan bawaan).
+1. **Upload & Object Storage:**
+   - Admin uploads `.epub` file via `/api/admin/books/upload`.
+   - Axum validates file magic bytes, saves raw EPUB to `baca-epubs/raw/<book_id>.epub` in S3/MinIO, and pushes event to Redis Stream `stream:epub:ingestion`.
+2. **Parsing & Sanitization (Python Worker):**
+   - Worker consumes task from `ingestion-workers` consumer group via `XREADGROUP`.
+   - Validates OPF metadata, extracts cover image to `baca-covers/`, and cleans HTML (stripping malicious tags, inline scripts, and styling).
 3. **Scene-based & Semantic Chunking:**
-   - Memecah narasi bab menjadi potongan semantik (*chunks*) berukuran 300–500 kata dengan batas scene/paragraf alami (bukan pemotongan teks acak).
-   - Menghasilkan DOM CFI (*Canonical Fragment Identifier*) untuk setiap chunk agar dapat diarahkan langsung pada reader.
-4. **Vektorisasi Batch via Dual-Mode Embedding Provider (768 Dimensi):**
-   - Worker memproses kumpulan chunk menggunakan `EmbeddingProvider` yang dikonfigurasi melalui variabel lingkungan:
-     - **Mode Cloud (Default):** Google GenAI Gemini API (`text-embedding-004`). Memproses vektor 768 dimensi di cloud secara instan tanpa membutuhkan kartu grafis GPU dan tanpa beban memori RAM lokal.
-     - **Mode Lokal / Offline:** Pustaka `fastembed` berbasis ONNX Runtime yang dioptimalkan untuk CPU (termasuk arsitektur ARM64 / Apple Silicon / Graviton dengan instruksi NEON). Sangat hemat RAM (<150 MB) dan ukuran model hanya ~60 MB.
-   - Standarisasi vektor pada **768 dimensi** menghemat alokasi memori RAM indeks HNSW PostgreSQL hingga 50% dibanding model 1536 dimensi.
-5. **Penyimpanan Batch & Indeksasi HNSW:**
-   - Vektor dan teks chunk disimpan secara massal (*bulk insert*) ke tabel `book_chunks`.
-   - Status buku diperbarui menjadi `published` di tabel `books`.
+   - Splits chapter text into semantic chunks of 300–500 words at natural paragraph/scene boundaries.
+   - Computes DOM CFI for precise reader deep-linking.
+4. **Batch Vectorization via Dual-Mode Embeddings (768-dim):**
+   - **Cloud Mode (Default):** Google GenAI API (`text-embedding-004`). Generates 768-dimensional embeddings without local GPU requirements.
+   - **Local / Offline Mode:** CPU-optimized ONNX runtime via `fastembed` (supports ARM64 NEON / Apple Silicon). Low RAM usage (<150 MB) and small footprint (~60 MB).
+   - Standard 768 dimensions cut PostgreSQL HNSW index memory consumption in half compared to 1536-dimensional models.
+5. **Bulk Insert & Indexing:**
+   - Bulk inserts chunk records and vectors into `book_chunks`.
+   - Updates book status to `published` in `books`.
 
----
+## 3. Scoped Vector Search Strategy
 
-## 3. Strategi Skalabilitas Semantik (Scoped Vector Search)
+Vector search memory scales with corpus size. Project Baca uses a scoped search pattern:
 
-Tantangan utama dari pencarian vektor berbasis graf (*HNSW*) adalah konsumsi memori RAM yang meningkat seiring jumlah node vektor:
-
-* **Pola Scoped Search (`WHERE book_id = $1`):**
-  - Berbeda dari sistem RAG umum yang mencari di seluruh korpus, Project Baca membatasi pencarian kutipan hanya di dalam buku yang sedang dibaca pengguna.
-  - Kueri SQL:
+* **Scoped Search Pattern (`WHERE book_id = $1`):**
+  - Rather than searching the entire multi-book corpus, semantic quote searches are scoped to the active book:
     ```sql
     SELECT id, chapter_id, content, cfi_range, 1 - (embedding <=> $2) AS similarity
     FROM book_chunks
@@ -77,24 +68,16 @@ Tantangan utama dari pencarian vektor berbasis graf (*HNSW*) adalah konsumsi mem
     ORDER BY embedding <=> $2
     LIMIT 5;
     ```
-  - Isolasi ini memungkinkan ratusan ribu chunk buku tersimpan di disk tanpa membebani indeks HNSW memori global secara berlebih.
+  - Isolating searches keeps HNSW memory overhead minimal while scaling to hundreds of thousands of chunks on disk.
 
----
+## 4. Fault Tolerance & Queue Reliability
 
-## 4. Keandalan Antrean & Toleransi Kesalahan (Fault Tolerance)
+1. **Message Acknowledgment:** Tasks are only removed from the pending list after worker calls `XACK`.
+2. **Dead Worker Recovery:** Supervisor monitors `XPENDING` every 60 seconds; uncompleted tasks past 5 minutes are reclaimed via `XCLAIM`.
+3. **Dead-Letter Queue (DLQ):** Corrupt files failing after 3 retries move to `stream:epub:dlq` for curator inspection without stalling the main queue.
 
-1. **Pengakuan Pesan (*Message Acknowledgment*):**
-   - Setiap tugas hanya dihapus dari antrean pending setelah worker memanggil `XACK`.
-2. **Pemulihan Worker Mati (*Dead Worker Recovery*):**
-   - Supervisor worker menjalankan pengecekan `XPENDING` secara berkala (interval 60 detik).
-   - Jika sebuah tugas tidak diselesaikan dalam 5 menit, tugas tersebut dialihkan (*claimed*) oleh worker lain melalui `XCLAIM`.
-3. **Dead-Letter Queue (DLQ):**
-   - Berkas EPUB korup atau teks yang gagal diproses setelah 3 kali percobaan dipindahkan ke `stream:epub:dlq` untuk inspeksi manual kurator, tanpa menghambat antrean utama.
+## 5. Horizontal Scaling Roadmap (Phase 2)
 
----
-
-## 5. Peta Jalan Penskalaan Horisontal (Phase 2 Roadmap)
-
-* **Autoscaling Worker Pods:** Menyesuaikan jumlah replika worker Python berdasarkan panjang antrean `XLEN stream:epub:ingestion` di Kubernetes (KEDA).
-* **Multi-Node Read Replica PostgreSQL:** Memisahkan beban kueri leksikal FTS dan kueri katalog ke read replica, menjaga primary database tetap optimal untuk transaksi status baca.
-* **Global Edge Caching via Cloudflare:** Menyimpan berkas bab HTML yang telah disanitasi pada cache edge Cloudflare (TTL 7 hari) untuk latensi akses pembaca <20ms di seluruh dunia.
+* **Worker Autoscaling:** Scale Python worker pods based on queue length (`XLEN stream:epub:ingestion`) via Kubernetes KEDA.
+* **Read Replicas:** Route FTS catalog queries to PostgreSQL read replicas, preserving the primary database for write transactions and reading progress updates.
+* **Edge Caching:** Cache sanitized HTML chapters at Cloudflare edge locations (7-day TTL) for sub-20ms reader access globally.

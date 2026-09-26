@@ -16,7 +16,7 @@ pub struct TestHarness {
 }
 
 impl TestHarness {
-    /// Inisialisasi test harness dengan koneksi riil jika container aktif, atau fallback graceful
+    /// Initializes test harness with active database/redis connections or graceful fallbacks
     pub async fn new() -> Self {
         let config = AppConfig::from_env().unwrap_or_else(|_| AppConfig {
             database_url: "postgresql://baca_user:baca_password@127.0.0.1:5433/project_baca_db".to_string(),
@@ -48,12 +48,12 @@ impl TestHarness {
         Self { app, state }
     }
 
-    /// Eksekusi request HTTP ke dalam instance router Axum in-memory
+    /// Sends an HTTP request to the in-memory Axum router
     pub async fn send_request(&self, req: Request<Body>) -> Response<Body> {
         self.app.clone().oneshot(req).await.expect("Failed to execute in-memory request")
     }
 
-    /// Eksekusi request dan deserialisasi response body menjadi JSON
+    /// Sends an HTTP request and deserializes the response body to JSON
     #[allow(dead_code)]
     pub async fn send_json_request(&self, req: Request<Body>) -> (Response<Body>, serde_json::Value) {
         let resp = self.send_request(req).await;

@@ -1,16 +1,16 @@
 # Graph Report - project-baca  (2026-09-26)
 
 ## Corpus Check
-- 61 files · ~204,502 words
+- 61 files · ~186,190 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 282 nodes · 330 edges · 63 communities (23 shown, 40 thin omitted)
+- 282 nodes · 323 edges · 63 communities (23 shown, 40 thin omitted)
 - Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 10 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `7f88c7e1`
+- Built from commit: `ed85f34e`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -19,13 +19,13 @@
 - AppConfig
 - README.md
 - domain/src/lib.rs
-- 2. Rincian Langkah Kerja (Sub-Tasks)
-- 2. Rincian Langkah Kerja (Sub-Tasks)
-- 2. Rincian Langkah Kerja (Sub-Tasks)
-- 2. Rincian Langkah Kerja (Sub-Tasks)
-- 2. Rincian Langkah Kerja (Sub-Tasks)
+- 2. Work Breakdown
+- 2. Work Breakdown
+- 2. Work Breakdown
+- 2. Work Breakdown
+- 2. Work Breakdown
 - knowledge/index.md — Master Knowledge Catalog
-- 2. Rincian Langkah Kerja (Sub-Tasks)
+- 2. Work Breakdown
 - migrate.sh
 - shared
 - knowledge/frd.md — Functional Requirements Document
@@ -78,14 +78,14 @@
 ## God Nodes (most connected - your core abstractions)
 1. `AppConfig` - 8 edges
 2. `main()` - 8 edges
-3. `2. Rincian Langkah Kerja (Sub-Tasks)` - 8 edges
+3. `2. Work Breakdown` - 8 edges
 4. `Book` - 7 edges
 5. `init_db_pool()` - 7 edges
 6. `init_redis_client()` - 7 edges
 7. `AppState` - 7 edges
 8. `create_app()` - 7 edges
 9. `TestHarness` - 7 edges
-10. `2. Rincian Langkah Kerja (Sub-Tasks)` - 7 edges
+10. `2. Work Breakdown` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `AI Quote Finder Illustration` --conceptually_related_to--> `knowledge/prd.md — Product Requirements Document`  [EXTRACTED]
@@ -122,39 +122,39 @@ Nodes (15): Box, AppConfig, init_db_pool(), init_redis_client(), Client, Databas
 
 ### Community 2 - "README.md"
 Cohesion: 0.11
-Nodes (16): 1. Ringkasan Tugas, 2. Rincian Langkah Kerja (Sub-Tasks), 3. Kriteria Keberhasilan & Validasi, Pemetaan Silang Antar-Lapis (Cross-Domain Matrix), Sub-Task 1.1: Integrasi Pustaka `dotenvy` & Pengaturan Dependensi, Sub-Task 1.2: Restrukturisasi `AppConfig` Menjadi Sub-Konfigurasi Modular, Sub-Task 1.3: Dinamisasi Pool Koneksi Basis Data & Redis, Sub-Task 1.4: Pemodelan Entitas SeaORM untuk 13 Tabel Domain (+8 more)
+Nodes (16): 1. Summary, 2. Work Breakdown, 3. Success Criteria, Cross-Domain Matrix, Sub-Task 1.1: `dotenvy` Integration, Sub-Task 1.2: Modular `AppConfig` Sub-Configurations, Sub-Task 1.3: Dynamic Connection Pools, Sub-Task 1.4: SeaORM Entities for 13 Tables (+8 more)
 
 ### Community 3 - "domain/src/lib.rs"
 Cohesion: 0.23
 Nodes (17): Book, BookChunk, BookStatus, Chapter, DomainError, ReadingProgress, ReadingStreak, DateTime (+9 more)
 
-### Community 4 - "2. Rincian Langkah Kerja (Sub-Tasks)"
+### Community 4 - "2. Work Breakdown"
+Cohesion: 0.15
+Nodes (12): 1. Summary, 2. Work Breakdown, 3. Success Criteria, Cross-Domain Matrix, Sub-Task 6.1: Vintage Literary Design System (1900–1950), Sub-Task 6.2: API Client & Local-First IndexedDB (`rexie`), Sub-Task 6.3: Home Page (Catalog & Search), Sub-Task 6.4: Book Overview Page (+4 more)
+
+### Community 5 - "2. Work Breakdown"
 Cohesion: 0.17
-Nodes (12): 1. Ringkasan Tugas, 2. Rincian Langkah Kerja (Sub-Tasks), 3. Kriteria Keberhasilan & Validasi, Pemetaan Silang Antar-Lapis (Cross-Domain Matrix), Sub-Task 6.1: Sistem Desain CSS Vintage Literary (1900–1950), Sub-Task 6.2: Layanan Komunikasi API & Local-First IndexedDB (`rexie`), Sub-Task 6.3: Halaman Beranda (Discovery Catalog & Search), Sub-Task 6.4: Halaman Sinopsis Buku (Book Overview) (+4 more)
+Nodes (11): 1. Summary, 2. Work Breakdown, 3. Success Criteria, Cross-Domain Matrix, Sub-Task 5.1: S3/MinIO Storage Service (`crates/infra`), Sub-Task 5.2: Admin EPUB Upload Endpoint (SRS 21), Sub-Task 5.3: Ingestion Worker & EPUB Parsing, Sub-Task 5.4: HTML Sanitization & Scene Chunking (+3 more)
 
-### Community 5 - "2. Rincian Langkah Kerja (Sub-Tasks)"
+### Community 6 - "2. Work Breakdown"
+Cohesion: 0.17
+Nodes (11): 1. Summary, 2. Work Breakdown, 3. Success Criteria, Cross-Domain Matrix, Sub-Task 7.1: Smoke Testing Suite, Sub-Task 7.2: Unit Test Suite, Sub-Task 7.3: Integration Test Suite, Sub-Task 7.4: Performance SLA Benchmarks (+3 more)
+
+### Community 7 - "2. Work Breakdown"
 Cohesion: 0.18
-Nodes (11): 1. Ringkasan Tugas, 2. Rincian Langkah Kerja (Sub-Tasks), 3. Kriteria Keberhasilan & Validasi, Pemetaan Silang Antar-Lapis (Cross-Domain Matrix), Sub-Task 5.1: Layanan Penyimpanan Objek S3/MinIO (`crates/infra`), Sub-Task 5.2: Endpoint Unggah EPUB Multi-Part Admin (SRS 21), Sub-Task 5.3: Pekerja Latar Ingestion & Parsing EPUB, Sub-Task 5.4: Sanitasi HTML Naskah Klasik & Scene Chunking (+3 more)
+Nodes (10): 1. Summary, 2. Work Breakdown, 3. Success Criteria, Cross-Domain Matrix, Sub-Task 2.1: Password Hashing (Argon2id) & OTP, Sub-Task 2.2: JWT Tokens & Refresh Rotation, Sub-Task 2.3: REST API Endpoints (SRS 1–7), Sub-Task 2.4: Guest Reconciliation (`POST /api/progress/merge`) (+2 more)
 
-### Community 6 - "2. Rincian Langkah Kerja (Sub-Tasks)"
+### Community 8 - "2. Work Breakdown"
 Cohesion: 0.18
-Nodes (11): 1. Ringkasan Tugas, 2. Rincian Langkah Kerja (Sub-Tasks), 3. Kriteria Keberhasilan & Validasi, Pemetaan Silang Antar-Lapis (Cross-Domain Matrix), Sub-Task 7.1: Pengujian Asap (Smoke Testing Suite), Sub-Task 7.2: Pengujian Unit Crate Bersama & Domain (Unit Test Suite), Sub-Task 7.3: Pengujian Integrasi Skenario Kritis (Integration Test Suite), Sub-Task 7.4: Pengukuran & Benchmarking Ambang Batas SLA (Performance Test Suite) (+3 more)
-
-### Community 7 - "2. Rincian Langkah Kerja (Sub-Tasks)"
-Cohesion: 0.20
-Nodes (10): 1. Ringkasan Tugas, 2. Rincian Langkah Kerja (Sub-Tasks), 3. Kriteria Keberhasilan & Validasi, Pemetaan Silang Antar-Lapis (Cross-Domain Matrix), Sub-Task 2.1: Enkripsi Kata Sandi (Argon2id) & Modul Hashing OTP, Sub-Task 2.2: Pengelolaan Token JWT & Rotasi Refresh Token, Sub-Task 2.3: Implementasi Endpoint REST API Otentikasi (SRS 1–7), Sub-Task 2.4: Endpoint Rekonsiliasi Otomatis Data Tamu (`POST /api/progress/merge`) (+2 more)
-
-### Community 8 - "2. Rincian Langkah Kerja (Sub-Tasks)"
-Cohesion: 0.20
-Nodes (10): 1. Ringkasan Tugas, 2. Rincian Langkah Kerja (Sub-Tasks), 3. Kriteria Keberhasilan & Validasi, Pemetaan Silang Antar-Lapis (Cross-Domain Matrix), Sub-Task 4.1: Layanan Dual-Mode Embedding Provider (`crates/infra`), Sub-Task 4.2: Scoped Semantic Quote Finder (`POST /api/books/{id}/quotes/search`), Sub-Task 4.3: Pengelolaan Cache Kartu Wawasan Atomik (SRS 18), Sub-Task 4.4: Rekap Kontekstual Anti-Spoiler Bab Sebelumnya (SRS 19) (+2 more)
+Nodes (10): 1. Summary, 2. Work Breakdown, 3. Success Criteria, Cross-Domain Matrix, Sub-Task 4.1: Dual-Mode Embedding Provider (`crates/infra`), Sub-Task 4.2: Scoped Semantic Quote Finder (`POST /api/books/{id}/quotes/search`), Sub-Task 4.3: Chapter Atomic Insight Cards (SRS 18), Sub-Task 4.4: Spoiler-Free Catch-up Recap (SRS 19) (+2 more)
 
 ### Community 9 - "knowledge/index.md — Master Knowledge Catalog"
 Cohesion: 0.29
 Nodes (8): AGENTS.md — Panduan & Tata Kelola Agen AI, OKF & Persistent Memory Guidelines, CLAUDE.md — Claude Code Guidelines, GEMINI.md — Panduan Gemini & Google Antigravity, knowledge/index.md — Master Knowledge Catalog, knowledge/log.md — Audit Trail, MEMORY.md — Log Keputusan Arsitektur & Memori Sistem, Open Knowledge Format v0.2
 
-### Community 10 - "2. Rincian Langkah Kerja (Sub-Tasks)"
-Cohesion: 0.22
-Nodes (9): 1. Ringkasan Tugas, 2. Rincian Langkah Kerja (Sub-Tasks), 3. Kriteria Keberhasilan & Validasi, Pemetaan Silang Antar-Lapis (Cross-Domain Matrix), Sub-Task 3.1: Layanan Repository Katalog & Pencarian Leksikal (`crates/infra`), Sub-Task 3.2: Implementasi Endpoint REST API Katalog & Naskah Bab (SRS 8–12), Sub-Task 3.3: Layanan Progres Membaca & Sinkronisasi CFI (SRS 13–14), Sub-Task 3.4: Sistem Detak Jantung Aktivitas Baca, Streak & Lencana (SRS 15–16) (+1 more)
+### Community 10 - "2. Work Breakdown"
+Cohesion: 0.20
+Nodes (9): 1. Summary, 2. Work Breakdown, 3. Success Criteria, Cross-Domain Matrix, Sub-Task 3.1: Catalog Repository & FTS Lexical Search, Sub-Task 3.2: Catalog & Chapter Endpoints (SRS 8–12), Sub-Task 3.3: Reading Progress & CFI Synchronization (SRS 13–14), Sub-Task 3.4: Reading Heartbeat, Streaks & Badges (SRS 15–16) (+1 more)
 
 ### Community 11 - "migrate.sh"
 Cohesion: 0.76
@@ -189,7 +189,7 @@ Cohesion: 0.29
 Nodes (4): BookCatalogPort, test_reliability_disconnected_database_fallback(), Send, Sync
 
 ## Knowledge Gaps
-- **110 isolated node(s):** `ApiDoc`, `web`, `Pemetaan Silang Antar-Lapis (Cross-Domain Matrix)`, `Sub-Task 1.1: Integrasi Pustaka `dotenvy` & Pengaturan Dependensi`, `Sub-Task 1.2: Restrukturisasi `AppConfig` Menjadi Sub-Konfigurasi Modular` (+105 more)
+- **110 isolated node(s):** `ApiDoc`, `web`, `Cross-Domain Matrix`, `Sub-Task 1.1: `dotenvy` Integration`, `Sub-Task 1.2: Modular `AppConfig` Sub-Configurations` (+105 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **40 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -200,11 +200,9 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.035) - this node is a cross-community bridge._
 - **Why does `AppConfig` connect `AppConfig` to `server/src/lib.rs`, `reliability_test.rs`?**
   _High betweenness centrality (0.026) - this node is a cross-community bridge._
-- **Why does `Task 06: Frontend Leptos WASM Web Reader & Mode Offline` connect `2. Rincian Langkah Kerja (Sub-Tasks)` to `README.md`?**
-  _High betweenness centrality (0.022) - this node is a cross-community bridge._
 - **Are the 3 inferred relationships involving `main()` (e.g. with `init_db_pool()` and `init_redis_client()`) actually correct?**
   _`main()` has 3 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `ApiDoc`, `web`, `Pemetaan Silang Antar-Lapis (Cross-Domain Matrix)` to the rest of the system?**
+- **What connects `ApiDoc`, `web`, `Cross-Domain Matrix` to the rest of the system?**
   _110 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `README.md` be split into smaller, more focused modules?**
-  _Cohesion score 0.10869565217391304 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected._

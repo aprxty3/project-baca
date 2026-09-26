@@ -10,30 +10,29 @@ TRUNK ?= $(shell which trunk 2>/dev/null)
 # Starts the development environment
 dev:
 	@echo "Project Baca — Development Environment"
-	@echo "Gunakan 'make dev-server' untuk backend (Live-Reload seperti Air di Go)"
-	@echo "Gunakan 'make dev-web' untuk frontend WASM (Trunk Hot-Reload)"
-	@echo "Gunakan 'make db-up' untuk menyalakan database & infrastruktur"
+	@echo "Run 'make dev-server' for backend (auto-reload on save)"
+	@echo "Run 'make dev-web' for frontend WASM (Trunk hot-reload)"
+	@echo "Run 'make db-up' to start database and services"
 
-# Starts backend with live reload (like Air in Go)
+# Starts backend with live reload
 dev-server:
 	@echo "Starting backend development server..."
 ifeq ($(strip $(CARGO_WATCH)),)
-	@echo "Notice: cargo-watch belum terpasang. Menjalankan 'cargo run -p server' biasa."
-	@echo "Tip: Pasang cargo-watch untuk auto-reload seperti Air (sudo pacman -S cargo-watch atau cargo install cargo-watch)."
+	@echo "cargo-watch not installed. Running standard 'cargo run -p server'."
 	@cargo run -p server
 else
-	@echo "Live reload aktif via cargo-watch..."
+	@echo "Live reload enabled via cargo-watch..."
 	@cargo watch -q -c -w crates/server -w crates/infra -w crates/domain -w crates/shared -x "run -p server"
 endif
 
 # Starts frontend with Trunk native hot-reload
 dev-web:
-	@echo "Starting frontend development server (Trunk Hot-Reload)..."
+	@echo "Starting frontend development server (Trunk hot-reload)..."
 	@cd crates/web && trunk serve
 
 # Starts all infrastructure containers in detached mode
 db-up:
-	@echo "Starting database & infrastructure services..."
+	@echo "Starting database and infrastructure services..."
 	@docker compose up -d
 
 # Stops all infrastructure containers
@@ -43,7 +42,7 @@ db-down:
 
 # Stop and remove all containers, networks, and volumes (WARNING: DB data will be lost)
 db-prune:
-	@echo "Stopping and removing all containers and volumes (WARNING: DB data will be lost)..."
+	@echo "Removing all containers and volumes (WARNING: DB data will be lost)..."
 	@docker compose down -v
 
 # View container logs
@@ -60,44 +59,43 @@ redis-shell:
 
 # Database migrations
 migrate-up:
-	@echo "Menjalankan migrasi basis data (up)..."
+	@echo "Applying database migrations (up)..."
 	@./scripts/migrate.sh up
 
 migrate-down:
-	@echo "Membalikkan migrasi basis data terakhir (down)..."
+	@echo "Rolling back last database migration (down)..."
 	@./scripts/migrate.sh down
 
 migrate-status:
-	@echo "Mengecek status riwayat migrasi basis data..."
+	@echo "Checking database migration history..."
 	@./scripts/migrate.sh status
 
 # Test suites
 test: test-all
 
 test-unit:
-	@echo "Running Unit Tests across workspace libraries..."
+	@echo "Running unit tests across workspace libraries..."
 	@cargo test --workspace --lib
 
 test-smoke:
-	@echo "Running Smoke Tests (Boot, Health, Swagger UI, Infrastructure Reachability)..."
+	@echo "Running smoke tests (boot, health, Swagger UI, infrastructure)..."
 	@cargo test -p server --test smoke_test
 
 test-integration:
-	@echo "Running Integration Tests (API Routing, Request ID, CORS, OpenAPI Schemas)..."
+	@echo "Running integration tests (routing, request-id, CORS, OpenAPI schemas)..."
 	@cargo test -p server --test integration_test
 
 test-performance:
-	@echo "Running Performance & SLA Benchmark Tests (p95 Latency SLA, Tokio Concurrency)..."
+	@echo "Running performance and SLA benchmark tests..."
 	@cargo test -p server --test performance_test
 
 test-reliability:
-	@echo "Running Reliability, Fault Injection & Invariant Tests (Offline DB, Mockall, Zero Panics)..."
+	@echo "Running reliability and fault injection tests..."
 	@cargo test -p server --test reliability_test
 
 test-all:
-	@echo "Running Complete Test Suite (Unit, Smoke, Integration, Performance, Reliability)..."
+	@echo "Running complete test suite..."
 	@cargo test --workspace
-
 
 # Check compilation across all crates (backend & WASM frontend)
 check:

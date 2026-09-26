@@ -1,4 +1,4 @@
--- Migrasi 01 Rollback: Menghapus Ekstensi PostgreSQL 17
+-- Migration 01 Rollback: Drop PostgreSQL 17 extensions
 
 DROP EXTENSION IF EXISTS "vector";
 DROP EXTENSION IF EXISTS "pg_trgm";

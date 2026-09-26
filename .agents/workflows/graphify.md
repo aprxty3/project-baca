@@ -1,15 +1,15 @@
 ---
 name: graphify
-description: Menjalankan pipeline Graphify untuk mengekstraksi dan memperbarui graf pengetahuan repositori
+description: Run the Graphify pipeline to extract and update the repository knowledge graph
 ---
 
 # Workflow: graphify
 
-Ikuti protokol graphify untuk menjalankan pipeline graf pengetahuan:
+Run the Graphify knowledge graph pipeline:
 
-1. Ekstraksi dan klasterisasi:
-   `graphify extract . --backend gemini`
-2. Klasterisasi ulang semantik:
+1. Extraction and clustering:
+   `graphify update .` or `graphify extract . --backend gemini`
+2. Re-cluster graph topology:
    `graphify cluster-only`
-3. Ekspor ke Obsidian Vault:
-   Perbarui direktori `/home/aprxty3/ObsidianVaults/project-baca/` dan sinkronkan `00_DASHBOARD.md`.
+3. Export to Obsidian Vault:
+   Update notes in `obsidian-vault/` and synchronize `00_DASHBOARD.md`.

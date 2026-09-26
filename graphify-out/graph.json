@@ -591,110 +591,130 @@
       "source_location": ""
     },
     {
-      "id": "knowledge_tasks_03_catalog_and_reader_backend_1_ringkasan_tugas",
-      "label": "1. Ringkasan Tugas",
+      "id": "knowledge_tasks_03_catalog_and_reader_backend",
+      "label": "03_catalog_and_reader_backend.md",
       "_origin": "ast",
       "community": 10,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
+      "file_type": "document",
+      "frontmatter": {
+        "okf_version": "0.2",
+        "type": "Task Specification",
+        "title": "Task 03: Catalog Backend, Trigram FTS, Reader API &amp; Streak Gamification",
+        "description": "Implementation plan for public catalog endpoints, typo-tolerant FTS search, chapter content delivery, progress synchronization, and daily streak computation.",
+        "tags": "[project-baca, tasks, catalog, fts, reader-api, progress, gamification, okf]",
+        "status": "approved"
+      },
+      "node_kind": "page",
+      "norm_label": "03_catalog_and_reader_backend.md",
+      "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "knowledge_tasks_03_catalog_and_reader_backend_1_summary",
+      "label": "1. Summary",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "1. ringkasan tugas",
+      "norm_label": "1. summary",
       "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
       "source_location": "L15"
     },
     {
-      "id": "knowledge_tasks_03_catalog_and_reader_backend_2_rincian_langkah_kerja_sub_tasks",
-      "label": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "id": "knowledge_tasks_03_catalog_and_reader_backend_2_work_breakdown",
+      "label": "2. Work Breakdown",
       "_origin": "ast",
       "community": 10,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "2. rincian langkah kerja (sub-tasks)",
+      "norm_label": "2. work breakdown",
       "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
-      "source_location": "L33"
+      "source_location": "L31"
     },
     {
-      "id": "knowledge_tasks_03_catalog_and_reader_backend_3_kriteria_keberhasilan_validasi",
-      "label": "3. Kriteria Keberhasilan & Validasi",
+      "id": "knowledge_tasks_03_catalog_and_reader_backend_3_success_criteria",
+      "label": "3. Success Criteria",
       "_origin": "ast",
       "community": 10,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "3. kriteria keberhasilan & validasi",
+      "norm_label": "3. success criteria",
       "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
-      "source_location": "L102"
+      "source_location": "L72"
     },
     {
-      "id": "knowledge_tasks_03_catalog_and_reader_backend_pemetaan_silang_antar_lapis_cross_domain_matrix",
-      "label": "Pemetaan Silang Antar-Lapis (Cross-Domain Matrix)",
+      "id": "knowledge_tasks_03_catalog_and_reader_backend_cross_domain_matrix",
+      "label": "Cross-Domain Matrix",
       "_origin": "ast",
       "community": 10,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "pemetaan silang antar-lapis (cross-domain matrix)",
+      "norm_label": "cross-domain matrix",
       "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
       "source_location": "L23"
     },
     {
-      "id": "knowledge_tasks_03_catalog_and_reader_backend_sub_task_3_1_layanan_repository_katalog_pencarian_leksikal_crates_infra",
-      "label": "Sub-Task 3.1: Layanan Repository Katalog & Pencarian Leksikal (`crates/infra`)",
+      "id": "knowledge_tasks_03_catalog_and_reader_backend_sub_task_3_1_catalog_repository_fts_lexical_search",
+      "label": "Sub-Task 3.1: Catalog Repository & FTS Lexical Search",
       "_origin": "ast",
       "community": 10,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 3.1: layanan repository katalog & pencarian leksikal (`crates/infra`)",
+      "norm_label": "sub-task 3.1: catalog repository & fts lexical search",
       "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
-      "source_location": "L35"
+      "source_location": "L33"
     },
     {
-      "id": "knowledge_tasks_03_catalog_and_reader_backend_sub_task_3_2_implementasi_endpoint_rest_api_katalog_naskah_bab_srs_8_12",
-      "label": "Sub-Task 3.2: Implementasi Endpoint REST API Katalog & Naskah Bab (SRS 8\u201312)",
+      "id": "knowledge_tasks_03_catalog_and_reader_backend_sub_task_3_2_catalog_chapter_endpoints_srs_8_12",
+      "label": "Sub-Task 3.2: Catalog & Chapter Endpoints (SRS 8\u201312)",
       "_origin": "ast",
       "community": 10,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 3.2: implementasi endpoint rest api katalog & naskah bab (srs 8\u201312)",
+      "norm_label": "sub-task 3.2: catalog & chapter endpoints (srs 8\u201312)",
       "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
-      "source_location": "L64"
+      "source_location": "L52"
     },
     {
-      "id": "knowledge_tasks_03_catalog_and_reader_backend_sub_task_3_3_layanan_progres_membaca_sinkronisasi_cfi_srs_13_14",
-      "label": "Sub-Task 3.3: Layanan Progres Membaca & Sinkronisasi CFI (SRS 13\u201314)",
+      "id": "knowledge_tasks_03_catalog_and_reader_backend_sub_task_3_3_reading_progress_cfi_synchronization_srs_13_14",
+      "label": "Sub-Task 3.3: Reading Progress & CFI Synchronization (SRS 13\u201314)",
       "_origin": "ast",
       "community": 10,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 3.3: layanan progres membaca & sinkronisasi cfi (srs 13\u201314)",
+      "norm_label": "sub-task 3.3: reading progress & cfi synchronization (srs 13\u201314)",
       "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
-      "source_location": "L80"
+      "source_location": "L60"
     },
     {
-      "id": "knowledge_tasks_03_catalog_and_reader_backend_sub_task_3_4_sistem_detak_jantung_aktivitas_baca_streak_lencana_srs_15_16",
-      "label": "Sub-Task 3.4: Sistem Detak Jantung Aktivitas Baca, Streak & Lencana (SRS 15\u201316)",
+      "id": "knowledge_tasks_03_catalog_and_reader_backend_sub_task_3_4_reading_heartbeat_streaks_badges_srs_15_16",
+      "label": "Sub-Task 3.4: Reading Heartbeat, Streaks & Badges (SRS 15\u201316)",
       "_origin": "ast",
       "community": 10,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 3.4: sistem detak jantung aktivitas baca, streak & lencana (srs 15\u201316)",
+      "norm_label": "sub-task 3.4: reading heartbeat, streaks & badges (srs 15\u201316)",
       "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
-      "source_location": "L88"
+      "source_location": "L65"
     },
     {
-      "id": "knowledge_tasks_03_catalog_and_reader_backend_task_03_backend_katalog_buku_fts_trigram_reader_api_gamifikasi_streak",
-      "label": "Task 03: Backend Katalog Buku, FTS Trigram, Reader API & Gamifikasi Streak",
+      "id": "knowledge_tasks_03_catalog_and_reader_backend_task_03_catalog_backend_trigram_fts_reader_api_streak_gamification",
+      "label": "Task 03: Catalog Backend, Trigram FTS, Reader API & Streak Gamification",
       "_origin": "ast",
       "community": 10,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "task 03: backend katalog buku, fts trigram, reader api & gamifikasi streak",
+      "norm_label": "task 03: catalog backend, trigram fts, reader api & streak gamification",
       "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
       "source_location": "L13"
     },
@@ -902,6 +922,26 @@
       "source_location": ""
     },
     {
+      "id": "knowledge_tasks_01_infrastructure_and_config",
+      "label": "01_infrastructure_and_config.md",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "README.md",
+      "file_type": "document",
+      "frontmatter": {
+        "okf_version": "0.2",
+        "type": "Task Specification",
+        "title": "Task 01: Infrastructure, Modular AppConfig &amp; SeaORM Entities",
+        "description": "Implementation plan for strongly-typed environment config, dynamic database pools, and 13 SeaORM domain entities.",
+        "tags": "[project-baca, tasks, infrastructure, seaorm, config, okf]",
+        "status": "approved"
+      },
+      "node_kind": "page",
+      "norm_label": "01_infrastructure_and_config.md",
+      "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
+      "source_location": "L1"
+    },
+    {
       "id": "knowledge_tasks_readme",
       "label": "README.md",
       "_origin": "ast",
@@ -922,274 +962,134 @@
       "source_location": "L1"
     },
     {
-      "id": "knowledge_tasks_06_frontend_leptos_web_reader",
-      "label": "06_frontend_leptos_web_reader.md",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "README.md",
-      "file_type": "document",
-      "frontmatter": {
-        "okf_version": "0.2",
-        "type": "Task Specification",
-        "title": "Task 06: Frontend Leptos WASM Web Reader &amp; Mode Offline",
-        "description": "Rencana implementasi antarmuka pengguna web Leptos WASM, estetika Vintage Literary (1900-1950), reader reflowable, anchor CFI, offline IndexedDB, dan i18n.",
-        "tags": "[project-baca, tasks, frontend, leptos, wasm, e-reader, offline, indexeddb, i18n, okf]",
-        "status": "draft"
-      },
-      "node_kind": "page",
-      "norm_label": "06_frontend_leptos_web_reader.md",
-      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "knowledge_tasks_03_catalog_and_reader_backend",
-      "label": "03_catalog_and_reader_backend.md",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "README.md",
-      "file_type": "document",
-      "frontmatter": {
-        "okf_version": "0.2",
-        "type": "Task Specification",
-        "title": "Task 03: Backend Katalog Buku, FTS Trigram, Reader API &amp; Gamifikasi Streak",
-        "description": "Rencana implementasi endpoint REST API katalog publik, pencarian FTS toleran saltik, penyajian bab naskah, sinkronisasi progres, dan kalkulasi streak harian.",
-        "tags": "[project-baca, tasks, catalog, fts, reader-api, progress, gamification, okf]",
-        "status": "draft"
-      },
-      "node_kind": "page",
-      "norm_label": "03_catalog_and_reader_backend.md",
-      "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "knowledge_tasks_04_semantic_ai_and_insights",
-      "label": "04_semantic_ai_and_insights.md",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "README.md",
-      "file_type": "document",
-      "frontmatter": {
-        "okf_version": "0.2",
-        "type": "Task Specification",
-        "title": "Task 04: Subsistem Semantik AI, Embedding 768-Dim &amp; Kartu Wawasan Atomik",
-        "description": "Rencana implementasi integrasi embedding dual-mode (Gemini API &amp; FastEmbed), pencarian kutipan semantik via pgvector HNSW, dan cache kartu wawasan atomik.",
-        "tags": "[project-baca, tasks, semantic-ai, pgvector, hnsw, gemini-api, fastembed, okf]",
-        "status": "draft"
-      },
-      "node_kind": "page",
-      "norm_label": "04_semantic_ai_and_insights.md",
-      "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "knowledge_tasks_01_infrastructure_and_config",
-      "label": "01_infrastructure_and_config.md",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "README.md",
-      "file_type": "document",
-      "frontmatter": {
-        "okf_version": "0.2",
-        "type": "Task Specification",
-        "title": "Task 01: Infrastruktur, AppConfig Modular &amp; Entitas SeaORM",
-        "description": "Rencana implementasi penguatan konfigurasi lingkungan, pool koneksi database dinamis, dan pemetaan entitas SeaORM untuk 13 tabel domain.",
-        "tags": "[project-baca, tasks, infrastructure, seaorm, config, okf]",
-        "status": "draft"
-      },
-      "node_kind": "page",
-      "norm_label": "01_infrastructure_and_config.md",
-      "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "knowledge_tasks_05_ingestion_pipeline_and_admin",
-      "label": "05_ingestion_pipeline_and_admin.md",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "README.md",
-      "file_type": "document",
-      "frontmatter": {
-        "okf_version": "0.2",
-        "type": "Task Specification",
-        "title": "Task 05: Ingestion Pipeline EPUB Asinkron &amp; Admin Management",
-        "description": "Rencana implementasi pengunggahan berkas EPUB, antrean Redis Streams, pemrosesan ekstraksi naskah, sanitasi HTML, scene chunking, dan monitoring analitik.",
-        "tags": "[project-baca, tasks, ingestion, epub, redis-streams, worker, admin, okf]",
-        "status": "draft"
-      },
-      "node_kind": "page",
-      "norm_label": "05_ingestion_pipeline_and_admin.md",
-      "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "knowledge_tasks_02_authentication_and_user",
-      "label": "02_authentication_and_user.md",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "README.md",
-      "file_type": "document",
-      "frontmatter": {
-        "okf_version": "0.2",
-        "type": "Task Specification",
-        "title": "Task 02: Sistem Otentikasi, Keamanan JWT/Argon2id, OTP &amp; Rekonsiliasi Tamu",
-        "description": "Rencana implementasi siklus otentikasi lengkap, verifikasi OTP email, rotasi refresh token di Redis, rekonsiliasi data tamu, dan middleware keamanan.",
-        "tags": "[project-baca, tasks, auth, jwt, argon2id, otp, security, okf]",
-        "status": "draft"
-      },
-      "node_kind": "page",
-      "norm_label": "02_authentication_and_user.md",
-      "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "knowledge_tasks_07_quality_assurance_and_launch",
-      "label": "07_quality_assurance_and_launch.md",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "README.md",
-      "file_type": "document",
-      "frontmatter": {
-        "okf_version": "0.2",
-        "type": "Task Specification",
-        "title": "Task 07: Validasi Kualitas Menyeluruh, SLA Benchmarking &amp; Kesiapan Rilis MVP",
-        "description": "Rencana pengujian komprehensif (smoke, unit, integration), benchmarking SLA performa, audit keamanan, dan prosedur pengesahan rilis MVP.",
-        "tags": "[project-baca, tasks, qa, testing, sla, benchmark, security, release, okf]",
-        "status": "draft"
-      },
-      "node_kind": "page",
-      "norm_label": "07_quality_assurance_and_launch.md",
-      "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "knowledge_tasks_01_infrastructure_and_config_1_ringkasan_tugas",
-      "label": "1. Ringkasan Tugas",
+      "id": "knowledge_tasks_01_infrastructure_and_config_1_summary",
+      "label": "1. Summary",
       "_origin": "ast",
       "community": 2,
       "community_name": "README.md",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "1. ringkasan tugas",
+      "norm_label": "1. summary",
       "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
       "source_location": "L15"
     },
     {
-      "id": "knowledge_tasks_01_infrastructure_and_config_2_rincian_langkah_kerja_sub_tasks",
-      "label": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "id": "knowledge_tasks_01_infrastructure_and_config_2_work_breakdown",
+      "label": "2. Work Breakdown",
       "_origin": "ast",
       "community": 2,
       "community_name": "README.md",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "2. rincian langkah kerja (sub-tasks)",
+      "norm_label": "2. work breakdown",
       "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L33"
+      "source_location": "L31"
     },
     {
-      "id": "knowledge_tasks_01_infrastructure_and_config_3_kriteria_keberhasilan_validasi",
-      "label": "3. Kriteria Keberhasilan & Validasi",
+      "id": "knowledge_tasks_01_infrastructure_and_config_3_success_criteria",
+      "label": "3. Success Criteria",
       "_origin": "ast",
       "community": 2,
       "community_name": "README.md",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "3. kriteria keberhasilan & validasi",
+      "norm_label": "3. success criteria",
       "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L88"
+      "source_location": "L77"
     },
     {
-      "id": "knowledge_tasks_01_infrastructure_and_config_pemetaan_silang_antar_lapis_cross_domain_matrix",
-      "label": "Pemetaan Silang Antar-Lapis (Cross-Domain Matrix)",
+      "id": "knowledge_tasks_01_infrastructure_and_config_cross_domain_matrix",
+      "label": "Cross-Domain Matrix",
       "_origin": "ast",
       "community": 2,
       "community_name": "README.md",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "pemetaan silang antar-lapis (cross-domain matrix)",
+      "norm_label": "cross-domain matrix",
       "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
       "source_location": "L23"
     },
     {
-      "id": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_1_integrasi_pustaka_dotenvy_pengaturan_dependensi",
-      "label": "Sub-Task 1.1: Integrasi Pustaka `dotenvy` & Pengaturan Dependensi",
+      "id": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_1_dotenvy_integration",
+      "label": "Sub-Task 1.1: `dotenvy` Integration",
       "_origin": "ast",
       "community": 2,
       "community_name": "README.md",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 1.1: integrasi pustaka `dotenvy` & pengaturan dependensi",
+      "norm_label": "sub-task 1.1: `dotenvy` integration",
       "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L35"
+      "source_location": "L33"
     },
     {
-      "id": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_2_restrukturisasi_appconfig_menjadi_sub_konfigurasi_modular",
-      "label": "Sub-Task 1.2: Restrukturisasi `AppConfig` Menjadi Sub-Konfigurasi Modular",
+      "id": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_2_modular_appconfig_sub_configurations",
+      "label": "Sub-Task 1.2: Modular `AppConfig` Sub-Configurations",
       "_origin": "ast",
       "community": 2,
       "community_name": "README.md",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 1.2: restrukturisasi `appconfig` menjadi sub-konfigurasi modular",
+      "norm_label": "sub-task 1.2: modular `appconfig` sub-configurations",
       "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L40"
+      "source_location": "L37"
     },
     {
-      "id": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_3_dinamisasi_pool_koneksi_basis_data_redis",
-      "label": "Sub-Task 1.3: Dinamisasi Pool Koneksi Basis Data & Redis",
+      "id": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_3_dynamic_connection_pools",
+      "label": "Sub-Task 1.3: Dynamic Connection Pools",
       "_origin": "ast",
       "community": 2,
       "community_name": "README.md",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 1.3: dinamisasi pool koneksi basis data & redis",
+      "norm_label": "sub-task 1.3: dynamic connection pools",
       "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L51"
+      "source_location": "L48"
     },
     {
-      "id": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_4_pemodelan_entitas_seaorm_untuk_13_tabel_domain",
-      "label": "Sub-Task 1.4: Pemodelan Entitas SeaORM untuk 13 Tabel Domain",
+      "id": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_4_seaorm_entities_for_13_tables",
+      "label": "Sub-Task 1.4: SeaORM Entities for 13 Tables",
       "_origin": "ast",
       "community": 2,
       "community_name": "README.md",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 1.4: pemodelan entitas seaorm untuk 13 tabel domain",
+      "norm_label": "sub-task 1.4: seaorm entities for 13 tables",
       "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L57"
+      "source_location": "L53"
     },
     {
-      "id": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_5_modularisasi_appstate_pada_server",
-      "label": "Sub-Task 1.5: Modularisasi `AppState` pada Server",
+      "id": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_5_server_appstate",
+      "label": "Sub-Task 1.5: Server `AppState`",
       "_origin": "ast",
       "community": 2,
       "community_name": "README.md",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 1.5: modularisasi `appstate` pada server",
+      "norm_label": "sub-task 1.5: server `appstate`",
       "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L74"
+      "source_location": "L70"
     },
     {
-      "id": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_6_integrasi_dokumentasi_openapi_utoipa_swagger_ui_observabilitas",
-      "label": "Sub-Task 1.6: Integrasi Dokumentasi OpenAPI (`utoipa`), Swagger UI & Observabilitas",
+      "id": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_6_openapi_observability",
+      "label": "Sub-Task 1.6: OpenAPI & Observability",
       "_origin": "ast",
       "community": 2,
       "community_name": "README.md",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 1.6: integrasi dokumentasi openapi (`utoipa`), swagger ui & observabilitas",
+      "norm_label": "sub-task 1.6: openapi & observability",
       "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L79"
+      "source_location": "L73"
     },
     {
-      "id": "knowledge_tasks_01_infrastructure_and_config_task_01_infrastruktur_appconfig_modular_entitas_seaorm",
-      "label": "Task 01: Infrastruktur, AppConfig Modular & Entitas SeaORM",
+      "id": "knowledge_tasks_01_infrastructure_and_config_task_01_infrastructure_modular_appconfig_seaorm_entities",
+      "label": "Task 01: Infrastructure, Modular AppConfig & SeaORM Entities",
       "_origin": "ast",
       "community": 2,
       "community_name": "README.md",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "task 01: infrastruktur, appconfig modular & entitas seaorm",
+      "norm_label": "task 01: infrastructure, modular appconfig & seaorm entities",
       "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
       "source_location": "L13"
     },
@@ -1496,278 +1396,318 @@
       "source_location": ""
     },
     {
-      "id": "knowledge_tasks_06_frontend_leptos_web_reader_1_ringkasan_tugas",
-      "label": "1. Ringkasan Tugas",
+      "id": "knowledge_tasks_06_frontend_leptos_web_reader",
+      "label": "06_frontend_leptos_web_reader.md",
       "_origin": "ast",
       "community": 4,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
+      "file_type": "document",
+      "frontmatter": {
+        "okf_version": "0.2",
+        "type": "Task Specification",
+        "title": "Task 06: Frontend Leptos WASM Web Reader &amp; Offline Mode",
+        "description": "Implementation plan for Leptos WASM SPA, Vintage Literary theme, reflowable reader, CFI anchors, offline IndexedDB, and i18n.",
+        "tags": "[project-baca, tasks, frontend, leptos, wasm, e-reader, offline, indexeddb, i18n, okf]",
+        "status": "approved"
+      },
+      "node_kind": "page",
+      "norm_label": "06_frontend_leptos_web_reader.md",
+      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "knowledge_tasks_06_frontend_leptos_web_reader_1_summary",
+      "label": "1. Summary",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "1. ringkasan tugas",
+      "norm_label": "1. summary",
       "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
       "source_location": "L15"
     },
     {
-      "id": "knowledge_tasks_06_frontend_leptos_web_reader_2_rincian_langkah_kerja_sub_tasks",
-      "label": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "id": "knowledge_tasks_06_frontend_leptos_web_reader_2_work_breakdown",
+      "label": "2. Work Breakdown",
       "_origin": "ast",
       "community": 4,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "2. rincian langkah kerja (sub-tasks)",
+      "norm_label": "2. work breakdown",
       "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L33"
+      "source_location": "L31"
     },
     {
-      "id": "knowledge_tasks_06_frontend_leptos_web_reader_3_kriteria_keberhasilan_validasi",
-      "label": "3. Kriteria Keberhasilan & Validasi",
+      "id": "knowledge_tasks_06_frontend_leptos_web_reader_3_success_criteria",
+      "label": "3. Success Criteria",
       "_origin": "ast",
       "community": 4,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "3. kriteria keberhasilan & validasi",
+      "norm_label": "3. success criteria",
       "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L107"
+      "source_location": "L73"
     },
     {
-      "id": "knowledge_tasks_06_frontend_leptos_web_reader_pemetaan_silang_antar_lapis_cross_domain_matrix",
-      "label": "Pemetaan Silang Antar-Lapis (Cross-Domain Matrix)",
+      "id": "knowledge_tasks_06_frontend_leptos_web_reader_cross_domain_matrix",
+      "label": "Cross-Domain Matrix",
       "_origin": "ast",
       "community": 4,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "pemetaan silang antar-lapis (cross-domain matrix)",
+      "norm_label": "cross-domain matrix",
       "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
       "source_location": "L23"
     },
     {
-      "id": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_1_sistem_desain_css_vintage_literary_1900_1950",
-      "label": "Sub-Task 6.1: Sistem Desain CSS Vintage Literary (1900\u20131950)",
+      "id": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_1_vintage_literary_design_system_1900_1950",
+      "label": "Sub-Task 6.1: Vintage Literary Design System (1900\u20131950)",
       "_origin": "ast",
       "community": 4,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 6.1: sistem desain css vintage literary (1900\u20131950)",
+      "norm_label": "sub-task 6.1: vintage literary design system (1900\u20131950)",
       "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L35"
+      "source_location": "L33"
     },
     {
-      "id": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_2_layanan_komunikasi_api_local_first_indexeddb_rexie",
-      "label": "Sub-Task 6.2: Layanan Komunikasi API & Local-First IndexedDB (`rexie`)",
+      "id": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_2_api_client_local_first_indexeddb_rexie",
+      "label": "Sub-Task 6.2: API Client & Local-First IndexedDB (`rexie`)",
       "_origin": "ast",
       "community": 4,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 6.2: layanan komunikasi api & local-first indexeddb (`rexie`)",
+      "norm_label": "sub-task 6.2: api client & local-first indexeddb (`rexie`)",
       "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L43"
+      "source_location": "L41"
     },
     {
-      "id": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_3_halaman_beranda_discovery_catalog_search",
-      "label": "Sub-Task 6.3: Halaman Beranda (Discovery Catalog & Search)",
+      "id": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_3_home_page_catalog_search",
+      "label": "Sub-Task 6.3: Home Page (Catalog & Search)",
       "_origin": "ast",
       "community": 4,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 6.3: halaman beranda (discovery catalog & search)",
+      "norm_label": "sub-task 6.3: home page (catalog & search)",
       "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L55"
+      "source_location": "L45"
     },
     {
-      "id": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_4_halaman_sinopsis_buku_book_overview",
-      "label": "Sub-Task 6.4: Halaman Sinopsis Buku (Book Overview)",
+      "id": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_4_book_overview_page",
+      "label": "Sub-Task 6.4: Book Overview Page",
       "_origin": "ast",
       "community": 4,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 6.4: halaman sinopsis buku (book overview)",
+      "norm_label": "sub-task 6.4: book overview page",
       "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L62"
+      "source_location": "L51"
     },
     {
-      "id": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_5_komponen_pembaca_naskah_reflowable_reflowable_e_reader",
-      "label": "Sub-Task 6.5: Komponen Pembaca Naskah Reflowable (Reflowable E-Reader)",
+      "id": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_5_reflowable_e_reader_component",
+      "label": "Sub-Task 6.5: Reflowable E-Reader Component",
       "_origin": "ast",
       "community": 4,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 6.5: komponen pembaca naskah reflowable (reflowable e-reader)",
+      "norm_label": "sub-task 6.5: reflowable e-reader component",
       "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L68"
+      "source_location": "L56"
     },
     {
-      "id": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_6_komponen_wawasan_atomik_semantik",
-      "label": "Sub-Task 6.6: Komponen Wawasan Atomik & Semantik",
+      "id": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_6_semantic_atomic_insight_components",
+      "label": "Sub-Task 6.6: Semantic & Atomic Insight Components",
       "_origin": "ast",
       "community": 4,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 6.6: komponen wawasan atomik & semantik",
+      "norm_label": "sub-task 6.6: semantic & atomic insight components",
       "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L88"
+      "source_location": "L63"
     },
     {
-      "id": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_7_alur_masuk_akun_banner_rekonsiliasi_otomatis",
-      "label": "Sub-Task 6.7: Alur Masuk Akun & Banner Rekonsiliasi Otomatis",
+      "id": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_7_auth_flows_auto_merge_banner",
+      "label": "Sub-Task 6.7: Auth Flows & Auto-Merge Banner",
       "_origin": "ast",
       "community": 4,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 6.7: alur masuk akun & banner rekonsiliasi otomatis",
+      "norm_label": "sub-task 6.7: auth flows & auto-merge banner",
       "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L100"
+      "source_location": "L69"
     },
     {
-      "id": "knowledge_tasks_06_frontend_leptos_web_reader_task_06_frontend_leptos_wasm_web_reader_mode_offline",
-      "label": "Task 06: Frontend Leptos WASM Web Reader & Mode Offline",
+      "id": "knowledge_tasks_06_frontend_leptos_web_reader_task_06_frontend_leptos_wasm_web_reader_offline_mode",
+      "label": "Task 06: Frontend Leptos WASM Web Reader & Offline Mode",
       "_origin": "ast",
       "community": 4,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "task 06: frontend leptos wasm web reader & mode offline",
+      "norm_label": "task 06: frontend leptos wasm web reader & offline mode",
       "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
       "source_location": "L13"
     },
     {
-      "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_1_ringkasan_tugas",
-      "label": "1. Ringkasan Tugas",
+      "id": "knowledge_tasks_05_ingestion_pipeline_and_admin",
+      "label": "05_ingestion_pipeline_and_admin.md",
       "_origin": "ast",
       "community": 5,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
+      "file_type": "document",
+      "frontmatter": {
+        "okf_version": "0.2",
+        "type": "Task Specification",
+        "title": "Task 05: Asynchronous EPUB Ingestion Pipeline &amp; Admin Management",
+        "description": "Implementation plan for EPUB upload, Redis Streams queue, text extraction, HTML sanitization, scene chunking, and analytics.",
+        "tags": "[project-baca, tasks, ingestion, epub, redis-streams, worker, admin, okf]",
+        "status": "approved"
+      },
+      "node_kind": "page",
+      "norm_label": "05_ingestion_pipeline_and_admin.md",
+      "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_1_summary",
+      "label": "1. Summary",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "1. ringkasan tugas",
+      "norm_label": "1. summary",
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
       "source_location": "L15"
     },
     {
-      "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_2_rincian_langkah_kerja_sub_tasks",
-      "label": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_2_work_breakdown",
+      "label": "2. Work Breakdown",
       "_origin": "ast",
       "community": 5,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "2. rincian langkah kerja (sub-tasks)",
+      "norm_label": "2. work breakdown",
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L33"
+      "source_location": "L31"
     },
     {
-      "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_3_kriteria_keberhasilan_validasi",
-      "label": "3. Kriteria Keberhasilan & Validasi",
+      "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_3_success_criteria",
+      "label": "3. Success Criteria",
       "_origin": "ast",
       "community": 5,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "3. kriteria keberhasilan & validasi",
+      "norm_label": "3. success criteria",
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L88"
+      "source_location": "L77"
     },
     {
-      "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_pemetaan_silang_antar_lapis_cross_domain_matrix",
-      "label": "Pemetaan Silang Antar-Lapis (Cross-Domain Matrix)",
+      "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_cross_domain_matrix",
+      "label": "Cross-Domain Matrix",
       "_origin": "ast",
       "community": 5,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "pemetaan silang antar-lapis (cross-domain matrix)",
+      "norm_label": "cross-domain matrix",
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
       "source_location": "L23"
     },
     {
-      "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_1_layanan_penyimpanan_objek_s3_minio_crates_infra",
-      "label": "Sub-Task 5.1: Layanan Penyimpanan Objek S3/MinIO (`crates/infra`)",
+      "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_1_s3_minio_storage_service_crates_infra",
+      "label": "Sub-Task 5.1: S3/MinIO Storage Service (`crates/infra`)",
       "_origin": "ast",
       "community": 5,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 5.1: layanan penyimpanan objek s3/minio (`crates/infra`)",
+      "norm_label": "sub-task 5.1: s3/minio storage service (`crates/infra`)",
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L35"
+      "source_location": "L33"
     },
     {
-      "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_2_endpoint_unggah_epub_multi_part_admin_srs_21",
-      "label": "Sub-Task 5.2: Endpoint Unggah EPUB Multi-Part Admin (SRS 21)",
+      "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_2_admin_epub_upload_endpoint_srs_21",
+      "label": "Sub-Task 5.2: Admin EPUB Upload Endpoint (SRS 21)",
       "_origin": "ast",
       "community": 5,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 5.2: endpoint unggah epub multi-part admin (srs 21)",
+      "norm_label": "sub-task 5.2: admin epub upload endpoint (srs 21)",
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L41"
+      "source_location": "L39"
     },
     {
-      "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_3_pekerja_latar_ingestion_parsing_epub",
-      "label": "Sub-Task 5.3: Pekerja Latar Ingestion & Parsing EPUB",
+      "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_3_ingestion_worker_epub_parsing",
+      "label": "Sub-Task 5.3: Ingestion Worker & EPUB Parsing",
       "_origin": "ast",
       "community": 5,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 5.3: pekerja latar ingestion & parsing epub",
+      "norm_label": "sub-task 5.3: ingestion worker & epub parsing",
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L54"
+      "source_location": "L50"
     },
     {
-      "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_4_sanitasi_html_naskah_klasik_scene_chunking",
-      "label": "Sub-Task 5.4: Sanitasi HTML Naskah Klasik & Scene Chunking",
+      "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_4_html_sanitization_scene_chunking",
+      "label": "Sub-Task 5.4: HTML Sanitization & Scene Chunking",
       "_origin": "ast",
       "community": 5,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 5.4: sanitasi html naskah klasik & scene chunking",
+      "norm_label": "sub-task 5.4: html sanitization & scene chunking",
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L64"
+      "source_location": "L57"
     },
     {
-      "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_5_ekstraksi_vektor_768_dim_generasi_wawasan_awal",
-      "label": "Sub-Task 5.5: Ekstraksi Vektor 768-Dim & Generasi Wawasan Awal",
+      "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_5_768_dim_vector_extraction_ai_insights",
+      "label": "Sub-Task 5.5: 768-Dim Vector Extraction & AI Insights",
       "_origin": "ast",
       "community": 5,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 5.5: ekstraksi vektor 768-dim & generasi wawasan awal",
+      "norm_label": "sub-task 5.5: 768-dim vector extraction & ai insights",
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L75"
+      "source_location": "L66"
     },
     {
-      "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_6_dasbor_monitoring_ingestion_analitik_drop_off_srs_22_23",
-      "label": "Sub-Task 5.6: Dasbor Monitoring Ingestion & Analitik Drop-off (SRS 22\u201323)",
+      "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_6_admin_monitoring_drop_off_analytics_srs_22_23",
+      "label": "Sub-Task 5.6: Admin Monitoring & Drop-Off Analytics (SRS 22\u201323)",
       "_origin": "ast",
       "community": 5,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 5.6: dasbor monitoring ingestion & analitik drop-off (srs 22\u201323)",
+      "norm_label": "sub-task 5.6: admin monitoring & drop-off analytics (srs 22\u201323)",
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L82"
+      "source_location": "L73"
     },
     {
-      "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_task_05_ingestion_pipeline_epub_asinkron_admin_management",
-      "label": "Task 05: Ingestion Pipeline EPUB Asinkron & Admin Management",
+      "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_task_05_asynchronous_epub_ingestion_pipeline_admin_management",
+      "label": "Task 05: Asynchronous EPUB Ingestion Pipeline & Admin Management",
       "_origin": "ast",
       "community": 5,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "task 05: ingestion pipeline epub asinkron & admin management",
+      "norm_label": "task 05: asynchronous epub ingestion pipeline & admin management",
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
       "source_location": "L13"
     },
@@ -2088,7 +2028,7 @@
       "file_type": "code",
       "norm_label": "bookcatalogport",
       "source_file": "crates/server/tests/reliability_test.rs",
-      "source_location": "L20"
+      "source_location": "L18"
     },
     {
       "id": "crates_server_tests_reliability_test_test_reliability_disconnected_database_fallback",
@@ -2099,7 +2039,7 @@
       "file_type": "code",
       "norm_label": "test_reliability_disconnected_database_fallback()",
       "source_file": "crates/server/tests/reliability_test.rs",
-      "source_location": "L25"
+      "source_location": "L23"
     },
     {
       "id": "crates_server_tests_reliability_test_test_reliability_mock_repository_fault_injection",
@@ -2110,7 +2050,7 @@
       "file_type": "code",
       "norm_label": "test_reliability_mock_repository_fault_injection()",
       "source_file": "crates/server/tests/reliability_test.rs",
-      "source_location": "L66"
+      "source_location": "L62"
     },
     {
       "id": "crates_server_tests_reliability_test_test_reliability_oversized_request_id_handling",
@@ -2121,7 +2061,7 @@
       "file_type": "code",
       "norm_label": "test_reliability_oversized_request_id_handling()",
       "source_file": "crates/server/tests/reliability_test.rs",
-      "source_location": "L90"
+      "source_location": "L84"
     },
     {
       "id": "send",
@@ -2146,134 +2086,154 @@
       "source_location": ""
     },
     {
-      "id": "knowledge_tasks_07_quality_assurance_and_launch_1_ringkasan_tugas",
-      "label": "1. Ringkasan Tugas",
+      "id": "knowledge_tasks_07_quality_assurance_and_launch",
+      "label": "07_quality_assurance_and_launch.md",
       "_origin": "ast",
       "community": 6,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
+      "file_type": "document",
+      "frontmatter": {
+        "okf_version": "0.2",
+        "type": "Task Specification",
+        "title": "Task 07: Comprehensive Quality Assurance, SLA Benchmarking &amp; MVP Launch",
+        "description": "Implementation plan for full 4-tier test verification, performance SLA benchmarking, security audits, and MVP launch procedures.",
+        "tags": "[project-baca, tasks, qa, testing, sla, benchmark, security, release, okf]",
+        "status": "approved"
+      },
+      "node_kind": "page",
+      "norm_label": "07_quality_assurance_and_launch.md",
+      "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "knowledge_tasks_07_quality_assurance_and_launch_1_summary",
+      "label": "1. Summary",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "1. ringkasan tugas",
+      "norm_label": "1. summary",
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
       "source_location": "L15"
     },
     {
-      "id": "knowledge_tasks_07_quality_assurance_and_launch_2_rincian_langkah_kerja_sub_tasks",
-      "label": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "id": "knowledge_tasks_07_quality_assurance_and_launch_2_work_breakdown",
+      "label": "2. Work Breakdown",
       "_origin": "ast",
       "community": 6,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "2. rincian langkah kerja (sub-tasks)",
+      "norm_label": "2. work breakdown",
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L33"
+      "source_location": "L31"
     },
     {
-      "id": "knowledge_tasks_07_quality_assurance_and_launch_3_kriteria_keberhasilan_validasi",
-      "label": "3. Kriteria Keberhasilan & Validasi",
+      "id": "knowledge_tasks_07_quality_assurance_and_launch_3_success_criteria",
+      "label": "3. Success Criteria",
       "_origin": "ast",
       "community": 6,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "3. kriteria keberhasilan & validasi",
+      "norm_label": "3. success criteria",
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L94"
+      "source_location": "L78"
     },
     {
-      "id": "knowledge_tasks_07_quality_assurance_and_launch_pemetaan_silang_antar_lapis_cross_domain_matrix",
-      "label": "Pemetaan Silang Antar-Lapis (Cross-Domain Matrix)",
+      "id": "knowledge_tasks_07_quality_assurance_and_launch_cross_domain_matrix",
+      "label": "Cross-Domain Matrix",
       "_origin": "ast",
       "community": 6,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "pemetaan silang antar-lapis (cross-domain matrix)",
+      "norm_label": "cross-domain matrix",
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
       "source_location": "L23"
     },
     {
-      "id": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_1_pengujian_asap_smoke_testing_suite",
-      "label": "Sub-Task 7.1: Pengujian Asap (Smoke Testing Suite)",
+      "id": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_1_smoke_testing_suite",
+      "label": "Sub-Task 7.1: Smoke Testing Suite",
       "_origin": "ast",
       "community": 6,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 7.1: pengujian asap (smoke testing suite)",
+      "norm_label": "sub-task 7.1: smoke testing suite",
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L35"
+      "source_location": "L33"
     },
     {
-      "id": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_2_pengujian_unit_crate_bersama_domain_unit_test_suite",
-      "label": "Sub-Task 7.2: Pengujian Unit Crate Bersama & Domain (Unit Test Suite)",
+      "id": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_2_unit_test_suite",
+      "label": "Sub-Task 7.2: Unit Test Suite",
       "_origin": "ast",
       "community": 6,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 7.2: pengujian unit crate bersama & domain (unit test suite)",
+      "norm_label": "sub-task 7.2: unit test suite",
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L42"
+      "source_location": "L40"
     },
     {
-      "id": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_3_pengujian_integrasi_skenario_kritis_integration_test_suite",
-      "label": "Sub-Task 7.3: Pengujian Integrasi Skenario Kritis (Integration Test Suite)",
+      "id": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_3_integration_test_suite",
+      "label": "Sub-Task 7.3: Integration Test Suite",
       "_origin": "ast",
       "community": 6,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 7.3: pengujian integrasi skenario kritis (integration test suite)",
+      "norm_label": "sub-task 7.3: integration test suite",
+      "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
+      "source_location": "L46"
+    },
+    {
+      "id": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_4_performance_sla_benchmarks",
+      "label": "Sub-Task 7.4: Performance SLA Benchmarks",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "2. Work Breakdown",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "sub-task 7.4: performance sla benchmarks",
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
       "source_location": "L54"
     },
     {
-      "id": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_4_pengukuran_benchmarking_ambang_batas_sla_performance_test_suite",
-      "label": "Sub-Task 7.4: Pengukuran & Benchmarking Ambang Batas SLA (Performance Test Suite)",
+      "id": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_5_reliability_fault_injection_invariant_audits",
+      "label": "Sub-Task 7.5: Reliability, Fault Injection & Invariant Audits",
       "_origin": "ast",
       "community": 6,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 7.4: pengukuran & benchmarking ambang batas sla (performance test suite)",
+      "norm_label": "sub-task 7.5: reliability, fault injection & invariant audits",
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L63"
+      "source_location": "L62"
     },
     {
-      "id": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_5_pengujian_keandalan_fault_injection_invarian_reliability_test_suite",
-      "label": "Sub-Task 7.5: Pengujian Keandalan, Fault Injection & Invarian (Reliability Test Suite)",
+      "id": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_6_mvp_release_sign_off",
+      "label": "Sub-Task 7.6: MVP Release Sign-Off",
       "_origin": "ast",
       "community": 6,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 7.5: pengujian keandalan, fault injection & invarian (reliability test suite)",
+      "norm_label": "sub-task 7.6: mvp release sign-off",
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L71"
+      "source_location": "L72"
     },
     {
-      "id": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_6_prosedur_pengesahan_rilis_mvp",
-      "label": "Sub-Task 7.6: Prosedur Pengesahan Rilis MVP",
+      "id": "knowledge_tasks_07_quality_assurance_and_launch_task_07_comprehensive_quality_assurance_sla_benchmarking_mvp_launch",
+      "label": "Task 07: Comprehensive Quality Assurance, SLA Benchmarking & MVP Launch",
       "_origin": "ast",
       "community": 6,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 7.6: prosedur pengesahan rilis mvp",
-      "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L86"
-    },
-    {
-      "id": "knowledge_tasks_07_quality_assurance_and_launch_task_07_validasi_kualitas_menyeluruh_sla_benchmarking_kesiapan_rilis_mvp",
-      "label": "Task 07: Validasi Kualitas Menyeluruh, SLA Benchmarking & Kesiapan Rilis MVP",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "task 07: validasi kualitas menyeluruh, sla benchmarking & kesiapan rilis mvp",
+      "norm_label": "task 07: comprehensive quality assurance, sla benchmarking & mvp launch",
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
       "source_location": "L13"
     },
@@ -2297,7 +2257,7 @@
       "file_type": "code",
       "norm_label": "test_integration_cors_headers()",
       "source_file": "crates/server/tests/integration_test.rs",
-      "source_location": "L50"
+      "source_location": "L48"
     },
     {
       "id": "crates_server_tests_integration_test_test_integration_openapi_schema_contains_registered_dtos",
@@ -2308,7 +2268,7 @@
       "file_type": "code",
       "norm_label": "test_integration_openapi_schema_contains_registered_dtos()",
       "source_file": "crates/server/tests/integration_test.rs",
-      "source_location": "L69"
+      "source_location": "L66"
     },
     {
       "id": "crates_server_tests_integration_test_test_integration_request_id_auto_generation",
@@ -2319,7 +2279,7 @@
       "file_type": "code",
       "norm_label": "test_integration_request_id_auto_generation()",
       "source_file": "crates/server/tests/integration_test.rs",
-      "source_location": "L32"
+      "source_location": "L31"
     },
     {
       "id": "crates_server_tests_integration_test_test_integration_request_id_custom_propagation",
@@ -2330,7 +2290,7 @@
       "file_type": "code",
       "norm_label": "test_integration_request_id_custom_propagation()",
       "source_file": "crates/server/tests/integration_test.rs",
-      "source_location": "L13"
+      "source_location": "L12"
     },
     {
       "id": "crates_server_tests_integration_test_test_integration_route_not_found_handling",
@@ -2341,7 +2301,7 @@
       "file_type": "code",
       "norm_label": "test_integration_route_not_found_handling()",
       "source_file": "crates/server/tests/integration_test.rs",
-      "source_location": "L98"
+      "source_location": "L94"
     },
     {
       "id": "crates_server_tests_smoke_test",
@@ -2363,7 +2323,7 @@
       "file_type": "code",
       "norm_label": "test_smoke_api_v1_health_dependencies()",
       "source_file": "crates/server/tests/smoke_test.rs",
-      "source_location": "L35"
+      "source_location": "L32"
     },
     {
       "id": "crates_server_tests_smoke_test_test_smoke_health_endpoint",
@@ -2374,7 +2334,7 @@
       "file_type": "code",
       "norm_label": "test_smoke_health_endpoint()",
       "source_file": "crates/server/tests/smoke_test.rs",
-      "source_location": "L14"
+      "source_location": "L13"
     },
     {
       "id": "crates_server_tests_smoke_test_test_smoke_infrastructure_tcp_reachability",
@@ -2385,7 +2345,7 @@
       "file_type": "code",
       "norm_label": "test_smoke_infrastructure_tcp_reachability()",
       "source_file": "crates/server/tests/smoke_test.rs",
-      "source_location": "L91"
+      "source_location": "L87"
     },
     {
       "id": "crates_server_tests_smoke_test_test_smoke_openapi_json_spec",
@@ -2396,7 +2356,7 @@
       "file_type": "code",
       "norm_label": "test_smoke_openapi_json_spec()",
       "source_file": "crates/server/tests/smoke_test.rs",
-      "source_location": "L72"
+      "source_location": "L68"
     },
     {
       "id": "crates_server_tests_smoke_test_test_smoke_swagger_ui_endpoint",
@@ -2407,7 +2367,7 @@
       "file_type": "code",
       "norm_label": "test_smoke_swagger_ui_endpoint()",
       "source_file": "crates/server/tests/smoke_test.rs",
-      "source_location": "L55"
+      "source_location": "L51"
     },
     {
       "id": "crates_server_tests_performance_test",
@@ -2429,7 +2389,7 @@
       "file_type": "code",
       "norm_label": "test_perf_concurrent_load_50_workers()",
       "source_file": "crates/server/tests/performance_test.rs",
-      "source_location": "L67"
+      "source_location": "L65"
     },
     {
       "id": "crates_server_tests_performance_test_test_perf_latency_sla_p95",
@@ -2440,245 +2400,285 @@
       "file_type": "code",
       "norm_label": "test_perf_latency_sla_p95()",
       "source_file": "crates/server/tests/performance_test.rs",
-      "source_location": "L14"
+      "source_location": "L13"
     },
     {
-      "id": "knowledge_tasks_02_authentication_and_user_1_ringkasan_tugas",
-      "label": "1. Ringkasan Tugas",
+      "id": "knowledge_tasks_02_authentication_and_user",
+      "label": "02_authentication_and_user.md",
       "_origin": "ast",
       "community": 7,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
+      "file_type": "document",
+      "frontmatter": {
+        "okf_version": "0.2",
+        "type": "Task Specification",
+        "title": "Task 02: Authentication, JWT/Argon2id Security, OTP &amp; Guest Reconciliation",
+        "description": "Implementation plan for full auth lifecycle, email OTP verification, Redis token rotation, guest data reconciliation, and security middleware.",
+        "tags": "[project-baca, tasks, auth, jwt, argon2id, otp, security, okf]",
+        "status": "approved"
+      },
+      "node_kind": "page",
+      "norm_label": "02_authentication_and_user.md",
+      "source_file": "knowledge/tasks/02_authentication_and_user.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "knowledge_tasks_02_authentication_and_user_1_summary",
+      "label": "1. Summary",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "1. ringkasan tugas",
+      "norm_label": "1. summary",
       "source_file": "knowledge/tasks/02_authentication_and_user.md",
       "source_location": "L15"
     },
     {
-      "id": "knowledge_tasks_02_authentication_and_user_2_rincian_langkah_kerja_sub_tasks",
-      "label": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "id": "knowledge_tasks_02_authentication_and_user_2_work_breakdown",
+      "label": "2. Work Breakdown",
       "_origin": "ast",
       "community": 7,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "2. rincian langkah kerja (sub-tasks)",
+      "norm_label": "2. work breakdown",
       "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L33"
+      "source_location": "L31"
     },
     {
-      "id": "knowledge_tasks_02_authentication_and_user_3_kriteria_keberhasilan_validasi",
-      "label": "3. Kriteria Keberhasilan & Validasi",
+      "id": "knowledge_tasks_02_authentication_and_user_3_success_criteria",
+      "label": "3. Success Criteria",
       "_origin": "ast",
       "community": 7,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "3. kriteria keberhasilan & validasi",
+      "norm_label": "3. success criteria",
       "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L98"
+      "source_location": "L76"
     },
     {
-      "id": "knowledge_tasks_02_authentication_and_user_pemetaan_silang_antar_lapis_cross_domain_matrix",
-      "label": "Pemetaan Silang Antar-Lapis (Cross-Domain Matrix)",
+      "id": "knowledge_tasks_02_authentication_and_user_cross_domain_matrix",
+      "label": "Cross-Domain Matrix",
       "_origin": "ast",
       "community": 7,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "pemetaan silang antar-lapis (cross-domain matrix)",
+      "norm_label": "cross-domain matrix",
       "source_file": "knowledge/tasks/02_authentication_and_user.md",
       "source_location": "L23"
     },
     {
-      "id": "knowledge_tasks_02_authentication_and_user_sub_task_2_1_enkripsi_kata_sandi_argon2id_modul_hashing_otp",
-      "label": "Sub-Task 2.1: Enkripsi Kata Sandi (Argon2id) & Modul Hashing OTP",
+      "id": "knowledge_tasks_02_authentication_and_user_sub_task_2_1_password_hashing_argon2id_otp",
+      "label": "Sub-Task 2.1: Password Hashing (Argon2id) & OTP",
       "_origin": "ast",
       "community": 7,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 2.1: enkripsi kata sandi (argon2id) & modul hashing otp",
+      "norm_label": "sub-task 2.1: password hashing (argon2id) & otp",
       "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L35"
+      "source_location": "L33"
     },
     {
-      "id": "knowledge_tasks_02_authentication_and_user_sub_task_2_2_pengelolaan_token_jwt_rotasi_refresh_token",
-      "label": "Sub-Task 2.2: Pengelolaan Token JWT & Rotasi Refresh Token",
+      "id": "knowledge_tasks_02_authentication_and_user_sub_task_2_2_jwt_tokens_refresh_rotation",
+      "label": "Sub-Task 2.2: JWT Tokens & Refresh Rotation",
       "_origin": "ast",
       "community": 7,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 2.2: pengelolaan token jwt & rotasi refresh token",
+      "norm_label": "sub-task 2.2: jwt tokens & refresh rotation",
       "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L43"
+      "source_location": "L40"
     },
     {
-      "id": "knowledge_tasks_02_authentication_and_user_sub_task_2_3_implementasi_endpoint_rest_api_otentikasi_srs_1_7",
-      "label": "Sub-Task 2.3: Implementasi Endpoint REST API Otentikasi (SRS 1\u20137)",
+      "id": "knowledge_tasks_02_authentication_and_user_sub_task_2_3_rest_api_endpoints_srs_1_7",
+      "label": "Sub-Task 2.3: REST API Endpoints (SRS 1\u20137)",
       "_origin": "ast",
       "community": 7,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 2.3: implementasi endpoint rest api otentikasi (srs 1\u20137)",
+      "norm_label": "sub-task 2.3: rest api endpoints (srs 1\u20137)",
       "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L51"
+      "source_location": "L46"
     },
     {
-      "id": "knowledge_tasks_02_authentication_and_user_sub_task_2_4_endpoint_rekonsiliasi_otomatis_data_tamu_post_api_progress_merge",
-      "label": "Sub-Task 2.4: Endpoint Rekonsiliasi Otomatis Data Tamu (`POST /api/progress/merge`)",
+      "id": "knowledge_tasks_02_authentication_and_user_sub_task_2_4_guest_reconciliation_post_api_progress_merge",
+      "label": "Sub-Task 2.4: Guest Reconciliation (`POST /api/progress/merge`)",
       "_origin": "ast",
       "community": 7,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 2.4: endpoint rekonsiliasi otomatis data tamu (`post /api/progress/merge`)",
+      "norm_label": "sub-task 2.4: guest reconciliation (`post /api/progress/merge`)",
       "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L75"
+      "source_location": "L56"
     },
     {
-      "id": "knowledge_tasks_02_authentication_and_user_sub_task_2_5_middleware_lapisan_keamanan_axum",
-      "label": "Sub-Task 2.5: Middleware Lapisan Keamanan Axum",
+      "id": "knowledge_tasks_02_authentication_and_user_sub_task_2_5_security_middleware",
+      "label": "Sub-Task 2.5: Security Middleware",
       "_origin": "ast",
       "community": 7,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 2.5: middleware lapisan keamanan axum",
+      "norm_label": "sub-task 2.5: security middleware",
       "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L90"
+      "source_location": "L70"
     },
     {
-      "id": "knowledge_tasks_02_authentication_and_user_task_02_sistem_otentikasi_keamanan_jwt_argon2id_otp_rekonsiliasi_tamu",
-      "label": "Task 02: Sistem Otentikasi, Keamanan JWT/Argon2id, OTP & Rekonsiliasi Tamu",
+      "id": "knowledge_tasks_02_authentication_and_user_task_02_authentication_jwt_argon2id_security_otp_guest_reconciliation",
+      "label": "Task 02: Authentication, JWT/Argon2id Security, OTP & Guest Reconciliation",
       "_origin": "ast",
       "community": 7,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "task 02: sistem otentikasi, keamanan jwt/argon2id, otp & rekonsiliasi tamu",
+      "norm_label": "task 02: authentication, jwt/argon2id security, otp & guest reconciliation",
       "source_file": "knowledge/tasks/02_authentication_and_user.md",
       "source_location": "L13"
     },
     {
-      "id": "knowledge_tasks_04_semantic_ai_and_insights_1_ringkasan_tugas",
-      "label": "1. Ringkasan Tugas",
+      "id": "knowledge_tasks_04_semantic_ai_and_insights",
+      "label": "04_semantic_ai_and_insights.md",
       "_origin": "ast",
       "community": 8,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
+      "file_type": "document",
+      "frontmatter": {
+        "okf_version": "0.2",
+        "type": "Task Specification",
+        "title": "Task 04: Semantic AI Subsystem, 768-Dim Embeddings &amp; Atomic Cards",
+        "description": "Implementation plan for dual-mode embeddings (Gemini API &amp; FastEmbed), pgvector HNSW quote search, and atomic cards cache.",
+        "tags": "[project-baca, tasks, semantic-ai, pgvector, hnsw, gemini-api, fastembed, okf]",
+        "status": "approved"
+      },
+      "node_kind": "page",
+      "norm_label": "04_semantic_ai_and_insights.md",
+      "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "knowledge_tasks_04_semantic_ai_and_insights_1_summary",
+      "label": "1. Summary",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "1. ringkasan tugas",
+      "norm_label": "1. summary",
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
       "source_location": "L15"
     },
     {
-      "id": "knowledge_tasks_04_semantic_ai_and_insights_2_rincian_langkah_kerja_sub_tasks",
-      "label": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "id": "knowledge_tasks_04_semantic_ai_and_insights_2_work_breakdown",
+      "label": "2. Work Breakdown",
       "_origin": "ast",
       "community": 8,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "2. rincian langkah kerja (sub-tasks)",
+      "norm_label": "2. work breakdown",
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L33"
+      "source_location": "L31"
     },
     {
-      "id": "knowledge_tasks_04_semantic_ai_and_insights_3_kriteria_keberhasilan_validasi",
-      "label": "3. Kriteria Keberhasilan & Validasi",
+      "id": "knowledge_tasks_04_semantic_ai_and_insights_3_success_criteria",
+      "label": "3. Success Criteria",
       "_origin": "ast",
       "community": 8,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "3. kriteria keberhasilan & validasi",
+      "norm_label": "3. success criteria",
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L91"
+      "source_location": "L83"
     },
     {
-      "id": "knowledge_tasks_04_semantic_ai_and_insights_pemetaan_silang_antar_lapis_cross_domain_matrix",
-      "label": "Pemetaan Silang Antar-Lapis (Cross-Domain Matrix)",
+      "id": "knowledge_tasks_04_semantic_ai_and_insights_cross_domain_matrix",
+      "label": "Cross-Domain Matrix",
       "_origin": "ast",
       "community": 8,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "pemetaan silang antar-lapis (cross-domain matrix)",
+      "norm_label": "cross-domain matrix",
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
       "source_location": "L23"
     },
     {
-      "id": "knowledge_tasks_04_semantic_ai_and_insights_sub_task_4_1_layanan_dual_mode_embedding_provider_crates_infra",
-      "label": "Sub-Task 4.1: Layanan Dual-Mode Embedding Provider (`crates/infra`)",
+      "id": "knowledge_tasks_04_semantic_ai_and_insights_sub_task_4_1_dual_mode_embedding_provider_crates_infra",
+      "label": "Sub-Task 4.1: Dual-Mode Embedding Provider (`crates/infra`)",
       "_origin": "ast",
       "community": 8,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 4.1: layanan dual-mode embedding provider (`crates/infra`)",
+      "norm_label": "sub-task 4.1: dual-mode embedding provider (`crates/infra`)",
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L35"
+      "source_location": "L33"
     },
     {
       "id": "knowledge_tasks_04_semantic_ai_and_insights_sub_task_4_2_scoped_semantic_quote_finder_post_api_books_id_quotes_search",
       "label": "Sub-Task 4.2: Scoped Semantic Quote Finder (`POST /api/books/{id}/quotes/search`)",
       "_origin": "ast",
       "community": 8,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "sub-task 4.2: scoped semantic quote finder (`post /api/books/{id}/quotes/search`)",
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L51"
+      "source_location": "L49"
     },
     {
-      "id": "knowledge_tasks_04_semantic_ai_and_insights_sub_task_4_3_pengelolaan_cache_kartu_wawasan_atomik_srs_18",
-      "label": "Sub-Task 4.3: Pengelolaan Cache Kartu Wawasan Atomik (SRS 18)",
+      "id": "knowledge_tasks_04_semantic_ai_and_insights_sub_task_4_3_chapter_atomic_insight_cards_srs_18",
+      "label": "Sub-Task 4.3: Chapter Atomic Insight Cards (SRS 18)",
       "_origin": "ast",
       "community": 8,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 4.3: pengelolaan cache kartu wawasan atomik (srs 18)",
+      "norm_label": "sub-task 4.3: chapter atomic insight cards (srs 18)",
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L69"
+      "source_location": "L67"
     },
     {
-      "id": "knowledge_tasks_04_semantic_ai_and_insights_sub_task_4_4_rekap_kontekstual_anti_spoiler_bab_sebelumnya_srs_19",
-      "label": "Sub-Task 4.4: Rekap Kontekstual Anti-Spoiler Bab Sebelumnya (SRS 19)",
+      "id": "knowledge_tasks_04_semantic_ai_and_insights_sub_task_4_4_spoiler_free_catch_up_recap_srs_19",
+      "label": "Sub-Task 4.4: Spoiler-Free Catch-up Recap (SRS 19)",
       "_origin": "ast",
       "community": 8,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 4.4: rekap kontekstual anti-spoiler bab sebelumnya (srs 19)",
+      "norm_label": "sub-task 4.4: spoiler-free catch-up recap (srs 19)",
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L78"
+      "source_location": "L74"
     },
     {
-      "id": "knowledge_tasks_04_semantic_ai_and_insights_sub_task_4_5_penandaan_pengelolaan_kutipan_favorit_srs_20",
-      "label": "Sub-Task 4.5: Penandaan & Pengelolaan Kutipan Favorit (SRS 20)",
+      "id": "knowledge_tasks_04_semantic_ai_and_insights_sub_task_4_5_favorite_quotes_management_srs_20",
+      "label": "Sub-Task 4.5: Favorite Quotes Management (SRS 20)",
       "_origin": "ast",
       "community": 8,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 4.5: penandaan & pengelolaan kutipan favorit (srs 20)",
+      "norm_label": "sub-task 4.5: favorite quotes management (srs 20)",
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L85"
+      "source_location": "L79"
     },
     {
-      "id": "knowledge_tasks_04_semantic_ai_and_insights_task_04_subsistem_semantik_ai_embedding_768_dim_kartu_wawasan_atomik",
-      "label": "Task 04: Subsistem Semantik AI, Embedding 768-Dim & Kartu Wawasan Atomik",
+      "id": "knowledge_tasks_04_semantic_ai_and_insights_task_04_semantic_ai_subsystem_768_dim_embeddings_atomic_cards",
+      "label": "Task 04: Semantic AI Subsystem, 768-Dim Embeddings & Atomic Cards",
       "_origin": "ast",
       "community": 8,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "community_name": "2. Work Breakdown",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "task 04: subsistem semantik ai, embedding 768-dim & kartu wawasan atomik",
+      "norm_label": "task 04: semantic ai subsystem, 768-dim embeddings & atomic cards",
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
       "source_location": "L13"
     },
@@ -4703,7 +4703,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "crates/server/tests/reliability_test.rs",
-      "source_location": "L9",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -5281,7 +5281,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "crates/server/tests/integration_test.rs",
-      "source_location": "L13",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -5292,7 +5292,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "crates/server/tests/integration_test.rs",
-      "source_location": "L32",
+      "source_location": "L31",
       "weight": 1.0
     },
     {
@@ -5303,7 +5303,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "crates/server/tests/integration_test.rs",
-      "source_location": "L50",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
@@ -5314,7 +5314,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "crates/server/tests/integration_test.rs",
-      "source_location": "L69",
+      "source_location": "L66",
       "weight": 1.0
     },
     {
@@ -5325,7 +5325,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "crates/server/tests/integration_test.rs",
-      "source_location": "L98",
+      "source_location": "L94",
       "weight": 1.0
     },
     {
@@ -5336,7 +5336,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "crates/server/tests/performance_test.rs",
-      "source_location": "L14",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
@@ -5347,7 +5347,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "crates/server/tests/performance_test.rs",
-      "source_location": "L67",
+      "source_location": "L65",
       "weight": 1.0
     },
     {
@@ -5358,7 +5358,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "crates/server/tests/reliability_test.rs",
-      "source_location": "L20",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -5369,7 +5369,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "crates/server/tests/reliability_test.rs",
-      "source_location": "L25",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -5380,7 +5380,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "crates/server/tests/reliability_test.rs",
-      "source_location": "L66",
+      "source_location": "L62",
       "weight": 1.0
     },
     {
@@ -5391,7 +5391,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "crates/server/tests/reliability_test.rs",
-      "source_location": "L90",
+      "source_location": "L84",
       "weight": 1.0
     },
     {
@@ -5402,7 +5402,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "crates/server/tests/smoke_test.rs",
-      "source_location": "L14",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
@@ -5413,7 +5413,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "crates/server/tests/smoke_test.rs",
-      "source_location": "L35",
+      "source_location": "L32",
       "weight": 1.0
     },
     {
@@ -5424,7 +5424,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "crates/server/tests/smoke_test.rs",
-      "source_location": "L55",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -5435,7 +5435,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "crates/server/tests/smoke_test.rs",
-      "source_location": "L72",
+      "source_location": "L68",
       "weight": 1.0
     },
     {
@@ -5446,7 +5446,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "crates/server/tests/smoke_test.rs",
-      "source_location": "L91",
+      "source_location": "L87",
       "weight": 1.0
     },
     {
@@ -5627,7 +5627,7 @@
     },
     {
       "source": "knowledge_tasks_01_infrastructure_and_config",
-      "target": "knowledge_tasks_01_infrastructure_and_config_task_01_infrastruktur_appconfig_modular_entitas_seaorm",
+      "target": "knowledge_tasks_01_infrastructure_and_config_task_01_infrastructure_modular_appconfig_seaorm_entities",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5637,8 +5637,8 @@
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_01_infrastructure_and_config_1_ringkasan_tugas",
-      "target": "knowledge_tasks_01_infrastructure_and_config_pemetaan_silang_antar_lapis_cross_domain_matrix",
+      "source": "knowledge_tasks_01_infrastructure_and_config_1_summary",
+      "target": "knowledge_tasks_01_infrastructure_and_config_cross_domain_matrix",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5648,85 +5648,8 @@
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_01_infrastructure_and_config_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_1_integrasi_pustaka_dotenvy_pengaturan_dependensi",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L35",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_01_infrastructure_and_config_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_2_restrukturisasi_appconfig_menjadi_sub_konfigurasi_modular",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L40",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_01_infrastructure_and_config_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_3_dinamisasi_pool_koneksi_basis_data_redis",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L51",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_01_infrastructure_and_config_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_4_pemodelan_entitas_seaorm_untuk_13_tabel_domain",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L57",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_01_infrastructure_and_config_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_5_modularisasi_appstate_pada_server",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L74",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_01_infrastructure_and_config_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_6_integrasi_dokumentasi_openapi_utoipa_swagger_ui_observabilitas",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L79",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_01_infrastructure_and_config_task_01_infrastruktur_appconfig_modular_entitas_seaorm",
-      "target": "knowledge_tasks_01_infrastructure_and_config_1_ringkasan_tugas",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L15",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_01_infrastructure_and_config_task_01_infrastruktur_appconfig_modular_entitas_seaorm",
-      "target": "knowledge_tasks_01_infrastructure_and_config_2_rincian_langkah_kerja_sub_tasks",
+      "source": "knowledge_tasks_01_infrastructure_and_config_2_work_breakdown",
+      "target": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_1_dotenvy_integration",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5736,19 +5659,96 @@
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_01_infrastructure_and_config_task_01_infrastruktur_appconfig_modular_entitas_seaorm",
-      "target": "knowledge_tasks_01_infrastructure_and_config_3_kriteria_keberhasilan_validasi",
+      "source": "knowledge_tasks_01_infrastructure_and_config_2_work_breakdown",
+      "target": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_2_modular_appconfig_sub_configurations",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L88",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_01_infrastructure_and_config_2_work_breakdown",
+      "target": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_3_dynamic_connection_pools",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
+      "source_location": "L48",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_01_infrastructure_and_config_2_work_breakdown",
+      "target": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_4_seaorm_entities_for_13_tables",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
+      "source_location": "L53",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_01_infrastructure_and_config_2_work_breakdown",
+      "target": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_5_server_appstate",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
+      "source_location": "L70",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_01_infrastructure_and_config_2_work_breakdown",
+      "target": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_6_openapi_observability",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_01_infrastructure_and_config_task_01_infrastructure_modular_appconfig_seaorm_entities",
+      "target": "knowledge_tasks_01_infrastructure_and_config_1_summary",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_01_infrastructure_and_config_task_01_infrastructure_modular_appconfig_seaorm_entities",
+      "target": "knowledge_tasks_01_infrastructure_and_config_2_work_breakdown",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_01_infrastructure_and_config_task_01_infrastructure_modular_appconfig_seaorm_entities",
+      "target": "knowledge_tasks_01_infrastructure_and_config_3_success_criteria",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
+      "source_location": "L77",
       "weight": 1.0
     },
     {
       "source": "knowledge_tasks_02_authentication_and_user",
-      "target": "knowledge_tasks_02_authentication_and_user_task_02_sistem_otentikasi_keamanan_jwt_argon2id_otp_rekonsiliasi_tamu",
+      "target": "knowledge_tasks_02_authentication_and_user_task_02_authentication_jwt_argon2id_security_otp_guest_reconciliation",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5758,8 +5758,8 @@
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_02_authentication_and_user_1_ringkasan_tugas",
-      "target": "knowledge_tasks_02_authentication_and_user_pemetaan_silang_antar_lapis_cross_domain_matrix",
+      "source": "knowledge_tasks_02_authentication_and_user_1_summary",
+      "target": "knowledge_tasks_02_authentication_and_user_cross_domain_matrix",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5769,74 +5769,8 @@
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_02_authentication_and_user_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_02_authentication_and_user_sub_task_2_1_enkripsi_kata_sandi_argon2id_modul_hashing_otp",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L35",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_02_authentication_and_user_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_02_authentication_and_user_sub_task_2_2_pengelolaan_token_jwt_rotasi_refresh_token",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L43",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_02_authentication_and_user_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_02_authentication_and_user_sub_task_2_3_implementasi_endpoint_rest_api_otentikasi_srs_1_7",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L51",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_02_authentication_and_user_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_02_authentication_and_user_sub_task_2_4_endpoint_rekonsiliasi_otomatis_data_tamu_post_api_progress_merge",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L75",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_02_authentication_and_user_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_02_authentication_and_user_sub_task_2_5_middleware_lapisan_keamanan_axum",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L90",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_02_authentication_and_user_task_02_sistem_otentikasi_keamanan_jwt_argon2id_otp_rekonsiliasi_tamu",
-      "target": "knowledge_tasks_02_authentication_and_user_1_ringkasan_tugas",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L15",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_02_authentication_and_user_task_02_sistem_otentikasi_keamanan_jwt_argon2id_otp_rekonsiliasi_tamu",
-      "target": "knowledge_tasks_02_authentication_and_user_2_rincian_langkah_kerja_sub_tasks",
+      "source": "knowledge_tasks_02_authentication_and_user_2_work_breakdown",
+      "target": "knowledge_tasks_02_authentication_and_user_sub_task_2_1_password_hashing_argon2id_otp",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5846,19 +5780,85 @@
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_02_authentication_and_user_task_02_sistem_otentikasi_keamanan_jwt_argon2id_otp_rekonsiliasi_tamu",
-      "target": "knowledge_tasks_02_authentication_and_user_3_kriteria_keberhasilan_validasi",
+      "source": "knowledge_tasks_02_authentication_and_user_2_work_breakdown",
+      "target": "knowledge_tasks_02_authentication_and_user_sub_task_2_2_jwt_tokens_refresh_rotation",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L98",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_02_authentication_and_user_2_work_breakdown",
+      "target": "knowledge_tasks_02_authentication_and_user_sub_task_2_3_rest_api_endpoints_srs_1_7",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/02_authentication_and_user.md",
+      "source_location": "L46",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_02_authentication_and_user_2_work_breakdown",
+      "target": "knowledge_tasks_02_authentication_and_user_sub_task_2_4_guest_reconciliation_post_api_progress_merge",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/02_authentication_and_user.md",
+      "source_location": "L56",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_02_authentication_and_user_2_work_breakdown",
+      "target": "knowledge_tasks_02_authentication_and_user_sub_task_2_5_security_middleware",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/02_authentication_and_user.md",
+      "source_location": "L70",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_02_authentication_and_user_task_02_authentication_jwt_argon2id_security_otp_guest_reconciliation",
+      "target": "knowledge_tasks_02_authentication_and_user_1_summary",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/02_authentication_and_user.md",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_02_authentication_and_user_task_02_authentication_jwt_argon2id_security_otp_guest_reconciliation",
+      "target": "knowledge_tasks_02_authentication_and_user_2_work_breakdown",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/02_authentication_and_user.md",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_02_authentication_and_user_task_02_authentication_jwt_argon2id_security_otp_guest_reconciliation",
+      "target": "knowledge_tasks_02_authentication_and_user_3_success_criteria",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/02_authentication_and_user.md",
+      "source_location": "L76",
       "weight": 1.0
     },
     {
       "source": "knowledge_tasks_03_catalog_and_reader_backend",
-      "target": "knowledge_tasks_03_catalog_and_reader_backend_task_03_backend_katalog_buku_fts_trigram_reader_api_gamifikasi_streak",
+      "target": "knowledge_tasks_03_catalog_and_reader_backend_task_03_catalog_backend_trigram_fts_reader_api_streak_gamification",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5868,8 +5868,8 @@
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_03_catalog_and_reader_backend_1_ringkasan_tugas",
-      "target": "knowledge_tasks_03_catalog_and_reader_backend_pemetaan_silang_antar_lapis_cross_domain_matrix",
+      "source": "knowledge_tasks_03_catalog_and_reader_backend_1_summary",
+      "target": "knowledge_tasks_03_catalog_and_reader_backend_cross_domain_matrix",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5879,74 +5879,8 @@
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_03_catalog_and_reader_backend_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_03_catalog_and_reader_backend_sub_task_3_1_layanan_repository_katalog_pencarian_leksikal_crates_infra",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
-      "source_location": "L35",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_03_catalog_and_reader_backend_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_03_catalog_and_reader_backend_sub_task_3_2_implementasi_endpoint_rest_api_katalog_naskah_bab_srs_8_12",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
-      "source_location": "L64",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_03_catalog_and_reader_backend_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_03_catalog_and_reader_backend_sub_task_3_3_layanan_progres_membaca_sinkronisasi_cfi_srs_13_14",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
-      "source_location": "L80",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_03_catalog_and_reader_backend_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_03_catalog_and_reader_backend_sub_task_3_4_sistem_detak_jantung_aktivitas_baca_streak_lencana_srs_15_16",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
-      "source_location": "L88",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_03_catalog_and_reader_backend_task_03_backend_katalog_buku_fts_trigram_reader_api_gamifikasi_streak",
-      "target": "knowledge_tasks_03_catalog_and_reader_backend_3_kriteria_keberhasilan_validasi",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
-      "source_location": "L102",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_03_catalog_and_reader_backend_task_03_backend_katalog_buku_fts_trigram_reader_api_gamifikasi_streak",
-      "target": "knowledge_tasks_03_catalog_and_reader_backend_1_ringkasan_tugas",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
-      "source_location": "L15",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_03_catalog_and_reader_backend_task_03_backend_katalog_buku_fts_trigram_reader_api_gamifikasi_streak",
-      "target": "knowledge_tasks_03_catalog_and_reader_backend_2_rincian_langkah_kerja_sub_tasks",
+      "source": "knowledge_tasks_03_catalog_and_reader_backend_2_work_breakdown",
+      "target": "knowledge_tasks_03_catalog_and_reader_backend_sub_task_3_1_catalog_repository_fts_lexical_search",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5956,8 +5890,74 @@
       "weight": 1.0
     },
     {
+      "source": "knowledge_tasks_03_catalog_and_reader_backend_2_work_breakdown",
+      "target": "knowledge_tasks_03_catalog_and_reader_backend_sub_task_3_2_catalog_chapter_endpoints_srs_8_12",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_03_catalog_and_reader_backend_2_work_breakdown",
+      "target": "knowledge_tasks_03_catalog_and_reader_backend_sub_task_3_3_reading_progress_cfi_synchronization_srs_13_14",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
+      "source_location": "L60",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_03_catalog_and_reader_backend_2_work_breakdown",
+      "target": "knowledge_tasks_03_catalog_and_reader_backend_sub_task_3_4_reading_heartbeat_streaks_badges_srs_15_16",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_03_catalog_and_reader_backend_task_03_catalog_backend_trigram_fts_reader_api_streak_gamification",
+      "target": "knowledge_tasks_03_catalog_and_reader_backend_1_summary",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_03_catalog_and_reader_backend_task_03_catalog_backend_trigram_fts_reader_api_streak_gamification",
+      "target": "knowledge_tasks_03_catalog_and_reader_backend_2_work_breakdown",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_03_catalog_and_reader_backend_task_03_catalog_backend_trigram_fts_reader_api_streak_gamification",
+      "target": "knowledge_tasks_03_catalog_and_reader_backend_3_success_criteria",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
+      "source_location": "L72",
+      "weight": 1.0
+    },
+    {
       "source": "knowledge_tasks_04_semantic_ai_and_insights",
-      "target": "knowledge_tasks_04_semantic_ai_and_insights_task_04_subsistem_semantik_ai_embedding_768_dim_kartu_wawasan_atomik",
+      "target": "knowledge_tasks_04_semantic_ai_and_insights_task_04_semantic_ai_subsystem_768_dim_embeddings_atomic_cards",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5967,8 +5967,8 @@
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_04_semantic_ai_and_insights_1_ringkasan_tugas",
-      "target": "knowledge_tasks_04_semantic_ai_and_insights_pemetaan_silang_antar_lapis_cross_domain_matrix",
+      "source": "knowledge_tasks_04_semantic_ai_and_insights_1_summary",
+      "target": "knowledge_tasks_04_semantic_ai_and_insights_cross_domain_matrix",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5978,63 +5978,63 @@
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_04_semantic_ai_and_insights_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_04_semantic_ai_and_insights_sub_task_4_1_layanan_dual_mode_embedding_provider_crates_infra",
+      "source": "knowledge_tasks_04_semantic_ai_and_insights_2_work_breakdown",
+      "target": "knowledge_tasks_04_semantic_ai_and_insights_sub_task_4_1_dual_mode_embedding_provider_crates_infra",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L35",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_04_semantic_ai_and_insights_2_rincian_langkah_kerja_sub_tasks",
+      "source": "knowledge_tasks_04_semantic_ai_and_insights_2_work_breakdown",
       "target": "knowledge_tasks_04_semantic_ai_and_insights_sub_task_4_2_scoped_semantic_quote_finder_post_api_books_id_quotes_search",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L51",
+      "source_location": "L49",
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_04_semantic_ai_and_insights_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_04_semantic_ai_and_insights_sub_task_4_3_pengelolaan_cache_kartu_wawasan_atomik_srs_18",
+      "source": "knowledge_tasks_04_semantic_ai_and_insights_2_work_breakdown",
+      "target": "knowledge_tasks_04_semantic_ai_and_insights_sub_task_4_3_chapter_atomic_insight_cards_srs_18",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L69",
+      "source_location": "L67",
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_04_semantic_ai_and_insights_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_04_semantic_ai_and_insights_sub_task_4_4_rekap_kontekstual_anti_spoiler_bab_sebelumnya_srs_19",
+      "source": "knowledge_tasks_04_semantic_ai_and_insights_2_work_breakdown",
+      "target": "knowledge_tasks_04_semantic_ai_and_insights_sub_task_4_4_spoiler_free_catch_up_recap_srs_19",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L78",
+      "source_location": "L74",
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_04_semantic_ai_and_insights_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_04_semantic_ai_and_insights_sub_task_4_5_penandaan_pengelolaan_kutipan_favorit_srs_20",
+      "source": "knowledge_tasks_04_semantic_ai_and_insights_2_work_breakdown",
+      "target": "knowledge_tasks_04_semantic_ai_and_insights_sub_task_4_5_favorite_quotes_management_srs_20",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L85",
+      "source_location": "L79",
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_04_semantic_ai_and_insights_task_04_subsistem_semantik_ai_embedding_768_dim_kartu_wawasan_atomik",
-      "target": "knowledge_tasks_04_semantic_ai_and_insights_1_ringkasan_tugas",
+      "source": "knowledge_tasks_04_semantic_ai_and_insights_task_04_semantic_ai_subsystem_768_dim_embeddings_atomic_cards",
+      "target": "knowledge_tasks_04_semantic_ai_and_insights_1_summary",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6044,30 +6044,30 @@
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_04_semantic_ai_and_insights_task_04_subsistem_semantik_ai_embedding_768_dim_kartu_wawasan_atomik",
-      "target": "knowledge_tasks_04_semantic_ai_and_insights_2_rincian_langkah_kerja_sub_tasks",
+      "source": "knowledge_tasks_04_semantic_ai_and_insights_task_04_semantic_ai_subsystem_768_dim_embeddings_atomic_cards",
+      "target": "knowledge_tasks_04_semantic_ai_and_insights_2_work_breakdown",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L33",
+      "source_location": "L31",
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_04_semantic_ai_and_insights_task_04_subsistem_semantik_ai_embedding_768_dim_kartu_wawasan_atomik",
-      "target": "knowledge_tasks_04_semantic_ai_and_insights_3_kriteria_keberhasilan_validasi",
+      "source": "knowledge_tasks_04_semantic_ai_and_insights_task_04_semantic_ai_subsystem_768_dim_embeddings_atomic_cards",
+      "target": "knowledge_tasks_04_semantic_ai_and_insights_3_success_criteria",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L91",
+      "source_location": "L83",
       "weight": 1.0
     },
     {
       "source": "knowledge_tasks_05_ingestion_pipeline_and_admin",
-      "target": "knowledge_tasks_05_ingestion_pipeline_and_admin_task_05_ingestion_pipeline_epub_asinkron_admin_management",
+      "target": "knowledge_tasks_05_ingestion_pipeline_and_admin_task_05_asynchronous_epub_ingestion_pipeline_admin_management",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6077,8 +6077,8 @@
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_05_ingestion_pipeline_and_admin_1_ringkasan_tugas",
-      "target": "knowledge_tasks_05_ingestion_pipeline_and_admin_pemetaan_silang_antar_lapis_cross_domain_matrix",
+      "source": "knowledge_tasks_05_ingestion_pipeline_and_admin_1_summary",
+      "target": "knowledge_tasks_05_ingestion_pipeline_and_admin_cross_domain_matrix",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6088,85 +6088,8 @@
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_05_ingestion_pipeline_and_admin_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_1_layanan_penyimpanan_objek_s3_minio_crates_infra",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L35",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_05_ingestion_pipeline_and_admin_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_2_endpoint_unggah_epub_multi_part_admin_srs_21",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L41",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_05_ingestion_pipeline_and_admin_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_3_pekerja_latar_ingestion_parsing_epub",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L54",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_05_ingestion_pipeline_and_admin_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_4_sanitasi_html_naskah_klasik_scene_chunking",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L64",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_05_ingestion_pipeline_and_admin_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_5_ekstraksi_vektor_768_dim_generasi_wawasan_awal",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L75",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_05_ingestion_pipeline_and_admin_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_6_dasbor_monitoring_ingestion_analitik_drop_off_srs_22_23",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L82",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_05_ingestion_pipeline_and_admin_task_05_ingestion_pipeline_epub_asinkron_admin_management",
-      "target": "knowledge_tasks_05_ingestion_pipeline_and_admin_1_ringkasan_tugas",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L15",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_05_ingestion_pipeline_and_admin_task_05_ingestion_pipeline_epub_asinkron_admin_management",
-      "target": "knowledge_tasks_05_ingestion_pipeline_and_admin_2_rincian_langkah_kerja_sub_tasks",
+      "source": "knowledge_tasks_05_ingestion_pipeline_and_admin_2_work_breakdown",
+      "target": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_1_s3_minio_storage_service_crates_infra",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6176,19 +6099,96 @@
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_05_ingestion_pipeline_and_admin_task_05_ingestion_pipeline_epub_asinkron_admin_management",
-      "target": "knowledge_tasks_05_ingestion_pipeline_and_admin_3_kriteria_keberhasilan_validasi",
+      "source": "knowledge_tasks_05_ingestion_pipeline_and_admin_2_work_breakdown",
+      "target": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_2_admin_epub_upload_endpoint_srs_21",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L88",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_05_ingestion_pipeline_and_admin_2_work_breakdown",
+      "target": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_3_ingestion_worker_epub_parsing",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_05_ingestion_pipeline_and_admin_2_work_breakdown",
+      "target": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_4_html_sanitization_scene_chunking",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
+      "source_location": "L57",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_05_ingestion_pipeline_and_admin_2_work_breakdown",
+      "target": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_5_768_dim_vector_extraction_ai_insights",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_05_ingestion_pipeline_and_admin_2_work_breakdown",
+      "target": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_6_admin_monitoring_drop_off_analytics_srs_22_23",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_05_ingestion_pipeline_and_admin_task_05_asynchronous_epub_ingestion_pipeline_admin_management",
+      "target": "knowledge_tasks_05_ingestion_pipeline_and_admin_1_summary",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_05_ingestion_pipeline_and_admin_task_05_asynchronous_epub_ingestion_pipeline_admin_management",
+      "target": "knowledge_tasks_05_ingestion_pipeline_and_admin_2_work_breakdown",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_05_ingestion_pipeline_and_admin_task_05_asynchronous_epub_ingestion_pipeline_admin_management",
+      "target": "knowledge_tasks_05_ingestion_pipeline_and_admin_3_success_criteria",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
+      "source_location": "L77",
       "weight": 1.0
     },
     {
       "source": "knowledge_tasks_06_frontend_leptos_web_reader",
-      "target": "knowledge_tasks_06_frontend_leptos_web_reader_task_06_frontend_leptos_wasm_web_reader_mode_offline",
+      "target": "knowledge_tasks_06_frontend_leptos_web_reader_task_06_frontend_leptos_wasm_web_reader_offline_mode",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6198,8 +6198,8 @@
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_06_frontend_leptos_web_reader_1_ringkasan_tugas",
-      "target": "knowledge_tasks_06_frontend_leptos_web_reader_pemetaan_silang_antar_lapis_cross_domain_matrix",
+      "source": "knowledge_tasks_06_frontend_leptos_web_reader_1_summary",
+      "target": "knowledge_tasks_06_frontend_leptos_web_reader_cross_domain_matrix",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6209,107 +6209,8 @@
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_06_frontend_leptos_web_reader_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_7_alur_masuk_akun_banner_rekonsiliasi_otomatis",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L100",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_06_frontend_leptos_web_reader_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_1_sistem_desain_css_vintage_literary_1900_1950",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L35",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_06_frontend_leptos_web_reader_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_2_layanan_komunikasi_api_local_first_indexeddb_rexie",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L43",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_06_frontend_leptos_web_reader_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_3_halaman_beranda_discovery_catalog_search",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L55",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_06_frontend_leptos_web_reader_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_4_halaman_sinopsis_buku_book_overview",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L62",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_06_frontend_leptos_web_reader_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_5_komponen_pembaca_naskah_reflowable_reflowable_e_reader",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L68",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_06_frontend_leptos_web_reader_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_6_komponen_wawasan_atomik_semantik",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L88",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_06_frontend_leptos_web_reader_task_06_frontend_leptos_wasm_web_reader_mode_offline",
-      "target": "knowledge_tasks_06_frontend_leptos_web_reader_3_kriteria_keberhasilan_validasi",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L107",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_06_frontend_leptos_web_reader_task_06_frontend_leptos_wasm_web_reader_mode_offline",
-      "target": "knowledge_tasks_06_frontend_leptos_web_reader_1_ringkasan_tugas",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L15",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_06_frontend_leptos_web_reader_task_06_frontend_leptos_wasm_web_reader_mode_offline",
-      "target": "knowledge_tasks_06_frontend_leptos_web_reader_2_rincian_langkah_kerja_sub_tasks",
+      "source": "knowledge_tasks_06_frontend_leptos_web_reader_2_work_breakdown",
+      "target": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_1_vintage_literary_design_system_1900_1950",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6319,8 +6220,107 @@
       "weight": 1.0
     },
     {
+      "source": "knowledge_tasks_06_frontend_leptos_web_reader_2_work_breakdown",
+      "target": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_2_api_client_local_first_indexeddb_rexie",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_06_frontend_leptos_web_reader_2_work_breakdown",
+      "target": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_3_home_page_catalog_search",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_06_frontend_leptos_web_reader_2_work_breakdown",
+      "target": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_4_book_overview_page",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
+      "source_location": "L51",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_06_frontend_leptos_web_reader_2_work_breakdown",
+      "target": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_5_reflowable_e_reader_component",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
+      "source_location": "L56",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_06_frontend_leptos_web_reader_2_work_breakdown",
+      "target": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_6_semantic_atomic_insight_components",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
+      "source_location": "L63",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_06_frontend_leptos_web_reader_2_work_breakdown",
+      "target": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_7_auth_flows_auto_merge_banner",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
+      "source_location": "L69",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_06_frontend_leptos_web_reader_task_06_frontend_leptos_wasm_web_reader_offline_mode",
+      "target": "knowledge_tasks_06_frontend_leptos_web_reader_1_summary",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_06_frontend_leptos_web_reader_task_06_frontend_leptos_wasm_web_reader_offline_mode",
+      "target": "knowledge_tasks_06_frontend_leptos_web_reader_2_work_breakdown",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_06_frontend_leptos_web_reader_task_06_frontend_leptos_wasm_web_reader_offline_mode",
+      "target": "knowledge_tasks_06_frontend_leptos_web_reader_3_success_criteria",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
       "source": "knowledge_tasks_07_quality_assurance_and_launch",
-      "target": "knowledge_tasks_07_quality_assurance_and_launch_task_07_validasi_kualitas_menyeluruh_sla_benchmarking_kesiapan_rilis_mvp",
+      "target": "knowledge_tasks_07_quality_assurance_and_launch_task_07_comprehensive_quality_assurance_sla_benchmarking_mvp_launch",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6330,8 +6330,8 @@
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_07_quality_assurance_and_launch_1_ringkasan_tugas",
-      "target": "knowledge_tasks_07_quality_assurance_and_launch_pemetaan_silang_antar_lapis_cross_domain_matrix",
+      "source": "knowledge_tasks_07_quality_assurance_and_launch_1_summary",
+      "target": "knowledge_tasks_07_quality_assurance_and_launch_cross_domain_matrix",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6341,30 +6341,41 @@
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_07_quality_assurance_and_launch_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_1_pengujian_asap_smoke_testing_suite",
+      "source": "knowledge_tasks_07_quality_assurance_and_launch_2_work_breakdown",
+      "target": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_1_smoke_testing_suite",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L35",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_07_quality_assurance_and_launch_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_2_pengujian_unit_crate_bersama_domain_unit_test_suite",
+      "source": "knowledge_tasks_07_quality_assurance_and_launch_2_work_breakdown",
+      "target": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_2_unit_test_suite",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L42",
+      "source_location": "L40",
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_07_quality_assurance_and_launch_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_3_pengujian_integrasi_skenario_kritis_integration_test_suite",
+      "source": "knowledge_tasks_07_quality_assurance_and_launch_2_work_breakdown",
+      "target": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_3_integration_test_suite",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
+      "source_location": "L46",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_07_quality_assurance_and_launch_2_work_breakdown",
+      "target": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_4_performance_sla_benchmarks",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6374,41 +6385,30 @@
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_07_quality_assurance_and_launch_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_4_pengukuran_benchmarking_ambang_batas_sla_performance_test_suite",
+      "source": "knowledge_tasks_07_quality_assurance_and_launch_2_work_breakdown",
+      "target": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_5_reliability_fault_injection_invariant_audits",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L63",
+      "source_location": "L62",
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_07_quality_assurance_and_launch_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_5_pengujian_keandalan_fault_injection_invarian_reliability_test_suite",
+      "source": "knowledge_tasks_07_quality_assurance_and_launch_2_work_breakdown",
+      "target": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_6_mvp_release_sign_off",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L71",
+      "source_location": "L72",
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_07_quality_assurance_and_launch_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_6_prosedur_pengesahan_rilis_mvp",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L86",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_07_quality_assurance_and_launch_task_07_validasi_kualitas_menyeluruh_sla_benchmarking_kesiapan_rilis_mvp",
-      "target": "knowledge_tasks_07_quality_assurance_and_launch_1_ringkasan_tugas",
+      "source": "knowledge_tasks_07_quality_assurance_and_launch_task_07_comprehensive_quality_assurance_sla_benchmarking_mvp_launch",
+      "target": "knowledge_tasks_07_quality_assurance_and_launch_1_summary",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6418,25 +6418,25 @@
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_07_quality_assurance_and_launch_task_07_validasi_kualitas_menyeluruh_sla_benchmarking_kesiapan_rilis_mvp",
-      "target": "knowledge_tasks_07_quality_assurance_and_launch_2_rincian_langkah_kerja_sub_tasks",
+      "source": "knowledge_tasks_07_quality_assurance_and_launch_task_07_comprehensive_quality_assurance_sla_benchmarking_mvp_launch",
+      "target": "knowledge_tasks_07_quality_assurance_and_launch_2_work_breakdown",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L33",
+      "source_location": "L31",
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_07_quality_assurance_and_launch_task_07_validasi_kualitas_menyeluruh_sla_benchmarking_kesiapan_rilis_mvp",
-      "target": "knowledge_tasks_07_quality_assurance_and_launch_3_kriteria_keberhasilan_validasi",
+      "source": "knowledge_tasks_07_quality_assurance_and_launch_task_07_comprehensive_quality_assurance_sla_benchmarking_mvp_launch",
+      "target": "knowledge_tasks_07_quality_assurance_and_launch_3_success_criteria",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L94",
+      "source_location": "L78",
       "weight": 1.0
     },
     {
@@ -6590,7 +6590,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "crates/server/tests/reliability_test.rs",
-      "source_location": "L20",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -6601,7 +6601,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "crates/server/tests/reliability_test.rs",
-      "source_location": "L20",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -6690,83 +6690,6 @@
       "confidence_score": 1.0,
       "source_file": "crates/shared/src/lib.rs",
       "source_location": "L29",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_01_infrastructure_and_config",
-      "target": "knowledge_tasks_02_authentication_and_user",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L19",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_02_authentication_and_user",
-      "target": "knowledge_tasks_03_catalog_and_reader_backend",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L19",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_03_catalog_and_reader_backend",
-      "target": "knowledge_tasks_04_semantic_ai_and_insights",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
-      "source_location": "L19",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_04_semantic_ai_and_insights",
-      "target": "knowledge_tasks_05_ingestion_pipeline_and_admin",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L19",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_05_ingestion_pipeline_and_admin",
-      "target": "knowledge_tasks_06_frontend_leptos_web_reader",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L19",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_06_frontend_leptos_web_reader",
-      "target": "knowledge_tasks_03_catalog_and_reader_backend",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L18",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_06_frontend_leptos_web_reader",
-      "target": "knowledge_tasks_07_quality_assurance_and_launch",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -6927,7 +6850,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "crates/server/tests/reliability_test.rs",
-      "source_location": "L44",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -7220,5 +7143,5 @@
       "source_file": "knowledge/ux-flow.md"
     }
   ],
-  "built_at_commit": "7f88c7e1bd8b0b0bc907fcd9857d7e34f5e4205d"
+  "built_at_commit": "ed85f34e409384d629dafc6a8fc9260af723c57a"
 }

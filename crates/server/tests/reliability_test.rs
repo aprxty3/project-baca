@@ -1,5 +1,4 @@
-//! Reliability, Fault Injection, & Invariant Test Suite for Project Baca API Server
-//! Memvalidasi graceful degradation saat basis data offline, penanganan input malformed, dan zero-panics.
+//! Reliability, fault injection, and invariant test suite validating graceful degradation and zero-panics.
 
 mod common;
 
@@ -15,7 +14,6 @@ use shared::{AppError, BookSummaryDto};
 use std::sync::Arc;
 use uuid::Uuid;
 
-// Trait domain simulasi untuk pengujian isolasi kesalahan (Fault Injection)
 #[automock]
 pub trait BookCatalogPort: Send + Sync {
     fn find_book_by_id(&self, id: &Uuid) -> Result<Option<BookSummaryDto>, AppError>;
@@ -34,7 +32,6 @@ async fn test_reliability_disconnected_database_fallback() {
 
     let redis = redis::Client::open("redis://127.0.0.1:6380").unwrap();
 
-    // Sengaja gunakan koneksi terputus (Disconnected)
     let state = Arc::new(AppState {
         db: DatabaseConnection::Disconnected,
         redis,
@@ -57,7 +54,6 @@ async fn test_reliability_disconnected_database_fallback() {
         (axum::http::Response::from_parts(parts, Body::from(bytes)), json)
     };
 
-    // Server WAJIB tetap merespon 200 OK dan menyatakan status disconnected tanpa panic
     assert_eq!(resp.status(), StatusCode::OK);
     assert_eq!(body["data"]["postgres"], "disconnected");
 }
@@ -67,7 +63,6 @@ async fn test_reliability_mock_repository_fault_injection() {
     let mut mock_port = MockBookCatalogPort::new();
     let sample_id = Uuid::new_v4();
 
-    // Simulasikan kegagalan database I/O menggunakan mockall
     mock_port
         .expect_find_book_by_id()
         .with(mockall::predicate::eq(sample_id))
@@ -76,7 +71,6 @@ async fn test_reliability_mock_repository_fault_injection() {
 
     let result = mock_port.find_book_by_id(&sample_id);
 
-    // Pastikan error ditangkap sebagai Result Err dan bukan crash/panic
     claims::assert_err!(&result);
     match result {
         Err(AppError::Internal(msg)) => {
@@ -89,7 +83,6 @@ async fn test_reliability_mock_repository_fault_injection() {
 #[tokio::test]
 async fn test_reliability_oversized_request_id_handling() {
     let harness = TestHarness::new().await;
-    // Header sangat panjang (1000 karakter) untuk menguji resistensi buffer
     let long_id = "req_".to_string() + &"a".repeat(1000);
 
     let req = Request::builder()

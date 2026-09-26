@@ -1,5 +1,4 @@
-//! Performance & SLA Benchmarking Test Suite for Project Baca API Server
-//! Memvalidasi ambang batas SLA latensi p95 < 50ms dan stabilitas di bawah konkurensi multi-task Tokio.
+//! Performance and SLA benchmark test suite validating p95 latency and concurrent task execution.
 
 mod common;
 
@@ -16,7 +15,7 @@ async fn test_perf_latency_sla_p95() {
     let iterations = 200;
     let mut latencies_micros = Vec::with_capacity(iterations);
 
-    // Warm-up 10 request awal
+    // Warm-up requests
     for _ in 0..10 {
         let req = Request::builder()
             .method("GET")
@@ -26,7 +25,7 @@ async fn test_perf_latency_sla_p95() {
         let _ = harness.send_request(req).await;
     }
 
-    // Benchmark run
+    // Benchmark loop
     for _ in 0..iterations {
         let req = Request::builder()
             .method("GET")
@@ -49,15 +48,14 @@ async fn test_perf_latency_sla_p95() {
     let p99_micros = latencies_micros[(iterations as f64 * 0.99) as usize];
 
     println!(
-        "Performance Benchmark (/health): p50 = {} µs, p95 = {} µs, p99 = {} µs",
+        "Benchmark (/health): p50 = {} µs, p95 = {} µs, p99 = {} µs",
         p50_micros, p95_micros, p99_micros
     );
 
-    // Ambang batas SLA p95 dari SRS adalah < 50ms (50.000 µs)
     let sla_p95_limit_micros = 50_000;
     assert!(
         p95_micros < sla_p95_limit_micros,
-        "Latensi p95 ({} µs) melebihi batas SLA SRS ({} µs)",
+        "p95 latency ({} µs) exceeds SLA limit ({} µs)",
         p95_micros,
         sla_p95_limit_micros
     );
@@ -92,11 +90,11 @@ async fn test_perf_concurrent_load_50_workers() {
 
     let elapsed = start_total.elapsed();
     println!(
-        "Concurrent Load Test: 50 pekerja selesai dalam {} ms (rata-rata {:.2} ms per batch)",
+        "Concurrent load: 50 workers completed in {} ms ({:.2} ms per worker)",
         elapsed.as_millis(),
         elapsed.as_secs_f64() * 1000.0 / (worker_count as f64)
     );
 
-    // Pastikan seluruh 50 task konkuren tuntas di bawah 1 detik
-    assert!(elapsed.as_millis() < 1000, "Eksekusi konkurensi terlalu lambat: {:?}", elapsed);
+    assert!(elapsed.as_millis() < 1000, "Concurrency execution exceeded 1s: {:?}", elapsed);
 }
+

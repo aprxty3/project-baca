@@ -53,18 +53,18 @@ pub struct AppState {
         )
     ),
     tags(
-        (name = "Sistem & Health", description = "Pemantauan status runtime, konektivitas database & cache")
+        (name = "System & Health", description = "Runtime health checks and infrastructure connectivity")
     ),
     info(
         title = "Project Baca REST API",
         version = "0.1.0",
-        description = "Dokumentasi OpenAPI resmi Project Baca — Platform E-Reader Naskah Klasik Ranah Publik & Kartu Wawasan Atomik.",
+        description = "Public Domain Classic E-Reader & Atomic Insights API.",
         license(name = "MIT OR Apache-2.0")
     )
 )]
 pub struct ApiDoc;
 
-/// Middleware untuk korelasi Request ID (x-request-id) pada span tracing dan respon HTTP
+/// Middleware for request ID correlation (x-request-id) across tracing spans and HTTP responses
 pub async fn request_id_middleware(req: Request<Body>, next: Next) -> Response<Body> {
     let request_id = match req.headers().get(&REQUEST_ID_HEADER) {
         Some(id) => id.clone(),
@@ -83,14 +83,14 @@ pub async fn request_id_middleware(req: Request<Body>, next: Next) -> Response<B
     response
 }
 
-/// Handler pengecekan kesehatan server dasar
+/// Basic server health check handler
 #[utoipa::path(
     get,
     path = "/health",
     responses(
-        (status = 200, description = "Status kesehatan dasar server HTTP")
+        (status = 200, description = "Basic server health status")
     ),
-    tag = "Sistem & Health"
+    tag = "System & Health"
 )]
 pub async fn health_check() -> impl IntoResponse {
     (
@@ -103,14 +103,14 @@ pub async fn health_check() -> impl IntoResponse {
     )
 }
 
-/// Handler pengecekan kesehatan konektivitas basis data dan redis
+/// Infrastructure health check handler for database and cache connectivity
 #[utoipa::path(
     get,
     path = "/api/v1/health",
     responses(
-        (status = 200, description = "Status konektivitas PostgreSQL dan Redis")
+        (status = 200, description = "Database and cache connectivity status")
     ),
-    tag = "Sistem & Health"
+    tag = "System & Health"
 )]
 pub async fn api_health_check(State(state): State<Arc<AppState>>) -> impl IntoResponse {
     let db_connected = state.db.ping().await.is_ok();
@@ -126,7 +126,7 @@ pub async fn api_health_check(State(state): State<Arc<AppState>>) -> impl IntoRe
     )
 }
 
-/// Factory fungsi perakitan Axum Router lengkap dengan Swagger UI dan middleware
+/// Assembles Axum Router with Swagger UI and middleware pipeline
 pub fn create_app(state: Arc<AppState>) -> Router {
     let cors = CorsLayer::new()
         .allow_origin(Any)

@@ -1,6 +1,4 @@
--- Migrasi 04: Klaster Struktur Bab & Vektor Semantik
--- Tabel: chapters, book_chunks
-
+-- Migration 04: Chapters and book_chunks tables with HNSW vector index
 CREATE TABLE IF NOT EXISTS chapters (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     book_id UUID NOT NULL REFERENCES books(id) ON DELETE CASCADE,
@@ -22,11 +20,11 @@ CREATE TABLE IF NOT EXISTS book_chunks (
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- Indeks Klaster Bab & Vektor Semantik
+-- Chapter lookup indexes
 CREATE INDEX IF NOT EXISTS idx_chapters_book_number ON chapters USING btree (book_id, chapter_number);
 CREATE INDEX IF NOT EXISTS idx_book_chunks_lookup ON book_chunks USING btree (book_id, chapter_id, chunk_index);
 
--- Indeks HNSW Semantik untuk Scoped Quote Search via Jarak Kosinus
+-- HNSW semantic index for scoped quote searches via cosine distance
 CREATE INDEX IF NOT EXISTS idx_book_chunks_hnsw_embedding ON book_chunks 
 USING hnsw (embedding vector_cosine_ops) 
 WITH (m = 16, ef_construction = 64);

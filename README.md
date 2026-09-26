@@ -1,75 +1,62 @@
 # Project Baca
 
-Aplikasi E-Reader modern yang memadukan kenyamanan membaca mendalam ala **Kindle & Apple Books** (tipografi bersih, reflowable, bebas distraksi) dengan ringkasan wawasan atomik (*atomic insight cards*) ala **Deepstash & Blinkist**, serta kemampuan pencarian semantik kutipan (*quote finder*).
+Modern e-reader combining distraction-free, reflowable reading with atomic insight cards and semantic quote discovery. Built as an offline-first, open-access platform for curated public domain literature.
 
-Dibangun dengan arsitektur **Polyglot Monorepo** (Rust + Python + Dual-Mode Embedding), berorientasi **100% gratis, bebas iklan, dan offline-first**, menyajikan naskah pilihan dari ranah publik (*Public Domain & Open License*).
+## 1. Architecture & Tech Stack
 
----
+### Production Runtime
+* **Backend API:** [Rust](https://www.rust-lang.org/) — [Axum](https://github.com/tokio-rs/axum) (REST API, Auth, OpenAPI / Swagger UI).
+* **Frontend Web PWA:** [Leptos 0.7](https://leptos.dev/) (WASM) — Reflowable pagination, IndexedDB offline storage, and reactive language switching.
+* **AI Ingestion Worker:** Python — EPUB parsing, scene chunking, and Google GenAI SDK integration.
+* **Vector Engine:** Dual-mode embeddings via Google GenAI (768-dim) or local CPU FastEmbed ONNX.
+* **Database & Search:** PostgreSQL 17 + [`pgvector`](https://github.com/pgvector/pgvector) — Scoped HNSW index per book, `pg_trgm`, and Full-Text Search.
+* **Object Storage:** S3-compatible (MinIO for local dev, Cloudflare R2 for production).
+* **Cache & Queues:** Redis 7 — Session cache, rate limiting, and Redis Streams for ingestion.
+* **Transactional Email:** SMTP (Mailpit for dev, Resend/SES for production).
+* **Visual Aesthetics:** Mid-Century Vintage Literary (1900–1950) editorial theme with aged paper, deep espresso tones, and terracotta accents.
 
-## 1. Arsitektur & Tumpukan Teknologi
+### Agentic Intelligence System
+* **Layer 0 (Jev / Laya):** Fast reflex gate (<0.2ms) for intent routing and shell safety guardrails.
+* **Layer 1 (Graphify):** Codebase AST and knowledge graph navigation via `graphify-out/`.
+* **Layer 2 (OKF Vault v0.2):** Canonical specifications in `knowledge/` serving as single source of truth (SSOT).
+* **Layer 3 (GBrain):** Cross-session persistent memory in PostgreSQL 17 pgvector.
 
-### A. Runtime Aplikasi Produksi
-* **Controller & Web Core:** [Rust](https://www.rust-lang.org/) — [Axum](https://github.com/tokio-rs/axum) (HTTP API Gateway, Auth, WebSocket).
-* **Frontend Web PWA:** [Leptos 0.7](https://leptos.dev/) (WebAssembly / WASM) — Paginasi reflowable, IndexedDB via `rexie`, dan sakelar bahasa antarmuka reaktif (`[ ID | EN ]`).
-* **AI Ingestion & NLP Worker:** Python — Ekstraksi EPUB, sanitasi naskah, chunking berbasis scene/paragraf, dan integrasi Google GenAI SDK (Gemini).
-* **Mesin Embedding Vektor:** Dual-Mode Provider — Google GenAI Gemini API (768-dim) untuk cloud tanpa GPU, dan FastEmbed CPU ONNX untuk lingkungan dev/offline lokal teroptimasi ARM64/x86.
-* **Database & Vektor:** PostgreSQL 17 + [`pgvector`](https://github.com/pgvector/pgvector) — Indeks HNSW untuk pencarian kutipan terisolasi per buku (*scoped quote search*), serta ekstensi `pg_trgm` dan Full-Text Search untuk pencarian katalog buku.
-* **Object Storage:** S3-Compatible / [Cloudflare R2](https://www.cloudflare.com/developer-platform/r2/) / MinIO — Penyimpanan file EPUB mentah dan aset sampul.
-* **Cache & Task Queue:** Redis 7 — Manajemen session, rate limiting kueri semantik, dan Redis Streams untuk antrean ingestion.
-* **Email Transaksional:** SMTP (Mailpit untuk dev lokal, Resend/SES untuk produksi).
-* **Desain Visual:** Estetika **Vintage Literary / Mid-Century Writer (1900–1950)** dengan palet espresso `#1F1916`, tombol terakota `#CE734E`, teks perkamen `#F0EAE1`, dan ilustrasi etsa pena klasik.
+## 2. Documentation Directory
 
-### B. Infrastruktur Kecerdasan Pengembangan (Quad-Layer System One)
-Memandu kolaborasi pengembang dan agen AI (**Google Antigravity** sebagai Architect/PM dan **Claude Code** sebagai Lead Engineer):
-* **Layer 0 (Jev / Laya):** System-One reflex gate (<0.2 ms) untuk klasifikasi intent perintah dan guardrail keselamatan shell.
-* **Layer 1 (Graphify):** Codebase AST & symbol graph untuk navigasi kode monorepo via `graphify-out/`.
-* **Layer 2 (OKF Vault v0.2):** Vault dokumentasi di `knowledge/` (`prd.md`, `erd.md`, `ux-flow.md`, `frd.md`, `srs.md`) sebagai sumber kebenaran tunggal (*SSOT*).
-* **Layer 3 (GBrain):** PostgreSQL 17 pgvector untuk memori keputusan lintas sesi kerja agen.
+### Core Specifications (OKF v0.2)
+* **Master Index:** [knowledge/index.md](knowledge/index.md)
+* **Product Requirements (PRD):** [knowledge/prd.md](knowledge/prd.md)
+* **Functional Requirements (FRD):** [knowledge/frd.md](knowledge/frd.md)
+* **Database Schema & Indexes (ERD):** [knowledge/erd.md](knowledge/erd.md)
+* **User Flows & Wireframes (UX Flow):** [knowledge/ux-flow.md](knowledge/ux-flow.md)
+* **System Requirements & API Contracts (SRS):** [knowledge/srs.md](knowledge/srs.md)
+* **Specification Audit Trail:** [knowledge/log.md](knowledge/log.md)
 
----
+### Architecture & Operations
+* **Monorepo Blueprint:** [ARCHITECTURE.md](ARCHITECTURE.md)
+* **Distributed Processing & Workers:** [DISTRIBUTED.md](DISTRIBUTED.md)
+* **Architecture Decision Records (ADR):** [MEMORY.md](MEMORY.md)
+* **Visual Asset Catalog:** [assets/README.md](assets/README.md)
+* **Legal & Public Domain Statement:** [NOTICE.md](NOTICE.md)
+* **Release History & Milestones:** [CHANGELOG.md](CHANGELOG.md)
+* **Sprint Backlog & Operational Status:** [PROJECT_LOG.md](PROJECT_LOG.md)
 
-## 2. Navigasi Dokumentasi Lengkap
+### AI Agent Governance
+* **General AI Coding Agent Guidelines:** [AGENTS.md](AGENTS.md)
+* **Claude Code Instructions:** [CLAUDE.md](CLAUDE.md)
+* **Google Antigravity & Gemini Instructions:** [GEMINI.md](GEMINI.md)
 
-### A. Spesifikasi Inti & Kebutuhan Sistem (OKF v0.2)
-* **Katalog Induk & Peta Peran Direktori:** [knowledge/index.md](knowledge/index.md)
-* **Kebutuhan Produk (PRD):** [knowledge/prd.md](knowledge/prd.md)
-* **Kebutuhan Fungsional & RTM (FRD):** [knowledge/frd.md](knowledge/frd.md)
-* **Skema Database & 16 Matriks Indeks (ERD):** [knowledge/erd.md](knowledge/erd.md)
-* **Desain Interaksi & Wireframe (UX Flow):** [knowledge/ux-flow.md](knowledge/ux-flow.md)
-* **Kontrak API & Keamanan Sistem (SRS):** [knowledge/srs.md](knowledge/srs.md)
-* **Audit Trail Perubahan Spesifikasi:** [knowledge/log.md](knowledge/log.md)
+## 3. Quickstart
 
-### B. Cetak Biru Arsitektur & Rekayasa
-* **Cetak Biru Monorepo Polyglot:** [ARCHITECTURE.md](ARCHITECTURE.md)
-* **Arsitektur Pemrosesan Terdistribusi & Worker:** [DISTRIBUTED.md](DISTRIBUTED.md)
-* **Log Keputusan Arsitektural (ADR):** [MEMORY.md](MEMORY.md)
-* **Katalog Aset & Ilustrasi Vintage:** [assets/README.md](assets/README.md)
-* **Pernyataan Legalitas & Lisensi Domain Publik:** [NOTICE.md](NOTICE.md)
-* **Riwayat Rilis & Milestone:** [CHANGELOG.md](CHANGELOG.md)
-* **Status Sprint & Backlog Aktif:** [PROJECT_LOG.md](PROJECT_LOG.md)
-
-### C. Protokol Kolaborasi Multi-Agen AI
-* **Panduan Umum Seluruh AI Coding Agent:** [AGENTS.md](AGENTS.md)
-* **Panduan Pengembang Claude Code:** [CLAUDE.md](CLAUDE.md)
-* **Panduan Google Antigravity & Model Gemini:** [GEMINI.md](GEMINI.md)
-
----
-
-## 3. Memulai Lingkungan Pengembangan Lokal
-
-Panduan langkah-demi-langkah, konfigurasi prasyarat, dan pemecahan masalah tersedia lengkap pada **[GUIDE.md](GUIDE.md)**.
-
-Ringkasan cepat menjalankan layanan:
+Detailed step-by-step setup is documented in [GUIDE.md](GUIDE.md).
 
 ```bash
-# 1. Jalankan layanan infrastruktur (PostgreSQL 17, Redis 7, MinIO, Mailpit)
+# 1. Start core infrastructure (PostgreSQL 17, Redis 7, MinIO, Mailpit)
 make db-up
-# Atau: docker compose up -d
 
-# 2. Jalankan backend REST API (Axum)
-cargo run --bin project-baca-server
+# 2. Run backend API with hot reload
+make dev-server
 
-# 3. Jalankan frontend Web Reader (Leptos WASM via Trunk)
-cd crates/web && trunk serve --port 3000
+# 3. Run frontend Web Reader with hot reload
+make dev-web
 ```
-

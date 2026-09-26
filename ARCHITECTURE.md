@@ -1,290 +1,181 @@
-# Project Baca: Cetak Biru Arsitektur & Spesifikasi Desain
+# Project Baca: Architecture Blueprint & Technical Design
 
-Dokumen ini merangkum arsitektur teknis, pemilihan teknologi polyglot, struktur monorepo, pola Domain-Driven Design (DDD) ramah Rust, pipeline AI/NLP, konfigurasi infrastruktur Docker, serta metodologi pengembangan untuk **Project Baca**.
+Technical architecture, polyglot monorepo structure, Rust-friendly Domain-Driven Design (DDD), AI/NLP pipeline, infrastructure layout, and core engineering invariants for **Project Baca**.
 
----
+## 1. Product Vision
 
-## 1. Visi Produk & Pengalaman Membaca
+1. **Deep Reading Experience (Kindle & Apple Books Style):** Clean typography, reflowable layout, tap-to-turn pagination, distraction-free reading, and offline-first storage via IndexedDB.
+2. **Atomic Insights & Quote Discovery (Blinkist & Deepstash Style):** Chapter-level atomic insight cards, spoiler-free recap of previous chapters, and scoped quote finder on book overview pages.
+3. **Public Domain Catalog:** Curated, legal catalog from open sources (Standard Ebooks, Project Gutenberg, Wikisource).
 
-Project Baca adalah platform e-reader modern yang memadukan dua keunggulan:
-1. **Pengalaman Membaca Mendalam (Kindle & Apple Books Style):** Tipografi bersih, naskah reflowable (menyesuaikan layar ponsel), paginasi berbasis ketukan layar (*tap-to-turn*), bebas iklan invasif, dan *offline-first* via IndexedDB.
-2. **Kecerdasan Ringkasan & Kutipan (Blinkist & Deepstash Style):** Rangkuman kartu wawasan atomik (*Atomic Insight Cards*) per bab, tombol *Rekap Bab Sebelumnya* (anti-spoiler), dan *Scoped Quote Finder* di Halaman Sinopsis Buku (*Book Overview*).
-3. **Katalog Legal Penuh:** Berbasis naskah domain publik dan lisensi terbuka (*Standard Ebooks, Project Gutenberg, Let's Read Asia, Wikisumber*).
-
----
-
-## 2. Struktur Monorepo Polyglot
-
-Proyek dirancang dalam monorepo yang membagi tanggung jawab secara tegas antara performa I/O tinggi (Rust), keluwesan NLP/AI (Python), arsitektur Dual-Mode Embedding (Google GenAI API & FastEmbed CPU), dan antarmuka web (WASM):
+## 2. Polyglot Monorepo Structure
 
 ```text
 project-baca/
-├── Cargo.toml                       # Root workspace manifest (Rust)
-├── Makefile                         # Otomasi pengembang: dev, db-up, migrate-up, migrate-down
-├── docker-compose.yml               # Postgres 17 pgvector, Redis, MinIO, Mailpit
-├── README.md                        # Ringkasan proyek & panduan singkat
-├── ARCHITECTURE.md                  # Cetak biru arsitektur monorepo polyglot (dokumen ini)
-├── PROJECT_LOG.md                   # Catatan sprint & status operasional backlog
-├── AGENTS.md                        # Aturan operasional multi-agen AI
-├── CLAUDE.md                        # Panduan operasional Claude Code
-├── MEMORY.md                        # Log keputusan arsitektural ("the why")
-├── GEMINI.md                        # Panduan Antigravity & model Gemini
-├── GUIDE.md                         # Panduan instalasi dan pengujian lokal mendalam
-├── DISTRIBUTED.md                   # Arsitektur worker ingestion, Redis Streams, dan Dual-Mode Embedding
-├── CHANGELOG.md                     # Riwayat rilis berstandar SemVer
-├── NOTICE.md                        # Pernyataan hak cipta domain publik (UU 28/2014)
-├── .gitignore                       # Aturan pengabaian kompilasi dan cache
+├── Cargo.toml                       # Workspace manifest (Rust)
+├── Makefile                         # Developer automation (dev, test, migrations)
+├── docker-compose.yml               # PostgreSQL 17 pgvector, Redis, MinIO, Mailpit
+├── README.md                        # Project overview and quickstart
+├── ARCHITECTURE.md                  # Monorepo architecture blueprint (this document)
+├── PROJECT_LOG.md                   # Operational sprint backlog and milestones
+├── AGENTS.md                        # AI coding agent operational guidelines
+├── CLAUDE.md                        # Claude Code guidelines
+├── MEMORY.md                        # Architectural Decision Records (ADRs)
+├── GEMINI.md                        # Antigravity & Gemini guidelines
+├── GUIDE.md                         # Developer guide and local setup
+├── DISTRIBUTED.md                   # Ingestion worker and distributed architecture
+├── CHANGELOG.md                     # SemVer release history
+├── NOTICE.md                        # Legal and public domain notices
 │
-├── .agents/                         # Aturan persisten AI agent & alur kerja Graphify
+├── .agents/                         # Persistent AI agent rules and workflows
 │   ├── rules/                       # okf_memory.md, graphify.md
 │   └── workflows/                   # graphify.md
 │
-├── assets/                          # Aset visual & panduan desain
+├── assets/                          # Design assets and illustrations
 │   ├── README.md
-│   ├── illustrations/               # Etsa pena klasik Victoria/Edwardian
-│   └── references/                  # Referensi visual gbrain.io
+│   ├── illustrations/               # Pen-and-ink engravings
+│   └── references/                  # UI references
 │
-├── knowledge/                       # OKF v0.2 Knowledge Vault (Spec SSOT)
-│   ├── index.md                     # Master catalog & progressive disclosure
+├── knowledge/                       # Canonical specifications (OKF v0.2 SSOT)
+│   ├── index.md                     # Master catalog
 │   ├── prd.md                       # Product Requirements Document
-│   ├── erd.md                       # Entity Relationship Diagram & Schema
-│   ├── ux-flow.md                   # UX Flow & wireframe layout
+│   ├── erd.md                       # Database schema and index matrix
+│   ├── ux-flow.md                   # Interaction design and wireframes
 │   ├── frd.md                       # Functional Requirements Document
-│   ├── srs.md                       # Software Requirements Specification
-│   └── log.md                       # Audit trail kronologis
+│   ├── srs.md                       # System Requirements Specification
+│   ├── log.md                       # Chronological audit trail
+│   └── tasks/                       # Milestone execution specifications
 │
-├── obsidian-vault/                  # Symlink ke Obsidian Vault di /home/aprxty3/ObsidianVaults/project-baca/
-├── graphify-out/                    # Graf pengetahuan Graphify (nodes, edges, komunitas)
+├── migrations/                      # Paired SQL migrations (.up.sql & .down.sql)
 │
-├── migrations/                      # Riwayat migrasi database terkelola (.up.sql & .down.sql)
-│   ├── 20260925000001_init_extensions.up.sql
-│   ├── 20260925000001_init_extensions.down.sql
-│   ├── 20260925000002_create_users_and_roles.up.sql
-│   ├── 20260925000002_create_users_and_roles.down.sql
-│   ├── 20260925000003_create_books_and_tags.up.sql
-│   ├── 20260925000003_create_books_and_tags.down.sql
-│   ├── 20260925000004_create_chapters_and_chunks.up.sql
-│   ├── 20260925000004_create_chapters_and_chunks.down.sql
-│   └── 20260925000005_create_progress_and_gamification.up.sql
+├── crates/                          # Rust workspace crates
+│   ├── domain/                      # Pure domain models and entities (Book, User, Progress)
+│   ├── shared/                      # DTOs, validation, and API contracts (Axum & WASM)
+│   ├── infra/                       # Database pool (SeaORM), Redis, MinIO client
+│   ├── server/                      # HTTP API gateway (Axum REST, OpenAPI, Auth)
+│   └── web/                         # Client frontend (Leptos 0.7 WASM PWA)
 │
-├── crates/                          # Rust Cargo Workspace
-│   ├── domain/                      # Pure Business Logic & Entities (Book, Reader, Progress)
-│   ├── shared/                      # DTOs, i18n Dictionary, & Validasi (Shared Axum & WASM)
-│   ├── infra/                       # Database ORM (SeaORM), Redis client, S3/MinIO client
-│   ├── server/                      # HTTP API Gateway (Axum REST, Auth JWT, Static PWA)
-│   └── web/                         # Frontend Client-Side (Leptos 0.7 WASM PWA)
-│       ├── index.html
-│       ├── manifest.json
-│       ├── service-worker.js
-│       └── src/
-│           ├── components/          # ReaderView, BookCard, QuoteModal, AtomicCards
-│           ├── context/             # LocaleContext (i18n ID ⇄ EN)
-│           ├── pages/               # Library, BookOverview, Reader, Admin
-│           └── storage/             # IndexedDB wrapper via `rexie`
-│
-├── services/                        # Layanan Pendukung Non-Rust
-│   └── worker/                      # Python AI Ingestion & NLP Worker
-│       ├── pyproject.toml / requirements.txt
-│       ├── ingestion/               # EPUB parsing, text cleaning, scene chunking
-│       └── tasks/                   # Gemini SDK summarization & Dual-Mode Embedding (Gemini / FastEmbed)
-│
-└── apps/
-    └── mobile/                      # Tauri v2 Wrapper (Target: Android / iOS - Fase 2)
+└── services/
+    └── worker/                      # Python AI ingestion and NLP worker
 ```
 
----
+## 3. Rust-Friendly Domain-Driven Design (DDD)
 
-## 3. Desain DDD (Domain-Driven Design) Ramah Rust
-
-* **Domain Murni Tanpa Bloat OOP:** Struct dan Enums murni dengan *Newtype Pattern* (contoh: `BookId(Uuid)`, `ChapterNumber(u32)`).
-* **Ports & Adapters (Hexagonal):** Trait sederhana dan idiomatik untuk repository database dan storage:
+* **Pure Domain Models:** Structs and enums using the Newtype pattern (e.g., `BookId(Uuid)`). Free of database or HTTP dependencies.
+* **Ports and Adapters:** Idiomatic traits defining storage and repository boundaries:
   ```rust
   pub trait BookRepository: Send + Sync {
       async fn find_by_id(&self, id: &BookId) -> Result<Option<Book>, DomainError>;
       async fn list_books(&self, filter: &BookFilter) -> Result<Vec<BookSummary>, DomainError>;
   }
   ```
-* **Shared DTOs (`crates/shared`):** Mendefinisikan struct pertukaran data yang dikompilasi ke native untuk Axum dan dikompilasi ke WebAssembly untuk Leptos.
+* **Shared DTOs (`crates/shared`):** Single contract definitions compiled to native code for Axum and WebAssembly for Leptos.
 
----
-
-## 4. Pipeline Ingestion & Arsitektur AI Semantik
+## 4. Ingestion Pipeline & Semantic AI Architecture
 
 ```text
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                       ALUR INGESTION & PIPELINE AI                          │
-└─────────────────────────────────────────────────────────────────────────────┘
-.
- 1. INGESTION (Admin Upload -> Axum -> Redis Streams -> Python Worker)
-    [Admin Upload .epub] ──► [Axum API] ──► Simpan raw .epub ke S3/MinIO
-                                  │
-                                  ▼ (Push Event)
-                         [Redis Streams Queue]
-                                  │
-                                  ▼ (Pop Job)
-                         [Python NLP Worker]
-                           ├── Parsing struktur EPUB (XHTML per bab)
-                           ├── Sanitasi HTML & deteksi scene break
-                           ├── Ekstraksi metadata, cover, & hitung word count
-                           ├── Chunking teks novel (~300-500 kata)
-                           ├── Request embedding (Gemini API / FastEmbed CPU 768-dim)
-                           └── Simpan ke PostgreSQL 17 + pgvector (tabel book_chunks)
+1. INGESTION PIPELINE
+   [Admin Upload EPUB] -> [Axum API] -> Store raw EPUB to S3/MinIO
+                                │
+                                ▼
+                       [Redis Streams Queue]
+                                │
+                                ▼
+                       [Python NLP Worker]
+                         ├── Parse EPUB XHTML per chapter
+                         ├── Clean HTML & detect scene breaks
+                         ├── Extract metadata, cover, & calculate word count
+                         ├── Split text into chunks (~300-500 words)
+                         ├── Generate embeddings (Google GenAI / FastEmbed 768-dim)
+                         └── Persist to PostgreSQL 17 pgvector (book_chunks)
 
- -----------------------------------------------------------------------------
+2. CATALOG SEARCH (PostgreSQL 17 FTS + pg_trgm)
+   [User: Query "Sherlock" or "Adventure"]
+             │
+             ▼
+   [Axum: GET /api/books?q=sherlock&lang=en]
+             │
+             ▼
+   [PostgreSQL GIN FTS + Trigram Index] (<3ms latency)
+   * Typo-tolerant lexical search without Elasticsearch JVM overhead.
 
- 2. PENCARIAN KATALOG BUKU (Discovery Search: PostgreSQL 17 FTS + pg_trgm)
-    [User di Beranda: Ketik "Sherlok" atau "Petualangan"]
-            │
-            ▼
-    [Axum Endpoint: GET /api/books?q=sherlok&lang=id]
-            │
-            ▼
-    [PostgreSQL 17 FTS + Trigram Query (GIN Index)]:
-      SELECT id, title, author, language, primary_theme, cover_url,
-             similarity(title || ' ' || author, $1) AS score
-      FROM books
-      WHERE (title % $1 OR author % $1 OR to_tsvector('simple', title || ' ' || description) @@ plainto_tsquery($1))
-        AND status = 'published'
-      ORDER BY score DESC, title ASC
-      LIMIT 20;
-            │
-            ▼
-    [Hasil Instan < 3ms] ──► Menampilkan Kartu Buku (Toleran Saltik / Typo-Tolerant)
-    * Catatan: Tidak memerlukan Elasticsearch (menghemat 2-4 GB RAM JVM & bebas latensi sinkronisasi).
+3. SCOPED QUOTE FINDER (PostgreSQL 17 pgvector HNSW)
+   [User: "Find quote about love and sacrifice"]
+             │
+             ▼
+   [Axum: POST /api/books/{id}/quotes/search]
+             │
+             ▼
+   [PostgreSQL HNSW Vector Query] (<10ms latency)
+     WHERE book_id = $1 ORDER BY embedding <=> $query_vector LIMIT 5;
 
- -----------------------------------------------------------------------------
-
- 3. SCOPED QUOTE FINDER (Halaman Detail Buku: pgvector HNSW)
-    [User di Book Overview: "Cari kutipan pengorbanan cinta"]
-            │
-            ▼
-    [Axum Endpoint: POST /api/books/{id}/quotes/search]
-            │
-            ▼
-    [Query Embedding via Gemini API / FastEmbed CPU (768-dim)]
-            │
-            ▼
-    [PostgreSQL pgvector Query]:
-      SELECT chunk_text, chapter_number, cosine_distance
-      FROM book_chunks
-      WHERE book_id = $1
-      ORDER BY embedding <=> $query_vector
-      LIMIT 5;
-            │
-            ▼
-    [Hasil Ditampilkan di Modal < 10ms] ──► Opsi: Export ke Gambar Kutipan
-
- -----------------------------------------------------------------------------
-
- 4. ATOMIC INSIGHT CARDS & CATCH-UP RECAP
-    [User Buka Bab Baru atau Klik "Rekap Bab Sebelumnya"]
-            │
-            ▼
-    [Cek Cache tldr_cache di PostgreSQL]
-            ├── Jika sudah ada: Return instan (0 token cost!)
-            └── Jika belum ada: Python worker generate 3-5 kartu atomik via Gemini
+4. ATOMIC INSIGHT CARDS & CATCH-UP RECAP
+   [User: Open chapter or click "Recap Previous Chapters"]
+             │
+             ▼
+   [Check tldr_cache in PostgreSQL]
+     ├── Cache Hit: Return cached summary instantly (0 token cost)
+     └── Cache Miss: Worker generates atomic cards via LLM
 ```
 
----
+## 5. Frontend Leptos WASM & PWA Architecture
 
-## 5. Arsitektur Frontend Leptos WASM & PWA
+* **Reflowable Paginated Layout:** Horizontal multi-column CSS splitting text into screen-sized pages.
+* **Anchor Positioning:** Reading position locked to DOM CFI character offsets, preserving location during device rotation.
+* **Offline Storage:** Downloaded chapters and WebP images stored in browser IndexedDB via `rexie`.
+* **Reactive i18n (`[ ID | EN ]`):** Immediate language switching via `LocaleContext` without full page reload.
 
-* **Reflowable Paginated Layout:** Membagi naskah bab menjadi kolom layar horizontal menggunakan CSS multi-column. Pembalikan halaman dihitung berdasarkan pergeseran kolom per layar (*horizontal paging*).
-* **Anchor-based Positioning:** Posisi baca dikunci menggunakan Anchor Node DOM / CFI karakter offset bab, sehingga saat layar di-rotate (portrait ⇄ landscape) pembaca tidak terlempar ke bab lain.
-* **IndexedDB via `rexie`:** Buku yang ditandai offline disimpan dalam bentuk HTML bab bersih dan gambar WebP terkompresi di IndexedDB browser, menjamin operasional penuh saat offline.
-* **i18n UI Switcher (`[ ID | EN ]`):** Menggunakan `LocaleContext` reaktif di Leptos. Seluruh teks antarmuka luar buku berganti seketika tanpa *page reload*, dengan persistensi di `localStorage`.
+## 6. Visual Design Identity (Vintage Literary 1900–1950)
 
----
+* **Color Palette:**
+  * Dark Roast: Background `#1F1916`, surface card `#29211C`, ivory text `#F0EAE1`, terracotta accent `#CE734E`.
+  * Antique Paper: Background `#F7F4EE`, typewriter ink `#231D19`, border `#DBD3C5`.
+* **Typography:** Editorial Serif (*EB Garamond*, *Playfair Display*) with italics, paired with monospace (*JetBrains Mono*, *Courier Prime*) for labels.
+* **Illustrations:** Classic Victorian and Edwardian cross-hatching engravings in `assets/illustrations/`.
 
-## 6. Identitas Desain Visual (Vintage Literary 1900–1950)
+## 7. Infrastructure Services (`docker-compose.yml`)
 
-* **Tema Warna:**
-  * Mode Gelap Utama (*Dark Roast/Espresso*): Latar `#1F1916`, permukaan kartu `#29211C`, teks gading `#F0EAE1`, tombol aksi tanah liat terakota `#CE734E`.
-  * Mode Terang Kertas (*Antique Parchment*): Latar `#F7F4EE`, tinta arang mesin ketik `#231D19`, garis pembatas litografi `#DBD3C5`.
-* **Tipografi:** Editorial Serif (*Playfair Display / EB Garamond*) dengan aksen miring (*flowing italics*), dipadukan dengan Typewriter Monospace (*Courier Prime*) untuk label dan metadata.
-* **Ilustrasi:** Etsa pena klasik Victoria/Edwardian (*cross-hatching*) tersimpan di `assets/illustrations/`.
+1. **PostgreSQL 17 + pgvector (Port 5433):** Relational tables and HNSW vector index.
+2. **Redis 7 (Port 6380):** Cache, rate limiting, and Redis Streams message broker.
+3. **MinIO (Port 9005, Console 9006):** S3-compatible storage for EPUB files and covers.
+4. **Mailpit (SMTP 1025, Web UI 8025):** Local transactional email testing.
 
----
+## 8. Data Layer, Migrations, and Automation
 
-## 7. Setup Infrastruktur Lokal (`docker-compose.yml`)
+* **SeaORM:** Async Tokio/SQLx-based ORM in `crates/infra` providing type-safe queries and compatibility with `pgvector` and `pg_trgm`.
+* **Paired SQL Migrations (`migrations/`):** Schema changes managed via explicit `<timestamp>_<name>.up.sql` and `<timestamp>_<name>.down.sql` scripts.
+* **Makefile Automation:** Centralized command runners (`make dev-server`, `make dev-web`, `make migrate-up`, `make test-all`).
+* **API Documentation (`utoipa`):** Compile-time checked OpenAPI 3.1 schema serving Swagger UI at `/swagger-ui`.
+* **Structured Observability:** Tracing with automatic `x-request-id` propagation and NDJSON format via `LOG_FORMAT=json`.
+* **4-Tier Test Suite:** Smoke, integration, performance SLA (p95 < 50ms), and reliability tests.
 
-1. **PostgreSQL 17 + pgvector (Port 5433):** Database relasional dan indeks HNSW vektor semantik.
-2. **Redis 7 (Port 6380):** Manajemen session, rate limiting kueri AI, dan antrean pesan asynchronous (Redis Streams) untuk komunikasi Axum ⇄ Python worker.
-3. **MinIO (Port 9000 & Console 9001):** S3-compatible object storage untuk file `.epub` mentah dan aset cover resolusi tinggi.
-4. **Mailpit (SMTP Port 1025 & Web UI 8025):** Server pengujian email lokal untuk verifikasi pendaftaran akun dan reset password.
+## 9. Development Intelligence Architecture (Quad-Layer System One)
 
----
+* **Layer 0 (Jev / Laya):** Fast reflex gate (<0.2ms) for intent routing and shell safety guardrails.
+* **Layer 1 (Graphify):** Codebase AST and symbol graph in `graphify-out/`.
+* **Layer 2 (OKF Vault v0.2):** Specifications in `knowledge/` serving as single source of truth.
+* **Layer 3 (GBrain):** Cross-session persistent memory in PostgreSQL 17 pgvector.
 
-## 8. Lapisan Data & Siklus Hidup Migrasi: ORM (SeaORM) & Makefile
-
-Akses basis data di backend Rust Axum (`crates/infra`) menggunakan **SeaORM** (ORM asinkron berbasis Tokio/SQLx):
-* **Keunggulan SeaORM:** Pemodelan entitas yang *type-safe*, *dynamic query builder*, penanganan relasi (1-to-many, many-to-many), serta kompatibilitas langsung dengan kueri kustom PostgreSQL (`pgvector` dan `pg_trgm`).
-* **Siklus Hidup Migrasi SQL Terkelola (`migrations/`):**
-  Perubahan skema database dikelola melalui pasangan file SQL murni berekstensi `.up.sql` dan `.down.sql`:
-  * `<timestamp>_<nama_migrasi>.up.sql`: Berisi perintah DDL untuk membuat atau memodifikasi tabel, indeks, dan ekstensi.
-  * `<timestamp>_<nama_migrasi>.down.sql`: Berisi kebalikan perintah DDL (*rollback*) untuk membatalkan perubahan secara bersih.
-* **Otomasi Pengembang (`Makefile`):**
-  Seluruh alur kerja pengembangan diorkestrasi melalui perintah makefile standar:
-  * `make dev`: Menampilkan panduan orkestrasi lingkungan pengembangan lokal.
-  * `make dev-server`: Memulai backend Axum dengan live-reload otomatis via `cargo-watch` (ekuivalen `Air` di Golang).
-  * `make dev-web`: Memulai frontend Leptos WASM dengan hot-reload otomatis via `trunk serve`.
-  * `make db-up`: Memulai kontainer Postgres 17, Redis, MinIO, dan Mailpit.
-  * `make db-down`: Menghentikan kontainer.
-  * `make migrate-up`: Menjalankan seluruh migrasi yang belum diaplikasikan.
-  * `make migrate-down`: Membatalkan (*rollback*) 1 langkah migrasi terakhir.
-  * `make migrate-status`: Mengecek riwayat status migrasi basis data.
-
-* **Dokumentasi API & Swagger UI (`utoipa`):**
-  Spesifikasi OpenAPI 3.1 di-generate secara deklaratif saat waktu kompilasi (*compile-time*) dari DTOs pada `crates/shared`. Antarmuka interaktif disajikan di `/swagger-ui` dan dokumen skema mentah di `/api-docs/openapi.json`.
-
-* **Observabilitas & Tracing Terstruktur:**
-  Pencatatan log menggunakan framework `tracing` dan `tower-http`:
-  * Korelasi `x-request-id` otomatis pada setiap request HTTP dan tracing span.
-  * Mode keluaran terstruktur NDJSON diaktifkan via `LOG_FORMAT=json` untuk lingkungan produksi.
-
-* **Arsitektur Pengujian 4 Lapis (4-Tier Test Suite):**
-  * `make test-smoke`: Uji inisialisasi boot, router dasar, Swagger UI, dan keterjangkauan infrastruktur TCP.
-  * `make test-integration`: Uji alur bisnis request-response, korelasi request ID, CORS, dan skema DTO.
-  * `make test-performance`: Pengukuran distribusi latensi SLA (p95 < 50ms) dan beban multi-worker Tokio.
-  * `make test-reliability`: Uji keandalan kegagalan DB, fault injection via `mockall`, dan audit zero panics.
-  * `make test-all`: Eksekusi komprehensif seluruh test suite monorepo.
-
-
----
-
-## 9. Arsitektur Kecerdasan Pengembangan (Quad-Layer System One)
-
-Dalam proses rekayasa perangkat lunak, tim pengembang mengorkestrasi kolaborasi multi-agent (**Google Antigravity** sebagai Architect/PM dan **Claude Code** sebagai Lead Engineer) menggunakan metodologi Quad-Layer:
-* **Layer 0 (Jev / Laya):** *Reflex gate* (<0.2 ms) untuk klasifikasi intent perintah dan *guardrail* keamanan eksekusi perintah terminal shell.
-* **Layer 1 (Graphify):** Graph AST kode monorepo untuk navigasi simbol dan hierarki fungsi bebas halusinasi.
-* **Layer 2 (OKF Vault v0.2):** Vault `knowledge/` sebagai sumber kebenaran spesifikasi dengan frontmatter terverifikasi dan *progressive disclosure*.
-* **Layer 3 (GBrain):** Basis data Postgres pgvector untuk memori keputusan lintas sesi kerja agen.
-
----
-
-## 10. Prinsip Rekayasa Perangkat Lunak Inti (Core Engineering Invariants)
-
-Seluruh komponen dalam monorepo Project Baca wajib mematuhi standar rekayasa berikut:
+## 10. Core Engineering Invariants
 
 1. **ROBUST:**
-   * Tidak ada `unwrap()` / `expect()` pada kode Rust di lingkungan produksi. Semua galat dimodelkan secara terstruktur dengan `thiserror` dan dikonversi ke respon HTTP aman tanpa mengekspos jejak internal (*stack trace*).
-   * Integritas data dijaga di tingkat basis data menggunakan kendala kunci asing (`ON DELETE CASCADE` / `RESTRICT`) dan kendala `CHECK`.
-   * Frontend Leptos WASM menerapkan strategi *graceful degradation* saat offline melalui pembacaan data cadangan di `IndexedDB` (`rexie`).
+   - Zero panics in production Rust code (`unwrap()` and `expect()` prohibited in `crates/server`, `crates/domain`, `crates/infra`, `crates/shared`, `crates/web`). Errors handled through `Result<T, AppError>`.
+   - Foreign key cascading constraints and check constraints enforced in PostgreSQL.
+   - Graceful offline fallback in Leptos WASM via IndexedDB.
 2. **SCALABLE:**
-   * Gateway Axum bersifat *stateless* sehingga dapat direplikasi secara horizontal.
-   * Pencarian semantik kutipan diisolasi per buku (`WHERE book_id = $1`) pada indeks HNSW pgvector.
-   * Pencarian katalog buku menggunakan indeks parsial GIN yang hanya menyaring baris aktif `WHERE status = 'published'`.
+   - Stateless Axum backend enabling horizontal scaling.
+   - Scoped semantic search per book (`WHERE book_id = $1`).
+   - Partial GIN index filtering only active books (`WHERE status = 'published'`).
 3. **EASY TO MAINTAIN:**
-   * Batasan monorepo antar crate terisolasi secara modular (`domain`, `shared`, `infra`, `server`, `web`).
-   * Perubahan skema basis data selalu memiliki skrip migrasi berpasangan `.up.sql` dan `.down.sql` yang reversibel dan deterministik.
-   * Otomasi pengembang distandardisasi melalui `Makefile`.
+   - Modular crate boundaries (`domain`, `shared`, `infra`, `server`, `web`).
+   - Paired reversible SQL migrations.
+   - Centralized Makefile automation.
 4. **DRY (Don't Repeat Yourself):**
-   * Struct data transfer (DTO) dan aturan validasi didefinisikan satu kali pada `crates/shared` untuk digunakan bersama oleh Axum dan Leptos WASM.
-   * Kamus i18n dwibahasa (ID/EN) dikelola secara terpusat dalam konteks reaktif.
+   - Shared DTOs and validation rules in `crates/shared`.
+   - Unified reactive i18n dictionary.
 5. **KISS (Keep It Simple, Stupid):**
-   * Mengadopsi prinsip *"Postgres for Everything"* (relasional, FTS leksikal + Trigram, dan pgvector semantik) dalam satu mesin tanpa membebani sistem dengan klaster Elasticsearch terpisah.
-   * Menggunakan Redis Streams untuk antrean pekerjaan asinkron daripada broker terdistribusi berat (RedPanda/RabbitMQ).
-   * Pemodelan DDD pragmatis yang ramah terhadap *borrow checker* Rust tanpa kerumitan hierarki OOP.
+   - "Postgres for Everything": Relational data, FTS with Trigrams, and vector search in a single engine. No separate Elasticsearch cluster.
+   - Redis Streams for asynchronous task queues instead of heavyweight brokers (Kafka/RabbitMQ).
+   - Pragmatic, borrow-checker-friendly domain models without unnecessary OOP abstractions.
 6. **YAGNI (You Aren't Gonna Need It):**
-   * Fokus mutlak pada kebutuhan MVP: membaca buku naskah domain publik dengan tipografi nyaman, ringkasan atomik Deepstash, pencarian kutipan cepat, dan mode offline. Menolak implementasi prematur fitur-fitur kompleks yang baru dijadwalkan pada Fase 2.
-
+   - Strict focus on MVP requirements: public domain reading, clean typography, atomic summaries, quote discovery, and offline support. Deferring future enhancements until later phases.

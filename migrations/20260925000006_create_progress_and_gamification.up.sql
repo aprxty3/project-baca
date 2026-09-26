@@ -1,6 +1,4 @@
--- Migrasi 06: Klaster Progres Pembaca & Gamifikasi Retensi
--- Tabel: user_reading_progress, user_reading_streaks, reading_activity_logs, badges, user_badges, saved_quotes
-
+-- Migration 06: Reading progress, streaks, activity logs, badges, and saved quotes
 CREATE TABLE IF NOT EXISTS user_reading_progress (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -62,7 +60,7 @@ CREATE TABLE IF NOT EXISTS saved_quotes (
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- Indeks Klaster Progres & Gamifikasi
+-- Reading progress and gamification indexes
 CREATE INDEX IF NOT EXISTS idx_user_progress_active ON user_reading_progress 
 USING btree (user_id, last_read_at DESC) 
 WHERE is_finished = FALSE;

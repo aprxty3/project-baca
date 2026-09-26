@@ -1,4 +1,4 @@
--- Migrasi 03 Rollback: Menghapus Tabel book_tags, tags, books
+-- Migration 03 Rollback: Drop book_tags, tags, and books tables
 
 DROP TABLE IF EXISTS book_tags;
 DROP TABLE IF EXISTS tags;

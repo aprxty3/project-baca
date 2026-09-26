@@ -1,4 +1,4 @@
--- Migrasi 06 Rollback: Menghapus Tabel Progres & Gamifikasi
+-- Migration 06 Rollback: Drop progress and gamification tables
 
 DROP TABLE IF EXISTS saved_quotes;
 DROP TABLE IF EXISTS user_badges;

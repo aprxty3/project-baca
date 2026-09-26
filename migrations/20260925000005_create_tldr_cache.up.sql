@@ -1,6 +1,4 @@
--- Migrasi 05: Klaster Wawasan & Ringkasan Atomik AI
--- Tabel: tldr_cache
-
+-- Migration 05: AI TLDR cache table and lookup index
 CREATE TABLE IF NOT EXISTS tldr_cache (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     book_id UUID NOT NULL REFERENCES books(id) ON DELETE CASCADE,
@@ -12,5 +10,5 @@ CREATE TABLE IF NOT EXISTS tldr_cache (
     CONSTRAINT uq_tldr_cache UNIQUE NULLS NOT DISTINCT (book_id, chapter_id, recap_type)
 );
 
--- Indeks Pengambilan Cepat Cache Wawasan Atomik
+-- Quick lookup index for atomic recap cache
 CREATE INDEX IF NOT EXISTS idx_tldr_cache_lookup ON tldr_cache USING btree (book_id, chapter_id, recap_type);
