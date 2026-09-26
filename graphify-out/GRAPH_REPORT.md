@@ -1,9 +1,7 @@
 # Graph Report - project-baca  (2026-09-26)
 
 ## Corpus Check
-- 103 files · ~202,417 words
-- Verdict: corpus is large enough that graph structure adds value.
-- Unclassified: 6 file(s) not represented in the graph (top: (none) 3, .example 1, .toml 1)
+- cluster-only mode — file stats not available
 
 ## Summary
 - 816 nodes · 1448 edges · 92 communities (62 shown, 30 thin omitted)
@@ -106,22 +104,22 @@
 3. `HttpError` - 29 edges
 4. `AppConfig` - 18 edges
 5. `AuthUser` - 18 edges
-6. `verify_otp()` - 14 edges
+6. `TestHarness` - 14 edges
 7. `login()` - 14 edges
-8. `TestHarness` - 14 edges
-9. `signup()` - 12 edges
-10. `refresh()` - 12 edges
+8. `verify_otp()` - 14 edges
+9. `books` - 12 edges
+10. `change_password()` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Web Entry Point` --semantically_similar_to--> `Asset Catalog`  [INFERRED] [semantically similar]
   crates/web/index.html → assets/README.md
-- `signup()` --calls--> `send_otp_email()`  [INFERRED]
-  crates/server/src/routes/auth.rs → crates/infra/src/email.rs
-- `main()` --calls--> `init_db_pool()`  [INFERRED]
-  crates/server/src/main.rs → crates/infra/src/pool.rs
-- `main()` --calls--> `init_redis_client()`  [INFERRED]
-  crates/server/src/main.rs → crates/infra/src/pool.rs
 - `login()` --calls--> `generate_access_token()`  [INFERRED]
+  crates/server/src/routes/auth.rs → crates/infra/src/security/jwt.rs
+- `refresh()` --calls--> `generate_access_token()`  [INFERRED]
+  crates/server/src/routes/auth.rs → crates/infra/src/security/jwt.rs
+- `verify_otp()` --calls--> `generate_access_token()`  [INFERRED]
+  crates/server/src/routes/auth.rs → crates/infra/src/security/jwt.rs
+- `login()` --calls--> `generate_refresh_token()`  [INFERRED]
   crates/server/src/routes/auth.rs → crates/infra/src/security/jwt.rs
 
 ## Import Cycles
@@ -385,7 +383,7 @@ Cohesion: 0.40
 Nodes (4): Answer, Outcome, Q: nah pertanyaanmu terkait graf seriusan ga paham, apalagi across architetureal boundaries gitu. tolong deh telusuri jalur data dan dependencynya., Source Nodes
 
 ## Knowledge Gaps
-- **144 isolated node(s):** `Relation`, `ActiveModel`, `Relation`, `ActiveModel`, `Relation` (+139 more)
+- **144 isolated node(s):** `Relation`, `ApiDoc`, `Relation`, `Relation`, `Relation` (+139 more)
   These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 350 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **30 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -398,7 +396,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.064) - this node is a cross-community bridge._
 - **Why does `AppConfig` connect `AppConfig` to `AppState`, `server/src/lib.rs`, `pool.rs`?**
   _High betweenness centrality (0.036) - this node is a cross-community bridge._
-- **What connects `Relation`, `ActiveModel`, `Relation` to the rest of the system?**
+- **What connects `Relation`, `ApiDoc`, `Relation` to the rest of the system?**
   _144 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `reliability_test.rs` be split into smaller, more focused modules?**
   _Cohesion score 0.12554112554112554 - nodes in this community are weakly interconnected._

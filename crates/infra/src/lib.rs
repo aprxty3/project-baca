@@ -21,7 +21,9 @@ pub use repositories::{
     progress_repository::{get_active_progress, record_heartbeat, update_progress},
 };
 pub use security::{
-    generate_access_token, generate_and_store_otp, generate_refresh_token, hash_otp, hash_password,
-    revoke_refresh_token, store_refresh_token, validate_and_rotate_refresh_token,
-    verify_access_token, verify_and_consume_otp, verify_password, Claims,
+    blacklist_access_token, generate_access_token, generate_and_store_otp, generate_refresh_token,
+    hash_otp, hash_password, invalidate_user_tokens, is_token_blacklisted, is_user_token_revoked,
+    revoke_all_user_sessions, revoke_other_user_sessions, revoke_refresh_token,
+    store_refresh_token, validate_and_rotate_refresh_token, verify_access_token,
+    verify_and_consume_otp, verify_password, Claims,
 };

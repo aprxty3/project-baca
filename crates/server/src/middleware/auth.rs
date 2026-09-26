@@ -1,8 +1,10 @@
-//! JWT Authentication extractor for Axum handlers.
+//! JWT Authentication extractor for Axum handlers with revocation enforcement.
 
 use crate::{error::HttpError, AppState};
 use axum::{extract::FromRequestParts, http::request::Parts};
-use infra::security::jwt::verify_access_token;
+use infra::{
+    is_token_blacklisted, is_user_token_revoked, security::jwt::verify_access_token,
+};
 use shared::AppError;
 use std::sync::Arc;
 use uuid::Uuid;
@@ -13,6 +15,8 @@ pub struct AuthUser {
     pub id: Uuid,
     pub email: String,
     pub role: String,
+    pub jti: Uuid,
+    pub exp: usize,
 }
 
 impl FromRequestParts<Arc<AppState>> for AuthUser {
@@ -41,10 +45,34 @@ impl FromRequestParts<Arc<AppState>> for AuthUser {
         let claims =
             verify_access_token(token, state.config.jwt_secret()).map_err(HttpError::from)?;
 
+        // Enforce OWASP Token Revocation & Blacklisting via Redis
+        if let Ok(mut redis_conn) = state.redis.get_multiplexed_tokio_connection().await {
+            if is_token_blacklisted(&mut redis_conn, claims.jti)
+                .await
+                .unwrap_or(false)
+            {
+                return Err(HttpError(AppError::Unauthorized(
+                    "Access token has been revoked. Please log in again.".to_string(),
+                )));
+            }
+
+            if is_user_token_revoked(&mut redis_conn, claims.sub, claims.iat)
+                .await
+                .unwrap_or(false)
+            {
+                return Err(HttpError(AppError::Unauthorized(
+                    "Session has been invalidated. Please log in again.".to_string(),
+                )));
+            }
+        }
+
         Ok(AuthUser {
             id: claims.sub,
             email: claims.email,
             role: claims.role,
+            jti: claims.jti,
+            exp: claims.exp,
         })
     }
 }
+

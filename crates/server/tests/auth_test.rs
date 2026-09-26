@@ -155,6 +155,7 @@ async fn test_auth_full_lifecycle() {
     let change_pwd_req = ChangePasswordRequest {
         current_password: test_password.to_string(),
         new_password: new_password.to_string(),
+        revoke_other_sessions: None,
     };
     let req = Request::builder()
         .method("PUT")

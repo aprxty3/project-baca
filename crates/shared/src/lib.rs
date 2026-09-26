@@ -55,6 +55,12 @@ pub enum AppError {
     #[error("Validation failed: {0}")]
     ValidationError(String),
 
+    #[error("Validation failed: {message}")]
+    ValidationDetailed {
+        message: String,
+        details: serde_json::Value,
+    },
+
     #[error("Bad request: {0}")]
     BadRequest(String),
 
@@ -180,6 +186,8 @@ pub struct ChangePasswordRequest {
         message = "New password must be at least 8 characters"
     ))]
     pub new_password: String,
+    #[serde(default)]
+    pub revoke_other_sessions: Option<bool>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, Validate)]

@@ -20,6 +20,8 @@ pub struct Claims {
     pub exp: usize,
     /// Issued at timestamp
     pub iat: usize,
+    /// Unique JWT Token ID
+    pub jti: Uuid,
 }
 
 /// Generates a signed JWT access token with the specified expiration in minutes
@@ -39,6 +41,7 @@ pub fn generate_access_token(
         role: role.to_string(),
         exp,
         iat: now,
+        jti: Uuid::new_v4(),
     };
 
     encode(
@@ -60,6 +63,73 @@ pub fn verify_access_token(token: &str, secret: &str) -> Result<Claims, AppError
     .map_err(|e| AppError::Unauthorized(format!("Invalid or expired access token: {e}")))
 }
 
+/// Blacklists an access token by its JTI in Redis until expiration
+pub async fn blacklist_access_token(
+    redis: &mut redis::aio::MultiplexedConnection,
+    jti: Uuid,
+    ttl_seconds: u64,
+) -> Result<(), AppError> {
+    if ttl_seconds == 0 {
+        return Ok(());
+    }
+    let redis_key = format!("blacklist:jti:{jti}");
+    let _: () = redis
+        .set_ex(&redis_key, "1", ttl_seconds)
+        .await
+        .map_err(|e| AppError::Internal(format!("Failed to blacklist token in Redis: {e}")))?;
+    Ok(())
+}
+
+/// Checks whether an access token JTI is in the Redis blacklist
+pub async fn is_token_blacklisted(
+    redis: &mut redis::aio::MultiplexedConnection,
+    jti: Uuid,
+) -> Result<bool, AppError> {
+    let redis_key = format!("blacklist:jti:{jti}");
+    let exists: bool = redis
+        .exists(&redis_key)
+        .await
+        .map_err(|e| AppError::Internal(format!("Failed to query blacklist from Redis: {e}")))?;
+    Ok(exists)
+}
+
+/// Records a timestamp before which all issued tokens for a user are considered revoked
+pub async fn invalidate_user_tokens(
+    redis: &mut redis::aio::MultiplexedConnection,
+    user_id: Uuid,
+    ttl_seconds: u64,
+) -> Result<(), AppError> {
+    let redis_key = format!("user_revoked_before:{user_id}");
+    let now = Utc::now().timestamp();
+    let _: () = redis
+        .set_ex(&redis_key, now, ttl_seconds)
+        .await
+        .map_err(|e| AppError::Internal(format!("Failed to record token revocation in Redis: {e}")))?;
+    Ok(())
+}
+
+/// Checks whether a token's issuance time (iat) is prior to the user's revocation timestamp
+pub async fn is_user_token_revoked(
+    redis: &mut redis::aio::MultiplexedConnection,
+    user_id: Uuid,
+    token_iat: usize,
+) -> Result<bool, AppError> {
+    let redis_key = format!("user_revoked_before:{user_id}");
+    let revoked_before_str: Option<String> = redis
+        .get(&redis_key)
+        .await
+        .map_err(|e| AppError::Internal(format!("Failed to check user revocation in Redis: {e}")))?;
+
+    if let Some(s) = revoked_before_str {
+        if let Ok(revoked_timestamp) = s.parse::<i64>() {
+            if (token_iat as i64) <= revoked_timestamp {
+                return Ok(true);
+            }
+        }
+    }
+    Ok(false)
+}
+
 /// Generates a cryptographically random refresh token
 pub fn generate_refresh_token() -> String {
     format!("rt_{}_{:016x}", Uuid::new_v4(), rand::random::<u64>())
@@ -73,6 +143,7 @@ pub async fn store_refresh_token(
     expiry_days: u64,
 ) -> Result<(), AppError> {
     let redis_key = format!("refresh_token:{token}");
+    let user_set_key = format!("user_refresh_tokens:{user_id}");
     let ttl_seconds = expiry_days * 86400;
 
     let _: () = redis
@@ -81,6 +152,9 @@ pub async fn store_refresh_token(
         .map_err(|e| {
             AppError::Internal(format!("Failed to persist refresh token in Redis: {e}"))
         })?;
+
+    let _: Result<(), _> = redis.sadd(&user_set_key, token).await;
+    let _: Result<(), _> = redis.expire(&user_set_key, ttl_seconds as i64).await;
 
     Ok(())
 }
@@ -111,6 +185,8 @@ pub async fn validate_and_rotate_refresh_token(
 
     // Invalidate the old token (rotation enforcement)
     let _: () = redis.del(&old_key).await.unwrap_or(());
+    let user_set_key = format!("user_refresh_tokens:{user_id}");
+    let _: Result<(), _> = redis.srem(&user_set_key, old_token).await;
 
     // Generate and persist new refresh token
     let new_token = generate_refresh_token();
@@ -125,11 +201,60 @@ pub async fn revoke_refresh_token(
     token: &str,
 ) -> Result<(), AppError> {
     let redis_key = format!("refresh_token:{token}");
+    let user_id_str: Option<String> = redis.get(&redis_key).await.unwrap_or(None);
     let _: () = redis
         .del(&redis_key)
         .await
         .map_err(|e| AppError::Internal(format!("Failed to revoke refresh token: {e}")))?;
 
+    if let Some(uid_str) = user_id_str {
+        if let Ok(uid) = Uuid::parse_str(&uid_str) {
+            let user_set_key = format!("user_refresh_tokens:{uid}");
+            let _: Result<(), _> = redis.srem(&user_set_key, token).await;
+        }
+    }
+
+    Ok(())
+}
+
+/// Revokes all active refresh tokens and access tokens for the specified user
+pub async fn revoke_all_user_sessions(
+    redis: &mut redis::aio::MultiplexedConnection,
+    user_id: Uuid,
+    access_token_max_expiry_secs: u64,
+) -> Result<(), AppError> {
+    let user_set_key = format!("user_refresh_tokens:{user_id}");
+    let tokens: Vec<String> = redis.smembers(&user_set_key).await.unwrap_or_default();
+    for token in tokens {
+        let token_key = format!("refresh_token:{token}");
+        let _: Result<(), _> = redis.del(&token_key).await;
+    }
+    let _: Result<(), _> = redis.del(&user_set_key).await;
+
+    // Invalidate all outstanding access tokens issued before this instant
+    invalidate_user_tokens(redis, user_id, access_token_max_expiry_secs).await?;
+
+    Ok(())
+}
+
+/// Revokes all refresh tokens for a user except the specified one
+pub async fn revoke_other_user_sessions(
+    redis: &mut redis::aio::MultiplexedConnection,
+    user_id: Uuid,
+    keep_token: Option<&str>,
+) -> Result<(), AppError> {
+    let user_set_key = format!("user_refresh_tokens:{user_id}");
+    let tokens: Vec<String> = redis.smembers(&user_set_key).await.unwrap_or_default();
+    for token in tokens {
+        if let Some(keep) = keep_token {
+            if token == keep {
+                continue;
+            }
+        }
+        let token_key = format!("refresh_token:{token}");
+        let _: Result<(), _> = redis.del(&token_key).await;
+        let _: Result<(), _> = redis.srem(&user_set_key, &token).await;
+    }
     Ok(())
 }
 
@@ -152,6 +277,7 @@ mod tests {
         assert_eq!(claims.sub, user_id);
         assert_eq!(claims.email, email);
         assert_eq!(claims.role, role);
+        assert!(!claims.jti.is_nil());
     }
 
     #[test]
@@ -173,3 +299,4 @@ mod tests {
         assert!(token.len() > 30);
     }
 }
+

@@ -23,6 +23,16 @@ Technical rationales behind engineering decisions for **Project Baca**.
 
 ## Chronological Decision Records
 
+### 2026-09-26 — OWASP ASVS Architecture Hardening (Auth, Rate Limiting & Token Revocation)
+* **Actors:** `human:aprxty3` & `[antigravity]`
+* **Context:** Auditing Authentication and User Management against OWASP ASVS and API Security standards revealed potential attack vectors: information leakage in DB errors (CWE-209), IP spoofing in rate limits, credential stuffing via unthrottled login attempts, OTP spamming on signup, and unrevokable stateless JWT access tokens upon logout or account deletion.
+* **Decision:**
+  1. Sanitized all internal database and system errors returned to clients while logging full traces with `tracing::error!` and request IDs. Structured validation errors into field maps.
+  2. Injected mandatory OWASP security headers (`nosniff`, `DENY`, `strict-origin-when-cross-origin`, `x-xss-protection: 0`) globally.
+  3. Integrated RFC rate limit headers (`X-RateLimit-*`, `Retry-After`) with strict IP format validation (Cloudflare `CF-Connecting-IP` priority).
+  4. Added account-specific anti-abuse controls: 60-second OTP cooldown per email (`otp:cooldown:{email}`) and 15-minute lockout after 5 failed login attempts (`auth:login:lockout:{email}`).
+  5. Implemented hybrid token revocation: embedded unique `jti: Uuid` in JWT access tokens, Redis blacklisting for logged-out access tokens (`blacklist:jti:{jti}`), user-level timestamp invalidation (`user_revoked_before:{user_id}`) for password changes and account deletions, and tracked active refresh token sets (`user_refresh_tokens:{user_id}`) with `POST /api/v1/auth/revoke-all`.
+
 ### 2026-09-26 — Graph Mapping & Lifecycle Monorepo Pipeline
 * **Actors:** `human:aprxty3` & `[antigravity]`
 * **Context:** Navigating development milestones requires clear dependencies across Rust crates, database schemas, and specifications.

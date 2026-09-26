@@ -3,17 +3,19 @@
 use crate::{error::HttpError, middleware::auth::AuthUser, AppState};
 use axum::{
     extract::State,
-    http::StatusCode,
+    http::{HeaderMap, StatusCode},
     response::{IntoResponse, Response},
     routing::{delete, get, patch, post, put},
     Json, Router,
 };
 use chrono::Utc;
 use infra::{
-    entities::users, generate_access_token, generate_and_store_otp, generate_refresh_token,
-    hash_password, revoke_refresh_token, send_otp_email, store_refresh_token,
-    validate_and_rotate_refresh_token, verify_and_consume_otp, verify_password,
+    blacklist_access_token, entities::users, generate_access_token, generate_and_store_otp,
+    generate_refresh_token, hash_password, revoke_all_user_sessions, revoke_refresh_token,
+    send_otp_email, store_refresh_token, validate_and_rotate_refresh_token,
+    verify_access_token, verify_and_consume_otp, verify_password,
 };
+use redis::AsyncCommands;
 use sea_orm::{ActiveModelTrait, ActiveValue::Set, ColumnTrait, EntityTrait, QueryFilter};
 use shared::{
     ApiResponse, AppError, ChangePasswordRequest, ErrorPayload, LoginRequest, RefreshTokenRequest,
@@ -53,6 +55,21 @@ pub async fn signup(
 ) -> Result<Response, HttpError> {
     req.validate().map_err(HttpError::from)?;
 
+    let mut redis_conn = state
+        .redis
+        .get_multiplexed_tokio_connection()
+        .await
+        .map_err(|e| HttpError(AppError::Internal(format!("Redis connection failed: {e}"))))?;
+
+    // Anti-Email-Bombing: 60-second cooldown per target email
+    let cooldown_key = format!("otp:cooldown:{}", req.email);
+    let in_cooldown: bool = redis_conn.exists(&cooldown_key).await.unwrap_or(false);
+    if in_cooldown {
+        let ttl: i64 = redis_conn.ttl(&cooldown_key).await.unwrap_or(60);
+        let retry_after = if ttl > 0 { ttl as u64 } else { 60 };
+        return Err(HttpError(AppError::RateLimited { retry_after }));
+    }
+
     let existing_user = users::Entity::find()
         .filter(users::Column::Email.eq(&req.email))
         .one(&state.db)
@@ -90,15 +107,12 @@ pub async fn signup(
         new_user.insert(&state.db).await.map_err(HttpError::from)?;
     }
 
-    let mut redis_conn = state
-        .redis
-        .get_multiplexed_tokio_connection()
-        .await
-        .map_err(|e| HttpError(AppError::Internal(format!("Redis connection failed: {e}"))))?;
-
     let otp = generate_and_store_otp(&mut redis_conn, &req.email)
         .await
         .map_err(HttpError::from)?;
+
+    // Set 60-second cooldown for subsequent OTP requests for this email
+    let _: Result<(), _> = redis_conn.set_ex(&cooldown_key, "1", 60).await;
 
     let _ = send_otp_email(&state.config.email, &req.email, &otp).await;
 
@@ -204,16 +218,43 @@ pub async fn login(
 ) -> Result<Response, HttpError> {
     req.validate().map_err(HttpError::from)?;
 
+    let mut redis_conn = state
+        .redis
+        .get_multiplexed_tokio_connection()
+        .await
+        .map_err(|e| HttpError(AppError::Internal(format!("Redis connection failed: {e}"))))?;
+
+    // Anti-Credential-Stuffing: Lockout check (15 minutes after 5 failed attempts)
+    let lockout_key = format!("auth:login:lockout:{}", req.email);
+    let is_locked: bool = redis_conn.exists(&lockout_key).await.unwrap_or(false);
+    if is_locked {
+        let ttl: i64 = redis_conn.ttl(&lockout_key).await.unwrap_or(900);
+        let retry_after = if ttl > 0 { ttl as u64 } else { 900 };
+        return Err(HttpError(AppError::RateLimited { retry_after }));
+    }
+
     let user = users::Entity::find()
         .filter(users::Column::Email.eq(&req.email))
         .one(&state.db)
         .await
-        .map_err(HttpError::from)?
-        .ok_or_else(|| {
-            HttpError(AppError::Unauthorized(
+        .map_err(HttpError::from)?;
+
+    let user = match user {
+        Some(u) => u,
+        None => {
+            let fail_key = format!("auth:login:fail:{}", req.email);
+            let count: Result<i64, _> = redis_conn.incr(&fail_key, 1).await;
+            if let Ok(c) = count {
+                let _: Result<(), _> = redis_conn.expire(&fail_key, 900).await;
+                if c >= 5 {
+                    let _: Result<(), _> = redis_conn.set_ex(&lockout_key, "1", 900).await;
+                }
+            }
+            return Err(HttpError(AppError::Unauthorized(
                 "Invalid email or password".to_string(),
-            ))
-        })?;
+            )));
+        }
+    };
 
     if !user.is_active {
         return Err(HttpError(AppError::Unauthorized(
@@ -227,16 +268,22 @@ pub async fn login(
     };
 
     if !is_valid {
+        let fail_key = format!("auth:login:fail:{}", req.email);
+        let count: Result<i64, _> = redis_conn.incr(&fail_key, 1).await;
+        if let Ok(c) = count {
+            let _: Result<(), _> = redis_conn.expire(&fail_key, 900).await;
+            if c >= 5 {
+                let _: Result<(), _> = redis_conn.set_ex(&lockout_key, "1", 900).await;
+            }
+        }
         return Err(HttpError(AppError::Unauthorized(
             "Invalid email or password".to_string(),
         )));
     }
 
-    let mut redis_conn = state
-        .redis
-        .get_multiplexed_tokio_connection()
-        .await
-        .map_err(|e| HttpError(AppError::Internal(format!("Redis connection failed: {e}"))))?;
+    // Reset login failure counters on successful authentication
+    let fail_key = format!("auth:login:fail:{}", req.email);
+    let _: Result<(), _> = redis_conn.del(&[&fail_key, &lockout_key]).await;
 
     let access_token = generate_access_token(
         user.id,
@@ -343,6 +390,7 @@ pub async fn refresh(
 )]
 pub async fn logout(
     State(state): State<Arc<AppState>>,
+    headers: HeaderMap,
     Json(req): Json<RefreshTokenRequest>,
 ) -> Result<Response, HttpError> {
     req.validate().map_err(HttpError::from)?;
@@ -354,6 +402,17 @@ pub async fn logout(
         .map_err(|e| HttpError(AppError::Internal(format!("Redis connection failed: {e}"))))?;
 
     let _ = revoke_refresh_token(&mut redis_conn, &req.refresh_token).await;
+
+    // OWASP token blacklisting: If Authorization header is provided, blacklist the access token until its expiry
+    if let Some(auth_val) = headers.get("authorization").and_then(|v| v.to_str().ok()) {
+        if let Some(token) = auth_val.strip_prefix("Bearer ") {
+            if let Ok(claims) = verify_access_token(token, state.config.jwt_secret()) {
+                let now = Utc::now().timestamp() as usize;
+                let remaining = if claims.exp > now { (claims.exp - now) as u64 } else { 0 };
+                let _ = blacklist_access_token(&mut redis_conn, claims.jti, remaining).await;
+            }
+        }
+    }
 
     Ok((
         StatusCode::OK,
@@ -453,6 +512,27 @@ pub async fn change_password(
 ) -> Result<Response, HttpError> {
     req.validate().map_err(HttpError::from)?;
 
+    if req.current_password == req.new_password {
+        return Err(HttpError(AppError::BadRequest(
+            "New password must be different from current password".to_string(),
+        )));
+    }
+
+    let mut redis_conn = state
+        .redis
+        .get_multiplexed_tokio_connection()
+        .await
+        .map_err(|e| HttpError(AppError::Internal(format!("Redis connection failed: {e}"))))?;
+
+    // Throttling: Lockout after 5 failed password change attempts
+    let lockout_key = format!("auth:pwd_change:lockout:{}", auth.id);
+    let is_locked: bool = redis_conn.exists(&lockout_key).await.unwrap_or(false);
+    if is_locked {
+        let ttl: i64 = redis_conn.ttl(&lockout_key).await.unwrap_or(900);
+        let retry_after = if ttl > 0 { ttl as u64 } else { 900 };
+        return Err(HttpError(AppError::RateLimited { retry_after }));
+    }
+
     let user = users::Entity::find_by_id(auth.id)
         .one(&state.db)
         .await
@@ -465,16 +545,38 @@ pub async fn change_password(
     };
 
     if !is_valid {
+        let fail_key = format!("auth:pwd_change:fail:{}", auth.id);
+        let count: Result<i64, _> = redis_conn.incr(&fail_key, 1).await;
+        if let Ok(c) = count {
+            let _: Result<(), _> = redis_conn.expire(&fail_key, 900).await;
+            if c >= 5 {
+                let _: Result<(), _> = redis_conn.set_ex(&lockout_key, "1", 900).await;
+            }
+        }
         return Err(HttpError(AppError::Unauthorized(
             "Current password is incorrect".to_string(),
         )));
     }
+
+    // Reset password change failure counter on success
+    let fail_key = format!("auth:pwd_change:fail:{}", auth.id);
+    let _: Result<(), _> = redis_conn.del(&[&fail_key, &lockout_key]).await;
 
     let new_hash = hash_password(&req.new_password).map_err(HttpError::from)?;
     let mut active: users::ActiveModel = user.into();
     active.password_hash = Set(Some(new_hash));
     active.updated_at = Set(Utc::now().into());
     active.update(&state.db).await.map_err(HttpError::from)?;
+
+    // If requested, revoke all user sessions
+    if req.revoke_other_sessions.unwrap_or(false) {
+        let _ = revoke_all_user_sessions(
+            &mut redis_conn,
+            auth.id,
+            state.config.auth.access_expiry_minutes * 60,
+        )
+        .await;
+    }
 
     Ok((
         StatusCode::OK,
@@ -505,10 +607,58 @@ pub async fn delete_me(
         .await
         .map_err(HttpError::from)?;
 
+    // Revoke all active sessions and access tokens in Redis
+    if let Ok(mut redis_conn) = state.redis.get_multiplexed_tokio_connection().await {
+        let _ = revoke_all_user_sessions(
+            &mut redis_conn,
+            auth.id,
+            state.config.auth.access_expiry_minutes * 60,
+        )
+        .await;
+    }
+
     Ok((
         StatusCode::OK,
         Json(ApiResponse::success(serde_json::json!({
             "message": "Account successfully deleted"
+        }))),
+    )
+        .into_response())
+}
+
+/// Revoke all active sessions and access tokens for the authenticated user (SRS 5)
+#[utoipa::path(
+    post,
+    path = "/api/v1/auth/revoke-all",
+    responses(
+        (status = 200, description = "All active sessions revoked successfully", body = ApiResponse<serde_json::Value>),
+        (status = 401, description = "Unauthorized", body = ApiResponse<ErrorPayload>)
+    ),
+    security(("BearerAuth" = [])),
+    tag = "Authentication"
+)]
+pub async fn revoke_all(
+    State(state): State<Arc<AppState>>,
+    auth: AuthUser,
+) -> Result<Response, HttpError> {
+    let mut redis_conn = state
+        .redis
+        .get_multiplexed_tokio_connection()
+        .await
+        .map_err(|e| HttpError(AppError::Internal(format!("Redis connection failed: {e}"))))?;
+
+    revoke_all_user_sessions(
+        &mut redis_conn,
+        auth.id,
+        state.config.auth.access_expiry_minutes * 60,
+    )
+    .await
+    .map_err(HttpError::from)?;
+
+    Ok((
+        StatusCode::OK,
+        Json(ApiResponse::success(serde_json::json!({
+            "message": "All sessions have been revoked successfully"
         }))),
     )
         .into_response())
@@ -522,6 +672,7 @@ pub fn auth_routes() -> Router<Arc<AppState>> {
         .route("/login", post(login))
         .route("/refresh", post(refresh))
         .route("/logout", post(logout))
+        .route("/revoke-all", post(revoke_all))
 }
 
 /// Assembles user profile management routes
