@@ -1,5 +1,6 @@
 //! Infrastructure configuration, connection pools, and database integrations for Project Baca.
 
+pub mod ai;
 pub mod config;
 pub mod email;
 pub mod entities;
@@ -7,6 +8,8 @@ pub mod pool;
 pub mod repositories;
 pub mod security;
 
+
+pub use ai::{build_embedding_provider, EmbeddingProvider};
 pub use config::{
     AiConfig, AppConfig, AuthConfig, DatabaseConfig, EmailConfig, RedisConfig, ServerConfig,
     StorageConfig,
@@ -19,6 +22,10 @@ pub use repositories::{
         get_book_by_id, get_chapter_by_number, get_offline_bundle, list_books, search_books,
     },
     progress_repository::{get_active_progress, record_heartbeat, update_progress},
+    quote_repository::{
+        get_chapter_recap, get_tldr_cache, list_saved_quotes, save_quote,
+        search_quotes_by_embedding, QuoteSearchRow, SavedQuoteDto,
+    },
     user_repository::{
         activate_user_by_email, create_inactive_user, delete_user_by_id, find_user_by_email,
         find_user_by_id, update_inactive_credentials, update_user_password, update_user_profile,

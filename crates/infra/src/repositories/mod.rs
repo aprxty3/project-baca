@@ -3,4 +3,5 @@
 pub mod badge_repository;
 pub mod book_repository;
 pub mod progress_repository;
+pub mod quote_repository;
 pub mod user_repository;

@@ -5,7 +5,7 @@ mod common;
 use axum::body::Body;
 use axum::http::{Request, StatusCode};
 use common::TestHarness;
-use infra::AppConfig;
+use infra::{build_embedding_provider, AiConfig, AppConfig};
 use mockall::automock;
 use pretty_assertions::assert_eq;
 use sea_orm::DatabaseConnection;
@@ -27,11 +27,20 @@ async fn test_reliability_disconnected_database_fallback() {
 
     let redis = redis::Client::open("redis://127.0.0.1:6380").unwrap();
 
+    let embedding = build_embedding_provider(&AiConfig {
+        provider: "fastembed".to_string(),
+        api_key: String::new(),
+        model_name: "text-embedding-004".to_string(),
+        dimension: 768,
+    })
+    .expect("fastembed stub must always succeed");
+
     let state = Arc::new(AppState {
         db: DatabaseConnection::Disconnected,
         redis,
         redis_conn: None,
         config,
+        embedding,
     });
 
     let app = create_app(state);

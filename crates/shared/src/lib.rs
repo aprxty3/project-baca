@@ -415,6 +415,7 @@ pub struct QuoteSearchRequest {
         message = "Query must be between 3 and 500 characters"
     ))]
     pub query: String,
+    #[validate(range(min = 1, max = 20, message = "Limit must be between 1 and 20"))]
     pub limit: Option<u64>,
 }
 
@@ -423,6 +424,59 @@ pub struct QuoteSearchRequest {
 pub struct QuoteSearchResultDto {
     pub chunk_id: Uuid,
     pub chapter_number: i32,
+    pub chapter_title: Option<String>,
     pub content: String,
     pub similarity_score: f32,
+}
+
+// -----------------------------------------------------------------------------
+// Atomic Insight Cards DTOs (SRS 18)
+// -----------------------------------------------------------------------------
+
+/// Structured content returned from tldr_cache for recap_type = 'chapter_atomic_cards'.
+/// The `cards` field is the raw JSON blob from the cache as returned by the AI pipeline.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
+pub struct AtomicCardsDto {
+    pub book_id: Uuid,
+    pub chapter_id: Uuid,
+    pub cards: serde_json::Value,
+}
+
+/// Spoiler-free catch-up summary for a chapter (SRS 19).
+/// The `recap` field is the raw JSON blob from the cache as returned by the AI pipeline.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
+pub struct ChapterRecapDto {
+    pub book_id: Uuid,
+    pub chapter_id: Uuid,
+    pub recap: serde_json::Value,
+}
+
+// -----------------------------------------------------------------------------
+// Saved Quotes DTOs (SRS 20)
+// -----------------------------------------------------------------------------
+
+#[derive(Debug, Clone, Serialize, Deserialize, Validate)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
+pub struct SaveQuoteRequest {
+    pub book_id: Uuid,
+    pub chapter_id: Uuid,
+    #[validate(length(
+        min = 1,
+        max = 2000,
+        message = "Quote text must be between 1 and 2000 characters"
+    ))]
+    pub quote_text: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
+pub struct SavedQuoteResponseDto {
+    pub id: Uuid,
+    pub book_id: Uuid,
+    pub chapter_id: Uuid,
+    pub quote_text: String,
+    pub image_card_url: Option<String>,
+    pub created_at: DateTime<Utc>,
 }

@@ -1,7 +1,7 @@
 //! Project Baca — HTTP REST API Server
 //! Built with Axum 0.8, SeaORM, Redis, and OpenAPI (utoipa).
 
-use infra::{init_db_pool, init_redis_client, AppConfig};
+use infra::{build_embedding_provider, init_db_pool, init_redis_client, AppConfig};
 use sea_orm::DatabaseConnection;
 use server::{create_app, AppState};
 use std::net::SocketAddr;
@@ -62,11 +62,41 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
     };
 
+    // Initialize dual-mode embedding provider (Gemini REST API or FastEmbed CPU).
+    // Graceful fallback: if the API key is absent, fall back to FastEmbed stub so the
+    // server starts cleanly. Handlers requiring embeddings will return a descriptive error.
+    let embedding = match build_embedding_provider(&config.ai) {
+        Ok(provider) => {
+            tracing::info!(
+                provider = %config.ai.provider,
+                model = %config.ai.model_name,
+                dimension = config.ai.dimension,
+                "Embedding provider initialized"
+            );
+            provider
+        }
+        Err(e) => {
+            tracing::warn!(
+                "Embedding provider initialization failed ({e}). \
+                 Falling back to FastEmbed stub. \
+                 Set AI_API_KEY to enable Gemini embeddings."
+            );
+            build_embedding_provider(&infra::AiConfig {
+                provider: "fastembed".to_string(),
+                api_key: String::new(),
+                model_name: config.ai.model_name.clone(),
+                dimension: config.ai.dimension,
+            })
+            .unwrap_or_else(|_| unreachable!("fastembed provider always succeeds"))
+        }
+    };
+
     let state = Arc::new(AppState {
         db,
         redis,
         redis_conn,
         config: Arc::clone(&config),
+        embedding,
     });
     let app = create_app(state);
 

@@ -3,7 +3,7 @@
 use axum::body::Body;
 use axum::http::{Request, Response};
 use axum::Router;
-use infra::{init_db_pool, init_redis_client, AppConfig};
+use infra::{build_embedding_provider, init_db_pool, init_redis_client, AiConfig, AppConfig};
 use sea_orm::DatabaseConnection;
 use server::{create_app, AppState};
 use std::sync::Arc;
@@ -32,11 +32,21 @@ impl TestHarness {
 
         let redis_conn = redis.get_multiplexed_tokio_connection().await.ok();
 
+        // Use Mock provider for tests: deterministic 768-dim zero-vectors without network calls.
+        let embedding = build_embedding_provider(&AiConfig {
+            provider: "mock".to_string(),
+            api_key: String::new(),
+            model_name: "text-embedding-004".to_string(),
+            dimension: 768,
+        })
+        .expect("mock provider must always succeed");
+
         let state = Arc::new(AppState {
             db,
             redis,
             redis_conn,
             config: Arc::clone(&config),
+            embedding,
         });
 
         let app = create_app(state.clone());

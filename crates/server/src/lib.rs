@@ -14,7 +14,7 @@ use axum::{
     routing::get,
     Json, Router,
 };
-use infra::AppConfig;
+use infra::{AppConfig, EmbeddingProvider};
 use sea_orm::DatabaseConnection;
 use shared::*;
 use std::sync::Arc;
@@ -32,6 +32,9 @@ pub struct AppState {
     pub redis: redis::Client,
     pub redis_conn: Option<redis::aio::MultiplexedConnection>,
     pub config: Arc<AppConfig>,
+    /// Dual-mode embedding provider (Gemini REST API or FastEmbed CPU).
+    /// Wrapped in Arc so cloning AppState does not clone the provider internals.
+    pub embedding: Arc<dyn EmbeddingProvider>,
 }
 
 impl AppState {
@@ -77,6 +80,11 @@ impl AppState {
         routes::gamification::record_heartbeat,
         routes::gamification::list_badges,
         routes::gamification::list_user_badges,
+        routes::quotes::search_book_quotes,
+        routes::quotes::handle_save_quote,
+        routes::quotes::handle_list_saved_quotes,
+        routes::insights::get_atomic_cards,
+        routes::insights::get_chapter_recap,
     ),
     components(
         schemas(
@@ -104,7 +112,11 @@ impl AppState {
             BadgeDto,
             UserBadgeDto,
             QuoteSearchRequest,
-            QuoteSearchResultDto
+            QuoteSearchResultDto,
+            AtomicCardsDto,
+            ChapterRecapDto,
+            SaveQuoteRequest,
+            SavedQuoteResponseDto
         )
     ),
     modifiers(&SecurityAddon),
@@ -114,7 +126,8 @@ impl AppState {
         (name = "User Management", description = "Profile updates, password management, and account deletion"),
         (name = "Catalog", description = "Public domain book catalog, FTS search, and chapter reader"),
         (name = "Reading Progress", description = "Progress tracking, CFI anchors, and guest reconciliation"),
-        (name = "Gamification", description = "Reading streaks, heartbeats, and achievement badges")
+        (name = "Gamification", description = "Reading streaks, heartbeats, and achievement badges"),
+        (name = "Semantic Search", description = "HNSW pgvector quote search and AI-powered atomic insight cards")
     ),
     info(
         title = "Project Baca REST API",
@@ -254,6 +267,12 @@ pub fn create_app(state: Arc<AppState>) -> Router {
         crate::middleware::rate_limit_middleware,
     ));
 
+    // AI quote search endpoints: apply per-user AI rate limit (10 req/min via Redis)
+    let quotes_router = routes::quotes_routes().layer(axum_mw::from_fn_with_state(
+        state.clone(),
+        crate::middleware::ai_rate_limit_middleware,
+    ));
+
     Router::new()
         .merge(SwaggerUi::new("/swagger-ui").url("/api-docs/openapi.json", ApiDoc::openapi()))
         .route("/health", get(health_check))
@@ -264,12 +283,18 @@ pub fn create_app(state: Arc<AppState>) -> Router {
         .nest("/api/v1/books", routes::books_routes())
         .nest("/api/v1/progress", routes::progress_routes())
         .nest("/api/v1", routes::gamification_routes())
+        .nest("/api/v1/books", quotes_router.clone())
+        .nest("/api/v1/books", routes::insights_routes())
+        .nest("/api/v1/quotes", routes::saved_quotes_routes())
         // Top-level aliases (/api/...) for SRS spec compatibility
         .nest("/api/auth", auth_router)
         .nest("/api/me", routes::user_routes())
         .nest("/api/books", routes::books_routes())
         .nest("/api/progress", routes::progress_routes())
         .nest("/api", routes::gamification_routes())
+        .nest("/api/books", quotes_router)
+        .nest("/api/books", routes::insights_routes())
+        .nest("/api/quotes", routes::saved_quotes_routes())
         .fallback(not_found_handler)
         .layer(axum_mw::from_fn(security_headers_middleware))
         .layer(axum_mw::from_fn(request_id_middleware))

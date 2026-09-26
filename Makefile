@@ -93,6 +93,10 @@ test-catalog:
 	@echo "Running catalog, reader engine and gamification integration tests..."
 	@cargo test -p server --test catalog_test
 
+test-semantic:
+	@echo "Running semantic AI, quote search and atomic cards integration tests..."
+	@cargo test -p server --test semantic_ai_test
+
 test-performance:
 	@echo "Running performance and SLA benchmark tests..."
 	@cargo test -p server --test performance_test
@@ -141,5 +145,5 @@ clean:
 	@cargo clean
 	@rm -rf crates/web/dist
 
-.PHONY: dev dev-server dev-web db-up db-down db-prune db-logs db-shell redis-shell migrate-up migrate-down migrate-status test test-unit test-smoke test-integration test-auth test-catalog test-database test-performance test-load-stress test-api-boundary test-security test-reliability test-all check build clean
+.PHONY: dev dev-server dev-web db-up db-down db-prune db-logs db-shell redis-shell migrate-up migrate-down migrate-status test test-unit test-smoke test-integration test-auth test-catalog test-semantic test-database test-performance test-load-stress test-api-boundary test-security test-reliability test-all check build clean
 

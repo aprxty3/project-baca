@@ -1,0 +1,276 @@
+//! Repository for semantic quote search and user saved-quote management.
+//!
+//! Semantic search uses raw SQL to execute pgvector cosine-distance operator `<=>` via
+//! the HNSW index on `book_chunks.embedding`. SeaORM does not natively support this
+//! operator, so `sea_orm::Statement` with positional bind parameters is used instead.
+//!
+//! All query latency targets:
+//! - Scoped HNSW traversal: < 10 ms (PostgreSQL 17 with pgvector HNSW index).
+//! - Saved-quotes write: < 5 ms (B-Tree indexed insert).
+
+use sea_orm::{
+    ConnectionTrait, DatabaseConnection, FromQueryResult, JsonValue, Statement,
+};
+use serde::{Deserialize, Serialize};
+use shared::AppError;
+use uuid::Uuid;
+
+// ---------------------------------------------------------------------------
+// Intermediate query result types (not exposed outside repository)
+// ---------------------------------------------------------------------------
+
+/// Raw row returned by the HNSW cosine-distance query.
+#[derive(Debug, FromQueryResult)]
+struct ChunkSearchRow {
+    chunk_id: Uuid,
+    chapter_number: i32,
+    chapter_title: Option<String>,
+    chunk_text: String,
+    cosine_similarity: f64,
+}
+
+/// Raw row returned by the saved_quotes join query.
+#[derive(Debug, FromQueryResult)]
+struct SavedQuoteRow {
+    id: Uuid,
+    book_id: Uuid,
+    chapter_id: Uuid,
+    quote_text: String,
+    image_card_url: Option<String>,
+    created_at: chrono::DateTime<chrono::Utc>,
+}
+
+// ---------------------------------------------------------------------------
+// Public DTOs for this repository layer (also re-exported from server routes)
+// ---------------------------------------------------------------------------
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct QuoteSearchRow {
+    pub chunk_id: Uuid,
+    pub chapter_number: i32,
+    pub chapter_title: Option<String>,
+    pub content: String,
+    pub similarity_score: f32,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SavedQuoteDto {
+    pub id: Uuid,
+    pub book_id: Uuid,
+    pub chapter_id: Uuid,
+    pub quote_text: String,
+    pub image_card_url: Option<String>,
+    pub created_at: chrono::DateTime<chrono::Utc>,
+}
+
+// ---------------------------------------------------------------------------
+// Sub-Task 4.2: Scoped HNSW Semantic Quote Search
+// ---------------------------------------------------------------------------
+
+/// Execute a cosine-distance query against `book_chunks` scoped to a single book.
+///
+/// The query uses pgvector `<=>` (cosine distance) operator on the HNSW index.
+/// Results are ordered by ascending cosine distance (closest first) and then
+/// mapped to cosine *similarity* (1 - distance) before returning.
+///
+/// # Arguments
+/// - `db`: Active SeaORM database connection.
+/// - `book_id`: Scopes the search to a single book (`WHERE c.book_id = $2`).
+/// - `embedding`: The 768-dimensional query vector produced by `EmbeddingProvider`.
+/// - `limit`: Maximum results to return (capped at 20 server-side).
+pub async fn search_quotes_by_embedding(
+    db: &DatabaseConnection,
+    book_id: Uuid,
+    embedding: &[f32],
+    limit: u64,
+) -> Result<Vec<QuoteSearchRow>, AppError> {
+    let capped_limit = limit.min(20) as i64;
+
+    // Serialize the f32 vector to a pgvector literal string: '[0.1,0.2,...]'
+    let vector_literal = format!(
+        "[{}]",
+        embedding
+            .iter()
+            .map(|v| v.to_string())
+            .collect::<Vec<_>>()
+            .join(",")
+    );
+
+    let sql = r#"
+        SELECT
+            c.id            AS chunk_id,
+            ch.chapter_number,
+            ch.title        AS chapter_title,
+            c.chunk_text,
+            (1.0 - (c.embedding <=> $1::vector))::float8 AS cosine_similarity
+        FROM book_chunks c
+        JOIN chapters ch ON ch.id = c.chapter_id
+        WHERE c.book_id = $2
+        ORDER BY c.embedding <=> $1::vector
+        LIMIT $3
+    "#;
+
+    let stmt = Statement::from_sql_and_values(
+        sea_orm::DatabaseBackend::Postgres,
+        sql,
+        [
+            sea_orm::Value::from(vector_literal),
+            sea_orm::Value::from(book_id),
+            sea_orm::Value::from(capped_limit),
+        ],
+    );
+
+    let rows = ChunkSearchRow::find_by_statement(stmt)
+        .all(db)
+        .await
+        .map_err(|e| AppError::Internal(format!("HNSW quote search query failed: {e}")))?;
+
+    Ok(rows
+        .into_iter()
+        .map(|r| QuoteSearchRow {
+            chunk_id: r.chunk_id,
+            chapter_number: r.chapter_number,
+            chapter_title: r.chapter_title,
+            content: r.chunk_text,
+            similarity_score: r.cosine_similarity as f32,
+        })
+        .collect())
+}
+
+// ---------------------------------------------------------------------------
+// Sub-Task 4.3 / 4.4: Atomic Cards & Recap from tldr_cache
+// ---------------------------------------------------------------------------
+
+/// Retrieve precomputed atomic insight cards from `tldr_cache`.
+///
+/// Returns the raw `content_json` blob for a specific chapter and recap type.
+/// Returns `None` on cache miss (caller handles 404 or fallback generation).
+///
+/// # Arguments
+/// - `recap_type`: One of `"chapter_atomic_cards"` or `"chapter_recap"`.
+pub async fn get_tldr_cache(
+    db: &DatabaseConnection,
+    book_id: Uuid,
+    chapter_id: Uuid,
+    recap_type: &str,
+) -> Result<Option<JsonValue>, AppError> {
+    let sql = r#"
+        SELECT content_json
+        FROM tldr_cache
+        WHERE book_id = $1
+          AND chapter_id = $2
+          AND recap_type = $3
+        LIMIT 1
+    "#;
+
+    let stmt = Statement::from_sql_and_values(
+        sea_orm::DatabaseBackend::Postgres,
+        sql,
+        [
+            sea_orm::Value::from(book_id),
+            sea_orm::Value::from(chapter_id),
+            sea_orm::Value::from(recap_type),
+        ],
+    );
+
+    #[derive(Debug, FromQueryResult)]
+    struct CacheRow {
+        content_json: JsonValue,
+    }
+
+    let row = CacheRow::find_by_statement(stmt)
+        .one(db)
+        .await
+        .map_err(|e| AppError::Internal(format!("tldr_cache query failed: {e}")))?;
+
+    Ok(row.map(|r| r.content_json))
+}
+
+/// Retrieve a spoiler-free chapter recap from `tldr_cache`.
+///
+/// Identical to `get_tldr_cache` but scoped to `recap_type = 'chapter_recap'`.
+/// Chapters with `chapter_number <= 1` have no recap (nothing prior to summarize).
+pub async fn get_chapter_recap(
+    db: &DatabaseConnection,
+    book_id: Uuid,
+    chapter_id: Uuid,
+) -> Result<Option<JsonValue>, AppError> {
+    get_tldr_cache(db, book_id, chapter_id, "chapter_recap").await
+}
+
+// ---------------------------------------------------------------------------
+// Sub-Task 4.5: Saved Quotes Management
+// ---------------------------------------------------------------------------
+
+/// Persist a user-selected quote to `saved_quotes`.
+///
+/// Silently ignores duplicate inserts using `ON CONFLICT DO NOTHING` to ensure
+/// idempotent behavior for optimistic offline clients.
+pub async fn save_quote(
+    db: &DatabaseConnection,
+    id: Uuid,
+    user_id: Uuid,
+    book_id: Uuid,
+    chapter_id: Uuid,
+    quote_text: &str,
+) -> Result<(), AppError> {
+    let sql = r#"
+        INSERT INTO saved_quotes (id, user_id, book_id, chapter_id, quote_text, created_at)
+        VALUES ($1, $2, $3, $4, $5, NOW())
+        ON CONFLICT DO NOTHING
+    "#;
+
+    let stmt = Statement::from_sql_and_values(
+        sea_orm::DatabaseBackend::Postgres,
+        sql,
+        [
+            sea_orm::Value::from(id),
+            sea_orm::Value::from(user_id),
+            sea_orm::Value::from(book_id),
+            sea_orm::Value::from(chapter_id),
+            sea_orm::Value::from(quote_text),
+        ],
+    );
+
+    db.execute(stmt)
+        .await
+        .map_err(|e| AppError::Internal(format!("Failed to save quote: {e}")))?;
+
+    Ok(())
+}
+
+/// Retrieve all saved quotes for a user, ordered by most recent first.
+pub async fn list_saved_quotes(
+    db: &DatabaseConnection,
+    user_id: Uuid,
+) -> Result<Vec<SavedQuoteDto>, AppError> {
+    let sql = r#"
+        SELECT id, book_id, chapter_id, quote_text, image_card_url, created_at
+        FROM saved_quotes
+        WHERE user_id = $1
+        ORDER BY created_at DESC
+    "#;
+
+    let stmt = Statement::from_sql_and_values(
+        sea_orm::DatabaseBackend::Postgres,
+        sql,
+        [sea_orm::Value::from(user_id)],
+    );
+
+    let rows = SavedQuoteRow::find_by_statement(stmt)
+        .all(db)
+        .await
+        .map_err(|e| AppError::Internal(format!("Failed to list saved quotes: {e}")))?;
+
+    Ok(rows
+        .into_iter()
+        .map(|r| SavedQuoteDto {
+            id: r.id,
+            book_id: r.book_id,
+            chapter_id: r.chapter_id,
+            quote_text: r.quote_text,
+            image_card_url: r.image_card_url,
+            created_at: r.created_at,
+        })
+        .collect())
+}
