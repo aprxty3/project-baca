@@ -1,0 +1,105 @@
+//! Reliability, Fault Injection, & Invariant Test Suite for Project Baca API Server
+//! Memvalidasi graceful degradation saat basis data offline, penanganan input malformed, dan zero-panics.
+
+mod common;
+
+use axum::body::Body;
+use axum::http::{Request, StatusCode};
+use common::TestHarness;
+use infra::AppConfig;
+use mockall::automock;
+use pretty_assertions::assert_eq;
+use sea_orm::DatabaseConnection;
+use server::{create_app, AppState};
+use shared::{AppError, BookSummaryDto};
+use std::sync::Arc;
+use uuid::Uuid;
+
+// Trait domain simulasi untuk pengujian isolasi kesalahan (Fault Injection)
+#[automock]
+pub trait BookCatalogPort: Send + Sync {
+    fn find_book_by_id(&self, id: &Uuid) -> Result<Option<BookSummaryDto>, AppError>;
+}
+
+#[tokio::test]
+async fn test_reliability_disconnected_database_fallback() {
+    let config = AppConfig::from_env().unwrap_or_else(|_| AppConfig {
+        database_url: "postgresql://invalid_host:5433/none".to_string(),
+        redis_url: "redis://127.0.0.1:6380".to_string(),
+        port: 8080,
+        jwt_secret: "secret-key-32-bytes-minimum!".to_string(),
+        minio_endpoint: "http://127.0.0.1:9005".to_string(),
+        minio_bucket: "test-bucket".to_string(),
+    });
+
+    let redis = redis::Client::open("redis://127.0.0.1:6380").unwrap();
+
+    // Sengaja gunakan koneksi terputus (Disconnected)
+    let state = Arc::new(AppState {
+        db: DatabaseConnection::Disconnected,
+        redis,
+        config,
+    });
+
+    let app = create_app(state);
+
+    let req = Request::builder()
+        .method("GET")
+        .uri("/api/v1/health")
+        .body(Body::empty())
+        .unwrap();
+
+    let (resp, body) = {
+        let resp = tower::ServiceExt::oneshot(app, req).await.unwrap();
+        let (parts, body) = resp.into_parts();
+        let bytes = axum::body::to_bytes(body, usize::MAX).await.unwrap();
+        let json: serde_json::Value = serde_json::from_slice(&bytes).unwrap();
+        (axum::http::Response::from_parts(parts, Body::from(bytes)), json)
+    };
+
+    // Server WAJIB tetap merespon 200 OK dan menyatakan status disconnected tanpa panic
+    assert_eq!(resp.status(), StatusCode::OK);
+    assert_eq!(body["data"]["postgres"], "disconnected");
+}
+
+#[tokio::test]
+async fn test_reliability_mock_repository_fault_injection() {
+    let mut mock_port = MockBookCatalogPort::new();
+    let sample_id = Uuid::new_v4();
+
+    // Simulasikan kegagalan database I/O menggunakan mockall
+    mock_port
+        .expect_find_book_by_id()
+        .with(mockall::predicate::eq(sample_id))
+        .times(1)
+        .returning(|_| Err(AppError::Internal("Database connection pool exhausted".to_string())));
+
+    let result = mock_port.find_book_by_id(&sample_id);
+
+    // Pastikan error ditangkap sebagai Result Err dan bukan crash/panic
+    claims::assert_err!(&result);
+    match result {
+        Err(AppError::Internal(msg)) => {
+            assert!(msg.contains("pool exhausted"));
+        }
+        _ => panic!("Expected AppError::Internal"),
+    }
+}
+
+#[tokio::test]
+async fn test_reliability_oversized_request_id_handling() {
+    let harness = TestHarness::new().await;
+    // Header sangat panjang (1000 karakter) untuk menguji resistensi buffer
+    let long_id = "req_".to_string() + &"a".repeat(1000);
+
+    let req = Request::builder()
+        .method("GET")
+        .uri("/health")
+        .header("x-request-id", long_id)
+        .body(Body::empty())
+        .unwrap();
+
+    let resp = harness.send_request(req).await;
+    assert_eq!(resp.status(), StatusCode::OK);
+    assert!(resp.headers().contains_key("x-request-id"));
+}

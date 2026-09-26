@@ -85,6 +85,8 @@ Seluruh riwayat, rasionalisasi teknis (*the "why"*), dan atribusi aktor untuk se
 | ADR-10 | Ekspansi Graf & Vault | Pemutakhiran graf 51 simpul, .graphifyignore overrides, dan sinkronisasi Obsidian Vault | [MEMORY.md](MEMORY.md) |
 | ADR-11 | Fondasi Monorepo | Monorepo 5 Crate Rust (shared, domain, infra, server, web) + Makefile & Trunk WASM | [MEMORY.md](MEMORY.md) |
 | ADR-12 | Eksekusi Migrasi & Skema | Eksekusi 6 migrasi SQL PostgreSQL 17, pengesahan 16 indeks matriks ERD, runner Makefile | [MEMORY.md](MEMORY.md) |
+| ADR-13 | Tooling API & Pengujian | Utoipa OpenAPI/Swagger, Hot-Reload cargo-watch, Structured Logging JSON, dan 4-Tier Test Suite | [MEMORY.md](MEMORY.md) |
+
 
 
 

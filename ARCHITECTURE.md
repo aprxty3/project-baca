@@ -225,12 +225,30 @@ Akses basis data di backend Rust Axum (`crates/infra`) menggunakan **SeaORM** (O
   * `<timestamp>_<nama_migrasi>.down.sql`: Berisi kebalikan perintah DDL (*rollback*) untuk membatalkan perubahan secara bersih.
 * **Otomasi Pengembang (`Makefile`):**
   Seluruh alur kerja pengembangan diorkestrasi melalui perintah makefile standar:
-  * `make dev`: Menjalankan seluruh kontainer pendukung Docker dan dev server secara simultan.
+  * `make dev`: Menampilkan panduan orkestrasi lingkungan pengembangan lokal.
+  * `make dev-server`: Memulai backend Axum dengan live-reload otomatis via `cargo-watch` (ekuivalen `Air` di Golang).
+  * `make dev-web`: Memulai frontend Leptos WASM dengan hot-reload otomatis via `trunk serve`.
   * `make db-up`: Memulai kontainer Postgres 17, Redis, MinIO, dan Mailpit.
   * `make db-down`: Menghentikan kontainer.
   * `make migrate-up`: Menjalankan seluruh migrasi yang belum diaplikasikan.
   * `make migrate-down`: Membatalkan (*rollback*) 1 langkah migrasi terakhir.
-  * `make migrate-reset`: Menghapus skema dan menjalankan ulang seluruh migrasi dari awal.
+  * `make migrate-status`: Mengecek riwayat status migrasi basis data.
+
+* **Dokumentasi API & Swagger UI (`utoipa`):**
+  Spesifikasi OpenAPI 3.1 di-generate secara deklaratif saat waktu kompilasi (*compile-time*) dari DTOs pada `crates/shared`. Antarmuka interaktif disajikan di `/swagger-ui` dan dokumen skema mentah di `/api-docs/openapi.json`.
+
+* **Observabilitas & Tracing Terstruktur:**
+  Pencatatan log menggunakan framework `tracing` dan `tower-http`:
+  * Korelasi `x-request-id` otomatis pada setiap request HTTP dan tracing span.
+  * Mode keluaran terstruktur NDJSON diaktifkan via `LOG_FORMAT=json` untuk lingkungan produksi.
+
+* **Arsitektur Pengujian 4 Lapis (4-Tier Test Suite):**
+  * `make test-smoke`: Uji inisialisasi boot, router dasar, Swagger UI, dan keterjangkauan infrastruktur TCP.
+  * `make test-integration`: Uji alur bisnis request-response, korelasi request ID, CORS, dan skema DTO.
+  * `make test-performance`: Pengukuran distribusi latensi SLA (p95 < 50ms) dan beban multi-worker Tokio.
+  * `make test-reliability`: Uji keandalan kegagalan DB, fault injection via `mockall`, dan audit zero panics.
+  * `make test-all`: Eksekusi komprehensif seluruh test suite monorepo.
+
 
 ---
 

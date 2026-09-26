@@ -5,6 +5,10 @@ edition.workspace = true
 authors.workspace = true
 license.workspace = true
 
+[features]
+default = []
+openapi = ["dep:utoipa"]
+
 [dependencies]
 serde = { workspace = true }
 serde_json = { workspace = true }
@@ -12,3 +16,5 @@ uuid = { workspace = true }
 chrono = { workspace = true }
 thiserror = { workspace = true }
 validator = { workspace = true }
+utoipa = { workspace = true, optional = true }
+

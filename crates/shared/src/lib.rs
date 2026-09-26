@@ -8,6 +8,7 @@ use validator::Validate;
 
 /// Standard API response wrapper
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
 pub struct ApiResponse<T> {
     pub success: bool,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -40,6 +41,7 @@ impl<T> ApiResponse<T> {
 
 /// Standardized error payload
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
 pub struct ErrorPayload {
     pub code: String,
     pub message: String,
@@ -80,6 +82,7 @@ pub enum AppError {
 // -----------------------------------------------------------------------------
 
 #[derive(Debug, Clone, Serialize, Deserialize, Validate)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
 pub struct SignupRequest {
     #[validate(length(min = 2, max = 50, message = "Nickname must be between 2 and 50 characters"))]
     pub nickname: String,
@@ -95,6 +98,7 @@ pub struct SignupRequest {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, Validate)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
 pub struct VerifyOtpRequest {
     #[validate(email)]
     pub email: String,
@@ -104,6 +108,7 @@ pub struct VerifyOtpRequest {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, Validate)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
 pub struct LoginRequest {
     #[validate(email)]
     pub email: String,
@@ -113,6 +118,7 @@ pub struct LoginRequest {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
 pub struct TokenResponse {
     pub access_token: String,
     pub token_type: String,
@@ -120,6 +126,7 @@ pub struct TokenResponse {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
 pub struct UserProfileDto {
     pub id: Uuid,
     pub nickname: String,
@@ -133,6 +140,7 @@ pub struct UserProfileDto {
 // -----------------------------------------------------------------------------
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
 pub struct BookSummaryDto {
     pub id: Uuid,
     pub slug: String,
@@ -145,6 +153,7 @@ pub struct BookSummaryDto {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
 pub struct BookDetailDto {
     pub id: Uuid,
     pub slug: String,
@@ -159,6 +168,7 @@ pub struct BookDetailDto {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
 pub struct ChapterSummaryDto {
     pub id: Uuid,
     pub chapter_number: i32,
@@ -171,6 +181,7 @@ pub struct ChapterSummaryDto {
 // -----------------------------------------------------------------------------
 
 #[derive(Debug, Clone, Serialize, Deserialize, Validate)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
 pub struct QuoteSearchRequest {
     #[validate(length(min = 3, max = 500, message = "Query must be between 3 and 500 characters"))]
     pub query: String,
@@ -178,6 +189,7 @@ pub struct QuoteSearchRequest {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
 pub struct QuoteSearchResultDto {
     pub chunk_id: Uuid,
     pub chapter_number: i32,
@@ -186,6 +198,7 @@ pub struct QuoteSearchResultDto {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, Validate)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
 pub struct ReadingProgressUpdateDto {
     pub chapter_id: Uuid,
     pub cfi_position: String,

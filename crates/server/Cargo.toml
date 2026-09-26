@@ -6,7 +6,7 @@ authors.workspace = true
 license.workspace = true
 
 [dependencies]
-shared = { workspace = true }
+shared = { workspace = true, features = ["openapi"] }
 domain = { workspace = true }
 infra = { workspace = true }
 axum = { workspace = true }
@@ -19,4 +19,15 @@ serde = { workspace = true }
 serde_json = { workspace = true }
 sea-orm = { workspace = true }
 redis = { workspace = true }
+utoipa = { workspace = true }
+utoipa-swagger-ui = { workspace = true }
+uuid = { workspace = true }
+
+
+[dev-dependencies]
+mockall = { workspace = true }
+pretty_assertions = { workspace = true }
+claims = { workspace = true }
+rstest = { workspace = true }
+
 

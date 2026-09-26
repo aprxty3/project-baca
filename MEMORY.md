@@ -169,5 +169,31 @@ Setiap entri mencantumkan identitas pelaku (*Actor*): `[antigravity]`, `[claude]
      - Menghubungkan setiap tugas ke nomor User Story pada `prd.md`, modul pada `frd.md`, dan nomor endpoint pada `srs.md`.
      - Memutakhirkan `knowledge/index.md` dan `PROJECT_LOG.md` sebagai kendali operasional tunggal.
 
+---
+
+### 2026-09-26 — Adopsi OpenAPI Utoipa, Standarisasi Hot Reload, Logging Terstruktur & Arsitektur 4-Tier Test Suite
+* **Aktor:** `human:aprxty3` & `[antigravity]`
+* **Konteks:** Menjawab kebutuhan dokumentasi interaktif API setara Swaggo di Go, kejelasan eksekusi live-reload, kesiapan observabilitas produksi, serta perlunya framework pengujian komprehensif (smoke, integration, performance, reliability) yang setara dengan pola `test-backend-mkp/test/`.
+* **Keputusan:**
+  1. **Adopsi `utoipa` dan `utoipa-swagger-ui` (OpenAPI 3.1):**
+     - Memilih `utoipa` daripada pendekatan berbasis komentar teks karena *compile-time type safety*: skema OpenAPI otomatis disinkronkan langsung dari DTOs Rust (`#[derive(ToSchema)]`).
+     - Menyajikan Swagger UI interaktif di `/swagger-ui` dan spesifikasi mentah di `/api-docs/openapi.json`.
+     - Mengisolasi dependensi `utoipa` pada `crates/shared` di balik fitur opsional `openapi` agar tidak membebani kompilasi WASM frontend `crates/web`.
+  2. **Standarisasi Hot Reload (`cargo-watch` & `trunk serve`):**
+     - Menjelaskan disparitas antara `make dev` (panduan orkestrasi lingkungan) dengan `make dev-server` (live-reload backend via `cargo-watch`) dan `make dev-web` (live-reload frontend WASM via WebSocket Trunk).
+     - Menjadikan `cargo-watch` standar dev-server yang memantau seluruh 4 crate backend (`server`, `infra`, `domain`, `shared`).
+  3. **Logging Terstruktur & Korelasi Permintaan:**
+     - Mengonfigurasi `tracing-subscriber` dengan dukungan format JSON per baris via sakelar `LOG_FORMAT=json` untuk lingkungan produksi.
+     - Mengimplementasikan `request_id_middleware` yang memetakan atau menerbitkan UUIDv4 baru ke dalam header `x-request-id` dan tracing span `http_request`.
+  4. **Penerapan Arsitektur Pengujian 4 Lapis (4-Tier Test Suite):**
+     - Mengintegrasikan pustaka testing standar industri: `mockall` (mocking trait port setara Mockery), `claims` & `pretty_assertions` (asersi ekspresif & diff berwarna setara Testify), serta `rstest` (parameterized testing).
+     - Membangun 4 suite pengujian terpisah pada `crates/server/tests/`:
+       - `smoke_test.rs`: Validasi boot, `/health`, Swagger UI, dan reachability TCP port Postgres/Redis (5 passed).
+       - `integration_test.rs`: Validasi alur request-response, korelasi request ID kustom/otomatis, CORS preflight, dan integritas skema DTO OpenAPI (5 passed).
+       - `performance_test.rs`: Pengukuran distribusi latensi SLA p95 < 50ms dan stabilitas 50 worker konkuren Tokio (2 passed).
+       - `reliability_test.rs`: Validasi isolasi kesalahan database terputus tanpa crash (*zero panics*), fault injection via `mockall`, dan resistensi buffer header malformed (3 passed).
+     - Seluruh 15 skenario pengujian diverifikasi lulus 100% via `make test-all`.
+
+
 
 

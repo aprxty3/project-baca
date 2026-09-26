@@ -100,7 +100,7 @@
       "label": "shared/src/lib.rs",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Shared Data Transfer Objects",
+      "community_name": "shared/src/lib.rs",
       "file_type": "code",
       "norm_label": "shared/src/lib.rs",
       "source_file": "crates/shared/src/lib.rs",
@@ -111,139 +111,139 @@
       "label": "ApiResponse",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Shared Data Transfer Objects",
+      "community_name": "shared/src/lib.rs",
       "file_type": "code",
       "norm_label": "apiresponse",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L11"
+      "source_location": "L12"
     },
     {
       "id": "crates_shared_src_lib_apiresponse_t",
       "label": "ApiResponse<T>",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Shared Data Transfer Objects",
+      "community_name": "shared/src/lib.rs",
       "file_type": "code",
       "norm_label": "apiresponse<t>",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L19"
+      "source_location": "L20"
     },
     {
       "id": "crates_shared_src_lib_apiresponse_t_error",
       "label": ".error()",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Shared Data Transfer Objects",
+      "community_name": "shared/src/lib.rs",
       "file_type": "code",
       "norm_label": ".error()",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L28"
+      "source_location": "L29"
     },
     {
       "id": "crates_shared_src_lib_apiresponse_t_success",
       "label": ".success()",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Shared Data Transfer Objects",
+      "community_name": "shared/src/lib.rs",
       "file_type": "code",
       "norm_label": ".success()",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L20"
+      "source_location": "L21"
     },
     {
       "id": "crates_shared_src_lib_bookdetaildto",
       "label": "BookDetailDto",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Shared Data Transfer Objects",
+      "community_name": "shared/src/lib.rs",
       "file_type": "code",
       "norm_label": "bookdetaildto",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L148"
+      "source_location": "L157"
     },
     {
       "id": "crates_shared_src_lib_booksummarydto",
       "label": "BookSummaryDto",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Shared Data Transfer Objects",
+      "community_name": "shared/src/lib.rs",
       "file_type": "code",
       "norm_label": "booksummarydto",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L136"
+      "source_location": "L144"
     },
     {
       "id": "crates_shared_src_lib_chaptersummarydto",
       "label": "ChapterSummaryDto",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Shared Data Transfer Objects",
+      "community_name": "shared/src/lib.rs",
       "file_type": "code",
       "norm_label": "chaptersummarydto",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L162"
+      "source_location": "L172"
     },
     {
       "id": "crates_shared_src_lib_errorpayload",
       "label": "ErrorPayload",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Shared Data Transfer Objects",
+      "community_name": "shared/src/lib.rs",
       "file_type": "code",
       "norm_label": "errorpayload",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L43"
+      "source_location": "L45"
     },
     {
       "id": "crates_shared_src_lib_loginrequest",
       "label": "LoginRequest",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Shared Data Transfer Objects",
+      "community_name": "shared/src/lib.rs",
       "file_type": "code",
       "norm_label": "loginrequest",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L107"
+      "source_location": "L112"
     },
     {
       "id": "crates_shared_src_lib_quotesearchrequest",
       "label": "QuoteSearchRequest",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Shared Data Transfer Objects",
+      "community_name": "shared/src/lib.rs",
       "file_type": "code",
       "norm_label": "quotesearchrequest",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L174"
+      "source_location": "L185"
     },
     {
       "id": "crates_shared_src_lib_quotesearchresultdto",
       "label": "QuoteSearchResultDto",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Shared Data Transfer Objects",
+      "community_name": "shared/src/lib.rs",
       "file_type": "code",
       "norm_label": "quotesearchresultdto",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L181"
+      "source_location": "L193"
     },
     {
       "id": "crates_shared_src_lib_readingprogressupdatedto",
       "label": "ReadingProgressUpdateDto",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Shared Data Transfer Objects",
+      "community_name": "shared/src/lib.rs",
       "file_type": "code",
       "norm_label": "readingprogressupdatedto",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L189"
+      "source_location": "L202"
     },
     {
       "id": "crates_shared_src_lib_rs_datetime",
       "label": "DateTime",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Shared Data Transfer Objects",
+      "community_name": "shared/src/lib.rs",
       "file_type": "code",
       "norm_label": "datetime",
       "source_file": "",
@@ -254,7 +254,7 @@
       "label": "Option",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Shared Data Transfer Objects",
+      "community_name": "shared/src/lib.rs",
       "file_type": "code",
       "norm_label": "option",
       "source_file": "",
@@ -265,7 +265,7 @@
       "label": "Self",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Shared Data Transfer Objects",
+      "community_name": "shared/src/lib.rs",
       "file_type": "code",
       "norm_label": "self",
       "source_file": "",
@@ -276,7 +276,7 @@
       "label": "String",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Shared Data Transfer Objects",
+      "community_name": "shared/src/lib.rs",
       "file_type": "code",
       "norm_label": "string",
       "source_file": "",
@@ -287,7 +287,7 @@
       "label": "Utc",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Shared Data Transfer Objects",
+      "community_name": "shared/src/lib.rs",
       "file_type": "code",
       "norm_label": "utc",
       "source_file": "",
@@ -298,9 +298,20 @@
       "label": "Uuid",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Shared Data Transfer Objects",
+      "community_name": "shared/src/lib.rs",
       "file_type": "code",
       "norm_label": "uuid",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "crates_shared_src_lib_rs_value",
+      "label": "Value",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "shared/src/lib.rs",
+      "file_type": "code",
+      "norm_label": "value",
       "source_file": "",
       "source_location": ""
     },
@@ -309,64 +320,53 @@
       "label": "SignupRequest",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Shared Data Transfer Objects",
+      "community_name": "shared/src/lib.rs",
       "file_type": "code",
       "norm_label": "signuprequest",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L83"
+      "source_location": "L86"
     },
     {
       "id": "crates_shared_src_lib_tokenresponse",
       "label": "TokenResponse",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Shared Data Transfer Objects",
+      "community_name": "shared/src/lib.rs",
       "file_type": "code",
       "norm_label": "tokenresponse",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L116"
+      "source_location": "L122"
     },
     {
       "id": "crates_shared_src_lib_userprofiledto",
       "label": "UserProfileDto",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Shared Data Transfer Objects",
+      "community_name": "shared/src/lib.rs",
       "file_type": "code",
       "norm_label": "userprofiledto",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L123"
+      "source_location": "L130"
     },
     {
       "id": "crates_shared_src_lib_verifyotprequest",
       "label": "VerifyOtpRequest",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Shared Data Transfer Objects",
+      "community_name": "shared/src/lib.rs",
       "file_type": "code",
       "norm_label": "verifyotprequest",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L98"
+      "source_location": "L102"
     },
     {
       "id": "t",
       "label": "T",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Shared Data Transfer Objects",
+      "community_name": "shared/src/lib.rs",
       "file_type": "code",
       "norm_label": "t",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "value",
-      "label": "Value",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "Shared Data Transfer Objects",
-      "file_type": "code",
-      "norm_label": "value",
       "source_file": "",
       "source_location": ""
     },
@@ -375,20 +375,9 @@
       "label": "Vec",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Shared Data Transfer Objects",
+      "community_name": "shared/src/lib.rs",
       "file_type": "code",
       "norm_label": "vec",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "arc",
-      "label": "Arc",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Infrastructure and App Initialization",
-      "file_type": "code",
-      "norm_label": "arc",
       "source_file": "",
       "source_location": ""
     },
@@ -397,7 +386,7 @@
       "label": "Box",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Infrastructure and App Initialization",
+      "community_name": "AppConfig",
       "file_type": "code",
       "norm_label": "box",
       "source_file": "",
@@ -408,7 +397,7 @@
       "label": "infra/src/lib.rs",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Infrastructure and App Initialization",
+      "community_name": "AppConfig",
       "file_type": "code",
       "norm_label": "infra/src/lib.rs",
       "source_file": "crates/infra/src/lib.rs",
@@ -419,7 +408,7 @@
       "label": "AppConfig",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Infrastructure and App Initialization",
+      "community_name": "AppConfig",
       "file_type": "code",
       "norm_label": "appconfig",
       "source_file": "crates/infra/src/lib.rs",
@@ -430,7 +419,7 @@
       "label": ".from_env()",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Infrastructure and App Initialization",
+      "community_name": "AppConfig",
       "file_type": "code",
       "norm_label": ".from_env()",
       "source_file": "crates/infra/src/lib.rs",
@@ -441,7 +430,7 @@
       "label": "init_db_pool()",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Infrastructure and App Initialization",
+      "community_name": "AppConfig",
       "file_type": "code",
       "norm_label": "init_db_pool()",
       "source_file": "crates/infra/src/lib.rs",
@@ -452,7 +441,7 @@
       "label": "init_redis_client()",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Infrastructure and App Initialization",
+      "community_name": "AppConfig",
       "file_type": "code",
       "norm_label": "init_redis_client()",
       "source_file": "crates/infra/src/lib.rs",
@@ -463,7 +452,7 @@
       "label": "Client",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Infrastructure and App Initialization",
+      "community_name": "AppConfig",
       "file_type": "code",
       "norm_label": "client",
       "source_file": "",
@@ -474,7 +463,7 @@
       "label": "DatabaseConnection",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Infrastructure and App Initialization",
+      "community_name": "AppConfig",
       "file_type": "code",
       "norm_label": "databaseconnection",
       "source_file": "",
@@ -485,7 +474,7 @@
       "label": "Result",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Infrastructure and App Initialization",
+      "community_name": "AppConfig",
       "file_type": "code",
       "norm_label": "result",
       "source_file": "",
@@ -496,7 +485,7 @@
       "label": "Self",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Infrastructure and App Initialization",
+      "community_name": "AppConfig",
       "file_type": "code",
       "norm_label": "self",
       "source_file": "",
@@ -507,7 +496,7 @@
       "label": "String",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Infrastructure and App Initialization",
+      "community_name": "AppConfig",
       "file_type": "code",
       "norm_label": "string",
       "source_file": "",
@@ -518,84 +507,29 @@
       "label": "server/src/main.rs",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Infrastructure and App Initialization",
+      "community_name": "AppConfig",
       "file_type": "code",
       "norm_label": "server/src/main.rs",
       "source_file": "crates/server/src/main.rs",
       "source_location": "L1"
     },
     {
-      "id": "crates_server_src_main_api_health_check",
-      "label": "api_health_check()",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Infrastructure and App Initialization",
-      "file_type": "code",
-      "norm_label": "api_health_check()",
-      "source_file": "crates/server/src/main.rs",
-      "source_location": "L98"
-    },
-    {
-      "id": "crates_server_src_main_appstate",
-      "label": "AppState",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Infrastructure and App Initialization",
-      "file_type": "code",
-      "norm_label": "appstate",
-      "source_file": "crates/server/src/main.rs",
-      "source_location": "L22"
-    },
-    {
-      "id": "crates_server_src_main_health_check",
-      "label": "health_check()",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Infrastructure and App Initialization",
-      "file_type": "code",
-      "norm_label": "health_check()",
-      "source_file": "crates/server/src/main.rs",
-      "source_location": "L87"
-    },
-    {
       "id": "crates_server_src_main_main",
       "label": "main()",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Infrastructure and App Initialization",
+      "community_name": "AppConfig",
       "file_type": "code",
       "norm_label": "main()",
       "source_file": "crates/server/src/main.rs",
-      "source_location": "L29"
-    },
-    {
-      "id": "crates_server_src_main_rs_client",
-      "label": "Client",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Infrastructure and App Initialization",
-      "file_type": "code",
-      "norm_label": "client",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "crates_server_src_main_rs_databaseconnection",
-      "label": "DatabaseConnection",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Infrastructure and App Initialization",
-      "file_type": "code",
-      "norm_label": "databaseconnection",
-      "source_file": "",
-      "source_location": ""
+      "source_location": "L13"
     },
     {
       "id": "crates_server_src_main_rs_result",
       "label": "Result",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Infrastructure and App Initialization",
+      "community_name": "AppConfig",
       "file_type": "code",
       "norm_label": "result",
       "source_file": "",
@@ -606,53 +540,53 @@
       "label": "shutdown_signal()",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Infrastructure and App Initialization",
+      "community_name": "AppConfig",
       "file_type": "code",
       "norm_label": "shutdown_signal()",
       "source_file": "crates/server/src/main.rs",
-      "source_location": "L112"
+      "source_location": "L69"
+    },
+    {
+      "id": "crates_server_tests_common_mod_rs_self",
+      "label": "Self",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "AppConfig",
+      "file_type": "code",
+      "norm_label": "self",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "crates_server_tests_common_mod_testharness_new",
+      "label": ".new()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "AppConfig",
+      "file_type": "code",
+      "norm_label": ".new()",
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L20"
     },
     {
       "id": "crates_shared_src_lib_apperror",
       "label": "AppError",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Infrastructure and App Initialization",
+      "community_name": "AppConfig",
       "file_type": "code",
       "norm_label": "apperror",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L52"
+      "source_location": "L54"
     },
     {
       "id": "error",
       "label": "Error",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Infrastructure and App Initialization",
+      "community_name": "AppConfig",
       "file_type": "code",
       "norm_label": "error",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "intoresponse",
-      "label": "IntoResponse",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Infrastructure and App Initialization",
-      "file_type": "code",
-      "norm_label": "intoresponse",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "state",
-      "label": "State",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Infrastructure and App Initialization",
-      "file_type": "code",
-      "norm_label": "state",
       "source_file": "",
       "source_location": ""
     },
@@ -678,7 +612,7 @@
       "node_kind": "heading",
       "norm_label": "2. rincian langkah kerja (sub-tasks)",
       "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
-      "source_location": "L23"
+      "source_location": "L33"
     },
     {
       "id": "knowledge_tasks_03_catalog_and_reader_backend_3_kriteria_keberhasilan_validasi",
@@ -690,7 +624,19 @@
       "node_kind": "heading",
       "norm_label": "3. kriteria keberhasilan & validasi",
       "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
-      "source_location": "L92"
+      "source_location": "L102"
+    },
+    {
+      "id": "knowledge_tasks_03_catalog_and_reader_backend_pemetaan_silang_antar_lapis_cross_domain_matrix",
+      "label": "Pemetaan Silang Antar-Lapis (Cross-Domain Matrix)",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "pemetaan silang antar-lapis (cross-domain matrix)",
+      "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
+      "source_location": "L23"
     },
     {
       "id": "knowledge_tasks_03_catalog_and_reader_backend_sub_task_3_1_layanan_repository_katalog_pencarian_leksikal_crates_infra",
@@ -702,7 +648,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 3.1: layanan repository katalog & pencarian leksikal (`crates/infra`)",
       "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
-      "source_location": "L25"
+      "source_location": "L35"
     },
     {
       "id": "knowledge_tasks_03_catalog_and_reader_backend_sub_task_3_2_implementasi_endpoint_rest_api_katalog_naskah_bab_srs_8_12",
@@ -714,7 +660,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 3.2: implementasi endpoint rest api katalog & naskah bab (srs 8\u201312)",
       "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
-      "source_location": "L54"
+      "source_location": "L64"
     },
     {
       "id": "knowledge_tasks_03_catalog_and_reader_backend_sub_task_3_3_layanan_progres_membaca_sinkronisasi_cfi_srs_13_14",
@@ -726,7 +672,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 3.3: layanan progres membaca & sinkronisasi cfi (srs 13\u201314)",
       "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
-      "source_location": "L70"
+      "source_location": "L80"
     },
     {
       "id": "knowledge_tasks_03_catalog_and_reader_backend_sub_task_3_4_sistem_detak_jantung_aktivitas_baca_streak_lencana_srs_15_16",
@@ -738,7 +684,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 3.4: sistem detak jantung aktivitas baca, streak & lencana (srs 15\u201316)",
       "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
-      "source_location": "L78"
+      "source_location": "L88"
     },
     {
       "id": "knowledge_tasks_03_catalog_and_reader_backend_task_03_backend_katalog_buku_fts_trigram_reader_api_gamifikasi_streak",
@@ -1137,7 +1083,7 @@
       "node_kind": "heading",
       "norm_label": "2. rincian langkah kerja (sub-tasks)",
       "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L23"
+      "source_location": "L33"
     },
     {
       "id": "knowledge_tasks_01_infrastructure_and_config_3_kriteria_keberhasilan_validasi",
@@ -1149,7 +1095,19 @@
       "node_kind": "heading",
       "norm_label": "3. kriteria keberhasilan & validasi",
       "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L71"
+      "source_location": "L88"
+    },
+    {
+      "id": "knowledge_tasks_01_infrastructure_and_config_pemetaan_silang_antar_lapis_cross_domain_matrix",
+      "label": "Pemetaan Silang Antar-Lapis (Cross-Domain Matrix)",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "pemetaan silang antar-lapis (cross-domain matrix)",
+      "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
+      "source_location": "L23"
     },
     {
       "id": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_1_integrasi_pustaka_dotenvy_pengaturan_dependensi",
@@ -1161,7 +1119,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 1.1: integrasi pustaka `dotenvy` & pengaturan dependensi",
       "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L25"
+      "source_location": "L35"
     },
     {
       "id": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_2_restrukturisasi_appconfig_menjadi_sub_konfigurasi_modular",
@@ -1173,7 +1131,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 1.2: restrukturisasi `appconfig` menjadi sub-konfigurasi modular",
       "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L30"
+      "source_location": "L40"
     },
     {
       "id": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_3_dinamisasi_pool_koneksi_basis_data_redis",
@@ -1185,7 +1143,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 1.3: dinamisasi pool koneksi basis data & redis",
       "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L41"
+      "source_location": "L51"
     },
     {
       "id": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_4_pemodelan_entitas_seaorm_untuk_13_tabel_domain",
@@ -1197,7 +1155,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 1.4: pemodelan entitas seaorm untuk 13 tabel domain",
       "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L47"
+      "source_location": "L57"
     },
     {
       "id": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_5_modularisasi_appstate_pada_server",
@@ -1209,7 +1167,19 @@
       "node_kind": "heading",
       "norm_label": "sub-task 1.5: modularisasi `appstate` pada server",
       "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L64"
+      "source_location": "L74"
+    },
+    {
+      "id": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_6_integrasi_dokumentasi_openapi_utoipa_swagger_ui_observabilitas",
+      "label": "Sub-Task 1.6: Integrasi Dokumentasi OpenAPI (`utoipa`), Swagger UI & Observabilitas",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "sub-task 1.6: integrasi dokumentasi openapi (`utoipa`), swagger ui & observabilitas",
+      "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
+      "source_location": "L79"
     },
     {
       "id": "knowledge_tasks_01_infrastructure_and_config_task_01_infrastruktur_appconfig_modular_entitas_seaorm",
@@ -1547,7 +1517,7 @@
       "node_kind": "heading",
       "norm_label": "2. rincian langkah kerja (sub-tasks)",
       "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L23"
+      "source_location": "L33"
     },
     {
       "id": "knowledge_tasks_06_frontend_leptos_web_reader_3_kriteria_keberhasilan_validasi",
@@ -1559,7 +1529,19 @@
       "node_kind": "heading",
       "norm_label": "3. kriteria keberhasilan & validasi",
       "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L97"
+      "source_location": "L107"
+    },
+    {
+      "id": "knowledge_tasks_06_frontend_leptos_web_reader_pemetaan_silang_antar_lapis_cross_domain_matrix",
+      "label": "Pemetaan Silang Antar-Lapis (Cross-Domain Matrix)",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "pemetaan silang antar-lapis (cross-domain matrix)",
+      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
+      "source_location": "L23"
     },
     {
       "id": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_1_sistem_desain_css_vintage_literary_1900_1950",
@@ -1571,7 +1553,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 6.1: sistem desain css vintage literary (1900\u20131950)",
       "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L25"
+      "source_location": "L35"
     },
     {
       "id": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_2_layanan_komunikasi_api_local_first_indexeddb_rexie",
@@ -1583,7 +1565,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 6.2: layanan komunikasi api & local-first indexeddb (`rexie`)",
       "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L33"
+      "source_location": "L43"
     },
     {
       "id": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_3_halaman_beranda_discovery_catalog_search",
@@ -1595,7 +1577,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 6.3: halaman beranda (discovery catalog & search)",
       "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L45"
+      "source_location": "L55"
     },
     {
       "id": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_4_halaman_sinopsis_buku_book_overview",
@@ -1607,7 +1589,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 6.4: halaman sinopsis buku (book overview)",
       "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L52"
+      "source_location": "L62"
     },
     {
       "id": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_5_komponen_pembaca_naskah_reflowable_reflowable_e_reader",
@@ -1619,7 +1601,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 6.5: komponen pembaca naskah reflowable (reflowable e-reader)",
       "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L58"
+      "source_location": "L68"
     },
     {
       "id": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_6_komponen_wawasan_atomik_semantik",
@@ -1631,7 +1613,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 6.6: komponen wawasan atomik & semantik",
       "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L78"
+      "source_location": "L88"
     },
     {
       "id": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_7_alur_masuk_akun_banner_rekonsiliasi_otomatis",
@@ -1643,7 +1625,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 6.7: alur masuk akun & banner rekonsiliasi otomatis",
       "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L90"
+      "source_location": "L100"
     },
     {
       "id": "knowledge_tasks_06_frontend_leptos_web_reader_task_06_frontend_leptos_wasm_web_reader_mode_offline",
@@ -1679,7 +1661,7 @@
       "node_kind": "heading",
       "norm_label": "2. rincian langkah kerja (sub-tasks)",
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L23"
+      "source_location": "L33"
     },
     {
       "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_3_kriteria_keberhasilan_validasi",
@@ -1691,7 +1673,19 @@
       "node_kind": "heading",
       "norm_label": "3. kriteria keberhasilan & validasi",
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L78"
+      "source_location": "L88"
+    },
+    {
+      "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_pemetaan_silang_antar_lapis_cross_domain_matrix",
+      "label": "Pemetaan Silang Antar-Lapis (Cross-Domain Matrix)",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "pemetaan silang antar-lapis (cross-domain matrix)",
+      "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
+      "source_location": "L23"
     },
     {
       "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_1_layanan_penyimpanan_objek_s3_minio_crates_infra",
@@ -1703,7 +1697,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 5.1: layanan penyimpanan objek s3/minio (`crates/infra`)",
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L25"
+      "source_location": "L35"
     },
     {
       "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_2_endpoint_unggah_epub_multi_part_admin_srs_21",
@@ -1715,7 +1709,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 5.2: endpoint unggah epub multi-part admin (srs 21)",
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L31"
+      "source_location": "L41"
     },
     {
       "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_3_pekerja_latar_ingestion_parsing_epub",
@@ -1727,7 +1721,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 5.3: pekerja latar ingestion & parsing epub",
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L44"
+      "source_location": "L54"
     },
     {
       "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_4_sanitasi_html_naskah_klasik_scene_chunking",
@@ -1739,7 +1733,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 5.4: sanitasi html naskah klasik & scene chunking",
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L54"
+      "source_location": "L64"
     },
     {
       "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_5_ekstraksi_vektor_768_dim_generasi_wawasan_awal",
@@ -1751,7 +1745,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 5.5: ekstraksi vektor 768-dim & generasi wawasan awal",
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L65"
+      "source_location": "L75"
     },
     {
       "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_6_dasbor_monitoring_ingestion_analitik_drop_off_srs_22_23",
@@ -1763,7 +1757,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 5.6: dasbor monitoring ingestion & analitik drop-off (srs 22\u201323)",
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L72"
+      "source_location": "L82"
     },
     {
       "id": "knowledge_tasks_05_ingestion_pipeline_and_admin_task_05_ingestion_pipeline_epub_asinkron_admin_management",
@@ -1776,6 +1770,380 @@
       "norm_label": "task 05: ingestion pipeline epub asinkron & admin management",
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
       "source_location": "L13"
+    },
+    {
+      "id": "crates_server_src_lib",
+      "label": "server/src/lib.rs",
+      "_origin": "ast",
+      "community": 57,
+      "community_name": "server/src/lib.rs",
+      "file_type": "code",
+      "norm_label": "server/src/lib.rs",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "crates_server_src_lib_api_health_check",
+      "label": "api_health_check()",
+      "_origin": "ast",
+      "community": 57,
+      "community_name": "server/src/lib.rs",
+      "file_type": "code",
+      "norm_label": "api_health_check()",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L115"
+    },
+    {
+      "id": "crates_server_src_lib_apidoc",
+      "label": "ApiDoc",
+      "_origin": "ast",
+      "community": 57,
+      "community_name": "server/src/lib.rs",
+      "file_type": "code",
+      "norm_label": "apidoc",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L65"
+    },
+    {
+      "id": "crates_server_src_lib_appstate",
+      "label": "AppState",
+      "_origin": "ast",
+      "community": 57,
+      "community_name": "server/src/lib.rs",
+      "file_type": "code",
+      "norm_label": "appstate",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L26"
+    },
+    {
+      "id": "crates_server_src_lib_create_app",
+      "label": "create_app()",
+      "_origin": "ast",
+      "community": 57,
+      "community_name": "server/src/lib.rs",
+      "file_type": "code",
+      "norm_label": "create_app()",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L130"
+    },
+    {
+      "id": "crates_server_src_lib_health_check",
+      "label": "health_check()",
+      "_origin": "ast",
+      "community": 57,
+      "community_name": "server/src/lib.rs",
+      "file_type": "code",
+      "norm_label": "health_check()",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L95"
+    },
+    {
+      "id": "crates_server_src_lib_request_id_middleware",
+      "label": "request_id_middleware()",
+      "_origin": "ast",
+      "community": 57,
+      "community_name": "server/src/lib.rs",
+      "file_type": "code",
+      "norm_label": "request_id_middleware()",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L68"
+    },
+    {
+      "id": "crates_server_src_lib_rs_arc",
+      "label": "Arc",
+      "_origin": "ast",
+      "community": 57,
+      "community_name": "server/src/lib.rs",
+      "file_type": "code",
+      "norm_label": "arc",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "crates_server_src_lib_rs_body",
+      "label": "Body",
+      "_origin": "ast",
+      "community": 57,
+      "community_name": "server/src/lib.rs",
+      "file_type": "code",
+      "norm_label": "body",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "crates_server_src_lib_rs_client",
+      "label": "Client",
+      "_origin": "ast",
+      "community": 57,
+      "community_name": "server/src/lib.rs",
+      "file_type": "code",
+      "norm_label": "client",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "crates_server_src_lib_rs_databaseconnection",
+      "label": "DatabaseConnection",
+      "_origin": "ast",
+      "community": 57,
+      "community_name": "server/src/lib.rs",
+      "file_type": "code",
+      "norm_label": "databaseconnection",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "crates_server_src_lib_rs_request",
+      "label": "Request",
+      "_origin": "ast",
+      "community": 57,
+      "community_name": "server/src/lib.rs",
+      "file_type": "code",
+      "norm_label": "request",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "crates_server_src_lib_rs_response",
+      "label": "Response",
+      "_origin": "ast",
+      "community": 57,
+      "community_name": "server/src/lib.rs",
+      "file_type": "code",
+      "norm_label": "response",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "crates_server_src_lib_rs_router",
+      "label": "Router",
+      "_origin": "ast",
+      "community": 57,
+      "community_name": "server/src/lib.rs",
+      "file_type": "code",
+      "norm_label": "router",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "intoresponse",
+      "label": "IntoResponse",
+      "_origin": "ast",
+      "community": 57,
+      "community_name": "server/src/lib.rs",
+      "file_type": "code",
+      "norm_label": "intoresponse",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "next",
+      "label": "Next",
+      "_origin": "ast",
+      "community": 57,
+      "community_name": "server/src/lib.rs",
+      "file_type": "code",
+      "norm_label": "next",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "state",
+      "label": "State",
+      "_origin": "ast",
+      "community": 57,
+      "community_name": "server/src/lib.rs",
+      "file_type": "code",
+      "norm_label": "state",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "crates_server_tests_common_mod",
+      "label": "mod.rs",
+      "_origin": "ast",
+      "community": 58,
+      "community_name": "TestHarness",
+      "file_type": "code",
+      "norm_label": "mod.rs",
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "crates_server_tests_common_mod_rs_arc",
+      "label": "Arc",
+      "_origin": "ast",
+      "community": 58,
+      "community_name": "TestHarness",
+      "file_type": "code",
+      "norm_label": "arc",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "crates_server_tests_common_mod_rs_body",
+      "label": "Body",
+      "_origin": "ast",
+      "community": 58,
+      "community_name": "TestHarness",
+      "file_type": "code",
+      "norm_label": "body",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "crates_server_tests_common_mod_rs_request",
+      "label": "Request",
+      "_origin": "ast",
+      "community": 58,
+      "community_name": "TestHarness",
+      "file_type": "code",
+      "norm_label": "request",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "crates_server_tests_common_mod_rs_response",
+      "label": "Response",
+      "_origin": "ast",
+      "community": 58,
+      "community_name": "TestHarness",
+      "file_type": "code",
+      "norm_label": "response",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "crates_server_tests_common_mod_rs_router",
+      "label": "Router",
+      "_origin": "ast",
+      "community": 58,
+      "community_name": "TestHarness",
+      "file_type": "code",
+      "norm_label": "router",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "crates_server_tests_common_mod_rs_value",
+      "label": "Value",
+      "_origin": "ast",
+      "community": 58,
+      "community_name": "TestHarness",
+      "file_type": "code",
+      "norm_label": "value",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "crates_server_tests_common_mod_testharness",
+      "label": "TestHarness",
+      "_origin": "ast",
+      "community": 58,
+      "community_name": "TestHarness",
+      "file_type": "code",
+      "norm_label": "testharness",
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L12"
+    },
+    {
+      "id": "crates_server_tests_common_mod_testharness_send_json_request",
+      "label": ".send_json_request()",
+      "_origin": "ast",
+      "community": 58,
+      "community_name": "TestHarness",
+      "file_type": "code",
+      "norm_label": ".send_json_request()",
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L58"
+    },
+    {
+      "id": "crates_server_tests_common_mod_testharness_send_request",
+      "label": ".send_request()",
+      "_origin": "ast",
+      "community": 58,
+      "community_name": "TestHarness",
+      "file_type": "code",
+      "norm_label": ".send_request()",
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L52"
+    },
+    {
+      "id": "crates_server_tests_reliability_test",
+      "label": "reliability_test.rs",
+      "_origin": "ast",
+      "community": 59,
+      "community_name": "reliability_test.rs",
+      "file_type": "code",
+      "norm_label": "reliability_test.rs",
+      "source_file": "crates/server/tests/reliability_test.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "crates_server_tests_reliability_test_bookcatalogport",
+      "label": "BookCatalogPort",
+      "_origin": "ast",
+      "community": 59,
+      "community_name": "reliability_test.rs",
+      "file_type": "code",
+      "norm_label": "bookcatalogport",
+      "source_file": "crates/server/tests/reliability_test.rs",
+      "source_location": "L20"
+    },
+    {
+      "id": "crates_server_tests_reliability_test_test_reliability_disconnected_database_fallback",
+      "label": "test_reliability_disconnected_database_fallback()",
+      "_origin": "ast",
+      "community": 59,
+      "community_name": "reliability_test.rs",
+      "file_type": "code",
+      "norm_label": "test_reliability_disconnected_database_fallback()",
+      "source_file": "crates/server/tests/reliability_test.rs",
+      "source_location": "L25"
+    },
+    {
+      "id": "crates_server_tests_reliability_test_test_reliability_mock_repository_fault_injection",
+      "label": "test_reliability_mock_repository_fault_injection()",
+      "_origin": "ast",
+      "community": 59,
+      "community_name": "reliability_test.rs",
+      "file_type": "code",
+      "norm_label": "test_reliability_mock_repository_fault_injection()",
+      "source_file": "crates/server/tests/reliability_test.rs",
+      "source_location": "L66"
+    },
+    {
+      "id": "crates_server_tests_reliability_test_test_reliability_oversized_request_id_handling",
+      "label": "test_reliability_oversized_request_id_handling()",
+      "_origin": "ast",
+      "community": 59,
+      "community_name": "reliability_test.rs",
+      "file_type": "code",
+      "norm_label": "test_reliability_oversized_request_id_handling()",
+      "source_file": "crates/server/tests/reliability_test.rs",
+      "source_location": "L90"
+    },
+    {
+      "id": "send",
+      "label": "Send",
+      "_origin": "ast",
+      "community": 59,
+      "community_name": "reliability_test.rs",
+      "file_type": "code",
+      "norm_label": "send",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "sync",
+      "label": "Sync",
+      "_origin": "ast",
+      "community": 59,
+      "community_name": "reliability_test.rs",
+      "file_type": "code",
+      "norm_label": "sync",
+      "source_file": "",
+      "source_location": ""
     },
     {
       "id": "knowledge_tasks_07_quality_assurance_and_launch_1_ringkasan_tugas",
@@ -1799,7 +2167,7 @@
       "node_kind": "heading",
       "norm_label": "2. rincian langkah kerja (sub-tasks)",
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L23"
+      "source_location": "L33"
     },
     {
       "id": "knowledge_tasks_07_quality_assurance_and_launch_3_kriteria_keberhasilan_validasi",
@@ -1811,19 +2179,31 @@
       "node_kind": "heading",
       "norm_label": "3. kriteria keberhasilan & validasi",
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L81"
+      "source_location": "L94"
     },
     {
-      "id": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_1_pengujian_asap_infrastruktur_smoke_testing",
-      "label": "Sub-Task 7.1: Pengujian Asap Infrastruktur (Smoke Testing)",
+      "id": "knowledge_tasks_07_quality_assurance_and_launch_pemetaan_silang_antar_lapis_cross_domain_matrix",
+      "label": "Pemetaan Silang Antar-Lapis (Cross-Domain Matrix)",
       "_origin": "ast",
       "community": 6,
       "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 7.1: pengujian asap infrastruktur (smoke testing)",
+      "norm_label": "pemetaan silang antar-lapis (cross-domain matrix)",
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L25"
+      "source_location": "L23"
+    },
+    {
+      "id": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_1_pengujian_asap_smoke_testing_suite",
+      "label": "Sub-Task 7.1: Pengujian Asap (Smoke Testing Suite)",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "sub-task 7.1: pengujian asap (smoke testing suite)",
+      "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
+      "source_location": "L35"
     },
     {
       "id": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_2_pengujian_unit_crate_bersama_domain_unit_test_suite",
@@ -1835,7 +2215,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 7.2: pengujian unit crate bersama & domain (unit test suite)",
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L32"
+      "source_location": "L42"
     },
     {
       "id": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_3_pengujian_integrasi_skenario_kritis_integration_test_suite",
@@ -1847,31 +2227,31 @@
       "node_kind": "heading",
       "norm_label": "sub-task 7.3: pengujian integrasi skenario kritis (integration test suite)",
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L43"
+      "source_location": "L54"
     },
     {
-      "id": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_4_pengukuran_benchmarking_ambang_batas_sla",
-      "label": "Sub-Task 7.4: Pengukuran & Benchmarking Ambang Batas SLA",
+      "id": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_4_pengukuran_benchmarking_ambang_batas_sla_performance_test_suite",
+      "label": "Sub-Task 7.4: Pengukuran & Benchmarking Ambang Batas SLA (Performance Test Suite)",
       "_origin": "ast",
       "community": 6,
       "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "sub-task 7.4: pengukuran & benchmarking ambang batas sla",
-      "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L56"
-    },
-    {
-      "id": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_5_audit_keamanan_hardening_pra_rilis",
-      "label": "Sub-Task 7.5: Audit Keamanan & Hardening Pra-Rilis",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "sub-task 7.5: audit keamanan & hardening pra-rilis",
+      "norm_label": "sub-task 7.4: pengukuran & benchmarking ambang batas sla (performance test suite)",
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
       "source_location": "L63"
+    },
+    {
+      "id": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_5_pengujian_keandalan_fault_injection_invarian_reliability_test_suite",
+      "label": "Sub-Task 7.5: Pengujian Keandalan, Fault Injection & Invarian (Reliability Test Suite)",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "sub-task 7.5: pengujian keandalan, fault injection & invarian (reliability test suite)",
+      "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
+      "source_location": "L71"
     },
     {
       "id": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_6_prosedur_pengesahan_rilis_mvp",
@@ -1883,7 +2263,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 7.6: prosedur pengesahan rilis mvp",
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L73"
+      "source_location": "L86"
     },
     {
       "id": "knowledge_tasks_07_quality_assurance_and_launch_task_07_validasi_kualitas_menyeluruh_sla_benchmarking_kesiapan_rilis_mvp",
@@ -1896,6 +2276,171 @@
       "norm_label": "task 07: validasi kualitas menyeluruh, sla benchmarking & kesiapan rilis mvp",
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
       "source_location": "L13"
+    },
+    {
+      "id": "crates_server_tests_integration_test",
+      "label": "integration_test.rs",
+      "_origin": "ast",
+      "community": 60,
+      "community_name": "integration_test.rs",
+      "file_type": "code",
+      "norm_label": "integration_test.rs",
+      "source_file": "crates/server/tests/integration_test.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "crates_server_tests_integration_test_test_integration_cors_headers",
+      "label": "test_integration_cors_headers()",
+      "_origin": "ast",
+      "community": 60,
+      "community_name": "integration_test.rs",
+      "file_type": "code",
+      "norm_label": "test_integration_cors_headers()",
+      "source_file": "crates/server/tests/integration_test.rs",
+      "source_location": "L50"
+    },
+    {
+      "id": "crates_server_tests_integration_test_test_integration_openapi_schema_contains_registered_dtos",
+      "label": "test_integration_openapi_schema_contains_registered_dtos()",
+      "_origin": "ast",
+      "community": 60,
+      "community_name": "integration_test.rs",
+      "file_type": "code",
+      "norm_label": "test_integration_openapi_schema_contains_registered_dtos()",
+      "source_file": "crates/server/tests/integration_test.rs",
+      "source_location": "L69"
+    },
+    {
+      "id": "crates_server_tests_integration_test_test_integration_request_id_auto_generation",
+      "label": "test_integration_request_id_auto_generation()",
+      "_origin": "ast",
+      "community": 60,
+      "community_name": "integration_test.rs",
+      "file_type": "code",
+      "norm_label": "test_integration_request_id_auto_generation()",
+      "source_file": "crates/server/tests/integration_test.rs",
+      "source_location": "L32"
+    },
+    {
+      "id": "crates_server_tests_integration_test_test_integration_request_id_custom_propagation",
+      "label": "test_integration_request_id_custom_propagation()",
+      "_origin": "ast",
+      "community": 60,
+      "community_name": "integration_test.rs",
+      "file_type": "code",
+      "norm_label": "test_integration_request_id_custom_propagation()",
+      "source_file": "crates/server/tests/integration_test.rs",
+      "source_location": "L13"
+    },
+    {
+      "id": "crates_server_tests_integration_test_test_integration_route_not_found_handling",
+      "label": "test_integration_route_not_found_handling()",
+      "_origin": "ast",
+      "community": 60,
+      "community_name": "integration_test.rs",
+      "file_type": "code",
+      "norm_label": "test_integration_route_not_found_handling()",
+      "source_file": "crates/server/tests/integration_test.rs",
+      "source_location": "L98"
+    },
+    {
+      "id": "crates_server_tests_smoke_test",
+      "label": "smoke_test.rs",
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "smoke_test.rs",
+      "file_type": "code",
+      "norm_label": "smoke_test.rs",
+      "source_file": "crates/server/tests/smoke_test.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "crates_server_tests_smoke_test_test_smoke_api_v1_health_dependencies",
+      "label": "test_smoke_api_v1_health_dependencies()",
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "smoke_test.rs",
+      "file_type": "code",
+      "norm_label": "test_smoke_api_v1_health_dependencies()",
+      "source_file": "crates/server/tests/smoke_test.rs",
+      "source_location": "L35"
+    },
+    {
+      "id": "crates_server_tests_smoke_test_test_smoke_health_endpoint",
+      "label": "test_smoke_health_endpoint()",
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "smoke_test.rs",
+      "file_type": "code",
+      "norm_label": "test_smoke_health_endpoint()",
+      "source_file": "crates/server/tests/smoke_test.rs",
+      "source_location": "L14"
+    },
+    {
+      "id": "crates_server_tests_smoke_test_test_smoke_infrastructure_tcp_reachability",
+      "label": "test_smoke_infrastructure_tcp_reachability()",
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "smoke_test.rs",
+      "file_type": "code",
+      "norm_label": "test_smoke_infrastructure_tcp_reachability()",
+      "source_file": "crates/server/tests/smoke_test.rs",
+      "source_location": "L91"
+    },
+    {
+      "id": "crates_server_tests_smoke_test_test_smoke_openapi_json_spec",
+      "label": "test_smoke_openapi_json_spec()",
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "smoke_test.rs",
+      "file_type": "code",
+      "norm_label": "test_smoke_openapi_json_spec()",
+      "source_file": "crates/server/tests/smoke_test.rs",
+      "source_location": "L72"
+    },
+    {
+      "id": "crates_server_tests_smoke_test_test_smoke_swagger_ui_endpoint",
+      "label": "test_smoke_swagger_ui_endpoint()",
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "smoke_test.rs",
+      "file_type": "code",
+      "norm_label": "test_smoke_swagger_ui_endpoint()",
+      "source_file": "crates/server/tests/smoke_test.rs",
+      "source_location": "L55"
+    },
+    {
+      "id": "crates_server_tests_performance_test",
+      "label": "performance_test.rs",
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "performance_test.rs",
+      "file_type": "code",
+      "norm_label": "performance_test.rs",
+      "source_file": "crates/server/tests/performance_test.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "crates_server_tests_performance_test_test_perf_concurrent_load_50_workers",
+      "label": "test_perf_concurrent_load_50_workers()",
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "performance_test.rs",
+      "file_type": "code",
+      "norm_label": "test_perf_concurrent_load_50_workers()",
+      "source_file": "crates/server/tests/performance_test.rs",
+      "source_location": "L67"
+    },
+    {
+      "id": "crates_server_tests_performance_test_test_perf_latency_sla_p95",
+      "label": "test_perf_latency_sla_p95()",
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "performance_test.rs",
+      "file_type": "code",
+      "norm_label": "test_perf_latency_sla_p95()",
+      "source_file": "crates/server/tests/performance_test.rs",
+      "source_location": "L14"
     },
     {
       "id": "knowledge_tasks_02_authentication_and_user_1_ringkasan_tugas",
@@ -1919,7 +2464,7 @@
       "node_kind": "heading",
       "norm_label": "2. rincian langkah kerja (sub-tasks)",
       "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L23"
+      "source_location": "L33"
     },
     {
       "id": "knowledge_tasks_02_authentication_and_user_3_kriteria_keberhasilan_validasi",
@@ -1931,7 +2476,19 @@
       "node_kind": "heading",
       "norm_label": "3. kriteria keberhasilan & validasi",
       "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L88"
+      "source_location": "L98"
+    },
+    {
+      "id": "knowledge_tasks_02_authentication_and_user_pemetaan_silang_antar_lapis_cross_domain_matrix",
+      "label": "Pemetaan Silang Antar-Lapis (Cross-Domain Matrix)",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "pemetaan silang antar-lapis (cross-domain matrix)",
+      "source_file": "knowledge/tasks/02_authentication_and_user.md",
+      "source_location": "L23"
     },
     {
       "id": "knowledge_tasks_02_authentication_and_user_sub_task_2_1_enkripsi_kata_sandi_argon2id_modul_hashing_otp",
@@ -1943,7 +2500,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 2.1: enkripsi kata sandi (argon2id) & modul hashing otp",
       "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L25"
+      "source_location": "L35"
     },
     {
       "id": "knowledge_tasks_02_authentication_and_user_sub_task_2_2_pengelolaan_token_jwt_rotasi_refresh_token",
@@ -1955,7 +2512,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 2.2: pengelolaan token jwt & rotasi refresh token",
       "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L33"
+      "source_location": "L43"
     },
     {
       "id": "knowledge_tasks_02_authentication_and_user_sub_task_2_3_implementasi_endpoint_rest_api_otentikasi_srs_1_7",
@@ -1967,7 +2524,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 2.3: implementasi endpoint rest api otentikasi (srs 1\u20137)",
       "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L41"
+      "source_location": "L51"
     },
     {
       "id": "knowledge_tasks_02_authentication_and_user_sub_task_2_4_endpoint_rekonsiliasi_otomatis_data_tamu_post_api_progress_merge",
@@ -1979,7 +2536,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 2.4: endpoint rekonsiliasi otomatis data tamu (`post /api/progress/merge`)",
       "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L65"
+      "source_location": "L75"
     },
     {
       "id": "knowledge_tasks_02_authentication_and_user_sub_task_2_5_middleware_lapisan_keamanan_axum",
@@ -1991,7 +2548,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 2.5: middleware lapisan keamanan axum",
       "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L80"
+      "source_location": "L90"
     },
     {
       "id": "knowledge_tasks_02_authentication_and_user_task_02_sistem_otentikasi_keamanan_jwt_argon2id_otp_rekonsiliasi_tamu",
@@ -2027,7 +2584,7 @@
       "node_kind": "heading",
       "norm_label": "2. rincian langkah kerja (sub-tasks)",
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L23"
+      "source_location": "L33"
     },
     {
       "id": "knowledge_tasks_04_semantic_ai_and_insights_3_kriteria_keberhasilan_validasi",
@@ -2039,7 +2596,19 @@
       "node_kind": "heading",
       "norm_label": "3. kriteria keberhasilan & validasi",
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L81"
+      "source_location": "L91"
+    },
+    {
+      "id": "knowledge_tasks_04_semantic_ai_and_insights_pemetaan_silang_antar_lapis_cross_domain_matrix",
+      "label": "Pemetaan Silang Antar-Lapis (Cross-Domain Matrix)",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "2. Rincian Langkah Kerja (Sub-Tasks)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "pemetaan silang antar-lapis (cross-domain matrix)",
+      "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
+      "source_location": "L23"
     },
     {
       "id": "knowledge_tasks_04_semantic_ai_and_insights_sub_task_4_1_layanan_dual_mode_embedding_provider_crates_infra",
@@ -2051,7 +2620,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 4.1: layanan dual-mode embedding provider (`crates/infra`)",
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L25"
+      "source_location": "L35"
     },
     {
       "id": "knowledge_tasks_04_semantic_ai_and_insights_sub_task_4_2_scoped_semantic_quote_finder_post_api_books_id_quotes_search",
@@ -2063,7 +2632,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 4.2: scoped semantic quote finder (`post /api/books/{id}/quotes/search`)",
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L41"
+      "source_location": "L51"
     },
     {
       "id": "knowledge_tasks_04_semantic_ai_and_insights_sub_task_4_3_pengelolaan_cache_kartu_wawasan_atomik_srs_18",
@@ -2075,7 +2644,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 4.3: pengelolaan cache kartu wawasan atomik (srs 18)",
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L59"
+      "source_location": "L69"
     },
     {
       "id": "knowledge_tasks_04_semantic_ai_and_insights_sub_task_4_4_rekap_kontekstual_anti_spoiler_bab_sebelumnya_srs_19",
@@ -2087,7 +2656,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 4.4: rekap kontekstual anti-spoiler bab sebelumnya (srs 19)",
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L68"
+      "source_location": "L78"
     },
     {
       "id": "knowledge_tasks_04_semantic_ai_and_insights_sub_task_4_5_penandaan_pengelolaan_kutipan_favorit_srs_20",
@@ -2099,7 +2668,7 @@
       "node_kind": "heading",
       "norm_label": "sub-task 4.5: penandaan & pengelolaan kutipan favorit (srs 20)",
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L75"
+      "source_location": "L85"
     },
     {
       "id": "knowledge_tasks_04_semantic_ai_and_insights_task_04_subsistem_semantik_ai_embedding_768_dim_kartu_wawasan_atomik",
@@ -2838,7 +3407,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "crates/server/src/main.rs",
-      "source_location": "L81",
+      "source_location": "L63",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_common_mod_testharness_send_json_request",
+      "target": "crates_server_tests_common_mod_testharness_send_request",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L59",
       "weight": 1.0
     },
     {
@@ -3298,39 +3879,63 @@
       "weight": 1.0
     },
     {
-      "source": "crates_server_src_main_appstate",
-      "target": "crates_server_src_main_rs_databaseconnection",
+      "source": "crates_server_src_lib_appstate",
+      "target": "crates_server_src_lib_rs_databaseconnection",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "field",
-      "source_file": "crates/server/src/main.rs",
-      "source_location": "L23",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
-      "source": "crates_server_src_main_appstate",
-      "target": "crates_server_src_main_rs_client",
+      "source": "crates_server_src_lib_appstate",
+      "target": "crates_server_src_lib_rs_client",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "field",
-      "source_file": "crates/server/src/main.rs",
-      "source_location": "L24",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
-      "source": "crates_server_src_main_appstate",
+      "source": "crates_server_src_lib_appstate",
       "target": "crates_infra_src_lib_appconfig",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "field",
-      "source_file": "crates/server/src/main.rs",
-      "source_location": "L25",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_common_mod_testharness",
+      "target": "crates_server_tests_common_mod_rs_router",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "field",
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_common_mod_testharness",
+      "target": "crates_server_tests_common_mod_rs_arc",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "field",
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -3342,7 +3947,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L16",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -3354,36 +3959,12 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L75",
+      "source_location": "L77",
       "weight": 1.0
     },
     {
       "source": "crates_shared_src_lib_bookdetaildto",
       "target": "crates_shared_src_lib_rs_uuid",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "field",
-      "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L149",
-      "weight": 1.0
-    },
-    {
-      "source": "crates_shared_src_lib_bookdetaildto",
-      "target": "crates_shared_src_lib_rs_option",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "field",
-      "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L154",
-      "weight": 1.0
-    },
-    {
-      "source": "crates_shared_src_lib_bookdetaildto",
-      "target": "vec",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -3394,6 +3975,30 @@
       "weight": 1.0
     },
     {
+      "source": "crates_shared_src_lib_bookdetaildto",
+      "target": "crates_shared_src_lib_rs_option",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "field",
+      "source_file": "crates/shared/src/lib.rs",
+      "source_location": "L163",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_shared_src_lib_bookdetaildto",
+      "target": "vec",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "field",
+      "source_file": "crates/shared/src/lib.rs",
+      "source_location": "L167",
+      "weight": 1.0
+    },
+    {
       "source": "crates_shared_src_lib_booksummarydto",
       "target": "crates_shared_src_lib_rs_uuid",
       "relation": "references",
@@ -3402,7 +4007,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L137",
+      "source_location": "L145",
       "weight": 1.0
     },
     {
@@ -3414,7 +4019,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L141",
+      "source_location": "L149",
       "weight": 1.0
     },
     {
@@ -3426,7 +4031,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L144",
+      "source_location": "L152",
       "weight": 1.0
     },
     {
@@ -3438,7 +4043,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L163",
+      "source_location": "L173",
       "weight": 1.0
     },
     {
@@ -3450,7 +4055,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L165",
+      "source_location": "L175",
       "weight": 1.0
     },
     {
@@ -3462,7 +4067,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L45",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -3474,7 +4079,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L47",
+      "source_location": "L49",
       "weight": 1.0
     },
     {
@@ -3486,7 +4091,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L112",
+      "source_location": "L117",
       "weight": 1.0
     },
     {
@@ -3498,7 +4103,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L176",
+      "source_location": "L187",
       "weight": 1.0
     },
     {
@@ -3510,7 +4115,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L177",
+      "source_location": "L188",
       "weight": 1.0
     },
     {
@@ -3522,7 +4127,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L182",
+      "source_location": "L194",
       "weight": 1.0
     },
     {
@@ -3534,7 +4139,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L184",
+      "source_location": "L196",
       "weight": 1.0
     },
     {
@@ -3546,7 +4151,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L190",
+      "source_location": "L203",
       "weight": 1.0
     },
     {
@@ -3558,7 +4163,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L191",
+      "source_location": "L204",
       "weight": 1.0
     },
     {
@@ -3570,7 +4175,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L94",
+      "source_location": "L97",
       "weight": 1.0
     },
     {
@@ -3582,7 +4187,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L118",
+      "source_location": "L124",
       "weight": 1.0
     },
     {
@@ -3594,7 +4199,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L124",
+      "source_location": "L131",
       "weight": 1.0
     },
     {
@@ -3606,7 +4211,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L127",
+      "source_location": "L134",
       "weight": 1.0
     },
     {
@@ -3618,7 +4223,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L128",
+      "source_location": "L135",
       "weight": 1.0
     },
     {
@@ -3630,7 +4235,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L103",
+      "source_location": "L107",
       "weight": 1.0
     },
     {
@@ -3790,27 +4395,51 @@
       "weight": 1.0
     },
     {
-      "source": "crates_server_src_main_api_health_check",
-      "target": "arc",
+      "source": "crates_server_src_lib_api_health_check",
+      "target": "crates_server_src_lib_appstate",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "generic_arg",
-      "source_file": "crates/server/src/main.rs",
-      "source_location": "L98",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L115",
       "weight": 1.0
     },
     {
-      "source": "crates_server_src_main_api_health_check",
-      "target": "crates_server_src_main_appstate",
+      "source": "crates_server_src_lib_api_health_check",
+      "target": "crates_server_src_lib_rs_arc",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "generic_arg",
-      "source_file": "crates/server/src/main.rs",
-      "source_location": "L98",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L115",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_src_lib_create_app",
+      "target": "crates_server_src_lib_appstate",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "generic_arg",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L130",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_src_lib_request_id_middleware",
+      "target": "crates_server_src_lib_rs_body",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "generic_arg",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L68",
       "weight": 1.0
     },
     {
@@ -3822,7 +4451,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "crates/server/src/main.rs",
-      "source_location": "L29",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
@@ -3834,7 +4463,43 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "crates/server/src/main.rs",
-      "source_location": "L29",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_common_mod_testharness",
+      "target": "crates_server_src_lib_appstate",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "generic_arg",
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_common_mod_testharness_send_json_request",
+      "target": "crates_server_tests_common_mod_rs_body",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "generic_arg",
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L58",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_common_mod_testharness_send_request",
+      "target": "crates_server_tests_common_mod_rs_body",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "generic_arg",
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L52",
       "weight": 1.0
     },
     {
@@ -3846,7 +4511,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L14",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -3858,19 +4523,19 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L16",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
       "source": "crates_shared_src_lib_apiresponse_t_error",
-      "target": "value",
+      "target": "crates_shared_src_lib_rs_value",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L28",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -3882,7 +4547,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L157",
+      "source_location": "L166",
       "weight": 1.0
     },
     {
@@ -3894,7 +4559,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L158",
+      "source_location": "L167",
       "weight": 1.0
     },
     {
@@ -3906,19 +4571,19 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L144",
+      "source_location": "L152",
       "weight": 1.0
     },
     {
       "source": "crates_shared_src_lib_errorpayload",
-      "target": "value",
+      "target": "crates_shared_src_lib_rs_value",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L47",
+      "source_location": "L49",
       "weight": 1.0
     },
     {
@@ -3930,7 +4595,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L128",
+      "source_location": "L135",
       "weight": 1.0
     },
     {
@@ -3958,27 +4623,87 @@
       "weight": 1.0
     },
     {
-      "source": "crates_server_src_main",
-      "target": "crates_server_src_main_rs_databaseconnection",
+      "source": "crates_server_src_lib",
+      "target": "crates_infra_src_lib_appconfig",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
-      "source_file": "crates/server/src/main.rs",
-      "source_location": "L12",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
-      "source": "crates_server_src_main",
-      "target": "arc",
+      "source": "crates_server_src_lib",
+      "target": "crates_server_src_lib_rs_databaseconnection",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
-      "source_file": "crates/server/src/main.rs",
-      "source_location": "L15",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_src_lib",
+      "target": "crates_server_src_lib_rs_arc",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_common_mod",
+      "target": "crates_server_tests_common_mod_rs_body",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_common_mod",
+      "target": "crates_server_tests_common_mod_rs_router",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_common_mod",
+      "target": "crates_server_tests_common_mod_rs_arc",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_reliability_test",
+      "target": "crates_infra_src_lib_appconfig",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "crates/server/tests/reliability_test.rs",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -4018,15 +4743,75 @@
       "weight": 1.0
     },
     {
-      "source": "crates_server_src_main_api_health_check",
+      "source": "crates_server_src_lib_api_health_check",
       "target": "state",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "parameter_type",
-      "source_file": "crates/server/src/main.rs",
-      "source_location": "L98",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L115",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_src_lib_create_app",
+      "target": "crates_server_src_lib_rs_arc",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L130",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_src_lib_request_id_middleware",
+      "target": "crates_server_src_lib_rs_request",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L68",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_src_lib_request_id_middleware",
+      "target": "next",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L68",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_common_mod_testharness_send_json_request",
+      "target": "crates_server_tests_common_mod_rs_request",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L58",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_common_mod_testharness_send_request",
+      "target": "crates_server_tests_common_mod_rs_request",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L52",
       "weight": 1.0
     },
     {
@@ -4038,7 +4823,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L28",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -4050,7 +4835,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -4114,27 +4899,51 @@
       "weight": 1.0
     },
     {
-      "source": "crates_server_src_main_api_health_check",
+      "source": "crates_server_src_lib_api_health_check",
       "target": "intoresponse",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "return_type",
-      "source_file": "crates/server/src/main.rs",
-      "source_location": "L98",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L115",
       "weight": 1.0
     },
     {
-      "source": "crates_server_src_main_health_check",
+      "source": "crates_server_src_lib_create_app",
+      "target": "crates_server_src_lib_rs_router",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "return_type",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L130",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_src_lib_health_check",
       "target": "intoresponse",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "return_type",
-      "source_file": "crates/server/src/main.rs",
-      "source_location": "L87",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L95",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_src_lib_request_id_middleware",
+      "target": "crates_server_src_lib_rs_response",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "return_type",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L68",
       "weight": 1.0
     },
     {
@@ -4146,7 +4955,55 @@
       "confidence_score": 1.0,
       "context": "return_type",
       "source_file": "crates/server/src/main.rs",
-      "source_location": "L29",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_common_mod_testharness_new",
+      "target": "crates_server_tests_common_mod_rs_self",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "return_type",
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_common_mod_testharness_send_json_request",
+      "target": "crates_server_tests_common_mod_rs_response",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "return_type",
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L58",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_common_mod_testharness_send_json_request",
+      "target": "crates_server_tests_common_mod_rs_value",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "return_type",
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L58",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_common_mod_testharness_send_request",
+      "target": "crates_server_tests_common_mod_rs_response",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "return_type",
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L52",
       "weight": 1.0
     },
     {
@@ -4158,7 +5015,7 @@
       "confidence_score": 1.0,
       "context": "return_type",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L28",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -4170,7 +5027,7 @@
       "confidence_score": 1.0,
       "context": "return_type",
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -4318,25 +5175,69 @@
       "weight": 1.0
     },
     {
-      "source": "crates_server_src_main",
-      "target": "crates_server_src_main_shutdown_signal",
+      "source": "crates_server_src_lib",
+      "target": "crates_server_src_lib_api_health_check",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "crates/server/src/main.rs",
-      "source_location": "L112",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L115",
       "weight": 1.0
     },
     {
-      "source": "crates_server_src_main",
-      "target": "crates_server_src_main_appstate",
+      "source": "crates_server_src_lib",
+      "target": "crates_server_src_lib_create_app",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "crates/server/src/main.rs",
-      "source_location": "L22",
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L130",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_src_lib",
+      "target": "crates_server_src_lib_appstate",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_src_lib",
+      "target": "crates_server_src_lib_apidoc",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_src_lib",
+      "target": "crates_server_src_lib_request_id_middleware",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L68",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_src_lib",
+      "target": "crates_server_src_lib_health_check",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/server/src/lib.rs",
+      "source_location": "L95",
       "weight": 1.0
     },
     {
@@ -4347,172 +5248,205 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "crates/server/src/main.rs",
-      "source_location": "L29",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
       "source": "crates_server_src_main",
-      "target": "crates_server_src_main_health_check",
+      "target": "crates_server_src_main_shutdown_signal",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "crates/server/src/main.rs",
-      "source_location": "L87",
+      "source_location": "L69",
       "weight": 1.0
     },
     {
-      "source": "crates_server_src_main",
-      "target": "crates_server_src_main_api_health_check",
+      "source": "crates_server_tests_common_mod",
+      "target": "crates_server_tests_common_mod_testharness",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "crates/server/src/main.rs",
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_integration_test",
+      "target": "crates_server_tests_integration_test_test_integration_request_id_custom_propagation",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/server/tests/integration_test.rs",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_integration_test",
+      "target": "crates_server_tests_integration_test_test_integration_request_id_auto_generation",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/server/tests/integration_test.rs",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_integration_test",
+      "target": "crates_server_tests_integration_test_test_integration_cors_headers",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/server/tests/integration_test.rs",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_integration_test",
+      "target": "crates_server_tests_integration_test_test_integration_openapi_schema_contains_registered_dtos",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/server/tests/integration_test.rs",
+      "source_location": "L69",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_integration_test",
+      "target": "crates_server_tests_integration_test_test_integration_route_not_found_handling",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/server/tests/integration_test.rs",
       "source_location": "L98",
       "weight": 1.0
     },
     {
-      "source": "crates_shared_src_lib",
-      "target": "crates_shared_src_lib_loginrequest",
+      "source": "crates_server_tests_performance_test",
+      "target": "crates_server_tests_performance_test_test_perf_latency_sla_p95",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L107",
+      "source_file": "crates/server/tests/performance_test.rs",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
-      "source": "crates_shared_src_lib",
-      "target": "crates_shared_src_lib_apiresponse",
+      "source": "crates_server_tests_performance_test",
+      "target": "crates_server_tests_performance_test_test_perf_concurrent_load_50_workers",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L11",
+      "source_file": "crates/server/tests/performance_test.rs",
+      "source_location": "L67",
       "weight": 1.0
     },
     {
-      "source": "crates_shared_src_lib",
-      "target": "crates_shared_src_lib_tokenresponse",
+      "source": "crates_server_tests_reliability_test",
+      "target": "crates_server_tests_reliability_test_bookcatalogport",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L116",
+      "source_file": "crates/server/tests/reliability_test.rs",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
-      "source": "crates_shared_src_lib",
-      "target": "crates_shared_src_lib_userprofiledto",
+      "source": "crates_server_tests_reliability_test",
+      "target": "crates_server_tests_reliability_test_test_reliability_disconnected_database_fallback",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L123",
+      "source_file": "crates/server/tests/reliability_test.rs",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
-      "source": "crates_shared_src_lib",
-      "target": "crates_shared_src_lib_booksummarydto",
+      "source": "crates_server_tests_reliability_test",
+      "target": "crates_server_tests_reliability_test_test_reliability_mock_repository_fault_injection",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L136",
+      "source_file": "crates/server/tests/reliability_test.rs",
+      "source_location": "L66",
       "weight": 1.0
     },
     {
-      "source": "crates_shared_src_lib",
-      "target": "crates_shared_src_lib_bookdetaildto",
+      "source": "crates_server_tests_reliability_test",
+      "target": "crates_server_tests_reliability_test_test_reliability_oversized_request_id_handling",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L148",
+      "source_file": "crates/server/tests/reliability_test.rs",
+      "source_location": "L90",
       "weight": 1.0
     },
     {
-      "source": "crates_shared_src_lib",
-      "target": "crates_shared_src_lib_chaptersummarydto",
+      "source": "crates_server_tests_smoke_test",
+      "target": "crates_server_tests_smoke_test_test_smoke_health_endpoint",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L162",
+      "source_file": "crates/server/tests/smoke_test.rs",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
-      "source": "crates_shared_src_lib",
-      "target": "crates_shared_src_lib_quotesearchrequest",
+      "source": "crates_server_tests_smoke_test",
+      "target": "crates_server_tests_smoke_test_test_smoke_api_v1_health_dependencies",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L174",
+      "source_file": "crates/server/tests/smoke_test.rs",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
-      "source": "crates_shared_src_lib",
-      "target": "crates_shared_src_lib_quotesearchresultdto",
+      "source": "crates_server_tests_smoke_test",
+      "target": "crates_server_tests_smoke_test_test_smoke_swagger_ui_endpoint",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L181",
+      "source_file": "crates/server/tests/smoke_test.rs",
+      "source_location": "L55",
       "weight": 1.0
     },
     {
-      "source": "crates_shared_src_lib",
-      "target": "crates_shared_src_lib_readingprogressupdatedto",
+      "source": "crates_server_tests_smoke_test",
+      "target": "crates_server_tests_smoke_test_test_smoke_openapi_json_spec",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L189",
+      "source_file": "crates/server/tests/smoke_test.rs",
+      "source_location": "L72",
       "weight": 1.0
     },
     {
-      "source": "crates_shared_src_lib",
-      "target": "crates_shared_src_lib_errorpayload",
+      "source": "crates_server_tests_smoke_test",
+      "target": "crates_server_tests_smoke_test_test_smoke_infrastructure_tcp_reachability",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L43",
-      "weight": 1.0
-    },
-    {
-      "source": "crates_shared_src_lib",
-      "target": "crates_shared_src_lib_apperror",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L52",
-      "weight": 1.0
-    },
-    {
-      "source": "crates_shared_src_lib",
-      "target": "crates_shared_src_lib_signuprequest",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L83",
+      "source_file": "crates/server/tests/smoke_test.rs",
+      "source_location": "L91",
       "weight": 1.0
     },
     {
@@ -4523,7 +5457,150 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L98",
+      "source_location": "L102",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_shared_src_lib",
+      "target": "crates_shared_src_lib_loginrequest",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/shared/src/lib.rs",
+      "source_location": "L112",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_shared_src_lib",
+      "target": "crates_shared_src_lib_apiresponse",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/shared/src/lib.rs",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_shared_src_lib",
+      "target": "crates_shared_src_lib_tokenresponse",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/shared/src/lib.rs",
+      "source_location": "L122",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_shared_src_lib",
+      "target": "crates_shared_src_lib_userprofiledto",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/shared/src/lib.rs",
+      "source_location": "L130",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_shared_src_lib",
+      "target": "crates_shared_src_lib_booksummarydto",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/shared/src/lib.rs",
+      "source_location": "L144",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_shared_src_lib",
+      "target": "crates_shared_src_lib_bookdetaildto",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/shared/src/lib.rs",
+      "source_location": "L157",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_shared_src_lib",
+      "target": "crates_shared_src_lib_chaptersummarydto",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/shared/src/lib.rs",
+      "source_location": "L172",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_shared_src_lib",
+      "target": "crates_shared_src_lib_quotesearchrequest",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/shared/src/lib.rs",
+      "source_location": "L185",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_shared_src_lib",
+      "target": "crates_shared_src_lib_quotesearchresultdto",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/shared/src/lib.rs",
+      "source_location": "L193",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_shared_src_lib",
+      "target": "crates_shared_src_lib_readingprogressupdatedto",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/shared/src/lib.rs",
+      "source_location": "L202",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_shared_src_lib",
+      "target": "crates_shared_src_lib_errorpayload",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/shared/src/lib.rs",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_shared_src_lib",
+      "target": "crates_shared_src_lib_apperror",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/shared/src/lib.rs",
+      "source_location": "L54",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_shared_src_lib",
+      "target": "crates_shared_src_lib_signuprequest",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/shared/src/lib.rs",
+      "source_location": "L86",
       "weight": 1.0
     },
     {
@@ -4560,6 +5637,17 @@
       "weight": 1.0
     },
     {
+      "source": "knowledge_tasks_01_infrastructure_and_config_1_ringkasan_tugas",
+      "target": "knowledge_tasks_01_infrastructure_and_config_pemetaan_silang_antar_lapis_cross_domain_matrix",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
       "source": "knowledge_tasks_01_infrastructure_and_config_2_rincian_langkah_kerja_sub_tasks",
       "target": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_1_integrasi_pustaka_dotenvy_pengaturan_dependensi",
       "relation": "contains",
@@ -4567,7 +5655,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L25",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -4578,7 +5666,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L30",
+      "source_location": "L40",
       "weight": 1.0
     },
     {
@@ -4589,7 +5677,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L41",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -4600,7 +5688,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L47",
+      "source_location": "L57",
       "weight": 1.0
     },
     {
@@ -4611,7 +5699,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L64",
+      "source_location": "L74",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_01_infrastructure_and_config_2_rincian_langkah_kerja_sub_tasks",
+      "target": "knowledge_tasks_01_infrastructure_and_config_sub_task_1_6_integrasi_dokumentasi_openapi_utoipa_swagger_ui_observabilitas",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
+      "source_location": "L79",
       "weight": 1.0
     },
     {
@@ -4633,7 +5732,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L23",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -4644,7 +5743,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
-      "source_location": "L71",
+      "source_location": "L88",
       "weight": 1.0
     },
     {
@@ -4659,6 +5758,17 @@
       "weight": 1.0
     },
     {
+      "source": "knowledge_tasks_02_authentication_and_user_1_ringkasan_tugas",
+      "target": "knowledge_tasks_02_authentication_and_user_pemetaan_silang_antar_lapis_cross_domain_matrix",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/02_authentication_and_user.md",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
       "source": "knowledge_tasks_02_authentication_and_user_2_rincian_langkah_kerja_sub_tasks",
       "target": "knowledge_tasks_02_authentication_and_user_sub_task_2_1_enkripsi_kata_sandi_argon2id_modul_hashing_otp",
       "relation": "contains",
@@ -4666,7 +5776,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L25",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -4677,7 +5787,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L33",
+      "source_location": "L43",
       "weight": 1.0
     },
     {
@@ -4688,7 +5798,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L41",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -4699,7 +5809,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L65",
+      "source_location": "L75",
       "weight": 1.0
     },
     {
@@ -4710,7 +5820,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L80",
+      "source_location": "L90",
       "weight": 1.0
     },
     {
@@ -4732,7 +5842,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L23",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -4743,7 +5853,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/02_authentication_and_user.md",
-      "source_location": "L88",
+      "source_location": "L98",
       "weight": 1.0
     },
     {
@@ -4758,6 +5868,17 @@
       "weight": 1.0
     },
     {
+      "source": "knowledge_tasks_03_catalog_and_reader_backend_1_ringkasan_tugas",
+      "target": "knowledge_tasks_03_catalog_and_reader_backend_pemetaan_silang_antar_lapis_cross_domain_matrix",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
       "source": "knowledge_tasks_03_catalog_and_reader_backend_2_rincian_langkah_kerja_sub_tasks",
       "target": "knowledge_tasks_03_catalog_and_reader_backend_sub_task_3_1_layanan_repository_katalog_pencarian_leksikal_crates_infra",
       "relation": "contains",
@@ -4765,7 +5886,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
-      "source_location": "L25",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -4776,7 +5897,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
-      "source_location": "L54",
+      "source_location": "L64",
       "weight": 1.0
     },
     {
@@ -4787,7 +5908,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
-      "source_location": "L70",
+      "source_location": "L80",
       "weight": 1.0
     },
     {
@@ -4798,7 +5919,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
-      "source_location": "L78",
+      "source_location": "L88",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_03_catalog_and_reader_backend_task_03_backend_katalog_buku_fts_trigram_reader_api_gamifikasi_streak",
+      "target": "knowledge_tasks_03_catalog_and_reader_backend_3_kriteria_keberhasilan_validasi",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
+      "source_location": "L102",
       "weight": 1.0
     },
     {
@@ -4820,18 +5952,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
-      "source_location": "L23",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_03_catalog_and_reader_backend_task_03_backend_katalog_buku_fts_trigram_reader_api_gamifikasi_streak",
-      "target": "knowledge_tasks_03_catalog_and_reader_backend_3_kriteria_keberhasilan_validasi",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
-      "source_location": "L92",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -4846,6 +5967,17 @@
       "weight": 1.0
     },
     {
+      "source": "knowledge_tasks_04_semantic_ai_and_insights_1_ringkasan_tugas",
+      "target": "knowledge_tasks_04_semantic_ai_and_insights_pemetaan_silang_antar_lapis_cross_domain_matrix",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
       "source": "knowledge_tasks_04_semantic_ai_and_insights_2_rincian_langkah_kerja_sub_tasks",
       "target": "knowledge_tasks_04_semantic_ai_and_insights_sub_task_4_1_layanan_dual_mode_embedding_provider_crates_infra",
       "relation": "contains",
@@ -4853,7 +5985,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L25",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -4864,7 +5996,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L41",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -4875,7 +6007,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L59",
+      "source_location": "L69",
       "weight": 1.0
     },
     {
@@ -4886,7 +6018,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L68",
+      "source_location": "L78",
       "weight": 1.0
     },
     {
@@ -4897,7 +6029,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L75",
+      "source_location": "L85",
       "weight": 1.0
     },
     {
@@ -4919,7 +6051,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L23",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -4930,7 +6062,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
-      "source_location": "L81",
+      "source_location": "L91",
       "weight": 1.0
     },
     {
@@ -4945,6 +6077,17 @@
       "weight": 1.0
     },
     {
+      "source": "knowledge_tasks_05_ingestion_pipeline_and_admin_1_ringkasan_tugas",
+      "target": "knowledge_tasks_05_ingestion_pipeline_and_admin_pemetaan_silang_antar_lapis_cross_domain_matrix",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
       "source": "knowledge_tasks_05_ingestion_pipeline_and_admin_2_rincian_langkah_kerja_sub_tasks",
       "target": "knowledge_tasks_05_ingestion_pipeline_and_admin_sub_task_5_1_layanan_penyimpanan_objek_s3_minio_crates_infra",
       "relation": "contains",
@@ -4952,7 +6095,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L25",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -4963,7 +6106,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L31",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -4974,7 +6117,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L44",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -4985,7 +6128,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L54",
+      "source_location": "L64",
       "weight": 1.0
     },
     {
@@ -4996,7 +6139,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L65",
+      "source_location": "L75",
       "weight": 1.0
     },
     {
@@ -5007,7 +6150,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L72",
+      "source_location": "L82",
       "weight": 1.0
     },
     {
@@ -5029,7 +6172,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L23",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -5040,7 +6183,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
-      "source_location": "L78",
+      "source_location": "L88",
       "weight": 1.0
     },
     {
@@ -5055,69 +6198,14 @@
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_06_frontend_leptos_web_reader_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_1_sistem_desain_css_vintage_literary_1900_1950",
+      "source": "knowledge_tasks_06_frontend_leptos_web_reader_1_ringkasan_tugas",
+      "target": "knowledge_tasks_06_frontend_leptos_web_reader_pemetaan_silang_antar_lapis_cross_domain_matrix",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L25",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_06_frontend_leptos_web_reader_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_2_layanan_komunikasi_api_local_first_indexeddb_rexie",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L33",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_06_frontend_leptos_web_reader_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_3_halaman_beranda_discovery_catalog_search",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L45",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_06_frontend_leptos_web_reader_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_4_halaman_sinopsis_buku_book_overview",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L52",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_06_frontend_leptos_web_reader_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_5_komponen_pembaca_naskah_reflowable_reflowable_e_reader",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L58",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_06_frontend_leptos_web_reader_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_6_komponen_wawasan_atomik_semantik",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L78",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -5128,7 +6216,84 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L90",
+      "source_location": "L100",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_06_frontend_leptos_web_reader_2_rincian_langkah_kerja_sub_tasks",
+      "target": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_1_sistem_desain_css_vintage_literary_1900_1950",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_06_frontend_leptos_web_reader_2_rincian_langkah_kerja_sub_tasks",
+      "target": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_2_layanan_komunikasi_api_local_first_indexeddb_rexie",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_06_frontend_leptos_web_reader_2_rincian_langkah_kerja_sub_tasks",
+      "target": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_3_halaman_beranda_discovery_catalog_search",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
+      "source_location": "L55",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_06_frontend_leptos_web_reader_2_rincian_langkah_kerja_sub_tasks",
+      "target": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_4_halaman_sinopsis_buku_book_overview",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
+      "source_location": "L62",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_06_frontend_leptos_web_reader_2_rincian_langkah_kerja_sub_tasks",
+      "target": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_5_komponen_pembaca_naskah_reflowable_reflowable_e_reader",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
+      "source_location": "L68",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_06_frontend_leptos_web_reader_2_rincian_langkah_kerja_sub_tasks",
+      "target": "knowledge_tasks_06_frontend_leptos_web_reader_sub_task_6_6_komponen_wawasan_atomik_semantik",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
+      "source_location": "L88",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_06_frontend_leptos_web_reader_task_06_frontend_leptos_wasm_web_reader_mode_offline",
+      "target": "knowledge_tasks_06_frontend_leptos_web_reader_3_kriteria_keberhasilan_validasi",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
+      "source_location": "L107",
       "weight": 1.0
     },
     {
@@ -5150,18 +6315,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L23",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_06_frontend_leptos_web_reader_task_06_frontend_leptos_wasm_web_reader_mode_offline",
-      "target": "knowledge_tasks_06_frontend_leptos_web_reader_3_kriteria_keberhasilan_validasi",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
-      "source_location": "L97",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -5176,14 +6330,25 @@
       "weight": 1.0
     },
     {
-      "source": "knowledge_tasks_07_quality_assurance_and_launch_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_1_pengujian_asap_infrastruktur_smoke_testing",
+      "source": "knowledge_tasks_07_quality_assurance_and_launch_1_ringkasan_tugas",
+      "target": "knowledge_tasks_07_quality_assurance_and_launch_pemetaan_silang_antar_lapis_cross_domain_matrix",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L25",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_07_quality_assurance_and_launch_2_rincian_langkah_kerja_sub_tasks",
+      "target": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_1_pengujian_asap_smoke_testing_suite",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -5194,7 +6359,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L32",
+      "source_location": "L42",
       "weight": 1.0
     },
     {
@@ -5205,23 +6370,12 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L43",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
       "source": "knowledge_tasks_07_quality_assurance_and_launch_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_4_pengukuran_benchmarking_ambang_batas_sla",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L56",
-      "weight": 1.0
-    },
-    {
-      "source": "knowledge_tasks_07_quality_assurance_and_launch_2_rincian_langkah_kerja_sub_tasks",
-      "target": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_5_audit_keamanan_hardening_pra_rilis",
+      "target": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_4_pengukuran_benchmarking_ambang_batas_sla_performance_test_suite",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5232,13 +6386,24 @@
     },
     {
       "source": "knowledge_tasks_07_quality_assurance_and_launch_2_rincian_langkah_kerja_sub_tasks",
+      "target": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_5_pengujian_keandalan_fault_injection_invarian_reliability_test_suite",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
+      "source_location": "L71",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_07_quality_assurance_and_launch_2_rincian_langkah_kerja_sub_tasks",
       "target": "knowledge_tasks_07_quality_assurance_and_launch_sub_task_7_6_prosedur_pengesahan_rilis_mvp",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L73",
+      "source_location": "L86",
       "weight": 1.0
     },
     {
@@ -5260,7 +6425,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L23",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -5271,7 +6436,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md",
-      "source_location": "L81",
+      "source_location": "L94",
       "weight": 1.0
     },
     {
@@ -5418,6 +6583,28 @@
       "weight": 1.0
     },
     {
+      "source": "crates_server_tests_reliability_test_bookcatalogport",
+      "target": "send",
+      "relation": "inherits",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/server/tests/reliability_test.rs",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_reliability_test_bookcatalogport",
+      "target": "sync",
+      "relation": "inherits",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/server/tests/reliability_test.rs",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
       "source": "crates_domain_src_lib_bookstatus",
       "target": "crates_domain_src_lib_bookstatus_default",
       "relation": "method",
@@ -5451,6 +6638,39 @@
       "weight": 1.0
     },
     {
+      "source": "crates_server_tests_common_mod_testharness",
+      "target": "crates_server_tests_common_mod_testharness_new",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_common_mod_testharness",
+      "target": "crates_server_tests_common_mod_testharness_send_request",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_common_mod_testharness",
+      "target": "crates_server_tests_common_mod_testharness_send_json_request",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L58",
+      "weight": 1.0
+    },
+    {
       "source": "crates_shared_src_lib_apiresponse_t",
       "target": "crates_shared_src_lib_apiresponse_t_success",
       "relation": "method",
@@ -5458,7 +6678,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -5469,7 +6689,84 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "crates/shared/src/lib.rs",
-      "source_location": "L28",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_01_infrastructure_and_config",
+      "target": "knowledge_tasks_02_authentication_and_user",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/01_infrastructure_and_config.md",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_02_authentication_and_user",
+      "target": "knowledge_tasks_03_catalog_and_reader_backend",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/02_authentication_and_user.md",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_03_catalog_and_reader_backend",
+      "target": "knowledge_tasks_04_semantic_ai_and_insights",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_04_semantic_ai_and_insights",
+      "target": "knowledge_tasks_05_ingestion_pipeline_and_admin",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_05_ingestion_pipeline_and_admin",
+      "target": "knowledge_tasks_06_frontend_leptos_web_reader",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_06_frontend_leptos_web_reader",
+      "target": "knowledge_tasks_03_catalog_and_reader_backend",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "knowledge_tasks_06_frontend_leptos_web_reader",
+      "target": "knowledge_tasks_07_quality_assurance_and_launch",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -5558,7 +6855,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "crates/server/src/main.rs",
-      "source_location": "L46",
+      "source_location": "L38",
       "weight": 1.0
     },
     {
@@ -5570,7 +6867,67 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "crates/server/src/main.rs",
-      "source_location": "L54",
+      "source_location": "L46",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_src_main_main",
+      "target": "crates_server_src_lib_create_app",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "crates/server/src/main.rs",
+      "source_location": "L55",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_common_mod_testharness_new",
+      "target": "crates_infra_src_lib_init_db_pool",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_common_mod_testharness_new",
+      "target": "crates_infra_src_lib_init_redis_client",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_common_mod_testharness_new",
+      "target": "crates_server_src_lib_create_app",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "crates/server/tests/common/mod.rs",
+      "source_location": "L46",
+      "weight": 1.0
+    },
+    {
+      "source": "crates_server_tests_reliability_test_test_reliability_disconnected_database_fallback",
+      "target": "crates_server_src_lib_create_app",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "crates/server/tests/reliability_test.rs",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
@@ -5770,54 +7127,6 @@
       "confidence": "INFERRED",
       "confidence_score": 0.9,
       "source_file": "DISTRIBUTED.md"
-    },
-    {
-      "source": "knowledge_tasks_02_authentication_and_user",
-      "target": "knowledge_tasks_01_infrastructure_and_config",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/02_authentication_and_user.md"
-    },
-    {
-      "source": "knowledge_tasks_03_catalog_and_reader_backend",
-      "target": "knowledge_tasks_02_authentication_and_user",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/03_catalog_and_reader_backend.md"
-    },
-    {
-      "source": "knowledge_tasks_04_semantic_ai_and_insights",
-      "target": "knowledge_tasks_03_catalog_and_reader_backend",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/04_semantic_ai_and_insights.md"
-    },
-    {
-      "source": "knowledge_tasks_05_ingestion_pipeline_and_admin",
-      "target": "knowledge_tasks_04_semantic_ai_and_insights",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/05_ingestion_pipeline_and_admin.md"
-    },
-    {
-      "source": "knowledge_tasks_06_frontend_leptos_web_reader",
-      "target": "knowledge_tasks_05_ingestion_pipeline_and_admin",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/06_frontend_leptos_web_reader.md"
-    },
-    {
-      "source": "knowledge_tasks_07_quality_assurance_and_launch",
-      "target": "knowledge_tasks_06_frontend_leptos_web_reader",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "knowledge/tasks/07_quality_assurance_and_launch.md"
     }
   ],
   "hyperedges": [
@@ -5911,5 +7220,5 @@
       "source_file": "knowledge/ux-flow.md"
     }
   ],
-  "built_at_commit": "2de6c25ed391d602a4f9e11f544e035a49da8beb"
+  "built_at_commit": "7f88c7e1bd8b0b0bc907fcd9857d7e34f5e4205d"
 }

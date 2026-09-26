@@ -1,39 +1,31 @@
 //! Project Baca — HTTP REST API Server
-//! Built with Axum 0.8, SeaORM, and Redis.
+//! Built with Axum 0.8, SeaORM, Redis, and OpenAPI (utoipa).
 
-use axum::{
-    extract::State,
-    http::StatusCode,
-    response::IntoResponse,
-    routing::get,
-    Json, Router,
-};
 use infra::{init_db_pool, init_redis_client, AppConfig};
 use sea_orm::DatabaseConnection;
-use shared::ApiResponse;
+use server::{create_app, AppState};
 use std::net::SocketAddr;
 use std::sync::Arc;
-use tower_http::cors::{Any, CorsLayer};
-use tower_http::trace::TraceLayer;
 use tracing::info;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 
-#[derive(Clone)]
-pub struct AppState {
-    pub db: DatabaseConnection,
-    pub redis: redis::Client,
-    pub config: AppConfig,
-}
-
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    tracing_subscriber::registry()
-        .with(
-            tracing_subscriber::EnvFilter::try_from_default_env()
-                .unwrap_or_else(|_| "server=debug,infra=debug,tower_http=debug".into()),
-        )
-        .with(tracing_subscriber::fmt::layer())
-        .init();
+    let log_format = std::env::var("LOG_FORMAT").unwrap_or_else(|_| "text".to_string());
+    let env_filter = tracing_subscriber::EnvFilter::try_from_default_env()
+        .unwrap_or_else(|_| "server=debug,infra=debug,tower_http=debug".into());
+
+    if log_format.eq_ignore_ascii_case("json") {
+        tracing_subscriber::registry()
+            .with(env_filter)
+            .with(tracing_subscriber::fmt::layer().json())
+            .init();
+    } else {
+        tracing_subscriber::registry()
+            .with(env_filter)
+            .with(tracing_subscriber::fmt::layer())
+            .init();
+    }
 
     info!("Starting Project Baca API Server...");
 
@@ -60,21 +52,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     };
 
     let state = Arc::new(AppState { db, redis, config: config.clone() });
-
-    let cors = CorsLayer::new()
-        .allow_origin(Any)
-        .allow_methods(Any)
-        .allow_headers(Any);
-
-    let app = Router::new()
-        .route("/health", get(health_check))
-        .route("/api/v1/health", get(api_health_check))
-        .layer(cors)
-        .layer(TraceLayer::new_for_http())
-        .with_state(state);
+    let app = create_app(state);
 
     let addr = SocketAddr::from(([0, 0, 0, 0], config.port));
     info!("Server listening on http://{}", addr);
+    info!("OpenAPI Swagger UI available on http://{}/swagger-ui", addr);
 
     let listener = tokio::net::TcpListener::bind(addr).await?;
     axum::serve(listener, app)
@@ -82,31 +64,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .await?;
 
     Ok(())
-}
-
-async fn health_check() -> impl IntoResponse {
-    (
-        StatusCode::OK,
-        Json(ApiResponse::success(serde_json::json!({
-            "service": "project-baca-server",
-            "status": "healthy",
-            "version": "0.1.0"
-        }))),
-    )
-}
-
-async fn api_health_check(State(state): State<Arc<AppState>>) -> impl IntoResponse {
-    let db_connected = state.db.ping().await.is_ok();
-    
-    (
-        StatusCode::OK,
-        Json(ApiResponse::success(serde_json::json!({
-            "status": "ok",
-            "postgres": if db_connected { "connected" } else { "disconnected" },
-            "redis": "configured",
-            "port": state.config.port
-        }))),
-    )
 }
 
 async fn shutdown_signal() {
@@ -138,3 +95,4 @@ async fn shutdown_signal() {
 
     info!("Signal received, starting graceful shutdown...");
 }
+

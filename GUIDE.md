@@ -73,20 +73,50 @@ make migrate-reset
 
 ## 4. Menjalankan Komponen Aplikasi Monorepo
 
-### A. Backend HTTP API (Axum)
-```bash
-cargo run --bin project-baca-server
-# Layanan REST API akan aktif di http://localhost:8080
-```
+### A. Perbedaan `make dev` vs `make dev-server` (Mekanisme Hot Reload)
 
-### B. Frontend Web Reader (Leptos 0.7 WASM via Trunk)
-```bash
-cd crates/web
-trunk serve --port 3000 --open
-# Aplikasi web PWA akan aktif di http://localhost:3000
-```
+Dalam monorepo polyglot Project Baca, backend dan frontend memiliki siklus kompilasi serta rantai alat (*toolchain*) yang independen:
+* **Backend Axum:** Mengompilasi kode Rust ke biner native CPU arsitektur host (port 8080).
+* **Frontend Leptos:** Mengompilasi kode Rust ke biner WebAssembly (`wasm32-unknown-unknown`) dan membundel aset web via Trunk (port 3000).
 
-### C. Background Ingestion Worker (Python)
+Oleh karena itu, alur eksekusi dirancang sebagai berikut:
+1. **`make dev` (Orkestrator & Panduan):**
+   Berfungsi sebagai navigator lingkungan dev lokal yang menampilkan status layanan dan petunjuk eksekusi. Perintah ini tidak menjalankan hot-reload langsung secara bersamaan agar aliran log kompilasi backend dan frontend tidak bertabrakan (*log interleaving*) di satu terminal.
+2. **`make dev-server` (Backend Live-Reload — Ekuivalen `Air` di Golang):**
+   Menjalankan server Axum dengan pemantauan otomatis via `cargo-watch`:
+   ```bash
+   make dev-server
+   # Memantau crates/server, crates/infra, crates/domain, dan crates/shared
+   # Biner akan dikompilasi ulang otomatis saat berkas disimpan
+   ```
+3. **`make dev-web` (Frontend Native Hot-Reload):**
+   Menjalankan frontend Leptos WASM menggunakan Trunk:
+   ```bash
+   make dev-web
+   # Trunk menyajikan live-reload otomatis via WebSocket di http://localhost:3000
+   ```
+
+### B. Dokumentasi Interaktif OpenAPI & Swagger UI (`utoipa`)
+
+Server backend mengintegrasikan framework dokumentasi `utoipa` dan `utoipa-swagger-ui`:
+* **Swagger UI:** Akses antarmuka visual pengetesan API di `http://localhost:8080/swagger-ui`.
+* **OpenAPI 3.1 JSON Specification:** Unduh spesifikasi mentah di `http://localhost:8080/api-docs/openapi.json`.
+* **Karakteristik Teknis:** Schema OpenAPI diperiksa secara ketat saat waktu kompilasi (*compile-time type checked*) dari DTOs pada `crates/shared`, mencegah dokumentasi kedaluwarsa.
+
+### C. Logging Terstruktur & Korelasi Permintaan (Observability)
+
+Sistem pencatatan log menggunakan crate `tracing` dan `tower-http`:
+* **Mode Teks Human-Readable (Default Lokal):**
+  Format teks berwarna untuk kenyamanan membaca log saat pengembangan lokal.
+* **Mode Structured JSON (Lingkungan Produksi/Staging):**
+  Aktifkan melalui variabel lingkungan:
+  ```bash
+  LOG_FORMAT=json cargo run -p server
+  ```
+* **Korelasi Request ID (`x-request-id`):**
+  Setiap permintaan HTTP secara otomatis diperiksa atau diterbitkan UUIDv4 baru oleh middleware `request_id_middleware`, disematkan ke dalam span tracing, dan dikembalikan melalui header respon `x-request-id`.
+
+### D. Background Ingestion Worker (Python)
 ```bash
 cd python_worker
 uv venv
@@ -96,30 +126,38 @@ python -m ingestion.worker
 # Worker akan terhubung ke Redis Streams di port 6380
 ```
 
-### D. Menjalankan Seluruh Layanan Secara Bersamaan
-```bash
-make dev
-```
-
 ---
 
-## 5. Pengujian & Verifikasi Kualitas
+## 5. Pengujian & Verifikasi Kualitas (4-Tier Test Suite)
 
-Setiap perubahan kode wajib divalidasi sebelum commit:
+Arsitektur pengujian Project Baca mengadopsi struktur komprehensif 4 lapis yang setara dengan standar pengujian backend enterprise:
 
 ```bash
-# 1. Pemeriksaan format dan linting
-make check
-# Meliputi: cargo fmt --check, cargo clippy --all-targets -- -D warnings
+# 1. Menjalankan Smoke Tests (Booting, health check, Swagger UI, keterjangkauan infrastruktur)
+make test-smoke
 
-# 2. Menjalankan suite pengujian unit dan integrasi
-make test
+# 2. Menjalankan Integration Tests (Alur korelasi x-request-id, CORS, kepatuhan skema OpenAPI DTO)
+make test-integration
 
-# 3. Verifikasi performa dan SLA:
-# - API general: latensi p95 < 50ms
-# - Pencarian leksikal katalog FTS: < 5ms
-# - Pencarian kutipan semantik pgvector: < 10ms
+# 3. Menjalankan Performance & SLA Benchmark Tests (Validasi latensi p95 < 50ms & konkurensi 50 task)
+make test-performance
+
+# 4. Menjalankan Reliability & Fault Injection Tests (Fallback basis data offline, mockall, zero panics)
+make test-reliability
+
+# 5. Menjalankan Unit Tests (Validasi model domain murni dan validasi DTOs)
+make test-unit
+
+# 6. Menjalankan Seluruh Suite Pengujian (End-to-End)
+make test-all
 ```
+
+### Framework & Pustaka Pengujian yang Digunakan:
+* **Mocking:** `mockall` (generasi mock otomatis via `#[automock]` di atas trait port).
+* **Asersi Visual Berwarna:** `pretty_assertions` (memberikan laporan diff jelas saat asersi gagal).
+* **Asersi Ekspresif:** `claims` (`assert_ok!`, `assert_err!`, `assert_matches!`).
+* **Pengujian Parameterized:** `rstest` (fixture injection dan table-driven tests).
+
 
 ---
 

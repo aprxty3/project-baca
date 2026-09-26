@@ -75,16 +75,29 @@ migrate-status:
 test: test-all
 
 test-unit:
-	@echo "Running Unit Tests..."
+	@echo "Running Unit Tests across workspace libraries..."
 	@cargo test --workspace --lib
 
+test-smoke:
+	@echo "Running Smoke Tests (Boot, Health, Swagger UI, Infrastructure Reachability)..."
+	@cargo test -p server --test smoke_test
+
 test-integration:
-	@echo "Running Integration Tests..."
-	@cargo test --workspace --test '*'
+	@echo "Running Integration Tests (API Routing, Request ID, CORS, OpenAPI Schemas)..."
+	@cargo test -p server --test integration_test
+
+test-performance:
+	@echo "Running Performance & SLA Benchmark Tests (p95 Latency SLA, Tokio Concurrency)..."
+	@cargo test -p server --test performance_test
+
+test-reliability:
+	@echo "Running Reliability, Fault Injection & Invariant Tests (Offline DB, Mockall, Zero Panics)..."
+	@cargo test -p server --test reliability_test
 
 test-all:
-	@echo "Running Complete Test Suite..."
+	@echo "Running Complete Test Suite (Unit, Smoke, Integration, Performance, Reliability)..."
 	@cargo test --workspace
+
 
 # Check compilation across all crates (backend & WASM frontend)
 check:
@@ -106,4 +119,5 @@ clean:
 	@cargo clean
 	@rm -rf crates/web/dist
 
-.PHONY: dev dev-server dev-web db-up db-down db-prune db-logs db-shell redis-shell migrate-up migrate-down migrate-status test test-unit test-integration test-all check build clean
+.PHONY: dev dev-server dev-web db-up db-down db-prune db-logs db-shell redis-shell migrate-up migrate-down migrate-status test test-unit test-smoke test-integration test-performance test-reliability test-all check build clean
+
