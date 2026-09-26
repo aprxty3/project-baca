@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# 1. Kredensial, Rahasia & Kunci Akses (CRITICAL: DO NOT COMMIT)
+# 1. Credentials, Secrets & Access Keys
 # ------------------------------------------------------------------------------
 .env
 .env.*
@@ -17,13 +17,13 @@ service-account*.json
 jwt-secret.key
 secrets/
 
-# Konfigurasi Personal AI Tooling
+# Personal AI tooling configurations
 .claude/settings.local.json
 .claude/*.local
 .gemini/*.local
 
 # ------------------------------------------------------------------------------
-# 2. Dokumen Spesifikasi Privat & Path Mesin Lokal (Private Spec & Local Leaks)
+# 2. Private Specifications & Local Vault Links
 # ------------------------------------------------------------------------------
 knowledge/
 knowledge
@@ -40,7 +40,7 @@ target/
 Cargo.lock.bak
 
 # ------------------------------------------------------------------------------
-# 4. WebAssembly & Frontend Assets (Trunk / Leptos / Node)
+# 4. WebAssembly & Frontend Build Output (Trunk / Leptos / Node)
 # ------------------------------------------------------------------------------
 dist/
 .trunk/
@@ -49,7 +49,7 @@ node_modules/
 .parcel-cache/
 
 # ------------------------------------------------------------------------------
-# 5. Python Ingestion Worker, Virtual Environments & Cache
+# 5. Python Virtual Environments & Caches
 # ------------------------------------------------------------------------------
 __pycache__/
 *.py[cod]
@@ -68,7 +68,7 @@ build/
 htmlcov/
 
 # ------------------------------------------------------------------------------
-# 6. Docker Persistent Volumes & Database Mounts
+# 6. Docker Persistent Volumes & Database Storage
 # ------------------------------------------------------------------------------
 postgres-data/
 redis-data/
@@ -78,7 +78,7 @@ minio-data/
 *.db
 
 # ------------------------------------------------------------------------------
-# 7. Graphify Cache & Run Ephemeral Logs
+# 7. Graphify Cache & Backup Snapshots
 # ------------------------------------------------------------------------------
 graphify-out/cache/
 graphify-out/cache/**
@@ -95,7 +95,7 @@ graphify-out/2026-*/**
 *.canvas
 
 # ------------------------------------------------------------------------------
-# 9. Sistem Operasi, Editor & Scratch Files
+# 9. Operating System & Editor Files
 # ------------------------------------------------------------------------------
 .DS_Store
 Thumbs.db
