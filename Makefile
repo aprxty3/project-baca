@@ -85,6 +85,14 @@ test-integration:
 	@echo "Running integration tests (routing, request-id, CORS, OpenAPI schemas)..."
 	@cargo test -p server --test integration_test
 
+test-auth:
+	@echo "Running authentication and user integration tests..."
+	@cargo test -p server --test auth_test
+
+test-catalog:
+	@echo "Running catalog, reader engine and gamification integration tests..."
+	@cargo test -p server --test catalog_test
+
 test-performance:
 	@echo "Running performance and SLA benchmark tests..."
 	@cargo test -p server --test performance_test
@@ -117,5 +125,5 @@ clean:
 	@cargo clean
 	@rm -rf crates/web/dist
 
-.PHONY: dev dev-server dev-web db-up db-down db-prune db-logs db-shell redis-shell migrate-up migrate-down migrate-status test test-unit test-smoke test-integration test-performance test-reliability test-all check build clean
+.PHONY: dev dev-server dev-web db-up db-down db-prune db-logs db-shell redis-shell migrate-up migrate-down migrate-status test test-unit test-smoke test-integration test-auth test-catalog test-performance test-reliability test-all check build clean
 
