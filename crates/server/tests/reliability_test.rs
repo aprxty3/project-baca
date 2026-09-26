@@ -21,14 +21,9 @@ pub trait BookCatalogPort: Send + Sync {
 
 #[tokio::test]
 async fn test_reliability_disconnected_database_fallback() {
-    let config = AppConfig::from_env().unwrap_or_else(|_| AppConfig {
-        database_url: "postgresql://invalid_host:5433/none".to_string(),
-        redis_url: "redis://127.0.0.1:6380".to_string(),
-        port: 8080,
-        jwt_secret: "secret-key-32-bytes-minimum!".to_string(),
-        minio_endpoint: "http://127.0.0.1:9005".to_string(),
-        minio_bucket: "test-bucket".to_string(),
-    });
+    let mut config = AppConfig::default();
+    config.database.url = "postgresql://invalid_host:5433/none".to_string();
+    let config = Arc::new(config);
 
     let redis = redis::Client::open("redis://127.0.0.1:6380").unwrap();
 

@@ -27,8 +27,9 @@ futures = "0.3"
 axum = { version = "0.8", features = ["macros"] }
 tower = { version = "0.5", features = ["util"] }
 tower-http = { version = "0.6", features = ["cors", "trace", "fs", "request-id"] }
-sea-orm = { version = "1.1.20", features = ["sqlx-postgres", "runtime-tokio-rustls", "macros"] }
+sea-orm = { version = "1.1.20", features = ["sqlx-postgres", "runtime-tokio-rustls", "macros", "postgres-vector"] }
 redis = { version = "0.27", features = ["tokio-comp", "streams"] }
+dotenvy = "0.15"
 uuid = { version = "1.10", features = ["v4", "serde", "js"] }
 chrono = { version = "0.4", features = ["serde"] }
 thiserror = "2.0"

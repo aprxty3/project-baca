@@ -18,14 +18,7 @@ pub struct TestHarness {
 impl TestHarness {
     /// Initializes test harness with active database/redis connections or graceful fallbacks
     pub async fn new() -> Self {
-        let config = AppConfig::from_env().unwrap_or_else(|_| AppConfig {
-            database_url: "postgresql://baca_user:baca_password@127.0.0.1:5433/project_baca_db".to_string(),
-            redis_url: "redis://127.0.0.1:6380".to_string(),
-            port: 8080,
-            jwt_secret: "test-secret-key-32-bytes-minimum!".to_string(),
-            minio_endpoint: "http://127.0.0.1:9005".to_string(),
-            minio_bucket: "test-bucket".to_string(),
-        });
+        let config = Arc::new(AppConfig::from_env().unwrap_or_default());
 
         let db = match init_db_pool(&config).await {
             Ok(pool) => pool,
@@ -40,7 +33,7 @@ impl TestHarness {
         let state = Arc::new(AppState {
             db,
             redis,
-            config,
+            config: Arc::clone(&config),
         });
 
         let app = create_app(state.clone());

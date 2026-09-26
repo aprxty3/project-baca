@@ -23,10 +23,10 @@ Current status, technical milestones, and operational backlog for **Project Baca
    - OpenAPI Swagger UI (`utoipa`) integrated at `/swagger-ui`.
    - Structured JSON logging with `x-request-id` propagation.
    - Comprehensive 4-tier test suite (smoke, integration, performance, reliability).
-2. **[ACTIVE] Milestone 01 — Infrastructure, Modular AppConfig & SeaORM Entities:**
+2. **[COMPLETED] Milestone 01 — Infrastructure, Modular AppConfig & SeaORM Entities:**
    - Spec: [knowledge/tasks/01_infrastructure_and_config.md](knowledge/tasks/01_infrastructure_and_config.md)
-   - Scope: `dotenvy` integration, modular configurations, dynamic SeaORM pool, 13 SeaORM entity definitions.
-3. **[PENDING] Milestone 02 — Authentication, JWT/Argon2id, OTP & Guest Reconciliation:**
+   - Scope: `dotenvy` integration, strongly-typed modular configurations (`ServerConfig`, `DatabaseConfig`, `RedisConfig`, `AuthConfig`, `StorageConfig`, `EmailConfig`, `AiConfig`), dynamic SeaORM and Redis connection pools, 13 SeaORM entity definitions with `postgres-vector` (`PgVector`) support, Arc-wrapped `AppState`.
+3. **[ACTIVE] Milestone 02 — Authentication, JWT/Argon2id, OTP & Guest Reconciliation:**
    - Spec: [knowledge/tasks/02_authentication_and_user.md](knowledge/tasks/02_authentication_and_user.md)
    - Scope: Auth endpoints, Argon2id hashing, Redis OTP, token rotation, guest merging, RBAC guards.
 4. **[PENDING] Milestone 03 — Catalog Backend, Trigram FTS, Reader API & Streak Gamification:**
@@ -64,3 +64,4 @@ Full rationales documented in [MEMORY.md](MEMORY.md):
 | ADR-11 | Monorepo Base | 5-crate Rust workspace + Makefile and Trunk WASM bundler | [MEMORY.md](MEMORY.md) |
 | ADR-12 | Database Migrations | 6 PostgreSQL 17 migrations, 16 ERD indexes, Makefile automation | [MEMORY.md](MEMORY.md) |
 | ADR-13 | API Tooling & Tests | OpenAPI/Swagger UI (`utoipa`), auto-reload, structured JSON logs, 4-tier test suite | [MEMORY.md](MEMORY.md) |
+| ADR-14 | Infrastructure Layer | Strongly-typed modular `AppConfig`, dynamic connection pools, and 13 SeaORM entities with `postgres-vector` | [MEMORY.md](MEMORY.md) |

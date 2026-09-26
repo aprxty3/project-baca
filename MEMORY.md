@@ -120,3 +120,14 @@ Technical rationales behind engineering decisions for **Project Baca**.
   2. Standardized hot-reload commands: `make dev-server` via `cargo-watch` and `make dev-web` via Trunk.
   3. Structured logging with NDJSON mode (`LOG_FORMAT=json`) and automatic `x-request-id` propagation.
   4. Built comprehensive 4-tier test suite in `crates/server/tests/`: smoke, integration, performance SLA (p95 < 50ms), and reliability tests using `mockall`, `claims`, `pretty_assertions`, and `rstest`.
+
+### 2026-09-26 — Infrastructure Layer: Modular AppConfig, Dynamic Pools & 13 SeaORM Entities (ADR-14)
+* **Actors:** `human:aprxty3` & `[antigravity]`
+* **Context:** Strongly-typed configuration, safe resource allocation, and type-safe relational/vector queries across all 13 PostgreSQL tables.
+* **Decision:**
+  1. Standardized `dotenvy = "0.15"` in root workspace and `crates/infra` for zero-panic environment loading with fallback defaults.
+  2. Implemented modular configurations: `ServerConfig`, `DatabaseConfig`, `RedisConfig`, `AuthConfig`, `StorageConfig`, `EmailConfig`, and `AiConfig`.
+  3. Dynamic PostgreSQL pool creation using `ConnectOptions` (configurable max/min connections, connect/idle timeouts) and Redis client initialization in `crates/infra/src/pool.rs`.
+  4. Modeled all 13 database tables into SeaORM entities in `crates/infra/src/entities/`, enabling `postgres-vector` (`PgVector`) for `book_chunks.embedding` and `Decimal` for reading completion percentages.
+  5. Refactored `AppState` to hold `Arc<AppConfig>` to avoid deep clones across Axum requests.
+

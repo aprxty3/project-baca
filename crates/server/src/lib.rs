@@ -26,7 +26,7 @@ pub static REQUEST_ID_HEADER: HeaderName = HeaderName::from_static("x-request-id
 pub struct AppState {
     pub db: DatabaseConnection,
     pub redis: redis::Client,
-    pub config: AppConfig,
+    pub config: Arc<AppConfig>,
 }
 
 /// OpenAPI documentation root schema
@@ -121,7 +121,7 @@ pub async fn api_health_check(State(state): State<Arc<AppState>>) -> impl IntoRe
             "status": "ok",
             "postgres": if db_connected { "connected" } else { "disconnected" },
             "redis": "configured",
-            "port": state.config.port
+            "port": state.config.port()
         }))),
     )
 }

@@ -29,10 +29,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     info!("Starting Project Baca API Server...");
 
-    let config = AppConfig::from_env().map_err(|e| {
+    let config = Arc::new(AppConfig::from_env().map_err(|e| {
         eprintln!("Configuration initialization failed: {e}");
         e
-    })?;
+    })?);
 
     // Attempt DB and Redis initialization (graceful fallback if offline during initial build check)
     let db = match init_db_pool(&config).await {
@@ -51,10 +51,14 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
     };
 
-    let state = Arc::new(AppState { db, redis, config: config.clone() });
+    let state = Arc::new(AppState {
+        db,
+        redis,
+        config: Arc::clone(&config),
+    });
     let app = create_app(state);
 
-    let addr = SocketAddr::from(([0, 0, 0, 0], config.port));
+    let addr = SocketAddr::from(([0, 0, 0, 0], config.port()));
     info!("Server listening on http://{}", addr);
     info!("OpenAPI Swagger UI available on http://{}/swagger-ui", addr);
 
