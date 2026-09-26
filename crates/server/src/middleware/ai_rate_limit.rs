@@ -1,11 +1,11 @@
-//! Per-user AI rate limit middleware for semantic search endpoints.
+//! Per-user and per-IP AI rate limit middleware for semantic search endpoints.
 //!
-//! Enforces a sliding-window limit of 10 requests per minute per authenticated user.
-//! If the Authorization header is absent or invalid, the request falls through without
-//! rate limiting (the handler itself will reject it via the `AuthUser` extractor if auth
-//! is required, so there is no security gap here).
+//! Enforces a sliding-window limit of 10 requests per minute:
+//! - For authenticated users: keyed by user UUID (`rate_limit:ai:user:<user_id>`).
+//! - For guest readers: keyed by client IP (`rate_limit:ai:guest:<client_ip>`), allowing
+//!   unregistered users to freely use the Quote Finder while defending against token depletion.
 //!
-//! Redis key pattern: `rate_limit:ai:<user_id>` (TTL: 60 seconds).
+//! Enforces RFC standard `X-RateLimit-*` and `Retry-After` headers.
 
 use crate::AppState;
 use axum::{
@@ -19,24 +19,60 @@ use axum::{
 use infra::verify_access_token;
 use redis::AsyncCommands;
 use shared::ApiResponse;
+use std::net::IpAddr;
 use std::sync::Arc;
 
 const AI_MAX_REQUESTS: i64 = 10;
 const AI_WINDOW_SECONDS: i64 = 60;
 
-/// Sliding-window rate limiter scoped to the authenticated user identity.
-///
-/// Reads the JWT from the `Authorization: Bearer <token>` header without
-/// performing full token validation (no Redis blacklist check here — that is
-/// deferred to the `AuthUser` extractor in each handler). This keeps
-/// middleware overhead minimal.
+fn get_client_ip(req: &Request<Body>) -> String {
+    // 1. Cloudflare connecting IP
+    if let Some(cf_ip) = req
+        .headers()
+        .get("cf-connecting-ip")
+        .and_then(|v| v.to_str().ok())
+        .map(|s| s.trim())
+    {
+        if cf_ip.parse::<IpAddr>().is_ok() {
+            return cf_ip.to_string();
+        }
+    }
+
+    // 2. Standard X-Real-IP reverse proxy header
+    if let Some(real_ip) = req
+        .headers()
+        .get("x-real-ip")
+        .and_then(|v| v.to_str().ok())
+        .map(|s| s.trim())
+    {
+        if real_ip.parse::<IpAddr>().is_ok() {
+            return real_ip.to_string();
+        }
+    }
+
+    // 3. X-Forwarded-For header
+    if let Some(forwarded) = req
+        .headers()
+        .get("x-forwarded-for")
+        .and_then(|v| v.to_str().ok())
+    {
+        for part in forwarded.split(',') {
+            let candidate = part.trim();
+            if candidate.parse::<IpAddr>().is_ok() {
+                return candidate.to_string();
+            }
+        }
+    }
+
+    "127.0.0.1".to_string()
+}
+
+/// Sliding-window rate limiter scoped to user ID (if authenticated) or client IP (if guest).
 pub async fn ai_rate_limit_middleware(
     State(state): State<Arc<AppState>>,
     req: Request<Body>,
     next: Next,
 ) -> Response {
-    // Extract user ID from JWT claim without full blacklist validation.
-    // On any error, pass through (the handler's AuthUser extractor will enforce auth).
     let maybe_user_id: Option<String> = req
         .headers()
         .get("authorization")
@@ -48,11 +84,13 @@ pub async fn ai_rate_limit_middleware(
                 .map(|c| c.sub.to_string())
         });
 
-    let Some(user_id) = maybe_user_id else {
-        return next.run(req).await;
+    let redis_key = match &maybe_user_id {
+        Some(user_id) => format!("rate_limit:ai:user:{user_id}"),
+        None => {
+            let ip = get_client_ip(&req);
+            format!("rate_limit:ai:guest:{ip}")
+        }
     };
-
-    let redis_key = format!("rate_limit:ai:{user_id}");
 
     if let Ok(mut redis_conn) = state.get_redis_conn().await {
         let count: Result<i64, _> = redis_conn.incr(&redis_key, 1).await;

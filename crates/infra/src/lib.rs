@@ -23,7 +23,7 @@ pub use repositories::{
     },
     progress_repository::{get_active_progress, record_heartbeat, update_progress},
     quote_repository::{
-        get_chapter_recap, get_tldr_cache, list_saved_quotes, save_quote,
+        get_chapter_recap, get_saved_quote_by_id, get_tldr_cache, list_saved_quotes, save_quote,
         search_quotes_by_embedding, QuoteSearchRow, SavedQuoteDto,
     },
     user_repository::{

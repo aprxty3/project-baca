@@ -15,6 +15,6 @@ pub use gamification::{gamification_routes, list_badges, list_user_badges, recor
 pub use insights::{get_atomic_cards, get_chapter_recap, insights_routes};
 pub use progress::{get_active_progress, merge_guest_progress, progress_routes, update_progress};
 pub use quotes::{
-    handle_list_saved_quotes, handle_save_quote, quotes_routes, saved_quotes_routes,
-    search_book_quotes,
+    get_quote_card, handle_list_saved_quotes, handle_save_quote, quotes_routes,
+    saved_quotes_routes, search_book_quotes,
 };

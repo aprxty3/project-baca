@@ -425,6 +425,7 @@ pub struct QuoteSearchResultDto {
     pub chunk_id: Uuid,
     pub chapter_number: i32,
     pub chapter_title: Option<String>,
+    pub cfi_range: Option<String>,
     pub content: String,
     pub similarity_score: f32,
 }

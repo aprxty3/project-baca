@@ -83,6 +83,7 @@ impl AppState {
         routes::quotes::search_book_quotes,
         routes::quotes::handle_save_quote,
         routes::quotes::handle_list_saved_quotes,
+        routes::quotes::get_quote_card,
         routes::insights::get_atomic_cards,
         routes::insights::get_chapter_recap,
     ),

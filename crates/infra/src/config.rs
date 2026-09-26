@@ -149,7 +149,7 @@ impl Default for AiConfig {
         Self {
             provider: "gemini".to_string(),
             api_key: String::new(),
-            model_name: "text-embedding-004".to_string(),
+            model_name: "gemini-embedding-2".to_string(),
             dimension: 768,
         }
     }
@@ -296,10 +296,17 @@ impl AppConfig {
             smtp_from_name,
         };
 
-        let ai_provider = env::var("EMBEDDING_PROVIDER").unwrap_or(default_ai.provider);
-        let ai_api_key = env::var("GEMINI_API_KEY").unwrap_or(default_ai.api_key);
-        let ai_model_name = env::var("EMBEDDING_MODEL_NAME").unwrap_or(default_ai.model_name);
+        let ai_provider = env::var("EMBEDDING_PROVIDER")
+            .or_else(|_| env::var("AI_PROVIDER"))
+            .unwrap_or(default_ai.provider);
+        let ai_api_key = env::var("GEMINI_API_KEY")
+            .or_else(|_| env::var("AI_API_KEY"))
+            .unwrap_or(default_ai.api_key);
+        let ai_model_name = env::var("EMBEDDING_MODEL_NAME")
+            .or_else(|_| env::var("AI_MODEL_NAME"))
+            .unwrap_or(default_ai.model_name);
         let ai_dimension = env::var("EMBEDDING_DIMENSION")
+            .or_else(|_| env::var("AI_DIMENSION"))
             .ok()
             .and_then(|v| v.parse().ok())
             .unwrap_or(default_ai.dimension);

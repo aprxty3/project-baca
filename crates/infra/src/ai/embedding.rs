@@ -43,6 +43,8 @@ pub trait EmbeddingProvider: Send + Sync {
 struct GeminiEmbedRequest<'a> {
     model: &'a str,
     content: GeminiContent<'a>,
+    #[serde(rename = "outputDimensionality", skip_serializing_if = "Option::is_none")]
+    output_dimensionality: Option<usize>,
 }
 
 #[derive(Debug, Serialize)]
@@ -78,7 +80,7 @@ struct GeminiBatchEmbedResponse {
     embeddings: Vec<GeminiEmbedding>,
 }
 
-/// HTTP client adapter calling Google GenAI `text-embedding-004`.
+/// HTTP client adapter calling Google GenAI `gemini-embedding-2` or `text-embedding-004`.
 ///
 /// Uses `reqwest` with `rustls-tls` (no OpenSSL dependency) and a persistent
 /// connection pool to avoid TCP handshake overhead per request.
@@ -94,7 +96,7 @@ impl GeminiEmbeddingProvider {
     pub fn new(config: &AiConfig) -> Result<Self, AppError> {
         if config.api_key.is_empty() {
             return Err(AppError::Internal(
-                "AI_API_KEY is not configured. Set the AI_API_KEY environment variable.".to_string(),
+                "GEMINI_API_KEY (or AI_API_KEY) is not configured. Set GEMINI_API_KEY in your .env file.".to_string(),
             ));
         }
 
@@ -137,6 +139,7 @@ impl EmbeddingProvider for GeminiEmbeddingProvider {
             content: GeminiContent {
                 parts: vec![GeminiPart { text }],
             },
+            output_dimensionality: Some(self.dimension),
         };
 
         let response = self
@@ -181,6 +184,7 @@ impl EmbeddingProvider for GeminiEmbeddingProvider {
                 content: GeminiContent {
                     parts: vec![GeminiPart { text: t.as_str() }],
                 },
+                output_dimensionality: Some(self.dimension),
             })
             .collect();
 
@@ -406,5 +410,25 @@ mod tests {
         };
         let provider = build_embedding_provider(&config);
         assert!(provider.is_ok());
+    }
+
+    #[tokio::test]
+    async fn test_gemini_embedding_live_if_key_available() {
+        let Ok(key) = std::env::var("GEMINI_API_KEY").or_else(|_| std::env::var("AI_API_KEY")) else {
+            return;
+        };
+        if key.is_empty() || key.contains("your-gemini-api-key") {
+            return;
+        }
+
+        let config = AiConfig {
+            provider: "gemini".to_string(),
+            api_key: key,
+            model_name: "gemini-embedding-2".to_string(),
+            dimension: 768,
+        };
+        let provider = GeminiEmbeddingProvider::new(&config).expect("Must construct provider");
+        let vec = provider.embed_text("Watson in London fog").await.expect("Must embed text");
+        assert_eq!(vec.len(), 768);
     }
 }

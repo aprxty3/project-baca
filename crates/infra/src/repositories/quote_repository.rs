@@ -49,6 +49,7 @@ pub struct QuoteSearchRow {
     pub chunk_id: Uuid,
     pub chapter_number: i32,
     pub chapter_title: Option<String>,
+    pub cfi_range: Option<String>,
     pub content: String,
     pub similarity_score: f32,
 }
@@ -131,6 +132,7 @@ pub async fn search_quotes_by_embedding(
             chunk_id: r.chunk_id,
             chapter_number: r.chapter_number,
             chapter_title: r.chapter_title,
+            cfi_range: None,
             content: r.chunk_text,
             similarity_score: r.cosine_similarity as f32,
         })
@@ -199,7 +201,7 @@ pub async fn get_chapter_recap(
 }
 
 // ---------------------------------------------------------------------------
-// Sub-Task 4.5: Saved Quotes Management
+// Sub-Task 4.5: Saved Quotes Management & Vintage Quote Card
 // ---------------------------------------------------------------------------
 
 /// Persist a user-selected quote to `saved_quotes`.
@@ -213,10 +215,11 @@ pub async fn save_quote(
     book_id: Uuid,
     chapter_id: Uuid,
     quote_text: &str,
+    image_card_url: Option<&str>,
 ) -> Result<(), AppError> {
     let sql = r#"
-        INSERT INTO saved_quotes (id, user_id, book_id, chapter_id, quote_text, created_at)
-        VALUES ($1, $2, $3, $4, $5, NOW())
+        INSERT INTO saved_quotes (id, user_id, book_id, chapter_id, quote_text, image_card_url, created_at)
+        VALUES ($1, $2, $3, $4, $5, $6, NOW())
         ON CONFLICT DO NOTHING
     "#;
 
@@ -229,6 +232,7 @@ pub async fn save_quote(
             sea_orm::Value::from(book_id),
             sea_orm::Value::from(chapter_id),
             sea_orm::Value::from(quote_text),
+            sea_orm::Value::from(image_card_url),
         ],
     );
 
@@ -237,6 +241,38 @@ pub async fn save_quote(
         .map_err(|e| AppError::Internal(format!("Failed to save quote: {e}")))?;
 
     Ok(())
+}
+
+/// Retrieve single saved quote by its ID.
+pub async fn get_saved_quote_by_id(
+    db: &DatabaseConnection,
+    id: Uuid,
+) -> Result<Option<SavedQuoteDto>, AppError> {
+    let sql = r#"
+        SELECT id, book_id, chapter_id, quote_text, image_card_url, created_at
+        FROM saved_quotes
+        WHERE id = $1
+    "#;
+
+    let stmt = Statement::from_sql_and_values(
+        sea_orm::DatabaseBackend::Postgres,
+        sql,
+        [sea_orm::Value::from(id)],
+    );
+
+    let row = SavedQuoteRow::find_by_statement(stmt)
+        .one(db)
+        .await
+        .map_err(|e| AppError::Internal(format!("Failed to find saved quote: {e}")))?;
+
+    Ok(row.map(|r| SavedQuoteDto {
+        id: r.id,
+        book_id: r.book_id,
+        chapter_id: r.chapter_id,
+        quote_text: r.quote_text,
+        image_card_url: r.image_card_url,
+        created_at: r.created_at,
+    }))
 }
 
 /// Retrieve all saved quotes for a user, ordered by most recent first.
