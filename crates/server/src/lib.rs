@@ -230,6 +230,18 @@ pub async fn api_health_check(State(state): State<Arc<AppState>>) -> impl IntoRe
     )
 }
 
+/// Global fallback handler for unmatched routes, returning standardized JSON error
+pub async fn not_found_handler() -> impl IntoResponse {
+    (
+        StatusCode::NOT_FOUND,
+        Json(ApiResponse::<()>::error(
+            "NOT_FOUND",
+            "The requested resource was not found",
+            None,
+        )),
+    )
+}
+
 /// Assembles Axum Router with Swagger UI, sub-routers, and middleware pipeline
 pub fn create_app(state: Arc<AppState>) -> Router {
     let cors = CorsLayer::new()
@@ -258,6 +270,7 @@ pub fn create_app(state: Arc<AppState>) -> Router {
         .nest("/api/books", routes::books_routes())
         .nest("/api/progress", routes::progress_routes())
         .nest("/api", routes::gamification_routes())
+        .fallback(not_found_handler)
         .layer(axum_mw::from_fn(security_headers_middleware))
         .layer(axum_mw::from_fn(request_id_middleware))
         .layer(cors)

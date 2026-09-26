@@ -101,6 +101,22 @@ test-reliability:
 	@echo "Running reliability and fault injection tests..."
 	@cargo test -p server --test reliability_test
 
+test-database:
+	@echo "Running database integrity tests (constraints, cascades, rollbacks, query plans)..."
+	@cargo test -p server --test database_test
+
+test-load-stress:
+	@echo "Running load and stress tests (200 concurrent tasks, rate limit saturation)..."
+	@cargo test -p server --test load_stress_test
+
+test-api-boundary:
+	@echo "Running API edge-case and boundary tests (404/405, malformed payloads, pagination)..."
+	@cargo test -p server --test api_boundary_test
+
+test-security:
+	@echo "Running OWASP security vulnerability tests..."
+	@cargo test -p server --test security_owasp_test
+
 test-all:
 	@echo "Running complete test suite..."
 	@cargo test --workspace
@@ -125,5 +141,5 @@ clean:
 	@cargo clean
 	@rm -rf crates/web/dist
 
-.PHONY: dev dev-server dev-web db-up db-down db-prune db-logs db-shell redis-shell migrate-up migrate-down migrate-status test test-unit test-smoke test-integration test-auth test-catalog test-performance test-reliability test-all check build clean
+.PHONY: dev dev-server dev-web db-up db-down db-prune db-logs db-shell redis-shell migrate-up migrate-down migrate-status test test-unit test-smoke test-integration test-auth test-catalog test-database test-performance test-load-stress test-api-boundary test-security test-reliability test-all check build clean
 

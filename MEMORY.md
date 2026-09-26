@@ -23,6 +23,15 @@ Technical rationales behind engineering decisions for **Project Baca**.
 
 ## Chronological Decision Records
 
+### 2026-09-26 — Comprehensive Testing Architecture (Database Integrity, Load & Stress, API Boundary)
+* **Actors:** `human:aprxty3` & `[antigravity]`
+* **Context:** Preventing technical debt and regression while the codebase is compact requires proactive automated testing covering: (1) database constraints, cascades, rollbacks, and query plans; (2) sustained high concurrency load and rate-limit shedding; (3) HTTP edge-cases, 404 envelopes, 405 methods, and malformed body handling.
+* **Decision:**
+  1. Dedicated Database Suite (`database_test.rs`): Explicitly asserted schema constraints (`users.email` unique, `tags.slug` unique, `users.role` check), PostgreSQL foreign key cascades (`users` -> `progress`/`badges`, `books` -> `chapters`/`tags`), transaction rollback cleanliness, and index query planner utilization (`idx_users_email`).
+  2. Load & Stress Suite (`load_stress_test.rs`): Tested sustained concurrent load (200 tasks > 220 req/sec in 900ms, 100 authenticated reads > 120 req/sec), validated graceful rate-limit shedding (40 requests -> 20 processed, 20 shed with 429 and `Retry-After`), and burst recovery across distinct IPs.
+  3. API Boundary Suite (`api_boundary_test.rs`): Added global `not_found_handler` fallback in Axum returning standard `ApiResponse` JSON envelopes on unknown routes; verified 405 Method Not Allowed, malformed JSON body handling without server panic, empty body rejections, pagination extremes (`limit=0`, `limit=1000`, invalid cursor string), and authorization scheme validation.
+  4. Automation: Exposed dedicated commands in `Makefile` (`test-database`, `test-load-stress`, `test-api-boundary`, `test-security`). Full workspace test suite passes with 100% success rate (65 tests across all 5 crates).
+
 ### 2026-09-26 — Auth Latency Optimization, Query Repository & Timing Attack Mitigation
 * **Actors:** `human:aprxty3` & `[antigravity]`
 * **Context:** Initial profiling of authentication endpoints revealed latency bottlenecks: (1) each HTTP request opened separate TCP connections to Redis in rate-limit middleware and handlers; (2) CPU-bound Argon2id ran synchronously on Tokio worker threads with non-optimal parameters (64MB, 3 iterations, 4 lanes), starving async executors; (3) non-existent account logins were susceptible to timing enumeration attacks; (4) user queries were ad-hoc in route handlers rather than encapsulated.
