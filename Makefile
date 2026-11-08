@@ -53,7 +53,7 @@ db-up:
 	@echo "Starting database and infrastructure services..."
 	@docker compose up -d
 
-# The self-hosted embedding model; the first run downloads it (about 2.2 GB).
+# The self-hosted embedding model; the first run downloads it (about 210 MB).
 embedder-up:
 	@echo "Starting the embedding model service on 127.0.0.1:8090..."
 	@docker compose --profile embedder up -d --wait embedder

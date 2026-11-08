@@ -31,9 +31,9 @@ Build, run, and test Project Baca locally. Deployment is in [ARCHITECTURE.md](AR
 | Redis 7 | `redis:7-alpine` | 6380 |
 | MinIO | `cgr.dev/chainguard/minio` | 9005 (S3 API), 9006 (console) |
 | Mailpit | `axllent/mailpit` | 1025 (SMTP), 8025 (web UI) |
-| Embedding model | `text-embeddings-inference:cpu-1.9` (amd64), multilingual-e5-base | 8090 |
+| Embedding model | `text-embeddings-inference:cpu-1.9` (amd64), EmbeddingGemma 300M (4-bit ONNX) | 8090 |
 
-Credentials and bucket names are in `.env.example`. `make embedder-up` starts the embedding model, which quote search and ingestion need; its first run downloads the model (about 2.2 GB, `scripts/fetch_embedding_model.sh`) into the `embedder_models` volume. `make db-up` leaves it off, so CI never downloads it. At boot the server checks both buckets with a one-key listing and creates one only when it is missing.
+Credentials and bucket names are in `.env.example`. `make embedder-up` starts the embedding model, which quote search and ingestion need; its first run downloads the model (about 210 MB, `scripts/fetch_embedding_model.sh`) into the `embedder_models` volume. `make db-up` leaves it off, so CI never downloads it. At boot the server checks both buckets with a one-key listing and creates one only when it is missing.
 
 ## 3. Configuration (`.env`)
 

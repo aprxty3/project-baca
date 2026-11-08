@@ -940,8 +940,8 @@ class EmbeddingTransportTest(unittest.TestCase):
         self.assertEqual(
             [json.loads(r.data) for r in seen],
             [
-                {"inputs": ["passage: satu"], "normalize": True, "truncate": True},
-                {"inputs": ["passage: dua"], "normalize": True, "truncate": True},
+                {"inputs": ["title: none | text: satu"], "normalize": True, "truncate": True},
+                {"inputs": ["title: none | text: dua"], "normalize": True, "truncate": True},
             ],
         )
 
@@ -1458,11 +1458,11 @@ class TokenFitTest(unittest.TestCase):
         texts = [f"word {i}" for i in range(40)]
         with mock.patch.object(worker.urllib.request, "urlopen", fake):
             counts = worker.count_tokens(texts, worker.Settings(embedding_url="http://embedder:80"))
-        self.assertEqual(counts, [3] * 40, "passage: word N")
+        self.assertEqual(counts, [6] * 40, "title: none | text: word N")
         self.assertEqual([len(json.loads(r.data)["inputs"]) for r in seen], [32, 8])
         self.assertEqual(seen[0].full_url, "http://embedder:80/tokenize")
         self.assertTrue(json.loads(seen[0].data)["add_special_tokens"])
-        self.assertEqual(json.loads(seen[0].data)["inputs"][0], "passage: word 0")
+        self.assertEqual(json.loads(seen[0].data)["inputs"][0], "title: none | text: word 0")
 
 
 class RecordingDb:
