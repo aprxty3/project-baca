@@ -49,7 +49,7 @@ services:
 
   # The embedding model the server (queries) and worker (chunks) share,
   # started by `make embedder-up`; its first run downloads the model (about
-  # 2.2 GB) into embedder_models. Behind a profile, so `make db-up` (and CI)
+  # 210 MB) into embedder_models. Behind a profile, so `make db-up` (and CI)
   # never pulls it.
   embedder-fetch:
     profiles: ["embedder"]
@@ -69,7 +69,7 @@ services:
     depends_on:
       embedder-fetch:
         condition: service_completed_successfully
-    command: ["--model-id", "/data/multilingual-e5-base", "--pooling", "mean", "--tokenization-workers", "1"]
+    command: ["--model-id", "/data/embeddinggemma-300m-q4", "--pooling", "mean", "--tokenization-workers", "1"]
     cpus: 1.0
     ports:
       - "127.0.0.1:8090:80" # EMBEDDING_URL

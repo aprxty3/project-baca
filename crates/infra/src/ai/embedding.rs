@@ -23,14 +23,15 @@ pub trait EmbeddingProvider: Send + Sync {
     fn dimension(&self) -> usize;
 }
 
-/// multilingual-e5 was trained with these prefixes; a query embedded without
-/// its prefix ranks passages noticeably worse. The worker uses the same two.
-pub const QUERY_PREFIX: &str = "query: ";
-pub const PASSAGE_PREFIX: &str = "passage: ";
+/// EmbeddingGemma's retrieval prompts (a document without a title takes
+/// `title: none`); a query embedded without its prompt ranks passages
+/// worse. The worker uses the same two.
+pub const QUERY_PREFIX: &str = "task: search result | query: ";
+pub const PASSAGE_PREFIX: &str = "title: none | text: ";
 
 /// A reader waits this long at most; past it the search answers 503.
 const QUERY_TIMEOUT: Duration = Duration::from_secs(15);
-/// One 400-word passage takes about 2 s on one CPU.
+/// One 300-word passage takes about 2.5 s on one CPU.
 const PASSAGE_TIMEOUT: Duration = Duration::from_secs(120);
 /// Seconds a client is told to wait while the model service loads or restarts.
 const NOT_READY_RETRY_S: u64 = 10;
@@ -140,7 +141,7 @@ impl EmbeddingProvider for TeiEmbeddingProvider {
 
     async fn embed_passages(&self, texts: &[String]) -> Result<Vec<Vec<f32>>, AppError> {
         // One passage per request: the service queues requests in order, so
-        // a reader's query waits behind one passage (about 2 s), not a batch.
+        // a reader's query waits behind one passage (about 2.5 s), not a batch.
         let mut vectors = Vec::with_capacity(texts.len());
         for text in texts {
             vectors.extend(
@@ -284,7 +285,7 @@ mod tests {
     }
 
     #[tokio::test]
-    async fn queries_and_passages_carry_their_e5_prefix() {
+    async fn queries_and_passages_carry_their_retrieval_prompt() {
         let fake = fake_tei(200, 4).await;
         let provider = TeiEmbeddingProvider::new(&config(fake.url.clone())).expect("provider");
 
@@ -304,8 +305,11 @@ mod tests {
 
         assert_eq!(fake.calls.load(Ordering::SeqCst), 3);
         let bodies = fake.bodies.lock().expect("lock");
-        assert_eq!(bodies[0]["inputs"][0], "query: kabut London");
-        assert_eq!(bodies[2]["inputs"][0], "passage: dua");
+        assert_eq!(
+            bodies[0]["inputs"][0],
+            "task: search result | query: kabut London"
+        );
+        assert_eq!(bodies[2]["inputs"][0], "title: none | text: dua");
         assert_eq!(bodies[0]["normalize"], true);
         assert_eq!(bodies[0]["truncate"], true);
     }

@@ -1746,7 +1746,10 @@ async fn test_guest_quote_search_embeds_through_the_self_hosted_service() {
     assert!(!json["data"].as_array().expect("array").is_empty());
     let calls = seen.lock().expect("lock").clone();
     assert_eq!(calls.len(), 1, "one embedding call per search");
-    assert_eq!(calls[0]["inputs"][0], "query: kabut di pelabuhan");
+    assert_eq!(
+        calls[0]["inputs"][0],
+        "task: search result | query: kabut di pelabuhan"
+    );
     server.abort();
     harness.cleanup().await;
 }

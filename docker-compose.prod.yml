@@ -127,22 +127,23 @@ services:
       - ./scripts/fetch_embedding_model.sh:/fetch.sh:ro
 
   # Self-hosted embeddings (ADR-49) for chunks (worker) and reader queries
-  # (server): text-embeddings-inference serving multilingual-e5-base, 768
-  # dimensions, on CPU. Only on `store`: no route out, no published port, so
-  # book text and queries never leave the host. Budget: ARCHITECTURE.md section 8.
+  # (server): text-embeddings-inference serving EmbeddingGemma 300M (4-bit
+  # ONNX), 768 dimensions, on CPU. Only on `store`: no route out, no
+  # published port, so book text and queries never leave the host. Budget:
+  # ARCHITECTURE.md section 8.
   embedder:
     image: *embedder_image
     restart: always
     logging: *logging
-    mem_limit: 3g
-    memswap_limit: 3g
+    mem_limit: 1g
+    memswap_limit: 1g
     cpus: 1.0
     user: "65534:65534"
     networks: [store]
     depends_on:
       embedder-fetch:
         condition: service_completed_successfully
-    command: ["--model-id", "/data/multilingual-e5-base", "--pooling", "mean", "--tokenization-workers", "1"]
+    command: ["--model-id", "/data/embeddinggemma-300m-q4", "--pooling", "mean", "--tokenization-workers", "1"]
     volumes:
       - embedder_models:/data:ro
     healthcheck:

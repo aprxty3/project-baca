@@ -315,10 +315,9 @@ def paragraph_texts(html: str) -> list[str]:
     return [" ".join("".join(parts).split()) for parts in parser.found]
 
 
-# Words per chunk. multilingual-e5 reads 512 tokens and drops the rest;
-# measured with its tokenizer, English runs 1.40 tokens a word and
-# Indonesian 1.47, so 300 words (about 420 tokens) fit with room for the
-# merged tail. 400-word chunks lost their tail in 93% of English chunks.
+# Words per chunk: a quote hit opens the reader on the paragraph a chunk
+# starts in, so a chunk stays about a page. The quote-search evaluation
+# (100 queries, 2026-11-08) measured the model at this size.
 CHUNK_TARGET_WORDS = 300
 
 
@@ -740,16 +739,16 @@ def _post_json(
 
 
 EMBEDDING_SERVICE = "Embedding service"
-# multilingual-e5 was trained with these prefixes; the server embeds reader
-# queries with "query: " (crates/infra/src/ai/embedding.rs).
-PASSAGE_PREFIX = "passage: "
+# EmbeddingGemma's document prompt (no title); the server embeds reader
+# queries with "task: search result | query: " (crates/infra/src/ai/embedding.rs).
+PASSAGE_PREFIX = "title: none | text: "
 # The model and revision scripts/fetch_embedding_model.sh pins; part of the
 # digest that lets a resumed job keep the chunks it already embedded.
-EMBEDDING_MODEL = "intfloat/multilingual-e5-base@d128750597153bb5987e10b1c3493a34e5a4502a"
+EMBEDDING_MODEL = "onnx-community/embeddinggemma-300m-ONNX@5090578d9565bb06545b4552f76e6bc2c93e4a66/onnx/model_q4.onnx"
 
 
-# The model's window, counted with its <s> and </s> and the passage prefix.
-EMBED_MAX_TOKENS = 512
+# The model's window, counted with its special tokens and the passage prompt.
+EMBED_MAX_TOKENS = 2048
 
 
 def count_tokens(texts: list[str], settings: Settings, job_id: str = "") -> list[int]:
@@ -792,7 +791,7 @@ def embed_batch(texts: list[str], settings: Settings, job_id: str = "") -> list[
     service (text-embeddings-inference).
 
     One passage per request: the service queues requests in order, so a
-    reader's quote search waits behind one passage (about 2 s on one CPU)
+    reader's quote search waits behind one passage (about 2.5 s on one CPU)
     instead of a whole batch; throughput is the same, the model is CPU-bound."""
     out: list[list[float]] = []
     for text in texts:
