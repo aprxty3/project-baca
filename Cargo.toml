@@ -49,7 +49,7 @@ hmac = "0.13"
 # Error tracking: no default transport (it pulls native-tls); reqwest on rustls.
 sentry = { version = "0.49.5", default-features = false, features = ["backtrace", "contexts", "panic", "reqwest", "rustls", "tower-axum-matched-path", "tracing"] }
 # HS256 only, on the aws-lc-rs backend rustls already links.
-jsonwebtoken = { version = "10.3", default-features = false, features = ["aws_lc_rs"] }
+jsonwebtoken = { version = "11.1", default-features = false, features = ["aws_lc_rs"] }
 rand = "0.10"
 reqwest = { version = "0.12", features = ["json", "rustls-tls"], default-features = false }
 # Same TLS stack as reqwest (rustls + webpki roots + ring), no OpenSSL.
