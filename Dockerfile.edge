@@ -5,7 +5,7 @@
 # API lives elsewhere.
 # Trixie, not bookworm: the aarch64 Trunk binary needs glibc 2.39 and
 # bookworm ships 2.36. The stage only emits WASM and static files.
-FROM rust:1.98-trixie@sha256:a8a5f0a1e5fe7dfe1d352591e4a1c7dd2c08fd70475cae872cf3458ba0df0546 AS webbuild
+FROM rust:1.99-trixie@sha256:8a4e90c7946b74626488b1446f712c0fe0ed1a596cbd3d871684bc9c5433ae07 AS webbuild
 # Prebuilt Trunk, pinned like CI (.github/workflows/ci.yml): compiling the
 # latest one needs a newer rustc than this image and takes minutes. The
 # tarball is checked against scripts/trunk.sha256 for either build arch.
