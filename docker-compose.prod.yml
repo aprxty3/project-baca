@@ -22,7 +22,7 @@ x-cloudflared-ip: &cloudflared_ip 10.203.53.2
 
 services:
   postgres:
-    image: pgvector/pgvector:pg17@sha256:7d0a41464797aeb9862dfdc0bbf1526b82cfd324cdd8036df19e3545f4a9ccb8
+    image: pgvector/pgvector:pg17@sha256:b513c48566e4777cd3370451400000c78eda6a08131d68f4c31d4a76f27bd8fd
     restart: always
     logging: *logging
     mem_limit: 2g
@@ -47,7 +47,7 @@ services:
   # runner of the checked-out tag, mounted read-only. It connects as the
   # schema owner; server and worker connect as rotaria_app.
   migrate:
-    image: pgvector/pgvector:pg17@sha256:7d0a41464797aeb9862dfdc0bbf1526b82cfd324cdd8036df19e3545f4a9ccb8
+    image: pgvector/pgvector:pg17@sha256:b513c48566e4777cd3370451400000c78eda6a08131d68f4c31d4a76f27bd8fd
     profiles: ["ops"]
     logging: *logging
     mem_limit: 256m
